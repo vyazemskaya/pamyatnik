@@ -88,7 +88,7 @@ import * as forms from './files/forms/forms.js'
 // connection and setup are in js/files/sliders.js
 // plugin documentation: https://swiperjs.com/
 // snippet ( HTML ): swiper
-// import "./files/sliders.js";
+import "./files/sliders.js";
 
 // ================================================================================================================
 // < scroll > =====================================================================================================
@@ -100,7 +100,7 @@ import * as forms from './files/forms/forms.js'
 
 // lazy loading
 // plugin documentation: https://github.com/verlok/vanilla-lazyload
-// import './files/scroll/lazyload.js';
+import './files/scroll/lazyload.js';
 
 // watcher
 // import './libs/watcher.js'
@@ -113,7 +113,7 @@ import * as scroll from './files/scroll/scroll.js'
 // scroll.pageNavigation();
 
 // adding classes to the header on scroll
-// scroll.headerScroll();
+scroll.headerScroll();
 
 // sticky block
 // scroll.stickyBlock();

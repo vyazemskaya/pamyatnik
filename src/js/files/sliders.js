@@ -1,4 +1,5 @@
-import Swiper, { Navigation } from 'swiper'
+import Swiper from 'swiper'
+import { Navigation, Pagination, EffectFade } from 'swiper/modules'
 
 // styles ======================================================================
 
@@ -13,15 +14,16 @@ import '../../scss/base/swiper.scss'
 
 // launch ======================================================================
 function initSliders() {
-  if (document.querySelector('.swiper')) {
-    new Swiper('.swiper', {
-      modules: [Navigation],
+  if (document.querySelector('.hero-mainpage__slider')) {
+    new Swiper('.hero-mainpage__slider', {
+      modules: [Navigation, Pagination, EffectFade],
       observer: true,
       observeParents: true,
       slidesPerView: 1,
       spaceBetween: 0,
       autoHeight: true,
-      speed: 800,
+      speed: 1000,
+      loop: true,
 
       //touchRatio: 0,
       //simulateTouch: false,
@@ -29,9 +31,12 @@ function initSliders() {
       //preloadImages: false,
       //lazy: true,
 
+      // effects
+      effect: 'fade',
+      // fadeEffect: {
+      //   crossFade: true,
+      // },
       /*
-			// effects
-			effect: 'fade',
 			autoplay: {
 				delay: 3000,
 				disableOnInteraction: false,
@@ -39,12 +44,10 @@ function initSliders() {
 			*/
 
       // pagination
-      /*
-			pagination: {
-				el: '.swiper-pagination',
-				clickable: true,
-			},
-			*/
+      pagination: {
+        el: '.hero-mainpage__pagination',
+        clickable: true,
+      },
 
       // scrollbar
       /*
@@ -56,32 +59,16 @@ function initSliders() {
 
       // navigation
       navigation: {
-        prevEl: '.swiper-button-prev',
-        nextEl: '.swiper-button-next',
+        prevEl: '.hero-mainpage__nav-button_prev',
+        nextEl: '.hero-mainpage__nav-button_next',
       },
 
       // breakpoints
-      /*
-			breakpoints: {
-				320: {
-					slidesPerView: 1,
-					spaceBetween: 0,
-					autoHeight: true,
-				},
-				768: {
-					slidesPerView: 2,
-					spaceBetween: 20,
-				},
-				992: {
-					slidesPerView: 3,
-					spaceBetween: 20,
-				},
-				1268: {
-					slidesPerView: 4,
-					spaceBetween: 30,
-				},
-			},
-			*/
+      breakpoints: {
+        768: {
+          autoHeight: false,
+        },
+      },
       // events
       on: {},
     })

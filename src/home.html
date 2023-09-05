@@ -4,8 +4,128 @@
   <body>
     <div class="wrapper">
       @@include('html/_header.htm',{})
-      <main class="main">
-        <div class="container"></div>
+      <main class="main mainpage">
+        <section class="mainpage__hero hero-mainpage">
+          <h1 class="_hidden">
+            Союз каменных мастерских Долговечные технологии
+          </h1>
+          <div class="hero-mainpage__container container">
+            <div class="hero-mainpage__materials materials-hero-mainpage">
+              <p class="materials-hero-mainpage__text txt txt_uc">
+                памятники из лучших видов гранита и мрамора
+              </p>
+              <div
+                class="materials-hero-mainpage__image-wrap materials-hero-mainpage__image-wrap_fw">
+                <img
+                  data-src="@img/hero-mainpage/materials.png"
+                  alt="Шампань"
+                  class="materials-hero-mainpage__image" />
+              </div>
+              <a
+                title="Смотреть материалы"
+                href="#"
+                class="materials-hero-mainpage__anchor">
+                <span class="materials-hero-mainpage__anchor-txt txt txt_uc"
+                  >материалы</span
+                >
+                <img
+                  src="@img/icons/arrow.svg"
+                  alt=""
+                  aria-hidden="true"
+                  class="materials-hero-mainpage__anchor-icon" />
+              </a>
+            </div>
+            <div class="hero-mainpage__carousel">
+              <div class="hero-mainpage__slider swiper">
+                <div class="hero-mainpage__wrapper swiper-wrapper">
+                  <div
+                    class="hero-mainpage__slide slide-hero-mainpage swiper-slide">
+                    <div class="slide-hero-mainpage__body">
+                      <div class="slide-hero-mainpage__image-wrap">
+                        <img
+                          data-src="@img/hero-mainpage/slide-01.png"
+                          alt="Мемориальные комплексы"
+                          class="slide-hero-mainpage__image" />
+                      </div>
+                      <h2 class="slide-hero-mainpage__heading">
+                        мемориальные комплексы
+                      </h2>
+                      <p class="slide-hero-mainpage__text">
+                        Изготовление эксклюзивных памятников
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    class="hero-mainpage__slide slide-hero-mainpage swiper-slide">
+                    <div class="slide-hero-mainpage__body">
+                      <div class="slide-hero-mainpage__image-wrap">
+                        <img
+                          data-src="@img/hero-mainpage/slide-01.png"
+                          alt="Мемориальные комплексы"
+                          class="slide-hero-mainpage__image" />
+                      </div>
+                      <h2 class="slide-hero-mainpage__heading">
+                        мемориальные комплексы
+                      </h2>
+                      <p class="slide-hero-mainpage__text">
+                        Изготовление памятников
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    class="hero-mainpage__slide slide-hero-mainpage swiper-slide">
+                    <div class="slide-hero-mainpage__body">
+                      <div class="slide-hero-mainpage__image-wrap">
+                        <img
+                          data-src="@img/hero-mainpage/slide-01.png"
+                          alt="Мемориальные комплексы"
+                          class="slide-hero-mainpage__image" />
+                      </div>
+                      <h2 class="slide-hero-mainpage__heading">
+                        мемориальные комплексы
+                      </h2>
+                      <p class="slide-hero-mainpage__text">
+                        Изготовление эксклюзивных памятников
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="hero-mainpage__slider-control">
+                <button
+                  type="button"
+                  title="Предыдущий слайд"
+                  class="hero-mainpage__nav-button hero-mainpage__nav-button_prev">
+                  <img src="@img/icons/arrow.svg" aria-hidden="true" alt="" />
+                </button>
+                <button
+                  type="button"
+                  title="Следующий слайд"
+                  class="hero-mainpage__nav-button hero-mainpage__nav-button_next">
+                  <img src="@img/icons/arrow.svg" aria-hidden="true" alt="" />
+                </button>
+                <div
+                  data-da=".hero-mainpage__carousel,768,last"
+                  class="hero-mainpage__pagination swiper-pagination"></div>
+              </div>
+            </div>
+            <div class="hero-mainpage__info info-hero-mainpage">
+              <div class="info-hero-mainpage__image-wrap">
+                <img
+                  src="@img/hero-mainpage/info.png"
+                  aria-hidden="true"
+                  alt=""
+                  class="info-hero-mainpage__image" />
+              </div>
+              <p class="info-hero-mainpage__text txt txt_uc">
+                более 10 000 выполненных проектов
+              </p>
+            </div>
+          </div>
+          <div class="hero-mainpage__image-ibg">
+            <img src="@img/bg/bg-01.jpg" aria-hidden="true" alt="" />
+          </div>
+        </section>
       </main>
       @@include('html/_footer.htm',{})
     </div>
