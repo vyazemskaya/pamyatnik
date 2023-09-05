@@ -223,13 +223,11 @@ export function spoilers() {
   const spoilersArray = document.querySelectorAll('[data-spoilers]')
   if (spoilersArray.length > 0) {
     // get regular spoilers
-    const spoilersRegular = Array.from(spoilersArray).filter(function (
-      item,
-      index,
-      self
-    ) {
-      return !item.dataset.spoilers.split(',')[0]
-    })
+    const spoilersRegular = Array.from(spoilersArray).filter(
+      function (item, index, self) {
+        return !item.dataset.spoilers.split(',')[0]
+      }
+    )
     // regular spoilers initialization
     if (spoilersRegular.length) {
       initSpoilers(spoilersRegular)
@@ -496,8 +494,12 @@ export function menuInit() {
   if (document.querySelector('.hamburger')) {
     document.addEventListener('click', function (e) {
       if (bodyLockStatus && e.target.closest('.hamburger')) {
-        bodyLockToggle()
-        document.documentElement.classList.toggle('menu-open')
+        bodyLock()
+        document.documentElement.classList.add('menu-open')
+      }
+      if (bodyLockStatus && e.target.closest('.close-menu')) {
+        bodyUnlock()
+        document.documentElement.classList.remove('menu-open')
       }
     })
   }
@@ -519,13 +521,11 @@ export function showMore() {
     let mdQueriesArray
     if (showMoreBlocks.length) {
       // get regular objects
-      showMoreBlocksRegular = Array.from(showMoreBlocks).filter(function (
-        item,
-        index,
-        self
-      ) {
-        return !item.dataset.showmoreMedia
-      })
+      showMoreBlocksRegular = Array.from(showMoreBlocks).filter(
+        function (item, index, self) {
+          return !item.dataset.showmoreMedia
+        }
+      )
       // regular objects initialization
       showMoreBlocksRegular.length ? initItems(showMoreBlocksRegular) : null
 

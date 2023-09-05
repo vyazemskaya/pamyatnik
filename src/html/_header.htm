@@ -1,4 +1,74 @@
 <header class="header">
-	<div class="header__container">
-	</div>
+  <div class="header__container container">
+    <a href="#" class="header__logo logo-header">
+      <img
+        src="@img/logo.png"
+        alt=""
+        aria-hidden="true"
+        title="Логотип"
+        class="logo-header__image" />
+      <span class="logo-header__text"
+        ><span>Союз каменных мастерских</span>Долговечные технологии</span
+      >
+    </a>
+    <div class="header__menu menu">
+      <button
+        type="button"
+        title="Открыть меню"
+        class="menu__hamburger hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <button type="button" title="Закрыть меню" class="menu__close close-menu">
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="menu__body">
+        <ul class="menu__list">
+          <li class="menu__item">
+            <a href="#" class="menu__link"
+              ><span class="menu__link-txt">О компании</span></a
+            >
+          </li>
+          <li class="menu__item">
+            <a href="#" class="menu__link"
+              ><span class="menu__link-txt">продукция</span></a
+            >
+          </li>
+          <li class="menu__item">
+            <a href="#" class="menu__link"
+              ><span class="menu__link-txt">услуги</span></a
+            >
+          </li>
+          <li class="menu__item">
+            <a href="#" class="menu__link"
+              ><span class="menu__link-txt">эксклюзив</span></a
+            >
+          </li>
+          <li class="menu__item">
+            <a href="#" class="menu__link"
+              ><span class="menu__link-txt">оптовикам</span></a
+            >
+          </li>
+          <li class="menu__item">
+            <a href="#" class="menu__link"
+              ><span class="menu__link-txt">контакты</span></a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div data-da=".menu__body,768,last" class="header__call call-header">
+      <a href="tel:74951550535" class="call-header__link">
+        <img
+          src="@img/icons/phone.svg"
+          alt=""
+          aria-hidden="true"
+          class="call-header__icon" />
+        <span class="call-header__link-txt">+7 (495) 155-05-35</span>
+      </a>
+      <span class="call-header__text">с 9:00 до 19:00</span>
+    </div>
+  </div>
 </header>

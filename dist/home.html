@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20230905141113">
+	<link rel="stylesheet" href="css/style.min.css?_v=20230905165653">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,9 +15,54 @@
 <body>
 	<div class="wrapper">
 		<header class="header">
-			<div class="header__container">
+			<div class="header__container container">
+				<a href="#" class="header__logo logo-header">
+					<picture><source srcset="img/logo.webp" type="image/webp"><img src="img/logo.png" alt="" aria-hidden="true" title="Логотип" class="logo-header__image" /></picture>
+					<span class="logo-header__text"><span>Союз каменных мастерских</span>Долговечные технологии</span>
+				</a>
+				<div class="header__menu menu">
+					<button type="button" title="Открыть меню" class="menu__hamburger hamburger">
+						<span></span>
+						<span></span>
+						<span></span>
+					</button>
+					<button type="button" title="Закрыть меню" class="menu__close close-menu">
+						<span></span>
+						<span></span>
+					</button>
+					<nav class="menu__body">
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a href="#" class="menu__link"><span class="menu__link-txt">О компании</span></a>
+							</li>
+							<li class="menu__item">
+								<a href="#" class="menu__link"><span class="menu__link-txt">продукция</span></a>
+							</li>
+							<li class="menu__item">
+								<a href="#" class="menu__link"><span class="menu__link-txt">услуги</span></a>
+							</li>
+							<li class="menu__item">
+								<a href="#" class="menu__link"><span class="menu__link-txt">эксклюзив</span></a>
+							</li>
+							<li class="menu__item">
+								<a href="#" class="menu__link"><span class="menu__link-txt">оптовикам</span></a>
+							</li>
+							<li class="menu__item">
+								<a href="#" class="menu__link"><span class="menu__link-txt">контакты</span></a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+				<div data-da=".menu__body,768,last" class="header__call call-header">
+					<a href="tel:74951550535" class="call-header__link">
+						<img src="img/icons/phone.svg" alt="" aria-hidden="true" class="call-header__icon" />
+						<span class="call-header__link-txt">+7 (495) 155-05-35</span>
+					</a>
+					<span class="call-header__text">с 9:00 до 19:00</span>
+				</div>
 			</div>
 		</header>
+
 		<main class="main">
 			<div class="container"></div>
 		</main>
@@ -26,7 +71,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20230905141113"></script>
+	<script src="js/app.min.js?_v=20230905165653"></script>
 </body>
 
 </html>

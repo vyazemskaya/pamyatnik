@@ -19,7 +19,7 @@ utilities.isWebp()
 // utilities.addLoadedClass();
 
 // menu module
-// utilities.menuInit();
+utilities.menuInit();
 
 // accounting for the floating panel on mobile devices at 100vh
 // utilities.fullVHfix();
@@ -130,7 +130,7 @@ import * as scroll from './files/scroll/scroll.js'
 // ================================================================================================================
 
 // dynamic adaptive
-// import "./libs/dynamic_adapt.js";
+import "./libs/dynamic_adapt.js";
 
 // number formatting
 // import './libs/wNumb.min.js';
