@@ -393,6 +393,7 @@ export function tabs() {
   // content
   function initTabs(tabsBlock) {
     let tabsTitles = tabsBlock.querySelectorAll('[data-tabs-titles]>*')
+    let tabsContent = tabsBlock.querySelectorAll('[data-tabs-body]>*')
     const tabsBlockIndex = tabsBlock.dataset.tabsIndex
     const tabsActiveHashBlock = tabsActiveHash[0] == tabsBlockIndex
 

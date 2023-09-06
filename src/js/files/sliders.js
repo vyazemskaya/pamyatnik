@@ -1,5 +1,5 @@
 import Swiper from 'swiper'
-import { Navigation, Pagination, EffectFade } from 'swiper/modules'
+import { Navigation, Pagination, EffectFade, Grid } from 'swiper/modules'
 
 // styles ======================================================================
 
@@ -13,6 +13,14 @@ import '../../scss/base/swiper.scss'
 // import 'swiper/css';
 
 // launch ======================================================================
+const slideToStart = swiper => {
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('.catalog-mainpage__title')) {
+      swiper.slideTo(0, 0)
+    }
+  })
+}
+
 function initSliders() {
   if (document.querySelector('.hero-mainpage__slider')) {
     new Swiper('.hero-mainpage__slider', {
@@ -71,6 +79,186 @@ function initSliders() {
       },
       // events
       on: {},
+    })
+  }
+  if (document.querySelector('.catalog-mainpage__slider_stone')) {
+    new Swiper('.catalog-mainpage__slider_stone', {
+      modules: [Navigation, Grid],
+      observer: true,
+      observeParents: true,
+      slidesPerView: 2,
+      spaceBetween: 0,
+      speed: 1000,
+      grid: {
+        rows: 2,
+        fill: 'row',
+      },
+
+      // navigation
+      navigation: {
+        prevEl: '.navigation__button_prev',
+        nextEl: '.navigation__button_next',
+      },
+
+      // breakpoints
+      breakpoints: {
+        768: {
+          slidesPerView: 4,
+          grid: {
+            rows: 1,
+          },
+        },
+      },
+      // events
+      on: {
+        afterInit: swiper => {
+          slideToStart(swiper)
+        },
+      },
+    })
+  }
+  if (document.querySelector('.catalog-mainpage__slider_monuments')) {
+    new Swiper('.catalog-mainpage__slider_monuments', {
+      modules: [Navigation, Grid],
+      observer: true,
+      observeParents: true,
+      slidesPerView: 2,
+      spaceBetween: 0,
+      speed: 1000,
+      grid: {
+        rows: 2,
+        fill: 'row',
+      },
+
+      // navigation
+      navigation: {
+        prevEl: '.navigation__button_prev',
+        nextEl: '.navigation__button_next',
+      },
+
+      // breakpoints
+      breakpoints: {
+        768: {
+          slidesPerView: 4,
+          grid: {
+            rows: 1,
+          },
+        },
+      },
+      // events
+      on: {
+        afterInit: swiper => {
+          slideToStart(swiper)
+        },
+      },
+    })
+  }
+  if (document.querySelector('.catalog-mainpage__slider_complexes')) {
+    new Swiper('.catalog-mainpage__slider_complexes', {
+      modules: [Navigation, Grid],
+      observer: true,
+      observeParents: true,
+      slidesPerView: 2,
+      spaceBetween: 0,
+      speed: 1000,
+      grid: {
+        rows: 2,
+        fill: 'row',
+      },
+
+      // navigation
+      navigation: {
+        prevEl: '.navigation__button_prev',
+        nextEl: '.navigation__button_next',
+      },
+
+      // breakpoints
+      breakpoints: {
+        768: {
+          slidesPerView: 4,
+          grid: {
+            rows: 1,
+          },
+        },
+      },
+      // events
+      on: {
+        afterInit: swiper => {
+          slideToStart(swiper)
+        },
+      },
+    })
+  }
+  if (document.querySelector('.catalog-mainpage__slider_fences')) {
+    new Swiper('.catalog-mainpage__slider_fences', {
+      modules: [Navigation, Grid],
+      observer: true,
+      observeParents: true,
+      slidesPerView: 2,
+      spaceBetween: 0,
+      speed: 1000,
+      grid: {
+        rows: 2,
+        fill: 'row',
+      },
+
+      // navigation
+      navigation: {
+        prevEl: '.navigation__button_prev',
+        nextEl: '.navigation__button_next',
+      },
+
+      // breakpoints
+      breakpoints: {
+        768: {
+          slidesPerView: 4,
+          grid: {
+            rows: 1,
+          },
+        },
+      },
+      // events
+      on: {
+        afterInit: swiper => {
+          slideToStart(swiper)
+        },
+      },
+    })
+  }
+  if (document.querySelector('.catalog-mainpage__slider_socles')) {
+    new Swiper('.catalog-mainpage__slider_socles', {
+      modules: [Navigation, Grid],
+      observer: true,
+      observeParents: true,
+      slidesPerView: 2,
+      spaceBetween: 0,
+      speed: 1000,
+      grid: {
+        rows: 2,
+        fill: 'row',
+      },
+
+      // navigation
+      navigation: {
+        prevEl: '.navigation__button_prev',
+        nextEl: '.navigation__button_next',
+      },
+
+      // breakpoints
+      breakpoints: {
+        768: {
+          slidesPerView: 4,
+          grid: {
+            rows: 1,
+          },
+        },
+      },
+      // events
+      on: {
+        afterInit: swiper => {
+          slideToStart(swiper)
+        },
+      },
     })
   }
 }
