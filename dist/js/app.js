@@ -4066,6 +4066,7 @@
                 })
             });
         }
+        let mainpageServicesSlider = null;
         const slideToStart = swiper => {
             document.addEventListener("click", (function(e) {
                 if (e.target.closest(".catalog-mainpage__title")) swiper.slideTo(0, 0);
@@ -4266,6 +4267,24 @@
                     }
                 }
             });
+            if (document.querySelector(".services-mainpage__slider")) {
+                const initSwiper = () => {
+                    if (window.matchMedia("(max-width: 768px)").matches && !mainpageServicesSlider) mainpageServicesSlider = new swiper_core_Swiper(".services-mainpage__slider", {
+                        modules: [],
+                        observer: true,
+                        observeParents: true,
+                        slidesPerView: 1.2,
+                        spaceBetween: 16,
+                        speed: 1e3
+                    }); else if (!window.matchMedia("(max-width: 768px)").matches && mainpageServicesSlider) {
+                        mainpageServicesSlider.navigation.destroy();
+                        mainpageServicesSlider.destroy();
+                        mainpageServicesSlider = null;
+                    }
+                };
+                initSwiper();
+                window.addEventListener("resize", initSwiper);
+            }
         }
         window.addEventListener("load", (function(e) {
             initSliders();

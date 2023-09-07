@@ -37,16 +37,26 @@
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 5rem;
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: $grey;
-    border-radius: 5rem;
-    opacity: 0.6;
+  &_ol {
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid $black;
+    .btn__text {
+      color: $black;
+    }
+  }
+  &:not(&_ol) {
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $grey;
+      border-radius: 5rem;
+      opacity: 0.6;
+    }
   }
   @media (max-width: 48em) {
     min-width: 35.2rem;
