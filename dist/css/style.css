@@ -195,6 +195,7 @@ section {
      object-fit: contain;
 }
 
+.materials-mainpage::after,
 .privileges-mainpage::after,
 .catalog-mainpage::after,
 .hero-mainpage::after {
@@ -208,6 +209,7 @@ section {
   height: 100%;
   background-size: cover;
   background-position: center;
+  opacity: 0.4;
 }
 
 .txt {
@@ -1076,6 +1078,91 @@ section {
           filter: drop-shadow(10px 15px 26px rgba(74, 75, 99, 0.1)) drop-shadow(-1px -1px 0px #ffffff);
 }
 
+.materials-mainpage {
+  position: relative;
+}
+
+.materials-mainpage .swiper-button-lock {
+  display: inline-block !important;
+}
+
+.no-webp .materials-mainpage::after {
+  background-image: url(../img/bg/marble/04.png); }
+
+.materials-mainpage__container {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 20rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.materials-mainpage__head {
+  margin-bottom: 2.9rem;
+}
+
+.materials-mainpage__head .btn {
+  min-width: 24.3rem;
+}
+
+.materials-mainpage__text {
+  margin-bottom: 3.2rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  max-width: 89.4rem;
+  text-align: center;
+}
+
+.materials-mainpage__footer {
+  display: none;
+}
+
+.slide-materials-mainpage {
+  padding: 3.2rem 3rem 0 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.slide-materials-mainpage__body {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.slide-materials-mainpage__image {
+  margin-bottom: 5rem;
+  width: 22rem;
+  -webkit-box-shadow: inset 0px 20px 20px rgba(255, 255, 255, 0.3);
+          box-shadow: inset 0px 20px 20px rgba(255, 255, 255, 0.3);
+  -webkit-filter: drop-shadow(10px 15px 26px rgba(74, 75, 99, 0.1)) drop-shadow(-1px -1px 0px #ffffff);
+          filter: drop-shadow(10px 15px 26px rgba(74, 75, 99, 0.1)) drop-shadow(-1px -1px 0px #ffffff);
+}
+
+.slide-materials-mainpage__heading {
+  color: #474647;
+  font-size: 2rem;
+  line-height: 160%;
+  text-transform: uppercase;
+}
+
 .swiper {
   overflow: hidden;
 }
@@ -1707,6 +1794,60 @@ section {
   .item-privileges-mainpage__icon-img {
     width: 8.6rem;
   }
+
+  .no-webp .materials-mainpage::after {
+    background-image: url(../img/bg/marble/04-mobile.png); }
+
+  .materials-mainpage::after {
+    top: -16rem;
+    left: 0;
+    height: 341.4rem;
+    background-size: contain;
+  }
+
+  .materials-mainpage__head {
+    margin-bottom: 3.2rem;
+  }
+
+  .materials-mainpage__head .btn {
+    min-width: 33rem;
+  }
+
+  .materials-mainpage__text {
+    margin-bottom: 4.8rem;
+    font-size: 2.6rem;
+  }
+
+  .materials-mainpage__footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+
+  .materials-mainpage__slider {
+    margin-bottom: 8rem;
+    height: 70rem;
+  }
+
+  .materials-mainpage__wrapper {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  .slide-materials-mainpage {
+    padding: 4.2rem 6.4rem 0 6.4rem;
+    height: calc((100% - 10px) / 2);
+  }
+
+  .slide-materials-mainpage__image {
+    margin-bottom: 3.8rem;
+  }
 }
 
 .webp .btn { background-image: url(../img/bg/btn-bg.webp); }
@@ -1729,6 +1870,8 @@ section {
 
 .webp .privileges-mainpage__container::after { background-image: url(../img/bg/bg-image-05.webp); }
 
+.webp .materials-mainpage::after { background-image: url(../img/bg/marble/04.webp); }
+
 @media (max-width: 48em) {
 
   .webp .hero-mainpage::after { background-image: url(../img/bg/marble/01-mobile.webp); }
@@ -1742,4 +1885,9 @@ section {
 @media (max-width: 48em) {
 
   .webp .privileges-mainpage::after { background-image: url(../img/bg/marble/03-mobile.webp); }
+}
+
+@media (max-width: 48em) {
+
+  .webp .materials-mainpage::after { background-image: url(../img/bg/marble/04-mobile.webp); }
 }

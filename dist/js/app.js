@@ -4109,8 +4109,8 @@
                     fill: "row"
                 },
                 navigation: {
-                    prevEl: ".navigation__button_prev",
-                    nextEl: ".navigation__button_next"
+                    prevEl: ".catalog-mainpage .navigation__button_prev",
+                    nextEl: ".catalog-mainpage .navigation__button_next"
                 },
                 breakpoints: {
                     768: {
@@ -4138,8 +4138,8 @@
                     fill: "row"
                 },
                 navigation: {
-                    prevEl: ".navigation__button_prev",
-                    nextEl: ".navigation__button_next"
+                    prevEl: ".catalog-mainpage .navigation__button_prev",
+                    nextEl: ".catalog-mainpage .navigation__button_next"
                 },
                 breakpoints: {
                     768: {
@@ -4167,8 +4167,8 @@
                     fill: "row"
                 },
                 navigation: {
-                    prevEl: ".navigation__button_prev",
-                    nextEl: ".navigation__button_next"
+                    prevEl: ".catalog-mainpage .navigation__button_prev",
+                    nextEl: ".catalog-mainpage .navigation__button_next"
                 },
                 breakpoints: {
                     768: {
@@ -4196,8 +4196,8 @@
                     fill: "row"
                 },
                 navigation: {
-                    prevEl: ".navigation__button_prev",
-                    nextEl: ".navigation__button_next"
+                    prevEl: ".catalog-mainpage .navigation__button_prev",
+                    nextEl: ".catalog-mainpage .navigation__button_next"
                 },
                 breakpoints: {
                     768: {
@@ -4225,8 +4225,8 @@
                     fill: "row"
                 },
                 navigation: {
-                    prevEl: ".navigation__button_prev",
-                    nextEl: ".navigation__button_next"
+                    prevEl: ".catalog-mainpage .navigation__button_prev",
+                    nextEl: ".catalog-mainpage .navigation__button_next"
                 },
                 breakpoints: {
                     768: {
@@ -4239,6 +4239,30 @@
                 on: {
                     afterInit: swiper => {
                         slideToStart(swiper);
+                    }
+                }
+            });
+            if (document.querySelector(".materials-mainpage__slider")) new swiper_core_Swiper(".materials-mainpage__slider", {
+                modules: [ Navigation, Grid ],
+                observer: true,
+                observeParents: true,
+                slidesPerView: 2,
+                spaceBetween: 0,
+                speed: 1e3,
+                grid: {
+                    rows: 2,
+                    fill: "row"
+                },
+                navigation: {
+                    prevEl: ".materials-mainpage .navigation__button_prev",
+                    nextEl: ".materials-mainpage .navigation__button_next"
+                },
+                breakpoints: {
+                    768: {
+                        slidesPerView: 4,
+                        grid: {
+                            rows: 1
+                        }
                     }
                 }
             });

@@ -96,8 +96,8 @@ function initSliders() {
 
       // navigation
       navigation: {
-        prevEl: '.navigation__button_prev',
-        nextEl: '.navigation__button_next',
+        prevEl: '.catalog-mainpage .navigation__button_prev',
+        nextEl: '.catalog-mainpage .navigation__button_next',
       },
 
       // breakpoints
@@ -132,8 +132,8 @@ function initSliders() {
 
       // navigation
       navigation: {
-        prevEl: '.navigation__button_prev',
-        nextEl: '.navigation__button_next',
+        prevEl: '.catalog-mainpage .navigation__button_prev',
+        nextEl: '.catalog-mainpage .navigation__button_next',
       },
 
       // breakpoints
@@ -168,8 +168,8 @@ function initSliders() {
 
       // navigation
       navigation: {
-        prevEl: '.navigation__button_prev',
-        nextEl: '.navigation__button_next',
+        prevEl: '.catalog-mainpage .navigation__button_prev',
+        nextEl: '.catalog-mainpage .navigation__button_next',
       },
 
       // breakpoints
@@ -204,8 +204,8 @@ function initSliders() {
 
       // navigation
       navigation: {
-        prevEl: '.navigation__button_prev',
-        nextEl: '.navigation__button_next',
+        prevEl: '.catalog-mainpage .navigation__button_prev',
+        nextEl: '.catalog-mainpage .navigation__button_next',
       },
 
       // breakpoints
@@ -240,8 +240,8 @@ function initSliders() {
 
       // navigation
       navigation: {
-        prevEl: '.navigation__button_prev',
-        nextEl: '.navigation__button_next',
+        prevEl: '.catalog-mainpage .navigation__button_prev',
+        nextEl: '.catalog-mainpage .navigation__button_next',
       },
 
       // breakpoints
@@ -257,6 +257,36 @@ function initSliders() {
       on: {
         afterInit: swiper => {
           slideToStart(swiper)
+        },
+      },
+    })
+  }
+  if (document.querySelector('.materials-mainpage__slider')) {
+    new Swiper('.materials-mainpage__slider', {
+      modules: [Navigation, Grid],
+      observer: true,
+      observeParents: true,
+      slidesPerView: 2,
+      spaceBetween: 0,
+      speed: 1000,
+      grid: {
+        rows: 2,
+        fill: 'row',
+      },
+
+      // navigation
+      navigation: {
+        prevEl: '.materials-mainpage .navigation__button_prev',
+        nextEl: '.materials-mainpage .navigation__button_next',
+      },
+
+      // breakpoints
+      breakpoints: {
+        768: {
+          slidesPerView: 4,
+          grid: {
+            rows: 1,
+          },
         },
       },
     })
