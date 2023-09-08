@@ -4277,7 +4277,6 @@
                         spaceBetween: 16,
                         speed: 1e3
                     }); else if (!window.matchMedia("(max-width: 768px)").matches && mainpageServicesSlider) {
-                        mainpageServicesSlider.navigation.destroy();
                         mainpageServicesSlider.destroy();
                         mainpageServicesSlider = null;
                     }
@@ -4426,6 +4425,11 @@
         };
         const da = new DynamicAdapt("max");
         da.init();
+        document.addEventListener("DOMContentLoaded", (function() {
+            const md = window.matchMedia("(max-width: 768px)");
+            const aboutText = document.querySelector(".about-mainpage__text-block .text-block__text");
+            if (aboutText && md.matches) aboutText.innerHTML = `Союз Каменных Мастерских – это объединение предприятий камнеобрабатывающей промышленности. \n    На протяжении 20 лет мы успешно работаем в этой сфере и отлично зарекомендовали себя.`;
+        }));
         window["FLS"] = true;
         isWebp();
         menuInit();

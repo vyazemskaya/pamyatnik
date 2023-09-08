@@ -1,0 +1,129 @@
+.materials-mainpage {
+  position: relative;
+  .swiper-button-lock {
+    display: inline-block !important;
+  }
+  &::after {
+    @extend %bg;
+    background-image: url(@img/bg/marble/04.png);
+    @media (max-width: 48em) {
+      top: -16rem;
+      left: 0;
+      height: 341.4rem;
+      background-image: url(../img/bg/marble/04-mobile.png);
+      background-size: contain;
+    }
+  }
+
+  // .materials-mainpage__container
+
+  &__container {
+    position: relative;
+    z-index: 2;
+    padding-bottom: 20rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // .materials-mainpage__head
+
+  &__head {
+    margin-bottom: 2.9rem;
+    .btn {
+      min-width: 24.3rem;
+    }
+    @media (max-width: 48em) {
+      margin-bottom: 3.2rem;
+      .btn {
+        min-width: 33rem;
+      }
+    }
+  }
+
+  // .materials-mainpage__text
+
+  &__text {
+    margin-bottom: 3.2rem;
+    align-self: center;
+    max-width: 89.4rem;
+    text-align: center;
+    @media (max-width: 48em) {
+      margin-bottom: 4.8rem;
+      font-size: 2.6rem;
+    }
+  }
+
+  // .materials-mainpage__footer
+
+  &__footer {
+    display: none;
+    @media (max-width: 48em) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  // .materials-mainpage__slider
+
+  &__slider {
+    @media (max-width: 48em) {
+      margin-bottom: 8rem;
+      height: 70rem;
+    }
+  }
+
+  // .materials-mainpage__wrapper
+
+  &__wrapper {
+    @media (max-width: 48em) {
+      flex-wrap: wrap;
+    }
+  }
+
+  // .materials-mainpage__slide
+
+  &__slide {
+  }
+}
+
+.slide-materials-mainpage {
+  padding: 3.2rem 3rem 0 3rem;
+  display: flex;
+  justify-content: center;
+  @media (max-width: 48em) {
+    padding: 4.2rem 6.4rem 0 6.4rem;
+    height: calc((100% - 10px) / 2);
+  }
+
+  // .slide-materials-mainpage__body
+
+  &__body {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  // .slide-materials-mainpage__image
+
+  &__image {
+    margin-bottom: 5rem;
+    width: 22rem;
+    box-shadow: inset 0px 20px 20px rgba(255, 255, 255, 0.3);
+    filter: drop-shadow(10px 15px 26px rgba(74, 75, 99, 0.1))
+      drop-shadow(-1px -1px 0px #ffffff);
+    @media (max-width: 48em) {
+      margin-bottom: 3.8rem;
+    }
+  }
+
+  // .slide-materials-mainpage__heading
+
+  &__heading {
+    color: $black;
+    font-size: 2rem;
+    line-height: 160%;
+    text-transform: uppercase;
+  }
+}

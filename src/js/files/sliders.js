@@ -311,7 +311,6 @@ function initSliders() {
         !window.matchMedia('(max-width: 768px)').matches &&
         mainpageServicesSlider
       ) {
-        mainpageServicesSlider.navigation.destroy()
         mainpageServicesSlider.destroy()
         mainpageServicesSlider = null
       }

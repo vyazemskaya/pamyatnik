@@ -35,6 +35,8 @@ body {
   .loaded & {
   }
 }
+
+// wrapper
 .wrapper {
   min-height: 100%;
   display: flex;
@@ -50,6 +52,19 @@ body {
   }
 }
 
+// mainpage
+.mainpage {
+  section {
+    margin-bottom: 0;
+  }
+  .container {
+    @media (max-width: 48em) {
+      padding-left: 3.2rem;
+      padding-right: 3.2rem;
+    }
+  }
+}
+
 // base styles, templates (patterns), special classes ==========================
 
 // base styles import
@@ -62,5 +77,11 @@ body {
 @import 'header';
 @import 'footer';
 
-// individual page styles import
-@import 'home';
+// individual sections styles import
+@import 'sections/mainpage/hero.scss';
+@import 'sections/mainpage/catalog.scss';
+@import 'sections/mainpage/privileges.scss';
+@import 'sections/mainpage/materials.scss';
+@import 'sections/mainpage/services.scss';
+@import 'sections/mainpage/complexes.scss';
+@import 'sections/mainpage/about.scss';
