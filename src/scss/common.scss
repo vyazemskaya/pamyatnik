@@ -109,16 +109,33 @@
   }
 }
 
+.section-footer {
+  display: none;
+  @media (max-width: 48em) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
 .grid {
   display: grid;
   @media (min-width: 48em) {
     grid-template-columns: 31.7rem 1fr 31.7rem;
+    .head__slider-navigation {
+      justify-self: start;
+    }
+    .head__title {
+      justify-self: center;
+    }
+    .head__btn {
+      justify-self: end;
+    }
   }
 }
 
 .head {
   align-items: center;
-  justify-items: center;
 
   // .head__slider-navigation
 

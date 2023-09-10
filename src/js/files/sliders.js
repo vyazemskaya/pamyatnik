@@ -318,6 +318,30 @@ function initSliders() {
     initSwiper()
     window.addEventListener('resize', initSwiper)
   }
+  if (document.querySelector('.articles-mainpage__slider')) {
+    new Swiper('.articles-mainpage__slider', {
+      modules: [Navigation],
+      observer: true,
+      observeParents: true,
+      slidesPerView: 2,
+      spaceBetween: 8,
+      speed: 1000,
+
+      // navigation
+      navigation: {
+        prevEl: '.articles-mainpage .navigation__button_prev',
+        nextEl: '.articles-mainpage .navigation__button_next',
+      },
+
+      // breakpoints
+      breakpoints: {
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 30,
+        },
+      },
+    })
+  }
 }
 
 // slider scroll ===============================================================

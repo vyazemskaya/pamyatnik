@@ -112,12 +112,6 @@
   // .catalog-mainpage__footer
 
   &__footer {
-    display: none;
-    @media (max-width: 48em) {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
   }
 
   // .catalog-mainpage__slider

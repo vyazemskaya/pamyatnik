@@ -4284,6 +4284,24 @@
                 initSwiper();
                 window.addEventListener("resize", initSwiper);
             }
+            if (document.querySelector(".articles-mainpage__slider")) new swiper_core_Swiper(".articles-mainpage__slider", {
+                modules: [ Navigation ],
+                observer: true,
+                observeParents: true,
+                slidesPerView: 2,
+                spaceBetween: 8,
+                speed: 1e3,
+                navigation: {
+                    prevEl: ".articles-mainpage .navigation__button_prev",
+                    nextEl: ".articles-mainpage .navigation__button_next"
+                },
+                breakpoints: {
+                    768: {
+                        slidesPerView: 4,
+                        spaceBetween: 30
+                    }
+                }
+            });
         }
         window.addEventListener("load", (function(e) {
             initSliders();
