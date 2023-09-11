@@ -1,0 +1,44 @@
+.contacts-mainpage {
+  position: relative;
+  &::after {
+    @extend %bg;
+    height: 146rem;
+    background-image: url(../img/bg/marble/09.png);
+    @media (max-width: 48em) {
+      height: 140.8rem;
+      background-image: url(../img/bg/marble/09-mobile.png);
+    }
+  }
+
+  // .contacts-mainpage__container
+
+  &__container {
+    position: relative;
+    z-index: 2;
+    padding-bottom: 20rem;
+    display: flex;
+    flex-direction: column;
+    @media (max-width: 48em) {
+      padding-bottom: 16rem;
+    }
+  }
+
+  // .contacts-mainpage__title
+
+  &__title {
+    margin-bottom: 6rem;
+    align-self: center;
+  }
+
+  // .contacts-mainpage__map
+
+  &__map {
+    display: flex;
+    height: 70rem;
+    border-radius: 2rem;
+    @media (max-width: 48em) {
+      height: 104.8rem;
+      border-radius: 3rem;
+    }
+  }
+}

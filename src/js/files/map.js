@@ -1,124 +1,194 @@
+const md = window.matchMedia('(max-width: 48em)')
 
-function mapAdd() {
-	let tag = document.createElement('script');
-	tag.src = "https://maps.google.com/maps/api/js?sensor=false&amp;key=&callback=mapInit";
-	let firstScriptTag = document.getElementsByTagName('script')[0];
-	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-}
-function mapInit(n = 1) {
-	google.maps.Map.prototype.setCenterWithOffset = function (latlng, offsetX, offsetY) {
-		var map = this;
-		var ov = new google.maps.OverlayView();
-		ov.onAdd = function () {
-			var proj = this.getProjection();
-			var aPoint = proj.fromLatLngToContainerPixel(latlng);
-			aPoint.x = aPoint.x + offsetX;
-			aPoint.y = aPoint.y + offsetY;
-			map.panTo(proj.fromContainerPixelToLatLng(aPoint));
-			//map.setCenter(proj.fromContainerPixelToLatLng(aPoint));
-		}
-		ov.draw = function () { };
-		ov.setMap(this);
-	};
-	var markers = new Array();
-	var infowindow = new google.maps.InfoWindow({
-		//pixelOffset: new google.maps.Size(-230,250)
-	});
-	var locations = [
-		[new google.maps.LatLng(53.819055, 27.8813694)],
-		[new google.maps.LatLng(53.700055, 27.5513694)],
-		[new google.maps.LatLng(53.809055, 27.5813694)],
-		[new google.maps.LatLng(53.859055, 27.5013694)],
-	]
-	var options = {
-		zoom: 10,
-		panControl: false,
-		mapTypeControl: false,
-		center: locations[0][0],
-		styles: [{ "featureType": "landscape.natural", "elementType": "geometry.fill", "stylers": [{ "visibility": "on" }, { "color": "#e0efef" }] }, { "featureType": "poi", "elementType": "geometry.fill", "stylers": [{ "visibility": "on" }, { "hue": "#1900ff" }, { "color": "#c0e8e8" }] }, { "featureType": "road", "elementType": "geometry", "stylers": [{ "lightness": 100 }, { "visibility": "simplified" }] }, { "featureType": "road", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit.line", "elementType": "geometry", "stylers": [{ "visibility": "on" }, { "lightness": 700 }] }, { "featureType": "water", "elementType": "all", "stylers": [{ "color": "#7dcdcd" }] }],
-		scrollwheel: false,
-		mapTypeId: google.maps.MapTypeId.ROADMAP
-	};
-	var map = new google.maps.Map(document.getElementById('map'), options);
-	var icon = {
-		url: 'img/icons/map.svg',
-		scaledSize: new google.maps.Size(18, 20),
-		anchor: new google.maps.Point(9, 10)
-	}
-	for (var i = 0; i < locations.length; i++) {
-		var marker = new google.maps.Marker({
-			icon: icon,
-			position: locations[i][0],
-			map: map,
-		});
-		google.maps.event.addListener(marker, 'click', (function (marker, i) {
-			return function () {
-				for (var m = 0; m < markers.length; m++) {
-					markers[m].setIcon(icon);
-				}
-				var cnt = i + 1;
-				//infowindow.setContent(document.querySelector('.events-map__item_' + cnt).innerHTML);
-				//infowindow.open(map, marker);
-				marker.setIcon(icon);
-				map.setCenterWithOffset(marker.getPosition(), 0, 0);
-				setTimeout(function () {
-
-				}, 10);
-			}
-		})(marker, i));
-		markers.push(marker);
-	}
-	if (n) {
-		var nc = n - 1;
-		setTimeout(function () {
-			google.maps.event.trigger(markers[nc], 'click');
-		}, 500);
-	}
-}
-if (document.querySelector('#map')) {
-	mapAdd();
+const rem = function (rem) {
+  if (!md.matches) {
+    return rem * ((10 / window.innerWidth) * 100)
+  } else {
+    return rem * ((5 / window.innerWidth) * 100)
+  }
 }
 
+ymaps.modules.define(
+  'Panel',
+  ['util.augment', 'collection.Item'],
+  function (provide, augment, item) {
+    var Panel = function (options) {
+      Panel.superclass.constructor.call(this, options)
+    }
 
-/* YA
-function map(n) {
-	ymaps.ready(init);
-	function init() {
-		// creating a map
-		var myMap = new ymaps.Map("map", {
-			// map center coordinates. the default order is "latitude, longitude". in order not to determine the coordinates of the center of the map manually, use the coordinate detection tool
-			controls: [],
-			center: [43.585525, 39.723062],
-			// zoom level. valid values: from 0 (worldwide) to 19
-			zoom: 10
-		});
+    augment(Panel, item, {
+      onAddToMap: function (map) {
+        Panel.superclass.onAddToMap.call(this, map)
+        this.getParent()
+          .getChildElement(this)
+          .then(this._onGetChildElement, this)
+      },
 
-		let myPlacemark = new ymaps.Placemark([43.585525, 39.723062], {
-		},{
-			// options
-			//balloonContentHeader: 'Mistoun',
-			//balloonContentBody: 'Москва, Николоямская 40с1',
-			//balloonContentFooter: '+ 7(495) 507-54 - 90',
-			//hasBalloon: true,
-			//hideIconOnBalloonOpen: true,
+      onRemoveFromMap: function (oldMap) {
+        if (this._$control) {
+          this._$control.remove()
+        }
+        Panel.superclass.onRemoveFromMap.call(this, oldMap)
+      },
 
-			hasBalloon: false,
-			hideIconOnBalloonOpen: false,
-			// layout type
-			iconLayout: 'default#imageWithContent',
-			// label icon image
-			iconImageHref: 'img/icons/map.svg',
-			// icons size
-			iconImageSize: [40, 40],
-			// offset of the upper left corner of the icon relative to its 'leg' (anchor point)
-			iconImageOffset: [-20, -20],
-			// offset of the content layer relative to the image layer
-			iconContentOffset: [0, 0],
-		});
-		myMap.geoObjects.add(myPlacemark);
+      _onGetChildElement: function (parentDomContainer) {
+        this._$control = $(
+          '<div class="customControl"><div class="content"></div><div class="closeButton"></div></div>'
+        ).appendTo(parentDomContainer)
+        this._$content = $('.content')
+        $('.closeButton').on('click', this._onClose)
+      },
+      _onClose: function () {
+        $('.customControl').css('display', 'none')
+      },
+      setContent: function (text) {
+        this._$control.css('display', 'flex')
+        this._$content.html(text)
+      },
+    })
 
-		myMap.behaviors.disable('scrollZoom');
-		myMap.behaviors.disable('drag');
-	}
-}
-*/
+    provide(Panel)
+  }
+)
+
+ymaps.ready(['Panel']).then(function () {
+  var map = new ymaps.Map('map', {
+    center: [55.60147339237478, 37.42967467822445],
+    zoom: 12,
+    controls: [],
+  })
+  class panelContent {
+    constructor(heading, tel, email, adress, hours, img) {
+      this.heading = heading
+      this.tel = tel
+      this.email = email
+      this.adress = adress
+      this.hours = hours
+      this.img = img
+      this.content = this.init()
+    }
+    init() {
+      const phoneNumber = this.tel.replace(/[()-\s]/g, '')
+      const content = `
+      <div class="map-panel">
+      <span class="map-panel__heading">${this.heading}</span>
+      <ul class="map-panel__list">
+        <li class="map-panel__list-item">
+          <span class="map-panel__list-heading">телефон:</span>
+          <a href="tel:${phoneNumber}" class="map-panel__list-txt">${this.tel}</a>
+        </li>
+        <li class="map-panel__list-item">
+          <span class="map-panel__list-heading">e-mail:</span>
+          <a href="mailto:${this.email}" class="map-panel__list-txt">${this.email}</a>
+        </li>
+        <li class="map-panel__list-item">
+          <span class="map-panel__list-heading">адрес:</span>
+          <span class="map-panel__list-txt">${this.adress}</span>
+        </li>
+        <li class="map-panel__list-item">
+          <span class="map-panel__list-heading">часы работы:</span>
+          <span class="map-panel__list-txt">${this.hours}</span>
+        </li>
+      </ul>
+      <div class="map-panel__image-wrap"><img class="map-panel__image" src="../../img/map/${this.img}" alt="" aria-hidden="true"></div>
+      <div class="map-panel__icon-wrap"><img class="map-panel__icon" src="../../img/icons/map/main-mark.svg" alt="" aria-hidden="true"></div>
+    </div>
+      `
+      return content
+    }
+  }
+  var mainOffice = new panelContent(
+    'ЦЕНТРАЛЬНЫЙ ОФИС',
+    '+7 (495) 155-05-35',
+    'info@pamyatnik.ru',
+    'Москва, ул. Адмирала Корнилова, 50, стр. 1',
+    'ежедневно, с 9:00 до 19:00',
+    'main-office.jpg'
+  ).content
+  var office = new panelContent(
+    'ОФИС',
+    '+7 (495) 155-05-35',
+    'info@pamyatnik.ru',
+    'Москва, ул. Адмирала Корнилова, 50, стр. 1',
+    'ежедневно, с 9:00 до 19:00',
+    'main-office.jpg'
+  ).content
+
+  var panel = new ymaps.Panel()
+  map.controls.add(panel, {
+    float: md.matches ? 'bottom' : 'right',
+  })
+
+  window.myObjects = ymaps
+    .geoQuery({
+      type: 'FeatureCollection',
+      features: [
+        {
+          type: 'Feature',
+          geometry: {
+            type: 'Point',
+            coordinates: [55.61592356912356, 37.44884149999992],
+          },
+          options: {
+            iconLayout: 'default#image',
+            iconImageHref: 'img/icons/map/ellipse-mark.svg',
+            iconImageSize: [
+              md.matches ? rem(40) : rem(50),
+              md.matches ? rem(40) : rem(50),
+            ],
+            iconImageOffset: [
+              md.matches ? rem(-20) : rem(-25),
+              md.matches ? rem(-20) : rem(-25),
+            ],
+            balloonContent: mainOffice,
+          },
+        },
+        {
+          type: 'Feature',
+          geometry: {
+            type: 'Point',
+            coordinates: [55.62540896931073, 37.444722964645095],
+          },
+          options: {
+            iconLayout: 'default#image',
+            iconImageHref: 'img/icons/map/mark.svg',
+            iconImageSize: [
+              md.matches ? rem(14) : rem(20),
+              md.matches ? rem(14) : rem(20),
+            ],
+            iconImageOffset: [
+              md.matches ? rem(-7) : rem(-10),
+              md.matches ? rem(-7) : rem(-10),
+            ],
+            balloonContent: office,
+          },
+        },
+      ],
+    })
+    .addToMap(map)
+
+  map.geoObjects.events.add('click', function (e) {
+    var target = e.get('target')
+    panel.setContent(target.options._options.balloonContent)
+    !md.matches
+      ? map.panTo(target.geometry.getCoordinates(), { useMapMargin: true })
+      : null
+  })
+
+  document.querySelector(
+    '.ymaps-2-1-79-controls__control_toolbar'
+  ).style.margin = 0
+  document.querySelector(
+    '.ymaps-2-1-79-controls__control_toolbar'
+  ).style.position = 'absolute'
+  document.querySelector('.ymaps-2-1-79-controls__bottom').style.top =
+    '104.8rem'
+
+  map.controls.remove('geolocationControl')
+  map.controls.remove('searchControl')
+  map.controls.remove('trafficControl')
+  map.controls.remove('typeSelector')
+  map.controls.remove('fullscreenControl')
+  map.controls.remove('zoomControl')
+  map.controls.remove('rulerControl')
+})
