@@ -4347,6 +4347,7 @@
         }
         let mainpageServicesSlider = null;
         let mainpageFiltersSlider = null;
+        let optovikamPrivilegesSlider = null;
         function initSliders() {
             if (document.querySelector(".hero-mainpage__slider")) new swiper_core_Swiper(".hero-mainpage__slider", {
                 modules: [ Navigation, Pagination, EffectFade ],
@@ -4506,6 +4507,27 @@
                     type: "bullets"
                 }
             });
+            if (document.querySelector(".privileges-optovikam__slider")) if (window.matchMedia("(max-width: 768px)").matches && !optovikamPrivilegesSlider) optovikamPrivilegesSlider = new swiper_core_Swiper(".privileges-optovikam__slider", {
+                modules: [ Navigation ],
+                observer: true,
+                observeParents: true,
+                slidesPerView: 1,
+                spaceBetween: 0,
+                speed: 1e3,
+                autoHeight: true,
+                navigation: {
+                    prevEl: ".privileges-optovikam .navigation__button_prev",
+                    nextEl: ".privileges-optovikam .navigation__button_next"
+                },
+                breakpoints: {
+                    768: {
+                        autoHeight: false
+                    }
+                }
+            }); else if (!window.matchMedia("(max-width: 768px)").matches && optovikamPrivilegesSlider) {
+                optovikamPrivilegesSlider.destroy();
+                optovikamPrivilegesSlider = null;
+            }
         }
         window.addEventListener("load", (function(e) {
             initSliders();

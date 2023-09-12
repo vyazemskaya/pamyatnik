@@ -21,6 +21,7 @@ import '../../scss/base/swiper.scss'
 // launch ======================================================================
 let mainpageServicesSlider = null
 let mainpageFiltersSlider = null
+let optovikamPrivilegesSlider = null
 
 function initSliders() {
   if (document.querySelector('.hero-mainpage__slider')) {
@@ -216,25 +217,59 @@ function initSliders() {
       spaceBetween: 0,
       speed: 1000,
       loop: true,
-        autoplay: {
-          delay: 6000,
-          disableOnInteraction: false,
-        },
+      autoplay: {
+        delay: 6000,
+        disableOnInteraction: false,
+      },
 
-        // effects
-        effect: 'fade',
-        fadeEffect: {
-          crossFade: true,
-        },
+      // effects
+      effect: 'fade',
+      fadeEffect: {
+        crossFade: true,
+      },
 
-        // pagination
-        pagination: {
-          el: '.hero-optovikam__pagination',
-          clickable: true,
-          type: 'bullets',
-        
+      // pagination
+      pagination: {
+        el: '.hero-optovikam__pagination',
+        clickable: true,
+        type: 'bullets',
       },
     })
+  }
+  if (document.querySelector('.privileges-optovikam__slider')) {
+    if (
+      window.matchMedia('(max-width: 768px)').matches &&
+      !optovikamPrivilegesSlider
+    ) {
+      optovikamPrivilegesSlider = new Swiper('.privileges-optovikam__slider', {
+        modules: [Navigation],
+        observer: true,
+        observeParents: true,
+        slidesPerView: 1,
+        spaceBetween: 0,
+        speed: 1000,
+        autoHeight: true,
+
+        // navigation
+        navigation: {
+          prevEl: '.privileges-optovikam .navigation__button_prev',
+          nextEl: '.privileges-optovikam .navigation__button_next',
+        },
+
+        // breakpoints
+        breakpoints: {
+          768: {
+            autoHeight: false,
+          }
+        }
+      })
+    } else if (
+      !window.matchMedia('(max-width: 768px)').matches &&
+      optovikamPrivilegesSlider
+    ) {
+      optovikamPrivilegesSlider.destroy()
+      optovikamPrivilegesSlider = null
+    }
   }
 }
 
