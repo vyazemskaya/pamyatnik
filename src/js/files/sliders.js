@@ -169,6 +169,7 @@ function initSliders() {
           speed: 1500,
           autoplay: {
             delay: 6000,
+            disableOnInteraction: false,
           },
         })
       } else if (

@@ -4455,7 +4455,8 @@
                         spaceBetween: 16,
                         speed: 1500,
                         autoplay: {
-                            delay: 6e3
+                            delay: 6e3,
+                            disableOnInteraction: false
                         }
                     }); else if (!window.matchMedia("(max-width: 768px)").matches && mainpageServicesSlider) {
                         mainpageServicesSlider.destroy();

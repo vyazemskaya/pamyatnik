@@ -76,6 +76,7 @@
   &_ol {
     background-color: #ffffff;
     border: 1px solid $black;
+    transition: background-color 0.4s ease 0s;
     &::after {
       opacity: 0;
     }
@@ -85,6 +86,7 @@
   }
   @media (any-hover: hover) {
     &:hover {
+      background-color: $black;
       .btn__text {
         color: #ffffff;
       }

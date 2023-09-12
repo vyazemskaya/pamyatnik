@@ -74,11 +74,9 @@
         padding: 0;
         align-items: center;
       }
-      @media (max-width: 48em) {
-        .slide-services-mainpage__image-wrap img,
-        .slide-services-mainpage__image-wrap picture {
-          height: 60%;
-        }
+      .slide-services-mainpage__image-wrap img,
+      .slide-services-mainpage__image-wrap picture {
+        height: 80%;
       }
     }
   }
@@ -149,9 +147,6 @@
       width: auto;
       max-width: 100%;
       height: 90%;
-      @media (max-width: 48em) {
-        height: 80%;
-      }
     }
   }
 
