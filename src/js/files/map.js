@@ -1,13 +1,5 @@
 const md = window.matchMedia('(max-width: 48em)')
 
-const rem = function (rem) {
-  if (!md.matches) {
-    return rem * ((10 / window.innerWidth) * 100)
-  } else {
-    return rem * ((5 / window.innerWidth) * 100)
-  }
-}
-
 ymaps.modules.define(
   'Panel',
   ['util.augment', 'collection.Item'],
@@ -53,7 +45,7 @@ ymaps.modules.define(
 
 ymaps.ready(['Panel']).then(function () {
   var map = new ymaps.Map('map', {
-    center: [55.60147339237478, 37.42967467822445],
+    center: [55.58499719293329, 37.439974360841596],
     zoom: 12,
     controls: [],
   })
@@ -90,8 +82,8 @@ ymaps.ready(['Panel']).then(function () {
           <span class="map-panel__list-txt">${this.hours}</span>
         </li>
       </ul>
-      <div class="map-panel__image-wrap"><img class="map-panel__image" src="../../img/map/${this.img}" alt="" aria-hidden="true"></div>
-      <div class="map-panel__icon-wrap"><img class="map-panel__icon" src="../../img/icons/map/main-mark.svg" alt="" aria-hidden="true"></div>
+      <div class="map-panel__image-wrap"><img class="map-panel__image" src="${this.img}" alt="" aria-hidden="true"></div>
+      <div class="map-panel__icon-wrap"><img class="map-panel__icon" src="img/icons/map/main-mark.svg" alt="" aria-hidden="true"></div>
     </div>
       `
       return content
@@ -103,7 +95,7 @@ ymaps.ready(['Panel']).then(function () {
     'info@pamyatnik.ru',
     'Москва, ул. Адмирала Корнилова, 50, стр. 1',
     'ежедневно, с 9:00 до 19:00',
-    'main-office.jpg'
+    'https://i.ibb.co/zJgD6bT/main-office.jpg'
   ).content
   var office = new panelContent(
     'ОФИС',
@@ -111,7 +103,7 @@ ymaps.ready(['Panel']).then(function () {
     'info@pamyatnik.ru',
     'Москва, ул. Адмирала Корнилова, 50, стр. 1',
     'ежедневно, с 9:00 до 19:00',
-    'main-office.jpg'
+    'https://i.ibb.co/zJgD6bT/main-office.jpg'
   ).content
 
   var panel = new ymaps.Panel()
@@ -132,14 +124,8 @@ ymaps.ready(['Panel']).then(function () {
           options: {
             iconLayout: 'default#image',
             iconImageHref: 'img/icons/map/ellipse-mark.svg',
-            iconImageSize: [
-              md.matches ? rem(40) : rem(50),
-              md.matches ? rem(40) : rem(50),
-            ],
-            iconImageOffset: [
-              md.matches ? rem(-20) : rem(-25),
-              md.matches ? rem(-20) : rem(-25),
-            ],
+            iconImageSize: [md.matches ? 40 : 50, md.matches ? 40 : 50],
+            iconImageOffset: [md.matches ? -20 : -25, md.matches ? -20 : -25],
             balloonContent: mainOffice,
           },
         },
@@ -147,19 +133,13 @@ ymaps.ready(['Panel']).then(function () {
           type: 'Feature',
           geometry: {
             type: 'Point',
-            coordinates: [55.62540896931073, 37.444722964645095],
+            coordinates: [55.626589040911746, 37.44718413867363],
           },
           options: {
             iconLayout: 'default#image',
             iconImageHref: 'img/icons/map/mark.svg',
-            iconImageSize: [
-              md.matches ? rem(14) : rem(20),
-              md.matches ? rem(14) : rem(20),
-            ],
-            iconImageOffset: [
-              md.matches ? rem(-7) : rem(-10),
-              md.matches ? rem(-7) : rem(-10),
-            ],
+            iconImageSize: [md.matches ? 14 : 20, md.matches ? 14 : 20],
+            iconImageOffset: [md.matches ? -7 : -10, md.matches ? -7 : -10],
             balloonContent: office,
           },
         },

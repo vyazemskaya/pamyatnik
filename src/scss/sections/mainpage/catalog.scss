@@ -1,26 +1,7 @@
 .catalog-mainpage {
-  position: relative;
-  &::after {
-    @extend %bg;
-    top: 50%;
-    height: 97.2rem;
-    background-image: url(../img/bg/marble/02.png);
-    transform: translateY(-50%);
-    @media (max-width: 48em) {
-      height: 140.8rem;
-      background-image: url(../img/bg/marble/02-mobile.png);
-    }
-  }
-
   // .catalog-mainpage__container
 
   &__container {
-    position: relative;
-    z-index: 2;
-    padding-bottom: 20rem;
-    @media (max-width: 48em) {
-      padding-bottom: 16.4rem;
-    }
   }
 
   // .catalog-mainpage__head
@@ -35,67 +16,15 @@
     }
   }
 
-  // .catalog-mainpage__tabs
+  // .catalog-mainpage__filters
 
-  &__tabs {
-    @media (max-width: 48em) {
-      margin-bottom: 7.5rem;
-      margin-top: -6.5rem;
-    }
-  }
-
-  // .catalog-mainpage__navigation
-
-  &__navigation {
-    display: flex;
-    justify-content: center;
-    @media (max-width: 48em) {
-      margin-bottom: -13.6rem;
-      padding-bottom: 13.6rem;
-      padding-top: 6.5rem;
-      flex-wrap: nowrap;
-      justify-content: flex-start;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      overflow-x: scroll;
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-      &::-webkit-scrollbar {
-        display: none;
-        width: 0 !important;
-      }
-    }
-  }
-
-  // .catalog-mainpage__title
-
-  &__title {
-    position: relative;
-    padding: 1.2rem 2rem;
-    border-radius: 3rem;
-    background-color: transparent;
-    background-color: transparent;
-    transition: all 0.4s ease;
-    &._tab-active {
-      background-color: #ffffff;
-      box-shadow: 12px 20px 60px 0px rgba(74, 75, 99, 0.15);
+  &__filters {
+    margin-bottom: 1.5rem;
+    &.swiper {
+      overflow: visible;
     }
     @media (max-width: 48em) {
-      padding: 2rem 3.2rem 1.5rem 3.2rem;
-      border-radius: 6rem;
-      scroll-snap-align: start;
-    }
-  }
-
-  &__title-txt {
-    position: relative;
-    z-index: 2;
-    color: $black;
-    font-size: 1.6rem;
-    line-height: 160%;
-    text-transform: uppercase;
-    @media (max-width: 48em) {
-      font-size: 2.4rem;
+      margin-bottom: 3rem;
     }
   }
 
@@ -118,32 +47,8 @@
 
   &__slider {
     @media (max-width: 48em) {
+      margin-bottom: 8rem;
       height: 78rem;
-    }
-
-    // .catalog-mainpage__slider_stone
-
-    &_stone {
-    }
-
-    // .catalog-mainpage__slider_monuments
-
-    &_monuments {
-    }
-
-    // .catalog-mainpage__slider_complexes
-
-    &_complexes {
-    }
-
-    // .catalog-mainpage__slider_fences
-
-    &_fences {
-    }
-
-    // .catalog-mainpage__slider_socles
-
-    &_socles {
     }
   }
 
@@ -160,6 +65,42 @@
   &__slide {
   }
 }
+
+// =============================================================================
+
+.filters-catalog-mainpage {
+  @media (min-width: 48em) {
+    .swiper-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  // .filters-catalog-mainpage__item
+
+  &__item {
+    position: relative;
+    padding: 1.2rem 2rem;
+    border-radius: 3rem;
+    background-color: transparent;
+    transition: all 0.4s ease;
+    color: $black;
+    font-size: 1.6rem;
+    line-height: 160%;
+    text-transform: uppercase;
+    &._active {
+      background-color: #ffffff;
+      box-shadow: 1.2rem 2rem 6rem 0 rgba(74, 75, 99, 0.15);
+    }
+    @media (max-width: 48em) {
+      padding: 2rem 3.2rem 1.5rem 3.2rem;
+      border-radius: 6rem;
+      font-size: 2.4rem;
+    }
+  }
+}
+
+// =============================================================================
 
 .slide-catalog-mainpage {
   padding: 3rem 3.8rem 0 3.8rem;

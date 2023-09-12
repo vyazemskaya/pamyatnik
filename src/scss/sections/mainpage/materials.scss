@@ -1,26 +1,7 @@
 .materials-mainpage {
-  position: relative;
-  .swiper-button-lock {
-    display: inline-block !important;
-  }
-  &::after {
-    @extend %bg;
-    background-image: url(@img/bg/marble/04.png);
-    @media (max-width: 48em) {
-      top: -16rem;
-      left: 0;
-      height: 341.4rem;
-      background-image: url(../img/bg/marble/04-mobile.png);
-      background-size: contain;
-    }
-  }
-
   // .materials-mainpage__container
 
   &__container {
-    position: relative;
-    z-index: 2;
-    padding-bottom: 20rem;
     display: flex;
     flex-direction: column;
   }
@@ -104,8 +85,8 @@
   &__image {
     margin-bottom: 5rem;
     width: 22rem;
-    box-shadow: inset 0px 20px 20px rgba(255, 255, 255, 0.3);
-    filter: drop-shadow(10px 15px 26px rgba(74, 75, 99, 0.1))
+    box-shadow: inset 0 2rem 2rem rgba(255, 255, 255, 0.3);
+    filter: drop-shadow(1rem 1.5rem 2.6rem rgba(74, 75, 99, 0.1))
       drop-shadow(-1px -1px 0px #ffffff);
     @media (max-width: 48em) {
       margin-bottom: 3.8rem;

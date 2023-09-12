@@ -20,8 +20,8 @@
   // .header__container
 
   &__container {
-    position: relative;
-    padding: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
     display: flex;
     align-items: center;
     height: 100%;
@@ -46,12 +46,18 @@
   &__menu {
     @media (min-width: 48em) {
       margin-right: auto;
+      padding-top: 2.1rem;
+      align-self: flex-start;
     }
   }
 
   // .header__call
 
   &__call {
+    @media (min-width: 48em) {
+      padding-top: 2.1rem;
+      align-self: flex-start;
+    }
   }
 }
 
@@ -119,7 +125,6 @@
   // .menu__link-txt
 
   &__link-txt {
-    line-height: 160%;
   }
 }
 

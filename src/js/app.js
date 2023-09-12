@@ -110,7 +110,7 @@ import './files/scroll/lazyload.js'
 import * as scroll from './files/scroll/scroll.js'
 
 // smooth page navigation
-// scroll.pageNavigation();
+scroll.pageNavigation();
 
 // adding classes to the header on scroll
 scroll.headerScroll()

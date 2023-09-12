@@ -1,32 +1,15 @@
 .complexes-mainpage {
-  position: relative;
-  z-index: 3;
-  padding-bottom: 24.6rem;
-  &::after {
-    @extend %bg;
-    top: 50%;
-    height: 73rem;
-    background-image: url(@img/bg/marble/06.png);
-    transform: translateY(-50%);
-    @media (max-width: 48em) {
-      top: 17%;
-      left: 0;
-      height: 140rem;
-      background-image: url(@img/bg/marble/06-mobile.png);
-      background-size: contain;
-      transform: none;
-    }
-  }
-
   @media (min-width: 48em) {
     .text-block {
       max-width: 45rem;
       align-items: flex-start;
       text-align: left;
+      &__btn {
+        min-width: 22rem;
+      }
     }
   }
   @media (max-width: 48em) {
-    padding-bottom: 16rem;
     .text-block {
       &__title {
         margin-bottom: 4.8rem;
@@ -45,8 +28,6 @@
   // .complexes-mainpage__container
 
   &__container {
-    position: relative;
-    z-index: 2;
     display: grid;
     @media (min-width: 48em) {
       grid-template-columns: repeat(3, 4fr);

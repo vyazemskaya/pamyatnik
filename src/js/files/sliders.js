@@ -1,5 +1,11 @@
 import Swiper from 'swiper'
-import { Navigation, Pagination, EffectFade, Grid } from 'swiper/modules'
+import {
+  Navigation,
+  Pagination,
+  EffectFade,
+  Grid,
+  Autoplay,
+} from 'swiper/modules'
 
 // styles ======================================================================
 
@@ -14,14 +20,7 @@ import '../../scss/base/swiper.scss'
 
 // launch ======================================================================
 let mainpageServicesSlider = null
-
-const slideToStart = swiper => {
-  document.addEventListener('click', function (e) {
-    if (e.target.closest('.catalog-mainpage__title')) {
-      swiper.slideTo(0, 0)
-    }
-  })
-}
+let mainpageFiltersSlider = null
 
 function initSliders() {
   if (document.querySelector('.hero-mainpage__slider')) {
@@ -35,37 +34,17 @@ function initSliders() {
       speed: 1000,
       loop: true,
 
-      //touchRatio: 0,
-      //simulateTouch: false,
-      //loop: true,
-      //preloadImages: false,
-      //lazy: true,
-
       // effects
       effect: 'fade',
-      // fadeEffect: {
-      //   crossFade: true,
-      // },
-      /*
-			autoplay: {
-				delay: 3000,
-				disableOnInteraction: false,
-			},
-			*/
+      fadeEffect: {
+        crossFade: true,
+      },
 
       // pagination
       pagination: {
         el: '.hero-mainpage__pagination',
         clickable: true,
       },
-
-      // scrollbar
-      /*
-			scrollbar: {
-				el: '.swiper-scrollbar',
-				draggable: true,
-			},
-			*/
 
       // navigation
       navigation: {
@@ -79,12 +58,13 @@ function initSliders() {
           autoHeight: false,
         },
       },
+
       // events
       on: {},
     })
   }
-  if (document.querySelector('.catalog-mainpage__slider_stone')) {
-    new Swiper('.catalog-mainpage__slider_stone', {
+  if (document.querySelector('.catalog-mainpage__slider')) {
+    new Swiper('.catalog-mainpage__slider', {
       modules: [Navigation, Grid],
       observer: true,
       observeParents: true,
@@ -109,159 +89,40 @@ function initSliders() {
           grid: {
             rows: 1,
           },
-        },
-      },
-      // events
-      on: {
-        afterInit: swiper => {
-          slideToStart(swiper)
         },
       },
     })
   }
-  if (document.querySelector('.catalog-mainpage__slider_monuments')) {
-    new Swiper('.catalog-mainpage__slider_monuments', {
-      modules: [Navigation, Grid],
-      observer: true,
-      observeParents: true,
-      slidesPerView: 2,
-      spaceBetween: 0,
-      speed: 1000,
-      grid: {
-        rows: 2,
-        fill: 'row',
-      },
+  if (document.querySelector('.catalog-mainpage__filters')) {
+    const initSwiper = () => {
+      if (
+        window.matchMedia('(max-width: 768px)').matches &&
+        !mainpageFiltersSlider
+      ) {
+        mainpageFiltersSlider = new Swiper('.catalog-mainpage__filters', {
+          modules: [],
+          observer: true,
+          observeParents: true,
+          slidesPerView: 'auto',
+          centeredSlides: true,
+          centeredSlidesBounds: true,
+          slideToClickedSlide: true,
+          spaceBetween: 10,
+          speed: 1000,
 
-      // navigation
-      navigation: {
-        prevEl: '.catalog-mainpage .navigation__button_prev',
-        nextEl: '.catalog-mainpage .navigation__button_next',
-      },
-
-      // breakpoints
-      breakpoints: {
-        768: {
-          slidesPerView: 4,
-          grid: {
-            rows: 1,
-          },
-        },
-      },
-      // events
-      on: {
-        afterInit: swiper => {
-          slideToStart(swiper)
-        },
-      },
-    })
-  }
-  if (document.querySelector('.catalog-mainpage__slider_complexes')) {
-    new Swiper('.catalog-mainpage__slider_complexes', {
-      modules: [Navigation, Grid],
-      observer: true,
-      observeParents: true,
-      slidesPerView: 2,
-      spaceBetween: 0,
-      speed: 1000,
-      grid: {
-        rows: 2,
-        fill: 'row',
-      },
-
-      // navigation
-      navigation: {
-        prevEl: '.catalog-mainpage .navigation__button_prev',
-        nextEl: '.catalog-mainpage .navigation__button_next',
-      },
-
-      // breakpoints
-      breakpoints: {
-        768: {
-          slidesPerView: 4,
-          grid: {
-            rows: 1,
-          },
-        },
-      },
-      // events
-      on: {
-        afterInit: swiper => {
-          slideToStart(swiper)
-        },
-      },
-    })
-  }
-  if (document.querySelector('.catalog-mainpage__slider_fences')) {
-    new Swiper('.catalog-mainpage__slider_fences', {
-      modules: [Navigation, Grid],
-      observer: true,
-      observeParents: true,
-      slidesPerView: 2,
-      spaceBetween: 0,
-      speed: 1000,
-      grid: {
-        rows: 2,
-        fill: 'row',
-      },
-
-      // navigation
-      navigation: {
-        prevEl: '.catalog-mainpage .navigation__button_prev',
-        nextEl: '.catalog-mainpage .navigation__button_next',
-      },
-
-      // breakpoints
-      breakpoints: {
-        768: {
-          slidesPerView: 4,
-          grid: {
-            rows: 1,
-          },
-        },
-      },
-      // events
-      on: {
-        afterInit: swiper => {
-          slideToStart(swiper)
-        },
-      },
-    })
-  }
-  if (document.querySelector('.catalog-mainpage__slider_socles')) {
-    new Swiper('.catalog-mainpage__slider_socles', {
-      modules: [Navigation, Grid],
-      observer: true,
-      observeParents: true,
-      slidesPerView: 2,
-      spaceBetween: 0,
-      speed: 1000,
-      grid: {
-        rows: 2,
-        fill: 'row',
-      },
-
-      // navigation
-      navigation: {
-        prevEl: '.catalog-mainpage .navigation__button_prev',
-        nextEl: '.catalog-mainpage .navigation__button_next',
-      },
-
-      // breakpoints
-      breakpoints: {
-        768: {
-          slidesPerView: 4,
-          grid: {
-            rows: 1,
-          },
-        },
-      },
-      // events
-      on: {
-        afterInit: swiper => {
-          slideToStart(swiper)
-        },
-      },
-    })
+          // breakpoints
+          breakpoints: {},
+        })
+      } else if (
+        !window.matchMedia('(max-width: 768px)').matches &&
+        mainpageFiltersSlider
+      ) {
+        mainpageFiltersSlider.destroy()
+        mainpageFiltersSlider = null
+      }
+    }
+    initSwiper()
+    window.addEventListener('resize', initSwiper)
   }
   if (document.querySelector('.materials-mainpage__slider')) {
     new Swiper('.materials-mainpage__slider', {
@@ -300,12 +161,15 @@ function initSliders() {
         !mainpageServicesSlider
       ) {
         mainpageServicesSlider = new Swiper('.services-mainpage__slider', {
-          modules: [],
+          modules: [Autoplay],
           observer: true,
           observeParents: true,
           slidesPerView: 1.2,
           spaceBetween: 16,
-          speed: 1000,
+          speed: 1500,
+          autoplay: {
+            delay: 6000,
+          },
         })
       } else if (
         !window.matchMedia('(max-width: 768px)').matches &&

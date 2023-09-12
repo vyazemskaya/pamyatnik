@@ -395,7 +395,7 @@
                 document.documentElement.classList.add(className);
             }));
         }
-        function functions_getHash() {
+        function getHash() {
             if (location.hash) return location.hash.replace("#", "");
         }
         function setHash(hash) {
@@ -507,7 +507,7 @@
             const tabs = document.querySelectorAll("[data-tabs]");
             let tabsActiveHash = [];
             if (tabs.length > 0) {
-                const hash = functions_getHash();
+                const hash = getHash();
                 if (hash && hash.startsWith("tab-")) tabsActiveHash = hash.replace("tab-", "").split("-");
                 tabs.forEach(((tabsBlock, index) => {
                     tabsBlock.classList.add("_tab-init");
@@ -612,6 +612,18 @@
                 }
             }));
         }
+        function menuClose() {
+            bodyUnlock();
+            document.documentElement.classList.remove("menu-open");
+        }
+        function functions_FLS(message) {
+            setTimeout((() => {
+                if (window.FLS) console.log(message);
+            }), 0);
+        }
+        function removeClasses(array, className) {
+            for (var i = 0; i < array.length; i++) array[i].classList.remove(className);
+        }
         function uniqArray(array) {
             return array.filter((function(item, index, self) {
                 return self.indexOf(item) === index;
@@ -655,6 +667,34 @@
                 }
             }
         }
+        let gotoblock_gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
+            const targetBlockElement = document.querySelector(targetBlock);
+            if (targetBlockElement) {
+                let headerItem = "";
+                let headerItemHeight = 0;
+                if (noHeader) {
+                    headerItem = "header.header";
+                    headerItemHeight = document.querySelector(headerItem).offsetHeight;
+                }
+                let options = {
+                    speedAsDuration: true,
+                    speed,
+                    header: headerItem,
+                    offset: offsetTop,
+                    easing: "easeOutQuad"
+                };
+                document.documentElement.classList.contains("menu-open") ? menuClose() : null;
+                if (typeof SmoothScroll !== "undefined") (new SmoothScroll).animateScroll(targetBlockElement, "", options); else {
+                    let targetBlockElementPosition = targetBlockElement.getBoundingClientRect().top + scrollY;
+                    targetBlockElementPosition = headerItemHeight ? targetBlockElementPosition - headerItemHeight : targetBlockElementPosition;
+                    targetBlockElementPosition = offsetTop ? targetBlockElementPosition - offsetTop : targetBlockElementPosition;
+                    window.scrollTo({
+                        top: targetBlockElementPosition,
+                        behavior: "smooth"
+                    });
+                }
+            } else functions_FLS(`[gotoBlock]: ${targetBlock} doesn't exist`);
+        };
         function ssr_window_esm_isObject(obj) {
             return obj !== null && typeof obj === "object" && "constructor" in obj && obj.constructor === Object;
         }
@@ -3852,6 +3892,245 @@
                 destroy
             });
         }
+        function Autoplay(_ref) {
+            let {swiper, extendParams, on, emit, params} = _ref;
+            swiper.autoplay = {
+                running: false,
+                paused: false,
+                timeLeft: 0
+            };
+            extendParams({
+                autoplay: {
+                    enabled: false,
+                    delay: 3e3,
+                    waitForTransition: true,
+                    disableOnInteraction: true,
+                    stopOnLastSlide: false,
+                    reverseDirection: false,
+                    pauseOnMouseEnter: false
+                }
+            });
+            let timeout;
+            let raf;
+            let autoplayDelayTotal = params && params.autoplay ? params.autoplay.delay : 3e3;
+            let autoplayDelayCurrent = params && params.autoplay ? params.autoplay.delay : 3e3;
+            let autoplayTimeLeft;
+            let autoplayStartTime = (new Date).getTime;
+            let wasPaused;
+            let isTouched;
+            let pausedByTouch;
+            let touchStartTimeout;
+            let slideChanged;
+            let pausedByInteraction;
+            function onTransitionEnd(e) {
+                if (!swiper || swiper.destroyed || !swiper.wrapperEl) return;
+                if (e.target !== swiper.wrapperEl) return;
+                swiper.wrapperEl.removeEventListener("transitionend", onTransitionEnd);
+                resume();
+            }
+            const calcTimeLeft = () => {
+                if (swiper.destroyed || !swiper.autoplay.running) return;
+                if (swiper.autoplay.paused) wasPaused = true; else if (wasPaused) {
+                    autoplayDelayCurrent = autoplayTimeLeft;
+                    wasPaused = false;
+                }
+                const timeLeft = swiper.autoplay.paused ? autoplayTimeLeft : autoplayStartTime + autoplayDelayCurrent - (new Date).getTime();
+                swiper.autoplay.timeLeft = timeLeft;
+                emit("autoplayTimeLeft", timeLeft, timeLeft / autoplayDelayTotal);
+                raf = requestAnimationFrame((() => {
+                    calcTimeLeft();
+                }));
+            };
+            const getSlideDelay = () => {
+                let activeSlideEl;
+                if (swiper.virtual && swiper.params.virtual.enabled) activeSlideEl = swiper.slides.filter((slideEl => slideEl.classList.contains("swiper-slide-active")))[0]; else activeSlideEl = swiper.slides[swiper.activeIndex];
+                if (!activeSlideEl) return;
+                const currentSlideDelay = parseInt(activeSlideEl.getAttribute("data-swiper-autoplay"), 10);
+                return currentSlideDelay;
+            };
+            const run = delayForce => {
+                if (swiper.destroyed || !swiper.autoplay.running) return;
+                cancelAnimationFrame(raf);
+                calcTimeLeft();
+                let delay = typeof delayForce === "undefined" ? swiper.params.autoplay.delay : delayForce;
+                autoplayDelayTotal = swiper.params.autoplay.delay;
+                autoplayDelayCurrent = swiper.params.autoplay.delay;
+                const currentSlideDelay = getSlideDelay();
+                if (!Number.isNaN(currentSlideDelay) && currentSlideDelay > 0 && typeof delayForce === "undefined") {
+                    delay = currentSlideDelay;
+                    autoplayDelayTotal = currentSlideDelay;
+                    autoplayDelayCurrent = currentSlideDelay;
+                }
+                autoplayTimeLeft = delay;
+                const speed = swiper.params.speed;
+                const proceed = () => {
+                    if (!swiper || swiper.destroyed) return;
+                    if (swiper.params.autoplay.reverseDirection) {
+                        if (!swiper.isBeginning || swiper.params.loop || swiper.params.rewind) {
+                            swiper.slidePrev(speed, true, true);
+                            emit("autoplay");
+                        } else if (!swiper.params.autoplay.stopOnLastSlide) {
+                            swiper.slideTo(swiper.slides.length - 1, speed, true, true);
+                            emit("autoplay");
+                        }
+                    } else if (!swiper.isEnd || swiper.params.loop || swiper.params.rewind) {
+                        swiper.slideNext(speed, true, true);
+                        emit("autoplay");
+                    } else if (!swiper.params.autoplay.stopOnLastSlide) {
+                        swiper.slideTo(0, speed, true, true);
+                        emit("autoplay");
+                    }
+                    if (swiper.params.cssMode) {
+                        autoplayStartTime = (new Date).getTime();
+                        requestAnimationFrame((() => {
+                            run();
+                        }));
+                    }
+                };
+                if (delay > 0) {
+                    clearTimeout(timeout);
+                    timeout = setTimeout((() => {
+                        proceed();
+                    }), delay);
+                } else requestAnimationFrame((() => {
+                    proceed();
+                }));
+                return delay;
+            };
+            const start = () => {
+                swiper.autoplay.running = true;
+                run();
+                emit("autoplayStart");
+            };
+            const stop = () => {
+                swiper.autoplay.running = false;
+                clearTimeout(timeout);
+                cancelAnimationFrame(raf);
+                emit("autoplayStop");
+            };
+            const pause = (internal, reset) => {
+                if (swiper.destroyed || !swiper.autoplay.running) return;
+                clearTimeout(timeout);
+                if (!internal) pausedByInteraction = true;
+                const proceed = () => {
+                    emit("autoplayPause");
+                    if (swiper.params.autoplay.waitForTransition) swiper.wrapperEl.addEventListener("transitionend", onTransitionEnd); else resume();
+                };
+                swiper.autoplay.paused = true;
+                if (reset) {
+                    if (slideChanged) autoplayTimeLeft = swiper.params.autoplay.delay;
+                    slideChanged = false;
+                    proceed();
+                    return;
+                }
+                const delay = autoplayTimeLeft || swiper.params.autoplay.delay;
+                autoplayTimeLeft = delay - ((new Date).getTime() - autoplayStartTime);
+                if (swiper.isEnd && autoplayTimeLeft < 0 && !swiper.params.loop) return;
+                if (autoplayTimeLeft < 0) autoplayTimeLeft = 0;
+                proceed();
+            };
+            const resume = () => {
+                if (swiper.isEnd && autoplayTimeLeft < 0 && !swiper.params.loop || swiper.destroyed || !swiper.autoplay.running) return;
+                autoplayStartTime = (new Date).getTime();
+                if (pausedByInteraction) {
+                    pausedByInteraction = false;
+                    run(autoplayTimeLeft);
+                } else run();
+                swiper.autoplay.paused = false;
+                emit("autoplayResume");
+            };
+            const onVisibilityChange = () => {
+                if (swiper.destroyed || !swiper.autoplay.running) return;
+                const document = ssr_window_esm_getDocument();
+                if (document.visibilityState === "hidden") {
+                    pausedByInteraction = true;
+                    pause(true);
+                }
+                if (document.visibilityState === "visible") resume();
+            };
+            const onPointerEnter = e => {
+                if (e.pointerType !== "mouse") return;
+                pausedByInteraction = true;
+                pause(true);
+            };
+            const onPointerLeave = e => {
+                if (e.pointerType !== "mouse") return;
+                if (swiper.autoplay.paused) resume();
+            };
+            const attachMouseEvents = () => {
+                if (swiper.params.autoplay.pauseOnMouseEnter) {
+                    swiper.el.addEventListener("pointerenter", onPointerEnter);
+                    swiper.el.addEventListener("pointerleave", onPointerLeave);
+                }
+            };
+            const detachMouseEvents = () => {
+                swiper.el.removeEventListener("pointerenter", onPointerEnter);
+                swiper.el.removeEventListener("pointerleave", onPointerLeave);
+            };
+            const attachDocumentEvents = () => {
+                const document = ssr_window_esm_getDocument();
+                document.addEventListener("visibilitychange", onVisibilityChange);
+            };
+            const detachDocumentEvents = () => {
+                const document = ssr_window_esm_getDocument();
+                document.removeEventListener("visibilitychange", onVisibilityChange);
+            };
+            on("init", (() => {
+                if (swiper.params.autoplay.enabled) {
+                    attachMouseEvents();
+                    attachDocumentEvents();
+                    autoplayStartTime = (new Date).getTime();
+                    start();
+                }
+            }));
+            on("destroy", (() => {
+                detachMouseEvents();
+                detachDocumentEvents();
+                if (swiper.autoplay.running) stop();
+            }));
+            on("beforeTransitionStart", ((_s, speed, internal) => {
+                if (swiper.destroyed || !swiper.autoplay.running) return;
+                if (internal || !swiper.params.autoplay.disableOnInteraction) pause(true, true); else stop();
+            }));
+            on("sliderFirstMove", (() => {
+                if (swiper.destroyed || !swiper.autoplay.running) return;
+                if (swiper.params.autoplay.disableOnInteraction) {
+                    stop();
+                    return;
+                }
+                isTouched = true;
+                pausedByTouch = false;
+                pausedByInteraction = false;
+                touchStartTimeout = setTimeout((() => {
+                    pausedByInteraction = true;
+                    pausedByTouch = true;
+                    pause(true);
+                }), 200);
+            }));
+            on("touchEnd", (() => {
+                if (swiper.destroyed || !swiper.autoplay.running || !isTouched) return;
+                clearTimeout(touchStartTimeout);
+                clearTimeout(timeout);
+                if (swiper.params.autoplay.disableOnInteraction) {
+                    pausedByTouch = false;
+                    isTouched = false;
+                    return;
+                }
+                if (pausedByTouch && swiper.params.cssMode) resume();
+                pausedByTouch = false;
+                isTouched = false;
+            }));
+            on("slideChange", (() => {
+                if (swiper.destroyed || !swiper.autoplay.running) return;
+                slideChanged = true;
+            }));
+            Object.assign(swiper.autoplay, {
+                start,
+                stop,
+                pause,
+                resume
+            });
+        }
         function Grid(_ref) {
             let {swiper, extendParams} = _ref;
             extendParams({
@@ -4067,11 +4346,7 @@
             });
         }
         let mainpageServicesSlider = null;
-        const slideToStart = swiper => {
-            document.addEventListener("click", (function(e) {
-                if (e.target.closest(".catalog-mainpage__title")) swiper.slideTo(0, 0);
-            }));
-        };
+        let mainpageFiltersSlider = null;
         function initSliders() {
             if (document.querySelector(".hero-mainpage__slider")) new swiper_core_Swiper(".hero-mainpage__slider", {
                 modules: [ Navigation, Pagination, EffectFade ],
@@ -4083,6 +4358,9 @@
                 speed: 1e3,
                 loop: true,
                 effect: "fade",
+                fadeEffect: {
+                    crossFade: true
+                },
                 pagination: {
                     el: ".hero-mainpage__pagination",
                     clickable: true
@@ -4098,7 +4376,7 @@
                 },
                 on: {}
             });
-            if (document.querySelector(".catalog-mainpage__slider_stone")) new swiper_core_Swiper(".catalog-mainpage__slider_stone", {
+            if (document.querySelector(".catalog-mainpage__slider")) new swiper_core_Swiper(".catalog-mainpage__slider", {
                 modules: [ Navigation, Grid ],
                 observer: true,
                 observeParents: true,
@@ -4120,129 +4398,29 @@
                             rows: 1
                         }
                     }
-                },
-                on: {
-                    afterInit: swiper => {
-                        slideToStart(swiper);
-                    }
                 }
             });
-            if (document.querySelector(".catalog-mainpage__slider_monuments")) new swiper_core_Swiper(".catalog-mainpage__slider_monuments", {
-                modules: [ Navigation, Grid ],
-                observer: true,
-                observeParents: true,
-                slidesPerView: 2,
-                spaceBetween: 0,
-                speed: 1e3,
-                grid: {
-                    rows: 2,
-                    fill: "row"
-                },
-                navigation: {
-                    prevEl: ".catalog-mainpage .navigation__button_prev",
-                    nextEl: ".catalog-mainpage .navigation__button_next"
-                },
-                breakpoints: {
-                    768: {
-                        slidesPerView: 4,
-                        grid: {
-                            rows: 1
-                        }
+            if (document.querySelector(".catalog-mainpage__filters")) {
+                const initSwiper = () => {
+                    if (window.matchMedia("(max-width: 768px)").matches && !mainpageFiltersSlider) mainpageFiltersSlider = new swiper_core_Swiper(".catalog-mainpage__filters", {
+                        modules: [],
+                        observer: true,
+                        observeParents: true,
+                        slidesPerView: "auto",
+                        centeredSlides: true,
+                        centeredSlidesBounds: true,
+                        slideToClickedSlide: true,
+                        spaceBetween: 10,
+                        speed: 1e3,
+                        breakpoints: {}
+                    }); else if (!window.matchMedia("(max-width: 768px)").matches && mainpageFiltersSlider) {
+                        mainpageFiltersSlider.destroy();
+                        mainpageFiltersSlider = null;
                     }
-                },
-                on: {
-                    afterInit: swiper => {
-                        slideToStart(swiper);
-                    }
-                }
-            });
-            if (document.querySelector(".catalog-mainpage__slider_complexes")) new swiper_core_Swiper(".catalog-mainpage__slider_complexes", {
-                modules: [ Navigation, Grid ],
-                observer: true,
-                observeParents: true,
-                slidesPerView: 2,
-                spaceBetween: 0,
-                speed: 1e3,
-                grid: {
-                    rows: 2,
-                    fill: "row"
-                },
-                navigation: {
-                    prevEl: ".catalog-mainpage .navigation__button_prev",
-                    nextEl: ".catalog-mainpage .navigation__button_next"
-                },
-                breakpoints: {
-                    768: {
-                        slidesPerView: 4,
-                        grid: {
-                            rows: 1
-                        }
-                    }
-                },
-                on: {
-                    afterInit: swiper => {
-                        slideToStart(swiper);
-                    }
-                }
-            });
-            if (document.querySelector(".catalog-mainpage__slider_fences")) new swiper_core_Swiper(".catalog-mainpage__slider_fences", {
-                modules: [ Navigation, Grid ],
-                observer: true,
-                observeParents: true,
-                slidesPerView: 2,
-                spaceBetween: 0,
-                speed: 1e3,
-                grid: {
-                    rows: 2,
-                    fill: "row"
-                },
-                navigation: {
-                    prevEl: ".catalog-mainpage .navigation__button_prev",
-                    nextEl: ".catalog-mainpage .navigation__button_next"
-                },
-                breakpoints: {
-                    768: {
-                        slidesPerView: 4,
-                        grid: {
-                            rows: 1
-                        }
-                    }
-                },
-                on: {
-                    afterInit: swiper => {
-                        slideToStart(swiper);
-                    }
-                }
-            });
-            if (document.querySelector(".catalog-mainpage__slider_socles")) new swiper_core_Swiper(".catalog-mainpage__slider_socles", {
-                modules: [ Navigation, Grid ],
-                observer: true,
-                observeParents: true,
-                slidesPerView: 2,
-                spaceBetween: 0,
-                speed: 1e3,
-                grid: {
-                    rows: 2,
-                    fill: "row"
-                },
-                navigation: {
-                    prevEl: ".catalog-mainpage .navigation__button_prev",
-                    nextEl: ".catalog-mainpage .navigation__button_next"
-                },
-                breakpoints: {
-                    768: {
-                        slidesPerView: 4,
-                        grid: {
-                            rows: 1
-                        }
-                    }
-                },
-                on: {
-                    afterInit: swiper => {
-                        slideToStart(swiper);
-                    }
-                }
-            });
+                };
+                initSwiper();
+                window.addEventListener("resize", initSwiper);
+            }
             if (document.querySelector(".materials-mainpage__slider")) new swiper_core_Swiper(".materials-mainpage__slider", {
                 modules: [ Navigation, Grid ],
                 observer: true,
@@ -4270,12 +4448,15 @@
             if (document.querySelector(".services-mainpage__slider")) {
                 const initSwiper = () => {
                     if (window.matchMedia("(max-width: 768px)").matches && !mainpageServicesSlider) mainpageServicesSlider = new swiper_core_Swiper(".services-mainpage__slider", {
-                        modules: [],
+                        modules: [ Autoplay ],
                         observer: true,
                         observeParents: true,
                         slidesPerView: 1.2,
                         spaceBetween: 16,
-                        speed: 1e3
+                        speed: 1500,
+                        autoplay: {
+                            delay: 6e3
+                        }
                     }); else if (!window.matchMedia("(max-width: 768px)").matches && mainpageServicesSlider) {
                         mainpageServicesSlider.destroy();
                         mainpageServicesSlider = null;
@@ -4313,6 +4494,44 @@
             use_native: true
         });
         let addWindowScrollEvent = false;
+        function pageNavigation() {
+            document.addEventListener("click", pageNavigationAction);
+            document.addEventListener("watcherCallback", pageNavigationAction);
+            function pageNavigationAction(e) {
+                if (e.type === "click") {
+                    const targetElement = e.target;
+                    if (targetElement.closest("[data-goto]")) {
+                        const gotoLink = targetElement.closest("[data-goto]");
+                        const gotoLinkSelector = gotoLink.dataset.goto ? gotoLink.dataset.goto : "";
+                        const noHeader = gotoLink.hasAttribute("data-goto-header") ? true : false;
+                        const gotoSpeed = gotoLink.dataset.gotoSpeed ? gotoLink.dataset.gotoSpeed : 500;
+                        const offsetTop = gotoLink.dataset.gotoTop ? parseInt(gotoLink.dataset.gotoTop) : 0;
+                        gotoblock_gotoBlock(gotoLinkSelector, noHeader, gotoSpeed, offsetTop);
+                        e.preventDefault();
+                    }
+                } else if (e.type === "watcherCallback" && e.detail) {
+                    const entry = e.detail.entry;
+                    const targetElement = entry.target;
+                    if (targetElement.dataset.watch === "navigator") {
+                        document.querySelector(`[data-goto]._navigator-active`);
+                        let navigatorCurrentItem;
+                        if (targetElement.id && document.querySelector(`[data-goto="#${targetElement.id}"]`)) navigatorCurrentItem = document.querySelector(`[data-goto="#${targetElement.id}"]`); else if (targetElement.classList.length) for (let index = 0; index < targetElement.classList.length; index++) {
+                            const element = targetElement.classList[index];
+                            if (document.querySelector(`[data-goto=".${element}"]`)) {
+                                navigatorCurrentItem = document.querySelector(`[data-goto=".${element}"]`);
+                                break;
+                            }
+                        }
+                        if (entry.isIntersecting) navigatorCurrentItem ? navigatorCurrentItem.classList.add("_navigator-active") : null; else navigatorCurrentItem ? navigatorCurrentItem.classList.remove("_navigator-active") : null;
+                    }
+                }
+            }
+            if (getHash()) {
+                let goToHash;
+                if (document.querySelector(`#${getHash()}`)) goToHash = `#${getHash()}`; else if (document.querySelector(`.${getHash()}`)) goToHash = `.${getHash()}`;
+                goToHash ? gotoblock_gotoBlock(goToHash, true, 500, 20) : null;
+            }
+        }
         function headerScroll() {
             addWindowScrollEvent = true;
             const header = document.querySelector("header.header");
@@ -4348,9 +4567,6 @@
             }
         }), 0);
         const md = window.matchMedia("(max-width: 48em)");
-        const rem = function(rem) {
-            if (!md.matches) return rem * (10 / window.innerWidth * 100); else return rem * (5 / window.innerWidth * 100);
-        };
         ymaps.modules.define("Panel", [ "util.augment", "collection.Item" ], (function(provide, augment, item) {
             var Panel = function(options) {
                 Panel.superclass.constructor.call(this, options);
@@ -4381,7 +4597,7 @@
         }));
         ymaps.ready([ "Panel" ]).then((function() {
             var map = new ymaps.Map("map", {
-                center: [ 55.60147339237478, 37.42967467822445 ],
+                center: [ 55.58499719293329, 37.439974360841596 ],
                 zoom: 12,
                 controls: []
             });
@@ -4397,12 +4613,12 @@
                 }
                 init() {
                     const phoneNumber = this.tel.replace(/[()-\s]/g, "");
-                    const content = `\n      <div class="map-panel">\n      <span class="map-panel__heading">${this.heading}</span>\n      <ul class="map-panel__list">\n        <li class="map-panel__list-item">\n          <span class="map-panel__list-heading">телефон:</span>\n          <a href="tel:${phoneNumber}" class="map-panel__list-txt">${this.tel}</a>\n        </li>\n        <li class="map-panel__list-item">\n          <span class="map-panel__list-heading">e-mail:</span>\n          <a href="mailto:${this.email}" class="map-panel__list-txt">${this.email}</a>\n        </li>\n        <li class="map-panel__list-item">\n          <span class="map-panel__list-heading">адрес:</span>\n          <span class="map-panel__list-txt">${this.adress}</span>\n        </li>\n        <li class="map-panel__list-item">\n          <span class="map-panel__list-heading">часы работы:</span>\n          <span class="map-panel__list-txt">${this.hours}</span>\n        </li>\n      </ul>\n      <div class="map-panel__image-wrap"><img class="map-panel__image" src="../../img/map/${this.img}" alt="" aria-hidden="true"></div>\n      <div class="map-panel__icon-wrap"><img class="map-panel__icon" src="../../img/icons/map/main-mark.svg" alt="" aria-hidden="true"></div>\n    </div>\n      `;
+                    const content = `\n      <div class="map-panel">\n      <span class="map-panel__heading">${this.heading}</span>\n      <ul class="map-panel__list">\n        <li class="map-panel__list-item">\n          <span class="map-panel__list-heading">телефон:</span>\n          <a href="tel:${phoneNumber}" class="map-panel__list-txt">${this.tel}</a>\n        </li>\n        <li class="map-panel__list-item">\n          <span class="map-panel__list-heading">e-mail:</span>\n          <a href="mailto:${this.email}" class="map-panel__list-txt">${this.email}</a>\n        </li>\n        <li class="map-panel__list-item">\n          <span class="map-panel__list-heading">адрес:</span>\n          <span class="map-panel__list-txt">${this.adress}</span>\n        </li>\n        <li class="map-panel__list-item">\n          <span class="map-panel__list-heading">часы работы:</span>\n          <span class="map-panel__list-txt">${this.hours}</span>\n        </li>\n      </ul>\n      <div class="map-panel__image-wrap"><img class="map-panel__image" src="${this.img}" alt="" aria-hidden="true"></div>\n      <div class="map-panel__icon-wrap"><img class="map-panel__icon" src="img/icons/map/main-mark.svg" alt="" aria-hidden="true"></div>\n    </div>\n      `;
                     return content;
                 }
             }
-            var mainOffice = new panelContent("ЦЕНТРАЛЬНЫЙ ОФИС", "+7 (495) 155-05-35", "info@pamyatnik.ru", "Москва, ул. Адмирала Корнилова, 50, стр. 1", "ежедневно, с 9:00 до 19:00", "main-office.jpg").content;
-            var office = new panelContent("ОФИС", "+7 (495) 155-05-35", "info@pamyatnik.ru", "Москва, ул. Адмирала Корнилова, 50, стр. 1", "ежедневно, с 9:00 до 19:00", "main-office.jpg").content;
+            var mainOffice = new panelContent("ЦЕНТРАЛЬНЫЙ ОФИС", "+7 (495) 155-05-35", "info@pamyatnik.ru", "Москва, ул. Адмирала Корнилова, 50, стр. 1", "ежедневно, с 9:00 до 19:00", "https://i.ibb.co/zJgD6bT/main-office.jpg").content;
+            var office = new panelContent("ОФИС", "+7 (495) 155-05-35", "info@pamyatnik.ru", "Москва, ул. Адмирала Корнилова, 50, стр. 1", "ежедневно, с 9:00 до 19:00", "https://i.ibb.co/zJgD6bT/main-office.jpg").content;
             var panel = new ymaps.Panel;
             map.controls.add(panel, {
                 float: md.matches ? "bottom" : "right"
@@ -4418,21 +4634,21 @@
                     options: {
                         iconLayout: "default#image",
                         iconImageHref: "img/icons/map/ellipse-mark.svg",
-                        iconImageSize: [ md.matches ? rem(40) : rem(50), md.matches ? rem(40) : rem(50) ],
-                        iconImageOffset: [ md.matches ? rem(-20) : rem(-25), md.matches ? rem(-20) : rem(-25) ],
+                        iconImageSize: [ md.matches ? 40 : 50, md.matches ? 40 : 50 ],
+                        iconImageOffset: [ md.matches ? -20 : -25, md.matches ? -20 : -25 ],
                         balloonContent: mainOffice
                     }
                 }, {
                     type: "Feature",
                     geometry: {
                         type: "Point",
-                        coordinates: [ 55.62540896931073, 37.444722964645095 ]
+                        coordinates: [ 55.626589040911746, 37.44718413867363 ]
                     },
                     options: {
                         iconLayout: "default#image",
                         iconImageHref: "img/icons/map/mark.svg",
-                        iconImageSize: [ md.matches ? rem(14) : rem(20), md.matches ? rem(14) : rem(20) ],
-                        iconImageOffset: [ md.matches ? rem(-7) : rem(-10), md.matches ? rem(-7) : rem(-10) ],
+                        iconImageSize: [ md.matches ? 14 : 20, md.matches ? 14 : 20 ],
+                        iconImageOffset: [ md.matches ? -7 : -10, md.matches ? -7 : -10 ],
                         balloonContent: office
                     }
                 } ]
@@ -4554,12 +4770,20 @@
         document.addEventListener("DOMContentLoaded", (function() {
             const md = window.matchMedia("(max-width: 768px)");
             const aboutText = document.querySelector(".about-mainpage__text-block .text-block__text");
+            const filters = document.querySelectorAll(".filters-catalog-mainpage__item");
+            if (filters.length) filters.forEach((filter => {
+                filter.addEventListener("click", (function() {
+                    removeClasses(filters, "_active");
+                    filter.classList.add("_active");
+                }));
+            }));
             if (aboutText && md.matches) aboutText.innerHTML = `Союз Каменных Мастерских – это объединение предприятий камнеобрабатывающей промышленности. \n    На протяжении 20 лет мы успешно работаем в этой сфере и отлично зарекомендовали себя.`;
         }));
         window["FLS"] = true;
         isWebp();
         menuInit();
         tabs();
+        pageNavigation();
         headerScroll();
     })();
 })();

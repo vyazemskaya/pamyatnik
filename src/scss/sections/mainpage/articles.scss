@@ -1,26 +1,7 @@
 .articles-mainpage {
-  position: relative;
-  &::after {
-    @extend %bg;
-    top: 50%;
-    height: 73rem;
-    background-image: url(../img/bg/marble/08.png);
-    transform: translateY(-50%);
-    @media (max-width: 48em) {
-      height: 140.8rem;
-      background-image: url(../img/bg/marble/08-mobile.png);
-      &::after {
-        transform: none;
-      }
-    }
-  }
-
   // .articles-mainpage__container
 
   &__container {
-    position: relative;
-    z-index: 2;
-    padding-bottom: 12.5rem;
   }
 
   // .articles-mainpage__head
@@ -76,11 +57,12 @@
   // .slide-articles-mainpage__body
 
   &__body {
+    padding: 2rem;
     display: flex;
     flex-direction: column;
-    padding: 2rem;
+    border-radius: 2rem;
     @media (max-width: 48em) {
-      padding: 2rem;
+      border-radius: 3rem;
     }
   }
 
@@ -146,7 +128,7 @@
       width: 22.1rem;
       background: url(../img/bg/mask-svg.svg) top right no-repeat;
       background-size: contain;
-      transform: translate(-53%, 1%);
+      transform: translate(-52.5%, 0.5%);
     }
     @media (max-width: 48em) {
       display: none;

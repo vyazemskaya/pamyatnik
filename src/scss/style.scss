@@ -38,10 +38,17 @@ body {
 
 // wrapper
 .wrapper {
+  position: relative;
   min-height: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  background: url(@img/bg/marble.png);
+  background-size: contain;
+  @media (max-width: 48em) {
+    background: url(@img/bg/marble-mobile.png);
+  }
+
   // press footer
   > main {
     flex: 1 1 auto;
@@ -54,10 +61,15 @@ body {
 
 // mainpage
 .mainpage {
+  padding-top: 14.6rem;
   section {
-    margin-bottom: 0;
+    margin-bottom: 20rem;
+    @media (max-width: 48em) {
+      margin-bottom: 16rem;
+    }
   }
   .container {
+    position: relative;
     @media (max-width: 48em) {
       padding-left: 3.2rem;
       padding-right: 3.2rem;

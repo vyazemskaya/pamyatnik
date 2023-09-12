@@ -35,6 +35,7 @@
 
   &__list {
     @media (min-width: 48em) {
+      padding-bottom: 0.8rem;
       align-self: flex-end;
     }
     @media (max-width: 48em) {
@@ -62,6 +63,9 @@
       .call__icon {
         width: 4rem;
       }
+    }
+    @media (min-width: 48em) {
+      padding-bottom: 0.8rem;
     }
   }
 }
