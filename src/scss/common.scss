@@ -32,7 +32,7 @@
   color: $black;
   line-height: 160%;
   @media (max-width: 48em) {
-    font-size: 2.6rem;
+    font-size: 2.8rem;
   }
 
   // .txt_uc
@@ -53,6 +53,17 @@
   text-transform: uppercase;
   @media (max-width: 48em) {
     font-size: 4.8rem;
+  }
+}
+
+.h3 {
+  color: $black;
+  font-size: 2.6rem;
+  line-height: 140%;
+  text-transform: uppercase;
+  @media (max-width: 48em) {
+    font-size: 3.6rem;
+    line-height: 150%;
   }
 }
 
@@ -192,6 +203,31 @@
     // .navigation__button_next
 
     &_next {
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  column-gap: 2.4rem;
+  .swiper-pagination-bullet {
+    width: 1.6rem;
+    height: 1.6rem;
+    background-color: #ffffff;
+    border-radius: 50%;
+    filter: drop-shadow(0.3rem 0.6rem 1.3rem rgba(74, 75, 99, 0.2));
+    transition: all 0.3s ease;
+    cursor: pointer;
+    &.swiper-pagination-bullet-active {
+      background-color: $black;
+      filter: drop-shadow(1.2rem 2rem 6rem rgba(74, 75, 99, 0.15));
+    }
+  }
+  @media (max-width: 48em) {
+    .swiper-pagination-bullet {
+      width: 2rem;
+      height: 2rem;
     }
   }
 }

@@ -207,6 +207,35 @@ function initSliders() {
       },
     })
   }
+  if (document.querySelector('.hero-optovikam__slider')) {
+    new Swiper('.hero-optovikam__slider', {
+      modules: [Pagination, EffectFade, Autoplay],
+      observer: true,
+      observeParents: true,
+      slidesPerView: 1,
+      spaceBetween: 0,
+      speed: 1000,
+      loop: true,
+        autoplay: {
+          delay: 6000,
+          disableOnInteraction: false,
+        },
+
+        // effects
+        effect: 'fade',
+        fadeEffect: {
+          crossFade: true,
+        },
+
+        // pagination
+        pagination: {
+          el: '.hero-optovikam__pagination',
+          clickable: true,
+          type: 'bullets',
+        
+      },
+    })
+  }
 }
 
 // slider scroll ===============================================================

@@ -4484,6 +4484,28 @@
                     }
                 }
             });
+            if (document.querySelector(".hero-optovikam__slider")) new swiper_core_Swiper(".hero-optovikam__slider", {
+                modules: [ Pagination, EffectFade, Autoplay ],
+                observer: true,
+                observeParents: true,
+                slidesPerView: 1,
+                spaceBetween: 0,
+                speed: 1e3,
+                loop: true,
+                autoplay: {
+                    delay: 6e3,
+                    disableOnInteraction: false
+                },
+                effect: "fade",
+                fadeEffect: {
+                    crossFade: true
+                },
+                pagination: {
+                    el: ".hero-optovikam__pagination",
+                    clickable: true,
+                    type: "bullets"
+                }
+            });
         }
         window.addEventListener("load", (function(e) {
             initSliders();
