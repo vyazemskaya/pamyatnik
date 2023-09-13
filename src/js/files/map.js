@@ -111,41 +111,79 @@ ymaps.ready(['Panel']).then(function () {
     float: md.matches ? 'bottom' : 'right',
   })
 
-  window.myObjects = ymaps
-    .geoQuery({
-      type: 'FeatureCollection',
-      features: [
-        {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [55.61592356912356, 37.44884149999992],
+  if (!document.querySelector('.main.contacts')) {
+    window.myObjects = ymaps
+      .geoQuery({
+        type: 'FeatureCollection',
+        features: [
+          {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [55.61592356912356, 37.44884149999992],
+            },
+            options: {
+              iconLayout: 'default#image',
+              iconImageHref: 'img/icons/map/ellipse-mark.svg',
+              iconImageSize: [md.matches ? 40 : 50, md.matches ? 40 : 50],
+              iconImageOffset: [md.matches ? -20 : -25, md.matches ? -20 : -25],
+              balloonContent: mainOffice,
+            },
           },
-          options: {
-            iconLayout: 'default#image',
-            iconImageHref: 'img/icons/map/ellipse-mark.svg',
-            iconImageSize: [md.matches ? 40 : 50, md.matches ? 40 : 50],
-            iconImageOffset: [md.matches ? -20 : -25, md.matches ? -20 : -25],
-            balloonContent: mainOffice,
+          {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [55.626589040911746, 37.44718413867363],
+            },
+            options: {
+              iconLayout: 'default#image',
+              iconImageHref: 'img/icons/map/mark.svg',
+              iconImageSize: [md.matches ? 14 : 20, md.matches ? 14 : 20],
+              iconImageOffset: [md.matches ? -7 : -10, md.matches ? -7 : -10],
+              balloonContent: office,
+            },
           },
-        },
-        {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [55.626589040911746, 37.44718413867363],
+        ],
+      })
+      .addToMap(map)
+  } else {
+    window.myObjects = ymaps
+      .geoQuery({
+        type: 'FeatureCollection',
+        features: [
+          {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [55.603482126638916, 37.451518840271184],
+            },
+            options: {
+              iconLayout: 'default#image',
+              iconImageHref: 'img/icons/map/ellipse-mark.svg',
+              iconImageSize: [md.matches ? 40 : 50, md.matches ? 40 : 50],
+              iconImageOffset: [md.matches ? -20 : -25, md.matches ? -20 : -25],
+              balloonContent: mainOffice,
+            },
           },
-          options: {
-            iconLayout: 'default#image',
-            iconImageHref: 'img/icons/map/mark.svg',
-            iconImageSize: [md.matches ? 14 : 20, md.matches ? 14 : 20],
-            iconImageOffset: [md.matches ? -7 : -10, md.matches ? -7 : -10],
-            balloonContent: office,
+          {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [55.61029502521985, 37.44125915138204],
+            },
+            options: {
+              iconLayout: 'default#image',
+              iconImageHref: 'img/icons/map/mark.svg',
+              iconImageSize: [md.matches ? 14 : 20, md.matches ? 14 : 20],
+              iconImageOffset: [md.matches ? -7 : -10, md.matches ? -7 : -10],
+              balloonContent: office,
+            },
           },
-        },
-      ],
-    })
-    .addToMap(map)
+        ],
+      })
+      .addToMap(map)
+  }
 
   map.geoObjects.events.add('click', function (e) {
     var target = e.get('target')
@@ -164,6 +202,8 @@ ymaps.ready(['Panel']).then(function () {
   document.querySelector('.ymaps-2-1-79-controls__bottom').style.top =
     '104.8rem'
 
+  map.behaviors.disable('scrollZoom')
+  map.behaviors.disable('dblClickZoom')
   map.controls.remove('geolocationControl')
   map.controls.remove('searchControl')
   map.controls.remove('trafficControl')

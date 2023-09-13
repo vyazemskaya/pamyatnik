@@ -6389,7 +6389,7 @@ PERFORMANCE OF THIS SOFTWARE.
             map.controls.add(panel, {
                 float: md.matches ? "bottom" : "right"
             });
-            window.myObjects = ymaps.geoQuery({
+            if (!document.querySelector(".main.contacts")) window.myObjects = ymaps.geoQuery({
                 type: "FeatureCollection",
                 features: [ {
                     type: "Feature",
@@ -6418,6 +6418,35 @@ PERFORMANCE OF THIS SOFTWARE.
                         balloonContent: office
                     }
                 } ]
+            }).addToMap(map); else window.myObjects = ymaps.geoQuery({
+                type: "FeatureCollection",
+                features: [ {
+                    type: "Feature",
+                    geometry: {
+                        type: "Point",
+                        coordinates: [ 55.603482126638916, 37.451518840271184 ]
+                    },
+                    options: {
+                        iconLayout: "default#image",
+                        iconImageHref: "img/icons/map/ellipse-mark.svg",
+                        iconImageSize: [ md.matches ? 40 : 50, md.matches ? 40 : 50 ],
+                        iconImageOffset: [ md.matches ? -20 : -25, md.matches ? -20 : -25 ],
+                        balloonContent: mainOffice
+                    }
+                }, {
+                    type: "Feature",
+                    geometry: {
+                        type: "Point",
+                        coordinates: [ 55.61029502521985, 37.44125915138204 ]
+                    },
+                    options: {
+                        iconLayout: "default#image",
+                        iconImageHref: "img/icons/map/mark.svg",
+                        iconImageSize: [ md.matches ? 14 : 20, md.matches ? 14 : 20 ],
+                        iconImageOffset: [ md.matches ? -7 : -10, md.matches ? -7 : -10 ],
+                        balloonContent: office
+                    }
+                } ]
             }).addToMap(map);
             map.geoObjects.events.add("click", (function(e) {
                 var target = e.get("target");
@@ -6429,6 +6458,8 @@ PERFORMANCE OF THIS SOFTWARE.
             document.querySelector(".ymaps-2-1-79-controls__control_toolbar").style.margin = 0;
             document.querySelector(".ymaps-2-1-79-controls__control_toolbar").style.position = "absolute";
             document.querySelector(".ymaps-2-1-79-controls__bottom").style.top = "104.8rem";
+            map.behaviors.disable("scrollZoom");
+            map.behaviors.disable("dblClickZoom");
             map.controls.remove("geolocationControl");
             map.controls.remove("searchControl");
             map.controls.remove("trafficControl");
