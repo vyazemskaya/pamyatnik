@@ -208,6 +208,9 @@
     display: flex;
     align-items: center;
     column-gap: 1.6rem;
+    @media (max-width: 48em) {
+      margin-bottom: 1rem;
+    }
   }
 
   // .contacts__icon-wrap
@@ -216,6 +219,11 @@
     flex: 0 0 3.6rem;
     width: 3.6rem;
     height: 3.6rem;
+    @media (max-width: 48em) {
+      flex: 0 0 4.8rem;
+      width: 4.8rem;
+      height: 4.8rem;
+    }
   }
 
   // .contacts__icon
@@ -231,6 +239,9 @@
     line-height: 140%;
     color: $black;
     text-transform: uppercase;
+    @media (max-width: 48em) {
+      font-size: 3.2rem;
+    }
   }
 
   // .contacts__list
@@ -256,7 +267,11 @@
   &__list-txt {
     display: flex;
     flex-wrap: nowrap;
+    color: $grey;
     white-space: nowrap;
+    span {
+      margin-left: 0.5rem;
+    }
   }
 }
 

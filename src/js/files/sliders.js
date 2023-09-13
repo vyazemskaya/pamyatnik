@@ -1,11 +1,10 @@
-import Swiper from 'swiper'
-import {
+import Swiper, {
   Navigation,
   Pagination,
   EffectFade,
   Grid,
   Autoplay,
-} from 'swiper/modules'
+} from 'swiper'
 
 // styles ======================================================================
 
@@ -274,20 +273,20 @@ function initSliders() {
   }
   if (document.querySelector('.gallery-optovikam__slider')) {
     new Swiper('.gallery-optovikam__slider', {
-      modules: [Navigation, Autoplay],
+      modules: [Navigation],
       observer: true,
       observeParents: true,
-      slidesPerView: 6.2,
+      slidesPerView: 1,
       spaceBetween: 30,
       speed: 1000,
       centeredSlides: true,
-      // centeredSlidesBounds: true,
-      // slideToClickedSlide: true,
-      autoHeight: true,
-      // autoplay: {
-      //   delay: 4000,
-      //   disableOnInteraction: false,
-      // },
+      watchOverflow: true,
+      centeredSlidesBounds: true,
+      watchSlidesProgress: true,
+      updateOnWindowResize: true,
+      loop: true,
+      loopedSlides: 7,
+      autoHeight: false,
 
       // navigation
       navigation: {
@@ -296,16 +295,20 @@ function initSliders() {
       },
 
       // breakpoints
-      // breakpoints: {
-      //   768: {
-      //     autoHeight: false,
-      //   }
-      // }
+      breakpoints: {
+        768: {
+          autoHeight: true,
+          slidesPerView: 'auto',
+        }
+      },
 
       // events
       on: {
-        init: swiper => {
-          swiper.slideTo(4, 0)
+        afterInit: swiper => {
+          if (!window.matchMedia('(max-width: 768px)').matches) {
+            swiper.slideTo(4, 0)
+
+          }
         },
       },
     })
