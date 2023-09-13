@@ -1,0 +1,276 @@
+.cooperation-optovikam {
+  // .cooperation-optovikam__container
+
+  &__container {
+    &::before,
+    &::after {
+      @extend %bg;
+    }
+    &::before {
+      top: 0;
+      left: calc((100vw - 100%) / -2);
+      width: 56.8rem;
+      height: 66.5rem;
+      background-image: url(@img/bg/01.png);
+      transform: translateY(-52%);
+      @media (max-width: 48em) {
+        width: 36.2rem;
+        height: 42.6rem;
+        transform: translate(0, -76%);
+      }
+    }
+    &::after {
+      z-index: 1;
+      left: 0;
+      bottom: 0;
+      width: 195.9rem;
+      height: 98.2rem;
+      background-image: url(@img/bg/07.png);
+      transform: translate(-7%, 13%);
+      @media (max-width: 48em) {
+        display: none;
+      }
+    }
+  }
+
+  // .cooperation-optovikam__head
+
+  &__head {
+    @extend %relative;
+    margin-bottom: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    @media (max-width: 48em) {
+      margin-bottom: 4.8rem;
+    }
+  }
+
+  // .cooperation-optovikam__title
+
+  &__title {
+    margin-bottom: 3.2rem;
+  }
+
+  // .cooperation-optovikam__text
+
+  &__text {
+    color: $grey;
+    @media (min-width: 48em) {
+      max-width: 68.3rem;
+    }
+  }
+
+  // .cooperation-optovikam__content
+
+  &__content {
+    @extend %relative;
+    margin-bottom: 2rem;
+    @media (min-width: 48em) {
+      margin: 0;
+      display: grid;
+      grid-template-columns: 73.1rem 1fr;
+      column-gap: 10rem;
+    }
+  }
+
+  // .cooperation-optovikam__chapters
+
+  &__chapters {
+    &.swiper {
+      overflow: visible;
+    }
+  }
+
+  // .cooperation-optovikam__chapters-wrapper
+
+  &__chapters-wrapper {
+    @media (min-width: 48em) {
+      padding-right: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      row-gap: 4rem;
+    }
+  }
+
+  // .cooperation-optovikam__chapter
+
+  &__chapter {
+  }
+
+  // .cooperation-optovikam__description
+
+  &__description {
+  }
+
+  // .cooperation-optovikam__pagination
+
+  &__pagination {
+    @extend %relative;
+  }
+}
+
+// =============================================================================
+
+.chapter-cooperation-optovikam {
+  position: relative;
+  padding: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 71rem;
+  border-radius: 3rem;
+  background-color: #ffffff;
+  box-shadow: 1.2rem 2rem 11rem 0 rgba(74, 75, 99, 0.15);
+  user-select: none;
+  cursor: pointer;
+  @media (min-width: 48em) {
+    min-height: 24rem;
+    border-radius: 2rem;
+    transition: all 0.3s ease;
+    &._active {
+      min-height: 32.5rem;
+      border-radius: 0;
+      box-shadow: none;
+      clip-path: url(#mask1);
+      filter: drop-shadow(1.2rem 2rem 11rem rgba(74, 75, 99, 0.15));
+      &::after {
+        opacity: 1;
+      }
+      .chapter-cooperation-optovikam__image-ibg {
+        opacity: 1;
+      }
+      .chapter-cooperation-optovikam__heading,
+      .chapter-cooperation-optovikam__text {
+        color: #ffffff;
+      }
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 13.5px 20px 13.5px;
+      border-color: transparent transparent transparent transparent;
+      opacity: 0;
+      transform: opacity 0.3s ease;
+      transform: translate(100%, -50%) rotate(90deg);
+    }
+  }
+
+  // .chapter-cooperation-optovikam__text-wrap
+
+  &__text-wrap {
+    display: flex;
+    flex-direction: column;
+    @media (min-width: 48em) {
+      position: relative;
+      z-index: 2;
+      padding: 3.2rem;
+      height: 100%;
+    }
+  }
+
+  // .chapter-cooperation-optovikam__heading
+
+  &__heading {
+    margin-bottom: 1.1rem;
+    font-size: 3.2rem;
+    line-height: 160%;
+    text-transform: uppercase;
+    color: $black;
+    @media (min-width: 48em) {
+      margin-top: auto;
+      margin-bottom: 1.6rem;
+      max-width: 47.6rem;
+      line-height: 140%;
+      transition: color 0.2s ease;
+    }
+  }
+
+  // .chapter-cooperation-optovikam__text
+
+  &__text {
+    @media (min-width: 48em) {
+      max-width: 53.3rem;
+      transition: color 0.2s ease;
+    }
+  }
+
+  // .chapter-cooperation-optovikam__image-ibg
+
+  &__image-ibg {
+    margin-bottom: 2.4rem;
+    width: 100%;
+    overflow: hidden;
+    @media (min-width: 48em) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          0deg,
+          rgba(71, 70, 71, 0.7) 0%,
+          rgba(71, 70, 71, 0.7) 100%
+        );
+      }
+    }
+    @media (max-width: 48em) {
+      height: 26.6rem;
+      border-radius: 2rem;
+    }
+  }
+}
+
+// =============================================================================
+
+.description-cooperation-optovikam {
+  @media (max-width: 48em) {
+    display: none;
+  }
+
+  // .description-cooperation-optovikam__item
+
+  &__item {
+    display: none;
+    flex-direction: column;
+    max-width: 73.3rem;
+    &._active {
+      display: flex;
+    }
+  }
+
+  // .description-cooperation-optovikam__heading
+
+  &__heading {
+    margin-bottom: 2rem;
+  }
+
+  // .description-cooperation-optovikam__text-wrap
+
+  &__text-wrap {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.6rem;
+  }
+
+  // .description-cooperation-optovikam__text
+
+  &__text {
+    color: $grey;
+  }
+}

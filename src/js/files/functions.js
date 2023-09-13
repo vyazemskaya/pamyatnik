@@ -689,6 +689,16 @@ export function uniqArray(array) {
   })
 }
 
+// add active class to array items
+export const addActiveClass = array => {
+  array.forEach(item => {
+    item.addEventListener('click', function () {
+      removeClasses(array, '_active')
+      item.classList.add('_active')
+    })
+  })
+}
+
 // get an index within the parent
 export function indexInParent(parent, element) {
   const array = Array.prototype.slice.call(parent.children)

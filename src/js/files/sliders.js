@@ -22,6 +22,7 @@ import '../../scss/base/swiper.scss'
 let mainpageServicesSlider = null
 let mainpageFiltersSlider = null
 let optovikamPrivilegesSlider = null
+let optovikamChaptersSlider = null
 
 function initSliders() {
   if (document.querySelector('.hero-mainpage__slider')) {
@@ -260,8 +261,8 @@ function initSliders() {
         breakpoints: {
           768: {
             autoHeight: false,
-          }
-        }
+          },
+        },
       })
     } else if (
       !window.matchMedia('(max-width: 768px)').matches &&
@@ -269,6 +270,86 @@ function initSliders() {
     ) {
       optovikamPrivilegesSlider.destroy()
       optovikamPrivilegesSlider = null
+    }
+  }
+  if (document.querySelector('.gallery-optovikam__slider')) {
+    new Swiper('.gallery-optovikam__slider', {
+      modules: [Navigation, Autoplay],
+      observer: true,
+      observeParents: true,
+      slidesPerView: 6.2,
+      spaceBetween: 30,
+      speed: 1000,
+      centeredSlides: true,
+      // centeredSlidesBounds: true,
+      // slideToClickedSlide: true,
+      autoHeight: true,
+      // autoplay: {
+      //   delay: 4000,
+      //   disableOnInteraction: false,
+      // },
+
+      // navigation
+      navigation: {
+        prevEl: '.gallery-optovikam .navigation__button_prev',
+        nextEl: '.gallery-optovikam .navigation__button_next',
+      },
+
+      // breakpoints
+      // breakpoints: {
+      //   768: {
+      //     autoHeight: false,
+      //   }
+      // }
+
+      // events
+      on: {
+        init: swiper => {
+          swiper.slideTo(4, 0)
+        },
+      },
+    })
+  }
+  if (document.querySelector('.cooperation-optovikam__chapters')) {
+    if (
+      window.matchMedia('(max-width: 768px)').matches &&
+      !optovikamChaptersSlider
+    ) {
+      optovikamChaptersSlider = new Swiper('.cooperation-optovikam__chapters', {
+        modules: [Pagination, Autoplay],
+        observer: true,
+        observeParents: true,
+        slidesPerView: 1.1,
+        spaceBetween: 16,
+        speed: 1000,
+        autoplay: {
+          delay: 7000,
+          disableOnInteraction: false,
+        },
+
+        // pagination
+        pagination: {
+          el: '.cooperation-optovikam__pagination',
+          clickable: true,
+          type: 'bullets',
+        },
+
+        // breakpoints
+        // breakpoints: {
+        //   768: {
+        //     autoHeight: false,
+        //   }
+        // }
+
+        // events
+        on: {},
+      })
+    } else if (
+      !window.matchMedia('(max-width: 768px)').matches &&
+      optovikamChaptersSlider
+    ) {
+      optovikamChaptersSlider.destroy()
+      optovikamChaptersSlider.pagination.destroy()
     }
   }
 }

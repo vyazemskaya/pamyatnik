@@ -1,0 +1,66 @@
+.gallery-optovikam {
+  // .gallery-optovikam__container
+
+  &__container {
+  }
+
+  // .gallery-optovikam__head
+
+  &__head {
+    @media (min-width: 48em) {
+      .contacts {
+        justify-self: end;
+      }
+    }
+  }
+
+  // .gallery-optovikam__slider
+
+  &__slider {
+    &.swiper {
+      width: 100%;
+      overflow: visible;
+    }
+    &.swiper-autoheight {
+      .swiper-wrapper {
+        // justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
+  // .gallery-optovikam__wrapper
+
+  &__wrapper {
+  }
+
+  // .gallery-optovikam__slide
+
+  &__slide {
+    &.swiper-slide {
+      // width: 56.6rem;
+      // height: 42.2rem;
+      // transform: scale(0.64) translateZ(0);
+    }
+    &.swiper-slide-active {
+      border-radius: 2rem;
+      transform: scale(1.5);
+      .slide-gallery-optovikam__image {
+        border-radius: 2rem;
+      }
+    }
+  }
+}
+
+.slide-gallery-optovikam {
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+
+  // .slide-gallery-optovikam__image
+
+  &__image {
+    height: 100%;
+    border-radius: 1rem;
+    object-fit: cover;
+  }
+}

@@ -1,3 +1,11 @@
+.optovikam {
+  section.hero-optovikam {
+    @media (max-width: 48em) {
+      margin-bottom: 34.2rem;
+    }
+  }
+}
+
 .hero-optovikam {
   padding-top: 7.1rem;
   @media (max-width: 48em) {
