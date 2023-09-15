@@ -28,7 +28,7 @@
   &__head {
     margin-bottom: 4.8rem;
     @media (min-width: 48em) {
-      margin-bottom: 6rem;
+      margin-bottom: 13rem;
       .contacts-info {
         justify-self: end;
       }
@@ -44,15 +44,12 @@
   // .gallery-optovikam__slider
 
   &__slider {
-    @media (max-width: 48em) {
-      margin-bottom: 8rem;
-    }
+    margin-bottom: 3rem;
     @media (min-width: 48em) {
+      margin: 0;
+      height: 20.2rem;
       &.swiper {
         overflow: visible;
-        .swiper-wrapper {
-          align-items: center;
-        }
       }
     }
   }
@@ -66,22 +63,32 @@
 
   &__slide {
     @media (min-width: 48em) {
-      &.swiper-slide {
-        height: 20.2rem;
-        width: 26.9rem;
-      }
       &.swiper-slide-active {
+        transform: scale(1.6, 2.2) !important;
         border-radius: 2rem;
-        width: 56.6rem;
-        height: 42.2rem;
+      }
+      &:not(.swiper-slide-visible) {
+        transform: scale(0.8, 1) !important;
+      }
+      &.swiper-slide-prev {
+        transform: scale(0.8, 1) translateX(-34%) !important;
+      }
+      &.swiper-slide-next {
+        transform: scale(0.8, 1) translateX(34%) !important;
       }
     }
   }
 }
 
 .slide-gallery-optovikam {
-  border-radius: 1rem;
+  height: 100%;
   overflow: hidden;
+  border-radius: 1rem;
+  @media (min-width: 48em) {
+    width: 40rem;
+    transform: scale(0.8, 0.9);
+    transition: all 0.4s ease;
+  }
   @media (max-width: 48em) {
     height: 51.5rem;
     border-radius: 3rem;
@@ -92,5 +99,9 @@
   &__image {
     height: 100%;
     object-fit: cover;
+    border-radius: 1rem;
+    @media (max-width: 48em) {
+      border-radius: 3rem;
+    }
   }
 }

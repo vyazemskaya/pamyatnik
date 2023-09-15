@@ -4,6 +4,7 @@ import Swiper, {
   EffectFade,
   Grid,
   Autoplay,
+  EffectCreative,
 } from 'swiper'
 
 // styles ======================================================================
@@ -22,6 +23,21 @@ let mainpageServicesSlider = null
 let mainpageFiltersSlider = null
 let optovikamPrivilegesSlider = null
 let optovikamChaptersSlider = null
+
+const initGallerySlider = swiper => {
+  const slides = swiper.slides
+
+  if (slides.length) {
+    for (let i = 0; i < slides.length; i++) {
+      const slide = slides[i]
+      if (i < swiper.activeIndex) {
+        slide.style.transform = 'scale(0.8, 1) translateX(-17%)'
+      } else {
+        slide.style.transform = 'scale(0.8, 1) translateX(17%)'
+      }
+    }
+  }
+}
 
 function initSliders() {
   if (document.querySelector('.hero-mainpage__slider')) {
@@ -271,48 +287,6 @@ function initSliders() {
       optovikamPrivilegesSlider = null
     }
   }
-  if (document.querySelector('.gallery-optovikam__slider')) {
-    new Swiper('.gallery-optovikam__slider', {
-      modules: [Navigation],
-      observer: true,
-      observeParents: true,
-      slidesPerView: 1,
-      spaceBetween: 30,
-      speed: 1000,
-      centeredSlides: true,
-      watchOverflow: true,
-      centeredSlidesBounds: true,
-      watchSlidesProgress: true,
-      updateOnWindowResize: true,
-      loop: true,
-      loopedSlides: 7,
-      autoHeight: false,
-
-      // navigation
-      navigation: {
-        prevEl: '.gallery-optovikam .navigation__button_prev',
-        nextEl: '.gallery-optovikam .navigation__button_next',
-      },
-
-      // breakpoints
-      breakpoints: {
-        768: {
-          autoHeight: true,
-          slidesPerView: 'auto',
-        }
-      },
-
-      // events
-      on: {
-        afterInit: swiper => {
-          if (!window.matchMedia('(max-width: 768px)').matches) {
-            swiper.slideTo(4, 0)
-
-          }
-        },
-      },
-    })
-  }
   if (document.querySelector('.cooperation-optovikam__chapters')) {
     if (
       window.matchMedia('(max-width: 768px)').matches &&
@@ -354,6 +328,48 @@ function initSliders() {
       optovikamChaptersSlider.destroy()
       optovikamChaptersSlider.pagination.destroy()
     }
+  }
+  if (document.querySelector('.gallery-optovikam__slider')) {
+    new Swiper('.gallery-optovikam__slider', {
+      modules: [Navigation],
+      loop: true,
+      speed: 1000,
+      slidesPerView: 1,
+      spaceBetween: 10,
+
+      // navigation
+      navigation: {
+        prevEl: '.gallery-optovikam .navigation__button_prev',
+        nextEl: '.gallery-optovikam .navigation__button_next',
+      },
+
+      // breakpoints
+      breakpoints: {
+        768: {
+          spaceBetween: 0,
+          slidesPerView: 5,
+          centeredSlides: true,
+          watchSlidesProgress: true,
+          watchSlidesVisibility: true,
+        },
+      },
+
+      // events
+      on: {
+        init: swiper => {
+          if (!window.matchMedia('(max-width: 768px)').matches) {
+            swiper.slideTo(3, 0)
+            initGallerySlider(swiper)
+          }
+        },
+        slideChange: swiper => {
+          if (!window.matchMedia('(max-width: 768px)').matches) {
+            initGallerySlider(swiper)
+            swiper.update()
+          }
+        },
+      },
+    })
   }
 }
 

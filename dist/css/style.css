@@ -2299,15 +2299,21 @@ section {
   margin-bottom: 4.8rem;
 }
 
+.gallery-optovikam__slider {
+  margin-bottom: 3rem;
+}
+
 .slide-gallery-optovikam {
-  border-radius: 1rem;
+  height: 100%;
   overflow: hidden;
+  border-radius: 1rem;
 }
 
 .slide-gallery-optovikam__image {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  border-radius: 1rem;
 }
 
 .map-contacts {
@@ -2425,6 +2431,16 @@ section {
 
 .swiper-button-lock {
   display: none !important;
+}
+
+.swiper-fade .swiper-slide {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+.swiper-fade .swiper-slide.swiper-slide-active {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 @font-face {
@@ -3495,7 +3511,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   }
 
   .gallery-optovikam__head {
-    margin-bottom: 6rem;
+    margin-bottom: 13rem;
   }
 
   .gallery-optovikam__head .contacts-info {
@@ -3503,25 +3519,47 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
         justify-self: end;
   }
 
+  .gallery-optovikam__slider {
+    margin: 0;
+    height: 20.2rem;
+  }
+
   .gallery-optovikam__slider.swiper {
     overflow: visible;
   }
 
-  .gallery-optovikam__slider.swiper .swiper-wrapper {
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-
-  .gallery-optovikam__slide.swiper-slide {
-    height: 20.2rem;
-    width: 26.9rem;
-  }
-
   .gallery-optovikam__slide.swiper-slide-active {
+    -webkit-transform: scale(1.6, 2.2) !important;
+        -ms-transform: scale(1.6, 2.2) !important;
+            transform: scale(1.6, 2.2) !important;
     border-radius: 2rem;
-    width: 56.6rem;
-    height: 42.2rem;
+  }
+
+  .gallery-optovikam__slide:not(.swiper-slide-visible) {
+    -webkit-transform: scale(0.8, 1) !important;
+        -ms-transform: scale(0.8, 1) !important;
+            transform: scale(0.8, 1) !important;
+  }
+
+  .gallery-optovikam__slide.swiper-slide-prev {
+    -webkit-transform: scale(0.8, 1) translateX(-34%) !important;
+        -ms-transform: scale(0.8, 1) translateX(-34%) !important;
+            transform: scale(0.8, 1) translateX(-34%) !important;
+  }
+
+  .gallery-optovikam__slide.swiper-slide-next {
+    -webkit-transform: scale(0.8, 1) translateX(34%) !important;
+        -ms-transform: scale(0.8, 1) translateX(34%) !important;
+            transform: scale(0.8, 1) translateX(34%) !important;
+  }
+
+  .slide-gallery-optovikam {
+    width: 40rem;
+    -webkit-transform: scale(0.8, 0.9);
+        -ms-transform: scale(0.8, 0.9);
+            transform: scale(0.8, 0.9);
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
   }
 
   .map-contacts__wrap #map .ymaps-2-1-79-controls__control_toolbar {
@@ -4539,12 +4577,12 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
     margin-bottom: 4.8rem;
   }
 
-  .gallery-optovikam__slider {
-    margin-bottom: 8rem;
-  }
-
   .slide-gallery-optovikam {
     height: 51.5rem;
+    border-radius: 3rem;
+  }
+
+  .slide-gallery-optovikam__image {
     border-radius: 3rem;
   }
 

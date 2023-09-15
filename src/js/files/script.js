@@ -13,10 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
     На протяжении 20 лет мы успешно работаем в этой сфере и отлично зарекомендовали себя.`
   }
 
-  // filters
-  const filters = document.querySelectorAll('.filters-catalog-mainpage__item')
-  filters.length ? addActiveClass(filters) : null
-
   // chapters
   const chapters = document.querySelectorAll('.cooperation-optovikam__chapter')
   if (chapters.length && !md.matches) {
@@ -25,6 +21,36 @@ document.addEventListener('DOMContentLoaded', function () {
       .querySelectorAll('.description-cooperation-optovikam__item')[0]
       .classList.add('_active')
   }
+
+  // filters
+  const filters = document.querySelectorAll('.filters-catalog-mainpage__item')
+
+  if (filters.length) {
+    const xhttp = new XMLHttpRequest()
+    filters.forEach(filter => {
+      filter.addEventListener('click', function () {
+        removeClasses(filters, '_active')
+        filter.classList.add('_active')
+        const activeFilterType = filter.dataset.catalogFilter
+        if (activeFilterType === 'monuments') {
+          xhttp.open('GET', 'ajax/monuments.html', false)
+        } else if (activeFilterType === 'fences') {
+          xhttp.open('GET', 'ajax/fences.html', false)
+        } else if (activeFilterType === 'stone') {
+          xhttp.open('GET', 'ajax/stone.html', false)
+        } else if (activeFilterType === 'socles') {
+          xhttp.open('GET', 'ajax/socles.html', false)
+        } else if (activeFilterType === 'complexes') {
+          xhttp.open('GET', 'ajax/complexes.html', false)
+        }
+        xhttp.send()
+        document.querySelector('.catalog-mainpage__wrapper').innerHTML =
+          xhttp.responseText
+      })
+    })
+  }
+
+  // ===========================================================================
 
   // handler functions
   const onClickHandler = e => {
