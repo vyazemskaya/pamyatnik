@@ -3528,36 +3528,11 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
     overflow: visible;
   }
 
-  .gallery-optovikam__slide.swiper-slide-active {
-    -webkit-transform: scale(1.6, 2.2) !important;
-        -ms-transform: scale(1.6, 2.2) !important;
-            transform: scale(1.6, 2.2) !important;
-    border-radius: 2rem;
-  }
-
-  .gallery-optovikam__slide:not(.swiper-slide-visible) {
-    -webkit-transform: scale(0.8, 1) !important;
-        -ms-transform: scale(0.8, 1) !important;
-            transform: scale(0.8, 1) !important;
-  }
-
-  .gallery-optovikam__slide.swiper-slide-prev {
-    -webkit-transform: scale(0.8, 1) translateX(-34%) !important;
-        -ms-transform: scale(0.8, 1) translateX(-34%) !important;
-            transform: scale(0.8, 1) translateX(-34%) !important;
-  }
-
-  .gallery-optovikam__slide.swiper-slide-next {
-    -webkit-transform: scale(0.8, 1) translateX(34%) !important;
-        -ms-transform: scale(0.8, 1) translateX(34%) !important;
-            transform: scale(0.8, 1) translateX(34%) !important;
-  }
-
   .slide-gallery-optovikam {
     width: 40rem;
-    -webkit-transform: scale(0.8, 0.9);
-        -ms-transform: scale(0.8, 0.9);
-            transform: scale(0.8, 0.9);
+    -webkit-transform: scale(0.8, 1);
+        -ms-transform: scale(0.8, 1);
+            transform: scale(0.8, 1);
     -webkit-transition: all 0.4s ease;
     transition: all 0.4s ease;
   }

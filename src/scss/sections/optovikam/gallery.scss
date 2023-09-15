@@ -62,21 +62,6 @@
   // .gallery-optovikam__slide
 
   &__slide {
-    @media (min-width: 48em) {
-      &.swiper-slide-active {
-        transform: scale(1.6, 2.2) !important;
-        border-radius: 2rem;
-      }
-      &:not(.swiper-slide-visible) {
-        transform: scale(0.8, 1) !important;
-      }
-      &.swiper-slide-prev {
-        transform: scale(0.8, 1) translateX(-34%) !important;
-      }
-      &.swiper-slide-next {
-        transform: scale(0.8, 1) translateX(34%) !important;
-      }
-    }
   }
 }
 
@@ -86,7 +71,7 @@
   border-radius: 1rem;
   @media (min-width: 48em) {
     width: 40rem;
-    transform: scale(0.8, 0.9);
+    transform: scale(0.8, 1);
     transition: all 0.4s ease;
   }
   @media (max-width: 48em) {

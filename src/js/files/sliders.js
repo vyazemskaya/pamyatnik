@@ -4,7 +4,6 @@ import Swiper, {
   EffectFade,
   Grid,
   Autoplay,
-  EffectCreative,
 } from 'swiper'
 
 // styles ======================================================================
@@ -25,17 +24,92 @@ let optovikamPrivilegesSlider = null
 let optovikamChaptersSlider = null
 
 const initGallerySlider = swiper => {
+  // custom variables
+  const GAP = 30
+  const SCALE_SLIDE = 0.8
+  const SCALE_ACTIVE_SLIDE = 1.7
+  const VISIBLE_SLIDES_AMOUNT = 5
+  const CONTAINER_WIDTH = 1760
+
+  // main variables
   const slides = swiper.slides
+  // const slideWidth =
+  //   CONTAINER_WIDTH / VISIBLE_SLIDES_AMOUNT -
+  //   (GAP / 2.12) * VISIBLE_SLIDES_AMOUNT
+  const activeSlideGap =
+    ((GAP / 2) * (SCALE_ACTIVE_SLIDE / SCALE_SLIDE)) / SCALE_SLIDE
+  const slideGap = activeSlideGap / 2
 
   if (slides.length) {
+    const arrPrev = []
+    const arrNext = []
+    arrPrev.length = 0
+    arrNext.length = 0
+
     for (let i = 0; i < slides.length; i++) {
       const slide = slides[i]
+      const nextIndex =
+        swiper.activeIndex === slides.length ? 0 : swiper.activeIndex + 1
+      const prevIndex =
+        swiper.activeIndex === 0 ? slides.length : swiper.activeIndex - 1
+
+      // set size and gap for regular slides
       if (i < swiper.activeIndex) {
-        slide.style.transform = 'scale(0.8, 1) translateX(-17%)'
+        slide.style.transform = `scale(${SCALE_SLIDE}, 1) translateX(-${slideGap}%)`
       } else {
-        slide.style.transform = 'scale(0.8, 1) translateX(17%)'
+        slide.style.transform = `scale(${SCALE_SLIDE}, 1) translateX(${slideGap}%)`
       }
+
+      // set size and gap for prev & next slides
+      slides[
+        prevIndex
+      ].style.transform = `scale(${SCALE_SLIDE}, 1) translateX(-${activeSlideGap}%)`
+      slides[
+        nextIndex
+      ].style.transform = `scale(${SCALE_SLIDE}, 1) translateX(${activeSlideGap}%)`
+
+      // scale active slide
+      slides[
+        swiper.activeIndex
+      ].style.transform = `scale(${SCALE_ACTIVE_SLIDE}, 2.1)`
+
+      // remove gap if slide isn't visible
+      if (!slide.classList.contains('swiper-slide-visible')) {
+        slide.style.transform = `scale(${SCALE_SLIDE}, 1)`
+      }
+
+      // filter prev & next slides
+      // if (
+      //   slides.indexOf(slide) < swiper.activeIndex &&
+      //   slides.indexOf(slide) !== prevIndex &&
+      //   slide.dataset.swiperSlideIndex !=
+      //     slides[prevIndex].dataset.swiperSlideIndex - 1
+      // ) {
+      //   if (!arrPrev.length) {
+      //     slide.style.transform = `scale(${SCALE_SLIDE}, 1)`
+      //     arrPrev.push(slide)
+      //   }
+      //   console.log(arrPrev)
+      // } else if (
+      //   slides.indexOf(slide) > swiper.activeIndex &&
+      //   !slide.classList.contains('swiper-slide-next') &&
+      //   slide.dataset.swiperSlideIndex !=
+      //     slides[nextIndex].dataset.swiperSlideIndex + 1
+      // ) {
+      //   if (!arrNext.length) {
+      //     slide.style.transform = `scale(${SCALE_SLIDE}, 1)`
+      //     arrNext.push(slide)
+      //   }
+      // }
     }
+    // for (let i = 0; i < arrPrev.length; i += 3) {
+    //   const el = arrPrev[i]
+    //   el.style.transform = `scale(${SCALE_SLIDE}, 1) translateX(${slideGap}%)`
+    // }
+    // for (let i = 0; i < arrNext.length; i += 3) {
+    //   const el = arrNext[i]
+    //   el.style.transform = `scale(${SCALE_SLIDE}, 1) translateX(-${slideGap}%)`
+    // }
   }
 }
 
@@ -356,9 +430,9 @@ function initSliders() {
 
       // events
       on: {
-        init: swiper => {
+        afterInit: swiper => {
           if (!window.matchMedia('(max-width: 768px)').matches) {
-            swiper.slideTo(3, 0)
+            // swiper.slideTo(3, 0)
             initGallerySlider(swiper)
           }
         },

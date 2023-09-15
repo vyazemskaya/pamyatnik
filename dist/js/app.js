@@ -4416,10 +4416,27 @@
         let optovikamPrivilegesSlider = null;
         let optovikamChaptersSlider = null;
         const initGallerySlider = swiper => {
+            const GAP = 30;
+            const SCALE_SLIDE = .8;
+            const SCALE_ACTIVE_SLIDE = 1.7;
             const slides = swiper.slides;
-            if (slides.length) for (let i = 0; i < slides.length; i++) {
-                const slide = slides[i];
-                if (i < swiper.activeIndex) slide.style.transform = "scale(0.8, 1) translateX(-17%)"; else slide.style.transform = "scale(0.8, 1) translateX(17%)";
+            const activeSlideGap = GAP / 2 * (SCALE_ACTIVE_SLIDE / SCALE_SLIDE) / SCALE_SLIDE;
+            const slideGap = activeSlideGap / 2;
+            if (slides.length) {
+                const arrPrev = [];
+                const arrNext = [];
+                arrPrev.length = 0;
+                arrNext.length = 0;
+                for (let i = 0; i < slides.length; i++) {
+                    const slide = slides[i];
+                    const nextIndex = swiper.activeIndex === slides.length ? 0 : swiper.activeIndex + 1;
+                    const prevIndex = swiper.activeIndex === 0 ? slides.length : swiper.activeIndex - 1;
+                    if (i < swiper.activeIndex) slide.style.transform = `scale(${SCALE_SLIDE}, 1) translateX(-${slideGap}%)`; else slide.style.transform = `scale(${SCALE_SLIDE}, 1) translateX(${slideGap}%)`;
+                    slides[prevIndex].style.transform = `scale(${SCALE_SLIDE}, 1) translateX(-${activeSlideGap}%)`;
+                    slides[nextIndex].style.transform = `scale(${SCALE_SLIDE}, 1) translateX(${activeSlideGap}%)`;
+                    slides[swiper.activeIndex].style.transform = `scale(${SCALE_ACTIVE_SLIDE}, 2.1)`;
+                    if (!slide.classList.contains("swiper-slide-visible")) slide.style.transform = `scale(${SCALE_SLIDE}, 1)`;
+                }
             }
         };
         function initSliders() {
@@ -4643,11 +4660,8 @@
                     }
                 },
                 on: {
-                    init: swiper => {
-                        if (!window.matchMedia("(max-width: 768px)").matches) {
-                            swiper.slideTo(3, 0);
-                            initGallerySlider(swiper);
-                        }
+                    afterInit: swiper => {
+                        if (!window.matchMedia("(max-width: 768px)").matches) initGallerySlider(swiper);
                     },
                     slideChange: swiper => {
                         if (!window.matchMedia("(max-width: 768px)").matches) {
