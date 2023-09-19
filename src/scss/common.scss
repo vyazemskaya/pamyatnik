@@ -281,6 +281,328 @@
   }
 }
 
+.expand-btn {
+  // .expand-btn__inner
+
+  &__inner {
+    position: relative;
+    padding: 0.5rem 0.5rem 0.5rem 3rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 17.7rem;
+    height: 5rem;
+    border-radius: 3rem;
+    background-image: url(@img/bg/btn-bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    &::after {
+      @extend %btnBg;
+    }
+    @media (max-width: 48em) {
+      padding: 0.8rem 0.8rem 0.8rem 2.8rem;
+      width: 100%;
+      height: 7.4rem;
+      border-radius: 6rem;
+    }
+  }
+
+  // .expand-btn__txt
+
+  &__txt {
+    @extend %relative;
+    color: #ffffff;
+  }
+
+  // .expand-btn__icon
+
+  &__icon {
+    @extend %relative;
+    flex: 0 0 4rem;
+    width: 4rem;
+    height: 4rem;
+    @media (max-width: 48em) {
+      flex: 0 0 5.8rem;
+      width: 5.8rem;
+      height: 5.8rem;
+    }
+  }
+}
+
+.filters {
+  position: fixed;
+  z-index: 100;
+  top: 100%;
+  bottom: auto;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: #ffffff;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: all 0.4s ease;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: url(@img/bg/marble-bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    filter: grayscale(100%);
+  }
+  ._filters-open & {
+    top: 0;
+    bottom: 0;
+  }
+  @media (max-width: 48em) {
+    &::after {
+      background-image: url(@img/bg/marble-bg-mobile.png);
+    }
+  }
+
+  // .filters__container
+
+  &__container {
+    padding-top: 6rem;
+    padding-bottom: 6.5rem;
+    display: flex;
+    flex-direction: column;
+    &::before,
+    &::after {
+      @extend %bg;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      display: none;
+      ._filters-open & {
+        display: block;
+      }
+    }
+    &::before {
+      width: 39.4rem;
+      height: 46.2rem;
+      background-image: url(@img/bg/01.png);
+      transform: scalex(-1) translate(-1%, -96%);
+    }
+    &::after {
+      width: 112.8rem;
+      height: 48.4rem;
+      background-image: url(@img/bg/02.png);
+      transform: translate(-15%, 35%);
+    }
+    @media (max-width: 48em) {
+      padding-top: 6.8rem;
+      padding-bottom: 5.6rem;
+      height: 100%;
+    }
+    @media (min-width: 48em) {
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  // .filters__head
+
+  &__head {
+    @extend %relative;
+    margin-bottom: 6.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media (max-width: 48em) {
+      margin-bottom: 6.4rem;
+    }
+  }
+
+  // .filters__heading
+
+  &__heading {
+    @extend .h2;
+  }
+
+  // .filters__close-btn
+
+  &__close-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 6.8rem;
+    width: 6.8rem;
+    height: 6.8rem;
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: 1.2rem 2rem 6rem rgba(74, 75, 99, 0.15);
+    @media (max-width: 48em) {
+      flex: 0 0 8rem;
+      width: 8rem;
+      height: 8rem;
+    }
+  }
+
+  // .filters__close-icon
+
+  &__close-icon {
+    flex: 0 0 3rem;
+    width: 3rem;
+    height: 3rem;
+    @media (max-width: 48em) {
+      flex: 0 0 3.5rem;
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+  }
+
+  // .filters__form
+
+  &__form {
+    @extend %relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  // .filters__form-content
+
+  &__form-content {
+    margin-bottom: 31.4rem;
+    flex: 1 1 auto;
+    .catalog_socles & {
+      margin-bottom: 10rem;
+    }
+    @media (min-width: 48em) {
+      margin-bottom: 4rem;
+      display: grid;
+      grid-template-columns: 3fr 7fr 2fr;
+      gap: 2.4rem;
+    }
+  }
+
+  // .filters__group
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.5rem;
+    background-color: #ffffff;
+    @media (min-width: 48em) {
+      padding: 2rem 2.4rem;
+      &_large {
+        grid-column: span 3;
+      }
+    }
+    @media (max-width: 48em) {
+      min-width: 0;
+      box-shadow: 2.4rem 4rem 22rem 0 rgba(74, 75, 99, 0.15);
+      &:not(:last-child) {
+        margin-bottom: 2.4rem;
+      }
+      &_materials {
+        .filters__col {
+          grid-column: span 2;
+        }
+      }
+    }
+  }
+
+  // .filters__subtitle
+
+  &__subtitle {
+    @extend .h3;
+    margin-bottom: 4rem;
+    @media (max-width: 48em) {
+      margin: 0;
+      padding: 3.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 3rem;
+      background-color: #ffffff;
+      transition: border-radius 0.3s ease;
+      &::after {
+        content: '';
+        flex: 0 0 4.8rem;
+        width: 4.8rem;
+        height: 4.8rem;
+        background-image: url(@img/icons/sl-arrow.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        transition: transform 0.3s ease;
+      }
+      &._spoiler-active {
+        border-radius: 3rem 3rem 0 0;
+        &::after {
+          transform: rotate(-180deg);
+        }
+      }
+    }
+  }
+
+  // .filters__checkboxes
+
+  &__checkboxes {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 5.6rem;
+    @media (max-width: 48em) {
+      padding: 4rem 3.2rem 3.2rem 3.2rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 4rem;
+      row-gap: 2.4rem;
+      border-radius: 0 0 3rem 3rem;
+      background-color: #ffffff;
+    }
+  }
+
+  // .filters__col
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    @media (max-width: 48em) {
+      row-gap: 2.4rem;
+    }
+  }
+
+  // .filters__actions
+
+  &__actions {
+    @extend %relative;
+    display: flex;
+    column-gap: 1.8rem;
+    @media (min-width: 48em) {
+      justify-content: flex-end;
+      column-gap: 2rem;
+    }
+  }
+
+  // .filters__btn
+
+  &__btn {
+    min-width: 22rem;
+    &.btn_ol {
+      @media (any-hover: hover) {
+        &:hover {
+          background-color: #ffffff;
+          .btn__text {
+            color: $black;
+          }
+        }
+      }
+    }
+    @media (max-width: 48em) {
+      width: 100%;
+    }
+  }
+}
+
 .catalog-tabs {
   &.swiper {
     overflow: visible;

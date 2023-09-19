@@ -124,6 +124,13 @@ class SelectConstructor {
         )
       }
     }
+
+    if (
+      originalSelect.classList.contains('desktop-only') &&
+      window.matchMedia('(max-width:768px)').matches
+    ) {
+      originalSelect.setAttribute('disabled', '')
+    }
     selectItem.insertAdjacentHTML(
       'beforeend',
       `<div class="${this.selectClasses.classSelectBody}"><div hidden class="${this.selectClasses.classSelectOptions}"></div></div>`
@@ -264,6 +271,25 @@ class SelectConstructor {
     if (!selectOptions.classList.contains('_slide')) {
       selectItem.classList.remove(this.selectClasses.classSelectOpen)
       _slideUp(selectOptions, originalSelect.dataset.speed)
+    }
+  }
+  selectDisabled(selectItem, originalSelect) {
+    if (originalSelect.disabled) {
+      selectItem.classList.add(this.selectClasses.classSelectDisabled)
+      if (!document.querySelector('.catalog_socles')) {
+        this.getSelectElement(
+          selectItem,
+          this.selectClasses.classSelectTitle
+        ).selectElement.disabled = true
+      }
+    } else {
+      selectItem.classList.remove(this.selectClasses.classSelectDisabled)
+      if (!document.querySelector('.catalog_socles')) {
+        this.getSelectElement(
+          selectItem,
+          this.selectClasses.classSelectTitle
+        ).selectElement.disabled = false
+      }
     }
   }
   selectAction(selectItem) {
@@ -539,21 +565,6 @@ class SelectConstructor {
     }
     const selectItem = originalSelect.parentElement
     this.selectCallback(selectItem, originalSelect)
-  }
-  selectDisabled(selectItem, originalSelect) {
-    if (originalSelect.disabled) {
-      selectItem.classList.add(this.selectClasses.classSelectDisabled)
-      this.getSelectElement(
-        selectItem,
-        this.selectClasses.classSelectTitle
-      ).selectElement.disabled = true
-    } else {
-      selectItem.classList.remove(this.selectClasses.classSelectDisabled)
-      this.getSelectElement(
-        selectItem,
-        this.selectClasses.classSelectTitle
-      ).selectElement.disabled = false
-    }
   }
   searchActions(selectItem) {
     const originalSelect = this.getSelectElement(selectItem).originalSelect

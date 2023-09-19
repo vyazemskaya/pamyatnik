@@ -990,6 +990,7 @@
                         selectItemTitle.insertAdjacentHTML("afterbegin", `<span class="${this.selectClasses.classSelectLabel}">${this.getSelectPlaceholder(originalSelect).label.text ? this.getSelectPlaceholder(originalSelect).label.text : this.getSelectPlaceholder(originalSelect).value}</span>`);
                     }
                 }
+                if (originalSelect.classList.contains("desktop-only") && window.matchMedia("(max-width:768px)").matches) originalSelect.setAttribute("disabled", "");
                 selectItem.insertAdjacentHTML("beforeend", `<div class="${this.selectClasses.classSelectBody}"><div hidden class="${this.selectClasses.classSelectOptions}"></div></div>`);
                 this.selectBuild(originalSelect);
                 originalSelect.dataset.speed = originalSelect.dataset.speed ? originalSelect.dataset.speed : "150";
@@ -1049,6 +1050,15 @@
                 if (!selectOptions.classList.contains("_slide")) {
                     selectItem.classList.remove(this.selectClasses.classSelectOpen);
                     _slideUp(selectOptions, originalSelect.dataset.speed);
+                }
+            }
+            selectDisabled(selectItem, originalSelect) {
+                if (originalSelect.disabled) {
+                    selectItem.classList.add(this.selectClasses.classSelectDisabled);
+                    if (!document.querySelector(".catalog_socles")) this.getSelectElement(selectItem, this.selectClasses.classSelectTitle).selectElement.disabled = true;
+                } else {
+                    selectItem.classList.remove(this.selectClasses.classSelectDisabled);
+                    if (!document.querySelector(".catalog_socles")) this.getSelectElement(selectItem, this.selectClasses.classSelectTitle).selectElement.disabled = false;
                 }
             }
             selectAction(selectItem) {
@@ -1197,15 +1207,6 @@
                 }
                 const selectItem = originalSelect.parentElement;
                 this.selectCallback(selectItem, originalSelect);
-            }
-            selectDisabled(selectItem, originalSelect) {
-                if (originalSelect.disabled) {
-                    selectItem.classList.add(this.selectClasses.classSelectDisabled);
-                    this.getSelectElement(selectItem, this.selectClasses.classSelectTitle).selectElement.disabled = true;
-                } else {
-                    selectItem.classList.remove(this.selectClasses.classSelectDisabled);
-                    this.getSelectElement(selectItem, this.selectClasses.classSelectTitle).selectElement.disabled = false;
-                }
             }
             searchActions(selectItem) {
                 this.getSelectElement(selectItem).originalSelect;
@@ -5295,6 +5296,7 @@
                                 swiper.slideTo(thumbIndex, 500);
                             }
                         }));
+                        if (document.querySelector(".catalog_stone")) swiper.slideTo(swiper.slides.length - 1, 0); else if (document.querySelector(".catalog_fences")) swiper.slideTo(2, 0); else if (document.querySelector(".catalog_socles")) swiper.slideTo(1, 0);
                     },
                     activeIndexChange: swiper => {
                         initCatalogSliderThumbs(swiper, swiper.realIndex);
@@ -5319,6 +5321,7 @@
                                 swiper.slideTo(thumbIndex, 1e3);
                             }
                         }));
+                        if (document.querySelector(".catalog_stone")) swiper.slideTo(swiper.slides.length - 1, 0); else if (document.querySelector(".catalog_fences")) swiper.slideTo(2, 0); else if (document.querySelector(".catalog_socles")) swiper.slideTo(1, 0);
                     },
                     activeIndexChange: swiper => {
                         initCatalogSliderThumbs(swiper, swiper.realIndex);
@@ -7401,11 +7404,11 @@ PERFORMANCE OF THIS SOFTWARE.
                     removeClasses(document.querySelectorAll(".catalog .select__option"), "_select-selected");
                     target.closest(".catalog .select__option").classList.add("_select-selected");
                 }
-                if (target.closest(".filters-products-catalog__expand") && !document.body.classList.contains("_filters-open")) {
+                if (target.closest("#filtersExpand") && !document.body.classList.contains("_filters-open")) if (!document.querySelector(".catalog_socles") || document.querySelector(".catalog_socles") && md.matches) {
                     document.body.classList.add("_filters-open");
                     bodyLock();
                 }
-                if (target.closest(".filters-products-catalog__close-btn")) {
+                if (target.closest(".filters__close-btn")) {
                     document.body.classList.remove("_filters-open");
                     bodyUnlock();
                 }

@@ -1,4 +1,9 @@
-import { removeClasses, bodyLock, bodyUnlock, addActiveClass } from './functions.js'
+import {
+  removeClasses,
+  bodyLock,
+  bodyUnlock,
+  addActiveClass,
+} from './functions.js'
 import { formValidate } from './forms/forms.js'
 import { modules } from './modules.js'
 
@@ -52,7 +57,6 @@ document.addEventListener('DOMContentLoaded', function () {
     })
   }
 
-
   // ===========================================================================
 
   // handler functions
@@ -85,13 +89,18 @@ document.addEventListener('DOMContentLoaded', function () {
         .classList.add('_select-selected')
     }
     if (
-      target.closest('.filters-products-catalog__expand') &&
+      target.closest('#filtersExpand') &&
       !document.body.classList.contains('_filters-open')
     ) {
-      document.body.classList.add('_filters-open')
-      bodyLock()
+      if (
+        !document.querySelector('.catalog_socles') ||
+        (document.querySelector('.catalog_socles') && md.matches)
+      ) {
+        document.body.classList.add('_filters-open')
+        bodyLock()
+      }
     }
-    if (target.closest('.filters-products-catalog__close-btn')) {
+    if (target.closest('.filters__close-btn')) {
       document.body.classList.remove('_filters-open')
       bodyUnlock()
     }
@@ -99,7 +108,9 @@ document.addEventListener('DOMContentLoaded', function () {
       formValidate.formClean(target.closest('form'))
     }
     if (target.closest('.page-pagination__item')) {
-      const pagePaginationItems = document.querySelectorAll('.page-pagination__item')
+      const pagePaginationItems = document.querySelectorAll(
+        '.page-pagination__item'
+      )
       removeClasses(pagePaginationItems, '_active')
       target.closest('.page-pagination__item').classList.add('_active')
     }

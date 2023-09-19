@@ -3,11 +3,18 @@
   &_material {
     .checkbox__label {
       grid-template-columns: repeat(2, 3.6rem) auto;
+      @media (max-width: 48em) {
+        grid-template-columns: repeat(2, 5.6rem) auto;
+      }
     }
     .checkbox__image {
       width: 3.6rem;
       height: 3.6rem;
       border-radius: 50%;
+      @media (max-width: 48em) {
+        width: 4.6rem;
+        height: 4.6rem;
+      }
     }
     .checkbox__text {
       transform: translateX(-1.2rem);
@@ -41,6 +48,11 @@
       height: 3.6rem;
       border: 1px solid $black;
       border-radius: 0.5rem;
+      @media (max-width: 48em) {
+        width: 5.6rem;
+        height: 5.6rem;
+        border-radius: 1rem;
+      }
     }
     &::after {
       content: '';
@@ -53,6 +65,15 @@
       background-image: url(@img/icons/check.svg);
       background-size: contain;
       background-repeat: no-repeat;
+      @media (max-width: 48em) {
+        width: 4.2rem;
+        height: 4.2rem;
+      }
+    }
+    @media (max-width: 48em) {
+      grid-template-columns: 5.6rem auto;
+      column-gap: 3.2rem;
+      row-gap: 2.4rem;
     }
   }
   // .checkbox__text

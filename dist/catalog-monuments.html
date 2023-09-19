@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20230919203025">
+	<link rel="stylesheet" href="css/style.min.css?_v=20230920014850">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -157,30 +157,28 @@
 			<section class="catalog__products products-catalog">
 				<div class="products-catalog__container container">
 					<div class="products-catalog__head">
-						<div class="products-catalog__filters filters-products-catalog">
-							<button type="button" title="Фильтры" class="filters-products-catalog__expand">
-								<span class="filters-products-catalog__expand-txt txt16 txt16_uc">фильтры</span>
-								<div class="filters-products-catalog__icon-wrap">
-									<img src="img/icons/sl-arrow.svg" alt="" aria-hidden="true" class="filters-products-catalog__icon" />
-								</div>
+						<div class="products-catalog__expand-btn expand-btn">
+							<button id="filtersExpand" type="button" title="Фильтры" class="expand-btn__inner">
+								<span class="expand-btn__txt txt16 txt16_uc">фильтры</span>
+								<img src="img/icons/sl-arrow-ellipse.svg" alt="" aria-hidden="true" class="expand-btn__icon" />
 							</button>
-							<div class="filters-products-catalog__body">
-								<div class="filters-products-catalog__container container">
-									<div class="filters-products-catalog__head">
-										<span class="filters-products-catalog__heading">фильтры</span>
-										<button type="button" title="Закрыть" class="filters-products-catalog__close-btn">
-											<img src="img/icons/cross.svg" alt="" aria-hidden="true" class="filters-products-catalog__close-icon" />
+							<div class="products-catalog__filters filters">
+								<div class="filters__container container">
+									<div class="filters__head">
+										<span class="filters__heading">фильтры</span>
+										<button type="button" title="Закрыть" class="filters__close-btn">
+											<img src="img/icons/cross.svg" alt="" aria-hidden="true" class="filters__close-icon" />
 										</button>
 									</div>
-									<form data-dev action="#" class="filters-products-catalog__form">
-										<div data-spoilers="768,max" data-spoilers class="filters-products-catalog__form-content">
-											<div class="filters-products-catalog__group">
-												<button type="button" data-spoiler class="filters-products-catalog__subtitle _spoiler-active">
+									<form data-dev action="#" class="filters__form">
+										<div data-spoilers="768,max" data-spoilers class="filters__form-content">
+											<div class="filters__group">
+												<button type="button" data-spoiler class="filters__subtitle _spoiler-active">
 													Цвет
 												</button>
-												<div class="filters-products-catalog__checkboxes-wrap">
-													<div class="filters-products-catalog__checkboxes">
-														<div class="filters-products-catalog__col">
+												<div class="filters__checkboxes-wrap">
+													<div class="filters__checkboxes">
+														<div class="filters__col">
 															<div class="checkbox">
 																<input id="c_1" class="checkbox__input" type="checkbox" value="c_1" name="form[]" />
 																<label for="c_1" class="checkbox__label"><span class="checkbox__text">Все</span></label>
@@ -202,7 +200,7 @@
 																<label for="c_5" class="checkbox__label"><span class="checkbox__text">Зеленый</span></label>
 															</div>
 														</div>
-														<div class="filters-products-catalog__col">
+														<div class="filters__col">
 															<div class="checkbox">
 																<input id="c_6" class="checkbox__input" type="checkbox" value="c_6" name="form[]" />
 																<label for="c_6" class="checkbox__label"><span class="checkbox__text">Коричневый</span></label>
@@ -223,13 +221,13 @@
 													</div>
 												</div>
 											</div>
-											<div class="filters-products-catalog__group filters-products-catalog__group_materials">
-												<button type="button" data-spoiler class="filters-products-catalog__subtitle">
+											<div class="filters__group filters__group_materials">
+												<button type="button" data-spoiler class="filters__subtitle">
 													материал
 												</button>
-												<div class="filters-products-catalog__checkboxes-wrap">
-													<div class="filters-products-catalog__checkboxes">
-														<div class="filters-products-catalog__col">
+												<div class="filters__checkboxes-wrap">
+													<div class="filters__checkboxes">
+														<div class="filters__col">
 															<div class="checkbox">
 																<input id="c_10" class="checkbox__input" type="checkbox" value="c_10" name="form[]" />
 																<label for="c_10" class="checkbox__label"><span class="checkbox__text">Все</span></label>
@@ -255,7 +253,7 @@
 																	<picture><source data-srcset="img/catalog/materials/classic-green.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/catalog/materials/classic-green.png" alt="Классик грин" class="checkbox__image" /></picture><span class="checkbox__text">Классик грин</span></label>
 															</div>
 														</div>
-														<div class="filters-products-catalog__col">
+														<div class="filters__col">
 															<div class="checkbox checkbox_material">
 																<input id="c_15" class="checkbox__input" type="checkbox" value="c_15" name="form[]" />
 																<label for="c_15" class="checkbox__label">
@@ -283,7 +281,7 @@
 																	<picture><source data-srcset="img/catalog/materials/blue-pearl.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/catalog/materials/blue-pearl.png" alt="Блю перл" class="checkbox__image" /></picture><span class="checkbox__text">Блю перл</span></label>
 															</div>
 														</div>
-														<div class="filters-products-catalog__col">
+														<div class="filters__col">
 															<div class="checkbox checkbox_material">
 																<input id="c_20" class="checkbox__input" type="checkbox" value="c_20" name="form[]" />
 																<label for="c_20" class="checkbox__label">
@@ -303,13 +301,13 @@
 													</div>
 												</div>
 											</div>
-											<div class="filters-products-catalog__group">
-												<button type="button" data-spoiler class="filters-products-catalog__subtitle" class="filters-products-catalog__subtitle">
+											<div class="filters__group">
+												<button type="button" data-spoiler class="filters__subtitle" class="filters__subtitle">
 													Тип памятника
 												</button>
-												<div class="filters-products-catalog__checkboxes-wrap">
-													<div class="filters-products-catalog__checkboxes">
-														<div class="filters-products-catalog__col">
+												<div class="filters__checkboxes-wrap">
+													<div class="filters__checkboxes">
+														<div class="filters__col">
 															<div class="checkbox">
 																<input id="c_22" class="checkbox__input" type="checkbox" value="c_22" name="form[]" />
 																<label for="c_22" class="checkbox__label"><span class="checkbox__text">Все</span></label>
@@ -326,13 +324,13 @@
 													</div>
 												</div>
 											</div>
-											<div class="filters-products-catalog__group filters-products-catalog__group_large">
-												<button type="button" data-spoiler class="filters-products-catalog__subtitle" class="filters-products-catalog__subtitle">
+											<div class="filters__group filters__group_large">
+												<button type="button" data-spoiler class="filters__subtitle" class="filters__subtitle">
 													Размеры
 												</button>
-												<div class="filters-products-catalog__checkboxes-wrap">
-													<div class="filters-products-catalog__checkboxes">
-														<div class="filters-products-catalog__col">
+												<div class="filters__checkboxes-wrap">
+													<div class="filters__checkboxes">
+														<div class="filters__col">
 															<div class="checkbox">
 																<input id="c_25" class="checkbox__input" type="checkbox" value="c_25" name="form[]" />
 																<label for="c_25" class="checkbox__label"><span class="checkbox__text">700x1100x50</span></label>
@@ -354,7 +352,7 @@
 																<label for="c_29" class="checkbox__label"><span class="checkbox__text">700x1200x80</span></label>
 															</div>
 														</div>
-														<div class="filters-products-catalog__col">
+														<div class="filters__col">
 															<div class="checkbox">
 																<input id="c_30" class="checkbox__input" type="checkbox" value="c_30" name="form[]" />
 																<label for="c_30" class="checkbox__label"><span class="checkbox__text">700x1200x100</span></label>
@@ -376,7 +374,7 @@
 																<label for="c_34" class="checkbox__label"><span class="checkbox__text">800x300x50</span></label>
 															</div>
 														</div>
-														<div class="filters-products-catalog__col">
+														<div class="filters__col">
 															<div class="checkbox">
 																<input id="c_35" class="checkbox__input" type="checkbox" value="c_35" name="form[]" />
 																<label for="c_35" class="checkbox__label"><span class="checkbox__text">800x400x80</span></label>
@@ -398,7 +396,7 @@
 																<label for="c_39" class="checkbox__label"><span class="checkbox__text">1000x500x50</span></label>
 															</div>
 														</div>
-														<div class="filters-products-catalog__col">
+														<div class="filters__col">
 															<div class="checkbox">
 																<input id="c_40" class="checkbox__input" type="checkbox" value="c_40" name="form[]" />
 																<label for="c_40" class="checkbox__label"><span class="checkbox__text">1000x500x80</span></label>
@@ -420,7 +418,7 @@
 																<label for="c_44" class="checkbox__label"><span class="checkbox__text">1200x600x120</span></label>
 															</div>
 														</div>
-														<div class="filters-products-catalog__col">
+														<div class="filters__col">
 															<div class="checkbox">
 																<input id="c_45" class="checkbox__input" type="checkbox" value="c_45" name="form[]" />
 																<label for="c_45" class="checkbox__label"><span class="checkbox__text">1000x500x80</span></label>
@@ -442,7 +440,7 @@
 																<label for="c_49" class="checkbox__label"><span class="checkbox__text">1200x600x120</span></label>
 															</div>
 														</div>
-														<div class="filters-products-catalog__col">
+														<div class="filters__col">
 															<div class="checkbox">
 																<input id="c_50" class="checkbox__input" type="checkbox" value="c_50" name="form[]" />
 																<label for="c_50" class="checkbox__label"><span class="checkbox__text">1400x700x100</span></label>
@@ -464,7 +462,7 @@
 																<label for="c_54" class="checkbox__label"><span class="checkbox__text">1600x800x150</span></label>
 															</div>
 														</div>
-														<div class="filters-products-catalog__col">
+														<div class="filters__col">
 															<div class="checkbox">
 																<input id="c_55" class="checkbox__input" type="checkbox" value="c_55" name="form[]" />
 																<label for="c_55" class="checkbox__label"><span class="checkbox__text">2000x1000x150</span></label>
@@ -478,11 +476,11 @@
 												</div>
 											</div>
 										</div>
-										<div class="filters-products-catalog__actions">
-											<button id="cleanFormBtn" type="button" title="Сбросить" class="filters-products-catalog__btn btn btn_ol">
+										<div class="filters__actions">
+											<button id="cleanFormBtn" type="button" title="Сбросить" class="filters__btn btn btn_ol">
 												<span class="btn__text">Сбросить</span>
 											</button>
-											<button type="submit" title="Применить" class="filters-products-catalog__btn btn btn_no-bg">
+											<button type="submit" title="Применить" class="filters__btn btn btn_no-bg">
 												<span class="btn__text">Применить</span>
 											</button>
 										</div>
@@ -684,9 +682,9 @@
 		</footer>
 
 	</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js?_v=20230919203025"></script>
-	<script src="https://api-maps.yandex.ru/2.1/?apikey=<ваш API-ключ&_v=20230919203025>&lang=ru_RU"></script>
-	<script src="js/app.min.js?_v=20230919203025"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js?_v=20230920014850"></script>
+	<script src="https://api-maps.yandex.ru/2.1/?apikey=<ваш API-ключ&_v=20230920014850>&lang=ru_RU"></script>
+	<script src="js/app.min.js?_v=20230920014850"></script>
 
 </body>
 

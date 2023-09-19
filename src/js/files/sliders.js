@@ -514,6 +514,13 @@ function initSliders() {
                 }
               })
             }
+            if (document.querySelector('.catalog_stone')) {
+              swiper.slideTo(swiper.slides.length - 1, 0)
+            } else if (document.querySelector('.catalog_fences')) {
+              swiper.slideTo(2, 0)
+            } else if (document.querySelector('.catalog_socles')) {
+              swiper.slideTo(1, 0)
+            }
           },
           activeIndexChange: swiper => {
             initCatalogSliderThumbs(swiper, swiper.realIndex)
@@ -546,6 +553,13 @@ function initSliders() {
                   swiper.slideTo(thumbIndex, 1000)
                 }
               })
+            }
+            if (document.querySelector('.catalog_stone')) {
+              swiper.slideTo(swiper.slides.length - 1, 0)
+            } else if (document.querySelector('.catalog_fences')) {
+              swiper.slideTo(2, 0)
+            } else if (document.querySelector('.catalog_socles')) {
+              swiper.slideTo(1, 0)
             }
           },
           activeIndexChange: swiper => {

@@ -129,59 +129,49 @@
         <section class="catalog__products products-catalog">
           <div class="products-catalog__container container">
             <div class="products-catalog__head">
-              <div class="products-catalog__filters filters-products-catalog">
+              <div class="products-catalog__expand-btn expand-btn">
                 <button
+                  id="filtersExpand"
                   type="button"
                   title="Фильтры"
-                  class="filters-products-catalog__expand">
-                  <span
-                    class="filters-products-catalog__expand-txt txt16 txt16_uc"
-                    >фильтры</span
-                  >
-                  <div class="filters-products-catalog__icon-wrap">
-                    <img
-                      src="@img/icons/sl-arrow.svg"
-                      alt=""
-                      aria-hidden="true"
-                      class="filters-products-catalog__icon" />
-                  </div>
+                  class="expand-btn__inner">
+                  <span class="expand-btn__txt txt16 txt16_uc">фильтры</span>
+                  <img
+                    src="@img/icons/sl-arrow-ellipse.svg"
+                    alt=""
+                    aria-hidden="true"
+                    class="expand-btn__icon" />
                 </button>
-                <div class="filters-products-catalog__body">
-                  <div class="filters-products-catalog__container container">
-                    <div class="filters-products-catalog__head">
-                      <span class="filters-products-catalog__heading"
-                        >фильтры</span
-                      >
+                <div class="products-catalog__filters filters">
+                  <div class="filters__container container">
+                    <div class="filters__head">
+                      <span class="filters__heading">фильтры</span>
                       <button
                         type="button"
                         title="Закрыть"
-                        class="filters-products-catalog__close-btn">
+                        class="filters__close-btn">
                         <img
                           src="@img/icons/cross.svg"
                           alt=""
                           aria-hidden="true"
-                          class="filters-products-catalog__close-icon" />
+                          class="filters__close-icon" />
                       </button>
                     </div>
-                    <form
-                      data-dev
-                      action="#"
-                      class="filters-products-catalog__form">
+                    <form data-dev action="#" class="filters__form">
                       <div
                         data-spoilers="768,max"
                         data-spoilers
-                        class="filters-products-catalog__form-content">
-                        <div class="filters-products-catalog__group">
+                        class="filters__form-content">
+                        <div class="filters__group">
                           <button
                             type="button"
                             data-spoiler
-                            class="filters-products-catalog__subtitle _spoiler-active">
+                            class="filters__subtitle _spoiler-active">
                             Цвет
                           </button>
-                          <div
-                            class="filters-products-catalog__checkboxes-wrap">
-                            <div class="filters-products-catalog__checkboxes">
-                              <div class="filters-products-catalog__col">
+                          <div class="filters__checkboxes-wrap">
+                            <div class="filters__checkboxes">
+                              <div class="filters__col">
                                 <div class="checkbox">
                                   <input
                                     id="c_1"
@@ -248,7 +238,7 @@
                                   >
                                 </div>
                               </div>
-                              <div class="filters-products-catalog__col">
+                              <div class="filters__col">
                                 <div class="checkbox">
                                   <input
                                     id="c_6"
@@ -305,18 +295,16 @@
                             </div>
                           </div>
                         </div>
-                        <div
-                          class="filters-products-catalog__group filters-products-catalog__group_materials">
+                        <div class="filters__group filters__group_materials">
                           <button
                             type="button"
                             data-spoiler
-                            class="filters-products-catalog__subtitle">
+                            class="filters__subtitle">
                             материал
                           </button>
-                          <div
-                            class="filters-products-catalog__checkboxes-wrap">
-                            <div class="filters-products-catalog__checkboxes">
-                              <div class="filters-products-catalog__col">
+                          <div class="filters__checkboxes-wrap">
+                            <div class="filters__checkboxes">
+                              <div class="filters__col">
                                 <div class="checkbox">
                                   <input
                                     id="c_10"
@@ -399,7 +387,7 @@
                                   >
                                 </div>
                               </div>
-                              <div class="filters-products-catalog__col">
+                              <div class="filters__col">
                                 <div class="checkbox checkbox_material">
                                   <input
                                     id="c_15"
@@ -486,7 +474,7 @@
                                   >
                                 </div>
                               </div>
-                              <div class="filters-products-catalog__col">
+                              <div class="filters__col">
                                 <div class="checkbox checkbox_material">
                                   <input
                                     id="c_20"
@@ -542,18 +530,17 @@
                             </div>
                           </div>
                         </div>
-                        <div class="filters-products-catalog__group">
+                        <div class="filters__group">
                           <button
                             type="button"
                             data-spoiler
-                            class="filters-products-catalog__subtitle"
-                            class="filters-products-catalog__subtitle">
+                            class="filters__subtitle"
+                            class="filters__subtitle">
                             Тип памятника
                           </button>
-                          <div
-                            class="filters-products-catalog__checkboxes-wrap">
-                            <div class="filters-products-catalog__checkboxes">
-                              <div class="filters-products-catalog__col">
+                          <div class="filters__checkboxes-wrap">
+                            <div class="filters__checkboxes">
+                              <div class="filters__col">
                                 <div class="checkbox">
                                   <input
                                     id="c_22"
@@ -597,19 +584,17 @@
                             </div>
                           </div>
                         </div>
-                        <div
-                          class="filters-products-catalog__group filters-products-catalog__group_large">
+                        <div class="filters__group filters__group_large">
                           <button
                             type="button"
                             data-spoiler
-                            class="filters-products-catalog__subtitle"
-                            class="filters-products-catalog__subtitle">
+                            class="filters__subtitle"
+                            class="filters__subtitle">
                             Размеры
                           </button>
-                          <div
-                            class="filters-products-catalog__checkboxes-wrap">
-                            <div class="filters-products-catalog__checkboxes">
-                              <div class="filters-products-catalog__col">
+                          <div class="filters__checkboxes-wrap">
+                            <div class="filters__checkboxes">
+                              <div class="filters__col">
                                 <div class="checkbox">
                                   <input
                                     id="c_25"
@@ -676,7 +661,7 @@
                                   >
                                 </div>
                               </div>
-                              <div class="filters-products-catalog__col">
+                              <div class="filters__col">
                                 <div class="checkbox">
                                   <input
                                     id="c_30"
@@ -743,7 +728,7 @@
                                   >
                                 </div>
                               </div>
-                              <div class="filters-products-catalog__col">
+                              <div class="filters__col">
                                 <div class="checkbox">
                                   <input
                                     id="c_35"
@@ -810,7 +795,7 @@
                                   >
                                 </div>
                               </div>
-                              <div class="filters-products-catalog__col">
+                              <div class="filters__col">
                                 <div class="checkbox">
                                   <input
                                     id="c_40"
@@ -877,7 +862,7 @@
                                   >
                                 </div>
                               </div>
-                              <div class="filters-products-catalog__col">
+                              <div class="filters__col">
                                 <div class="checkbox">
                                   <input
                                     id="c_45"
@@ -944,7 +929,7 @@
                                   >
                                 </div>
                               </div>
-                              <div class="filters-products-catalog__col">
+                              <div class="filters__col">
                                 <div class="checkbox">
                                   <input
                                     id="c_50"
@@ -1011,7 +996,7 @@
                                   >
                                 </div>
                               </div>
-                              <div class="filters-products-catalog__col">
+                              <div class="filters__col">
                                 <div class="checkbox">
                                   <input
                                     id="c_55"
@@ -1043,18 +1028,18 @@
                           </div>
                         </div>
                       </div>
-                      <div class="filters-products-catalog__actions">
+                      <div class="filters__actions">
                         <button
                           id="cleanFormBtn"
                           type="button"
                           title="Сбросить"
-                          class="filters-products-catalog__btn btn btn_ol">
+                          class="filters__btn btn btn_ol">
                           <span class="btn__text">Сбросить</span>
                         </button>
                         <button
                           type="submit"
                           title="Применить"
-                          class="filters-products-catalog__btn btn btn_no-bg">
+                          class="filters__btn btn btn_no-bg">
                           <span class="btn__text">Применить</span>
                         </button>
                       </div>

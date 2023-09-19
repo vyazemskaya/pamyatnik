@@ -149,6 +149,7 @@
     column-gap: normal;
     .navigation__button {
       position: absolute;
+      z-index: 2;
       top: 50%;
       width: 5rem;
       &_prev {
@@ -171,6 +172,7 @@
   // .hero-catalog__slider
 
   &__slider {
+    z-index: 2;
     width: 100%;
     @media (min-width: 48em) {
       &.swiper {
@@ -229,6 +231,7 @@
     flex-direction: column;
     @media (min-width: 48em) {
       position: absolute;
+      z-index: 2;
       bottom: 0;
       left: 0;
       transform: translate(-56%, 33%);
@@ -259,7 +262,7 @@
   &__text {
     max-width: 30.6rem;
     @media (max-width: 48em) {
-      max-width: 61.2rem;
+      max-width: 57rem;
     }
   }
 }

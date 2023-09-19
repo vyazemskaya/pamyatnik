@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="ru">
+  @@include('html/_head.htm',{ "title":"Каталог" })
+  <body>
+    <div class="wrapper">
+      @@include('html/_header.htm',{})
+      <main class="main catalog catalog_socles">
+        <section class="catalog__hero hero-catalog">
+          <div class="hero-catalog__container container">
+            <h1 class="hero-catalog__title">продукция</h1>
+            <div class="hero-catalog__content">
+              <div
+                data-da=".hero-catalog__footer,768,first"
+                class="hero-catalog__thumbs hero-catalog__thumbs_prev"></div>
+              <div class="hero-catalog__carousel">
+                <div class="hero-catalog__slider swiper">
+                  <div class="hero-catalog__wrapper swiper-wrapper">
+                    <div
+                      class="hero-catalog__slide slide-hero-catalog swiper-slide">
+                      <div class="slide-hero-catalog__image-wrap">
+                        <img
+                          src="@img/catalog/hero-catalog/01.png"
+                          alt="ПАМЯТНИК ZB-1-8"
+                          class="slide-hero-catalog__image" />
+                      </div>
+                      <div class="slide-hero-catalog__content">
+                        <span class="slide-hero-catalog__heading">
+                          памятники
+                        </span>
+                        <p class="slide-hero-catalog__text txt16 txt16_uc">
+                          изготавливаем уникальные памятники из гранита и
+                          мрамора
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="hero-catalog__slide slide-hero-catalog swiper-slide">
+                      <div class="slide-hero-catalog__image-wrap">
+                        <img
+                          src="@img/catalog/hero-catalog/04.png"
+                          alt="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                          class="slide-hero-catalog__image" />
+                      </div>
+                      <div class="slide-hero-catalog__content">
+                        <span class="slide-hero-catalog__heading">
+                          Цоколя
+                        </span>
+                        <p class="slide-hero-catalog__text txt16 txt16_uc">
+                          изготавливаем уникальные цоколя из гранита и мрамора
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="hero-catalog__slide slide-hero-catalog swiper-slide">
+                      <div class="slide-hero-catalog__image-wrap">
+                        <img
+                          src="@img/catalog/hero-catalog/03.png"
+                          alt="ОГРАДА ПВ-2"
+                          class="slide-hero-catalog__image" />
+                      </div>
+                      <div class="slide-hero-catalog__content">
+                        <span class="slide-hero-catalog__heading">
+                          ограды
+                        </span>
+                        <p class="slide-hero-catalog__text txt16 txt16_uc">
+                          изготавливаем уникальные ограды
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="hero-catalog__slide slide-hero-catalog swiper-slide">
+                      <div class="slide-hero-catalog__image-wrap">
+                        <img
+                          src="@img/catalog/hero-catalog/05.png"
+                          alt="Комплекс"
+                          class="slide-hero-catalog__image" />
+                      </div>
+                      <div class="slide-hero-catalog__content">
+                        <span class="slide-hero-catalog__heading">
+                          Комплексы
+                        </span>
+                        <p class="slide-hero-catalog__text txt16 txt16_uc">
+                          Текст
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="hero-catalog__slide slide-hero-catalog swiper-slide">
+                      <div
+                        class="slide-hero-catalog__image-wrap slide-hero-catalog__image-wrap_shadow">
+                        <img
+                          src="@img/catalog/hero-catalog/02.png"
+                          alt="Шампань"
+                          class="slide-hero-catalog__image" />
+                      </div>
+                      <div class="slide-hero-catalog__content">
+                        <span class="slide-hero-catalog__heading">
+                          Камень
+                        </span>
+                        <p class="slide-hero-catalog__text txt16 txt16_uc">
+                          предлагаем большое разнообразие материалов
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="hero-catalog__navigation navigation">
+                  <button
+                    type="button"
+                    title="Предыдущий слайд"
+                    class="navigation__button navigation__button_prev">
+                    <img src="img/icons/arrow.svg" aria-hidden="true" alt="" />
+                  </button>
+                  <button
+                    type="button"
+                    title="Cледующий слайд"
+                    class="navigation__button navigation__button_next">
+                    <img src="img/icons/arrow.svg" aria-hidden="true" alt="" />
+                  </button>
+                </div>
+              </div>
+              <div
+                data-da=".hero-catalog__footer,768,last"
+                class="hero-catalog__thumbs hero-catalog__thumbs_next"></div>
+              <div class="hero-catalog__footer section-footer"></div>
+            </div>
+          </div>
+        </section>
+        <section class="catalog__products products-catalog">
+          <div class="products-catalog__container container">
+            <div data-one-select class="products-catalog__head">
+              <div
+                id="filtersExpand"
+                class="products-catalog__select products-catalog__select_left select-filters select-checkbox">
+                <select
+                  data-pseudo-label="фильтры"
+                  name="form[]"
+                  class="form desktop-only">
+                  <option value="1" selected>ВСЕ</option>
+                  <option
+                    data-asset="@img/catalog/materials/diabase.png"
+                    value="2">
+                    Диабаз
+                  </option>
+                  <option
+                    data-asset="@img/catalog/materials/dymovsky.png"
+                    value="3">
+                    Дымовский
+                  </option>
+                  <option
+                    data-asset="@img/catalog/materials/indian-red.png"
+                    value="4">
+                    индиан ред
+                  </option>
+                  <option
+                    data-asset="@img/catalog/materials/classic-green.png"
+                    value="5">
+                    классик грин
+                  </option>
+                  <option
+                    data-asset="@img/catalog/materials/tropical-green.png"
+                    value="6">
+                    Тропикал грин
+                  </option>
+                  <option
+                    data-asset="@img/catalog/materials/champagne.png"
+                    value="7">
+                    Шампань
+                  </option>
+                  <option
+                    data-asset="@img/catalog/materials/amphibolite.png"
+                    value="8">
+                    Амфиболит
+                  </option>
+                  <option
+                    data-asset="@img/catalog/materials/shansi.png"
+                    value="9">
+                    шанси
+                  </option>
+                  <option
+                    data-asset="@img/catalog/materials/blue-pearl.png"
+                    value="10">
+                    блю перл
+                  </option>
+                  <option
+                    data-asset="@img/catalog/materials/mansurovsky.png"
+                    value="11">
+                    Мансуровский
+                  </option>
+                  <option
+                    data-asset="@img/catalog/materials/pokostovsky.png"
+                    value="12">
+                    Покостовский
+                  </option>
+                  <option
+                    data-asset="@img/catalog/materials/gabbro.png"
+                    value="13">
+                    Габбро
+                  </option>
+                </select>
+                <div class="products-catalog__filters filters">
+                  <div class="filters__container container">
+                    <div class="filters__head">
+                      <span class="filters__heading">фильтры</span>
+                      <button
+                        type="button"
+                        title="Закрыть"
+                        class="filters__close-btn">
+                        <img
+                          src="@img/icons/cross.svg"
+                          alt=""
+                          aria-hidden="true"
+                          class="filters__close-icon" />
+                      </button>
+                    </div>
+                    <form data-dev action="#" class="filters__form">
+                      <div
+                        data-spoilers="768,max"
+                        data-spoilers
+                        class="filters__form-content">
+                        <div class="filters__group filters__group_materials">
+                          <button
+                            type="button"
+                            data-spoiler
+                            class="filters__subtitle _spoiler-active">
+                            материал
+                          </button>
+                          <div class="filters__checkboxes-wrap">
+                            <div class="filters__checkboxes">
+                              <div class="filters__col">
+                                <div class="checkbox">
+                                  <input
+                                    id="c_1"
+                                    class="checkbox__input"
+                                    type="checkbox"
+                                    value="c_1"
+                                    name="form[]" />
+                                  <label for="c_1" class="checkbox__label"
+                                    ><span class="checkbox__text"
+                                      >Все</span
+                                    ></label
+                                  >
+                                </div>
+                                <div class="checkbox checkbox_material">
+                                  <input
+                                    id="c_2"
+                                    class="checkbox__input"
+                                    type="checkbox"
+                                    value="c_2"
+                                    name="form[]" />
+                                  <label for="c_2" class="checkbox__label">
+                                    <img
+                                      data-src="@img/catalog/materials/diabase.png"
+                                      alt="Диабаз"
+                                      class="checkbox__image" /><span
+                                      class="checkbox__text"
+                                      >Диабаз</span
+                                    ></label
+                                  >
+                                </div>
+                                <div class="checkbox checkbox_material">
+                                  <input
+                                    id="c_3"
+                                    class="checkbox__input"
+                                    type="checkbox"
+                                    value="c_3"
+                                    name="form[]" />
+                                  <label for="c_3" class="checkbox__label">
+                                    <img
+                                      data-src="@img/catalog/materials/dymovsky.png"
+                                      alt="Дымовский"
+                                      class="checkbox__image" /><span
+                                      class="checkbox__text"
+                                      >Дымовский</span
+                                    ></label
+                                  >
+                                </div>
+                                <div class="checkbox checkbox_material">
+                                  <input
+                                    id="c_4"
+                                    class="checkbox__input"
+                                    type="checkbox"
+                                    value="c_4"
+                                    name="form[]" />
+                                  <label for="c_4" class="checkbox__label">
+                                    <img
+                                      data-src="@img/catalog/materials/indian-red.png"
+                                      alt="Индиан ред"
+                                      class="checkbox__image" /><span
+                                      class="checkbox__text"
+                                      >Индиан ред</span
+                                    ></label
+                                  >
+                                </div>
+                                <div class="checkbox checkbox_material">
+                                  <input
+                                    id="c_5"
+                                    class="checkbox__input"
+                                    type="checkbox"
+                                    value="c_5"
+                                    name="form[]" />
+                                  <label for="c_5" class="checkbox__label">
+                                    <img
+                                      data-src="@img/catalog/materials/classic-green.png"
+                                      alt="Классик грин"
+                                      class="checkbox__image" /><span
+                                      class="checkbox__text"
+                                      >Классик грин</span
+                                    ></label
+                                  >
+                                </div>
+                              </div>
+                              <div class="filters__col">
+                                <div class="checkbox checkbox_material">
+                                  <input
+                                    id="c_6"
+                                    class="checkbox__input"
+                                    type="checkbox"
+                                    value="c_6"
+                                    name="form[]" />
+                                  <label for="c_6" class="checkbox__label">
+                                    <img
+                                      data-src="@img/catalog/materials/tropical-green.png"
+                                      alt="Тропикан грин"
+                                      class="checkbox__image" />
+                                    <span class="checkbox__text"
+                                      >Тропикан грин</span
+                                    ></label
+                                  >
+                                </div>
+                                <div class="checkbox checkbox_material">
+                                  <input
+                                    id="c_7"
+                                    class="checkbox__input"
+                                    type="checkbox"
+                                    value="c_7"
+                                    name="form[]" />
+                                  <label for="c_7" class="checkbox__label">
+                                    <img
+                                      data-src="@img/catalog/materials/champagne.png"
+                                      alt="Шампань"
+                                      class="checkbox__image" /><span
+                                      class="checkbox__text"
+                                      >Шампань</span
+                                    ></label
+                                  >
+                                </div>
+                                <div class="checkbox checkbox_material">
+                                  <input
+                                    id="c_8"
+                                    class="checkbox__input"
+                                    type="checkbox"
+                                    value="c_8"
+                                    name="form[]" />
+                                  <label for="c_8" class="checkbox__label">
+                                    <img
+                                      data-src="@img/catalog/materials/amphibolite.png"
+                                      alt="Амфиболит"
+                                      class="checkbox__image" /><span
+                                      class="checkbox__text"
+                                      >Амфиболит</span
+                                    ></label
+                                  >
+                                </div>
+                                <div class="checkbox checkbox_material">
+                                  <input
+                                    id="c_9"
+                                    class="checkbox__input"
+                                    type="checkbox"
+                                    value="c_9"
+                                    name="form[]" />
+                                  <label for="c_9" class="checkbox__label">
+                                    <img
+                                      data-src="@img/catalog/materials/shansi.png"
+                                      alt="Шанси"
+                                      class="checkbox__image" /><span
+                                      class="checkbox__text"
+                                      >Шанси</span
+                                    ></label
+                                  >
+                                </div>
+                                <div class="checkbox checkbox_material">
+                                  <input
+                                    id="c_10"
+                                    class="checkbox__input"
+                                    type="checkbox"
+                                    value="c_10"
+                                    name="form[]" />
+                                  <label for="c_10" class="checkbox__label">
+                                    <img
+                                      data-src="@img/catalog/materials/blue-pearl.png"
+                                      alt="Блю перл"
+                                      class="checkbox__image" /><span
+                                      class="checkbox__text"
+                                      >Блю перл</span
+                                    ></label
+                                  >
+                                </div>
+                              </div>
+                              <div class="filters__col">
+                                <div class="checkbox checkbox_material">
+                                  <input
+                                    id="c_11"
+                                    class="checkbox__input"
+                                    type="checkbox"
+                                    value="c_11"
+                                    name="form[]" />
+                                  <label for="c_11" class="checkbox__label">
+                                    <img
+                                      data-src="@img/catalog/materials/mansurovsky.png"
+                                      alt="Мансуровский"
+                                      class="checkbox__image" /><span
+                                      class="checkbox__text"
+                                      >Мансуровский</span
+                                    ></label
+                                  >
+                                </div>
+                                <div class="checkbox checkbox_material">
+                                  <input
+                                    id="c_12"
+                                    class="checkbox__input"
+                                    type="checkbox"
+                                    value="c_12"
+                                    name="form[]" />
+                                  <label for="c_12" class="checkbox__label">
+                                    <img
+                                      data-src="@img/catalog/materials/pokostovsky.png"
+                                      alt="Покостовский"
+                                      class="checkbox__image" /><span
+                                      class="checkbox__text"
+                                      >Покостовский</span
+                                    ></label
+                                  >
+                                </div>
+                                <div class="checkbox checkbox_material">
+                                  <input
+                                    id="c_13"
+                                    class="checkbox__input"
+                                    type="checkbox"
+                                    value="c_13"
+                                    name="form[]" />
+                                  <label for="c_13" class="checkbox__label">
+                                    <img
+                                      data-src="@img/catalog/materials/gabbro.png"
+                                      alt="Габбро"
+                                      class="checkbox__image" /><span
+                                      class="checkbox__text"
+                                      >Габбро</span
+                                    ></label
+                                  >
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="filters__actions">
+                        <button
+                          id="cleanFormBtn"
+                          type="button"
+                          title="Сбросить"
+                          class="filters__btn btn btn_ol">
+                          <span class="btn__text">Сбросить</span>
+                        </button>
+                        <button
+                          type="submit"
+                          title="Применить"
+                          class="filters__btn btn btn_no-bg">
+                          <span class="btn__text">Применить</span>
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="products-catalog__tabs catalog-tabs swiper">
+                <div class="catalog-tabs__wrapper swiper-wrapper">
+                  <button
+                    data-catalog-filter="stone"
+                    title="Камень"
+                    type="button"
+                    class="catalog-tabs__item swiper-slide">
+                    камень
+                  </button>
+                  <button
+                    data-catalog-filter="monuments"
+                    title="Памятники"
+                    type="button"
+                    class="catalog-tabs__item swiper-slide">
+                    памятники
+                  </button>
+                  <button
+                    data-catalog-filter="complexes"
+                    title="Комплексы"
+                    type="button"
+                    class="catalog-tabs__item swiper-slide">
+                    комплексы
+                  </button>
+                  <button
+                    data-catalog-filter="fences"
+                    title="Ограды"
+                    type="button"
+                    class="catalog-tabs__item swiper-slide">
+                    ограды
+                  </button>
+                  <button
+                    data-catalog-filter="socles"
+                    title="Цоколя"
+                    type="button"
+                    class="catalog-tabs__item swiper-slide _active">
+                    цоколя
+                  </button>
+                </div>
+              </div>
+              <div
+                class="products-catalog__select products-catalog__select_right select-checkbox">
+                <select
+                  data-pseudo-label="сортировка"
+                  name="form[]"
+                  class="form">
+                  <option value="1" selected>ВСЕ</option>
+                  <option value="2">НОВИНКИ</option>
+                  <option value="3">ПОПУЛЯРНЫЕ</option>
+                  <option value="4">В НАЛИЧИИ</option>
+                  <option value="5">ПОД ЗАКАЗ</option>
+                </select>
+              </div>
+            </div>
+            <div class="products-catalog__body">
+              <div class="products-catalog__group">
+                <a
+                  href="#"
+                  title="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/socles/01.png"
+                      alt="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                      class="item-card__image" />
+                    <span class="item-card__heading"
+                      >ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ</span
+                    >
+                    <p class="item-card__text txt16">материал: Лезниковский</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/socles/01.png"
+                      alt="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                      class="item-card__image" />
+                    <span class="item-card__heading"
+                      >ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ</span
+                    >
+                    <p class="item-card__text txt16">материал: Лезниковский</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/socles/01.png"
+                      alt="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                      class="item-card__image" />
+                    <span class="item-card__heading"
+                      >ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ</span
+                    >
+                    <p class="item-card__text txt16">материал: Лезниковский</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/socles/01.png"
+                      alt="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                      class="item-card__image" />
+                    <span class="item-card__heading"
+                      >ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ</span
+                    >
+                    <p class="item-card__text txt16">материал: Лезниковский</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/socles/01.png"
+                      alt="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                      class="item-card__image" />
+                    <span class="item-card__heading"
+                      >ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ</span
+                    >
+                    <p class="item-card__text txt16">материал: Лезниковский</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/socles/01.png"
+                      alt="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                      class="item-card__image" />
+                    <span class="item-card__heading"
+                      >ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ</span
+                    >
+                    <p class="item-card__text txt16">материал: Лезниковский</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/socles/01.png"
+                      alt="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                      class="item-card__image" />
+                    <span class="item-card__heading"
+                      >ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ</span
+                    >
+                    <p class="item-card__text txt16">материал: Лезниковский</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/socles/01.png"
+                      alt="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                      class="item-card__image" />
+                    <span class="item-card__heading"
+                      >ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ</span
+                    >
+                    <p class="item-card__text txt16">материал: Лезниковский</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/socles/01.png"
+                      alt="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                      class="item-card__image" />
+                    <span class="item-card__heading"
+                      >ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ</span
+                    >
+                    <p class="item-card__text txt16">материал: Лезниковский</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/socles/01.png"
+                      alt="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                      class="item-card__image" />
+                    <span class="item-card__heading"
+                      >ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ</span
+                    >
+                    <p class="item-card__text txt16">материал: Лезниковский</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/socles/01.png"
+                      alt="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                      class="item-card__image" />
+                    <span class="item-card__heading"
+                      >ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ</span
+                    >
+                    <p class="item-card__text txt16">материал: Лезниковский</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/socles/01.png"
+                      alt="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                      class="item-card__image" />
+                    <span class="item-card__heading"
+                      >ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ</span
+                    >
+                    <p class="item-card__text txt16">материал: Лезниковский</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/socles/01.png"
+                      alt="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                      class="item-card__image" />
+                    <span class="item-card__heading"
+                      >ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ</span
+                    >
+                    <p class="item-card__text txt16">материал: Лезниковский</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/socles/01.png"
+                      alt="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                      class="item-card__image" />
+                    <span class="item-card__heading"
+                      >ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ</span
+                    >
+                    <p class="item-card__text txt16">материал: Лезниковский</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/socles/01.png"
+                      alt="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                      class="item-card__image" />
+                    <span class="item-card__heading"
+                      >ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ</span
+                    >
+                    <p class="item-card__text txt16">материал: Лезниковский</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/socles/01.png"
+                      alt="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                      class="item-card__image" />
+                    <span class="item-card__heading"
+                      >ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ</span
+                    >
+                    <p class="item-card__text txt16">материал: Лезниковский</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="products-catalog__footer">
+              <a
+                href="#"
+                title="Показать ещё"
+                class="products-catalog__btn btn btn_ol"
+                ><span class="btn__text">показать ещё</span></a
+              >
+              <div class="products-catalog__pagination page-pagination">
+                <a href="#" class="page-pagination__item _active"
+                  ><span>1</span></a
+                >
+                <a href="#" class="page-pagination__item"><span>2</span></a>
+                <a href="#" class="page-pagination__item"><span>3</span></a>
+                <a href="#" class="page-pagination__item"><span>4</span></a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      @@include('html/_footer.htm',{})
+    </div>
+    @@include('html/_js.htm',{})
+  </body>
+</html>
