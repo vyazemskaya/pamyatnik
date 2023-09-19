@@ -26,7 +26,7 @@ utilities.menuInit()
 
 // spoiler module
 // snippet ( HTML ): spoilers
-// utilities.spoilers();
+utilities.spoilers();
 
 // tabs module
 // snippet ( HTML ): tabs

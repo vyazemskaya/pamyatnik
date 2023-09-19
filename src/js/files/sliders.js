@@ -505,15 +505,12 @@ function initSliders() {
         on: {
           init: swiper => {
             initCatalogSliderThumbs(swiper, swiper.realIndex)
-            if (
-              document.querySelectorAll('.hero-catalog__thumbs-image').length
-            ) {
+            if (document.querySelectorAll('.hero-catalog__thumb').length) {
               document.addEventListener('click', function (e) {
-                if (e.target.closest('.hero-catalog__thumbs-image')) {
-                  const thumbIndex = e.target.closest(
-                    '.hero-catalog__thumbs-image'
-                  ).dataset.slideIndex
-                  swiper.slideTo(thumbIndex, 0)
+                if (e.target.closest('.hero-catalog__thumb')) {
+                  const thumbIndex = e.target.closest('.hero-catalog__thumb')
+                    .dataset.slideIndex
+                  swiper.slideTo(thumbIndex, 500)
                 }
               })
             }
@@ -541,15 +538,12 @@ function initSliders() {
         on: {
           init: swiper => {
             initCatalogSliderThumbs(swiper, swiper.realIndex)
-            if (
-              document.querySelectorAll('.hero-catalog__thumbs-image').length
-            ) {
+            if (document.querySelectorAll('.hero-catalog__thumb').length) {
               document.addEventListener('click', function (e) {
-                if (e.target.closest('.hero-catalog__thumbs-image')) {
-                  const thumbIndex = e.target.closest(
-                    '.hero-catalog__thumbs-image'
-                  ).dataset.slideIndex
-                  swiper.slideTo(thumbIndex, 0)
+                if (e.target.closest('.hero-catalog__thumb')) {
+                  const thumbIndex = e.target.closest('.hero-catalog__thumb')
+                    .dataset.slideIndex
+                  swiper.slideTo(thumbIndex, 1000)
                 }
               })
             }
