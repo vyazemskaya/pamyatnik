@@ -196,27 +196,18 @@
   // .slide-services-mainpage__number
 
   &__number {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    @extend .page-pagination__item;
     flex: 0 0 7rem;
     width: 7rem;
     height: 7rem;
-    border-radius: 50%;
+    border: none;
     background-image: url(@img/bg/num-bg.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    overflow: hidden;
     span {
-      position: relative;
-      z-index: 2;
-      color: #ffffff;
       font-size: 2.6rem;
-      line-height: 140%;
-      text-transform: uppercase;
-      white-space: nowrap;
+      color: #ffffff;
     }
     @media (max-width: 48em) {
       flex: 0 0 10rem;

@@ -90,6 +90,63 @@ const initGallerySlider = swiper => {
     }
   }
 }
+const initCatalogSliderThumbs = swiper => {
+  const slides = swiper.slides
+  const realIndex = swiper.realIndex
+  const prevIndex =
+    realIndex - 1 > 0 || realIndex - 1 === 0 ? realIndex - 1 : slides.length - 1
+  const thumbsNextContainer = document.querySelector(
+    '.hero-catalog__thumbs_next'
+  )
+  const thumbsPrevContainer = document.querySelector(
+    '.hero-catalog__thumbs_prev'
+  )
+  thumbsNextContainer.innerHTML = ''
+
+  class Thumb {
+    constructor(parent, index) {
+      this.parent = parent
+      this.index = index
+      this.item = this.init()
+    }
+    init() {
+      const item = document.createElement('button')
+      const imageSrc = this.parent
+        .querySelector('.slide-hero-catalog__image')
+        .getAttribute('src')
+      item.classList.add('hero-catalog__thumb')
+      item.setAttribute('data-slide-index', `${this.index}`)
+      item.innerHTML = `
+        <img src="${imageSrc}" alt="" aria-hidden="true">
+        `
+      return item
+    }
+  }
+
+  let thumbPrev
+  let thumbNext
+
+  if (prevIndex > 0 || prevIndex === 0) {
+    thumbPrev = new Thumb(slides[prevIndex], prevIndex)
+    thumbsPrevContainer.innerHTML = ''
+    thumbsPrevContainer.appendChild(thumbPrev.item)
+  } else {
+    prevIndex = slides.length - 1
+    thumbPrev = new Thumb(slides[prevIndex], prevIndex)
+    thumbsPrevContainer.innerHTML = ''
+    thumbsPrevContainer.appendChild(thumbPrev.item)
+  }
+
+  slides.forEach(slide => {
+    if (
+      slides.indexOf(slide) !== realIndex &&
+      slides.indexOf(slide) !== prevIndex
+    ) {
+      thumbNext = new Thumb(slide, slides.indexOf(slide))
+      thumbsNextContainer.appendChild(thumbNext.item)
+    }
+  })
+}
 
 function initSliders() {
   if (document.querySelector('.hero-mainpage__slider')) {
@@ -162,13 +219,13 @@ function initSliders() {
       },
     })
   }
-  if (document.querySelector('.catalog-mainpage__filters')) {
+  if (document.querySelector('.catalog-tabs')) {
     const initSwiper = () => {
       if (
         window.matchMedia('(max-width: 768px)').matches &&
         !mainpageFiltersSlider
       ) {
-        mainpageFiltersSlider = new Swiper('.catalog-mainpage__filters', {
+        mainpageFiltersSlider = new Swiper('.catalog-tabs', {
           modules: [],
           observer: true,
           observeParents: true,
@@ -422,6 +479,87 @@ function initSliders() {
         },
       },
     })
+  }
+  if (document.querySelector('.hero-catalog__slider')) {
+    if (!window.matchMedia('(max-width: 768px)').matches) {
+      new Swiper('.hero-catalog__slider', {
+        modules: [Navigation, EffectFade],
+        speed: 500,
+        slidesPerView: 1,
+        spaceBetween: 10,
+        autoHeight: false,
+
+        // effects
+        effect: 'fade',
+        fadeEffect: {
+          crossFade: true,
+        },
+
+        // navigation
+        navigation: {
+          prevEl: '.hero-catalog .navigation__button_prev',
+          nextEl: '.hero-catalog .navigation__button_next',
+        },
+
+        // events
+        on: {
+          init: swiper => {
+            initCatalogSliderThumbs(swiper, swiper.realIndex)
+            if (
+              document.querySelectorAll('.hero-catalog__thumbs-image').length
+            ) {
+              document.addEventListener('click', function (e) {
+                if (e.target.closest('.hero-catalog__thumbs-image')) {
+                  const thumbIndex = e.target.closest(
+                    '.hero-catalog__thumbs-image'
+                  ).dataset.slideIndex
+                  swiper.slideTo(thumbIndex, 0)
+                }
+              })
+            }
+          },
+          activeIndexChange: swiper => {
+            initCatalogSliderThumbs(swiper, swiper.realIndex)
+          },
+        },
+      })
+    } else {
+      new Swiper('.hero-catalog__slider', {
+        modules: [Navigation],
+        speed: 1000,
+        slidesPerView: 1,
+        spaceBetween: 10,
+        autoHeight: true,
+
+        // navigation
+        navigation: {
+          prevEl: '.hero-catalog .navigation__button_prev',
+          nextEl: '.hero-catalog .navigation__button_next',
+        },
+
+        // events
+        on: {
+          init: swiper => {
+            initCatalogSliderThumbs(swiper, swiper.realIndex)
+            if (
+              document.querySelectorAll('.hero-catalog__thumbs-image').length
+            ) {
+              document.addEventListener('click', function (e) {
+                if (e.target.closest('.hero-catalog__thumbs-image')) {
+                  const thumbIndex = e.target.closest(
+                    '.hero-catalog__thumbs-image'
+                  ).dataset.slideIndex
+                  swiper.slideTo(thumbIndex, 0)
+                }
+              })
+            }
+          },
+          activeIndexChange: swiper => {
+            initCatalogSliderThumbs(swiper, swiper.realIndex)
+          },
+        },
+      })
+    }
   }
 }
 

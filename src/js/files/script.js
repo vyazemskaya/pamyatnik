@@ -1,4 +1,5 @@
-import { removeClasses, addActiveClass } from './functions.js'
+import { removeClasses, bodyLock, bodyUnlock, addActiveClass } from './functions.js'
+import { formValidate } from './forms/forms.js'
 import { modules } from './modules.js'
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -22,39 +23,43 @@ document.addEventListener('DOMContentLoaded', function () {
       .classList.add('_active')
   }
 
-  // filters
-  const filters = document.querySelectorAll('.filters-catalog-mainpage__item')
-
-  if (filters.length) {
+  // catalog tabs
+  const catalogTabs = document.querySelectorAll('.catalog-tabs__item')
+  if (catalogTabs.length) {
     const xhttp = new XMLHttpRequest()
-    filters.forEach(filter => {
-      filter.addEventListener('click', function () {
-        removeClasses(filters, '_active')
-        filter.classList.add('_active')
-        const activeFilterType = filter.dataset.catalogFilter
+    catalogTabs.forEach(catalogTab => {
+      catalogTab.addEventListener('click', function () {
+        removeClasses(catalogTabs, '_active')
+        catalogTab.classList.add('_active')
+        const activeFilterType = catalogTab.dataset.catalogFilter
         if (activeFilterType === 'monuments') {
-          xhttp.open('GET', 'ajax/monuments.html', false)
+          xhttp.open('GET', 'ajax/mainpage-catalog/monuments.html', false)
         } else if (activeFilterType === 'fences') {
-          xhttp.open('GET', 'ajax/fences.html', false)
+          xhttp.open('GET', 'ajax/mainpage-catalog/fences.html', false)
         } else if (activeFilterType === 'stone') {
-          xhttp.open('GET', 'ajax/stone.html', false)
+          xhttp.open('GET', 'ajax/mainpage-catalog/stone.html', false)
         } else if (activeFilterType === 'socles') {
-          xhttp.open('GET', 'ajax/socles.html', false)
+          xhttp.open('GET', 'ajax/mainpage-catalog/socles.html', false)
         } else if (activeFilterType === 'complexes') {
-          xhttp.open('GET', 'ajax/complexes.html', false)
+          xhttp.open('GET', 'ajax/mainpage-catalog/complexes.html', false)
         }
         xhttp.send()
-        document.querySelector('.catalog-mainpage__wrapper').innerHTML =
-          xhttp.responseText
+        if (document.querySelector('.catalog-mainpage__wrapper')) {
+          document.querySelector('.catalog-mainpage__wrapper').innerHTML =
+            xhttp.responseText
+        }
       })
     })
   }
+
 
   // ===========================================================================
 
   // handler functions
   const onClickHandler = e => {
-    if (e.target.closest('.cooperation-optovikam__chapter') && !md.matches) {
+    const target = e.target
+
+    if (target.closest('.cooperation-optovikam__chapter') && !md.matches) {
       const chapterBtn = e.target.closest('.cooperation-optovikam__chapter')
       const chapterBtnIndex = chapterBtn.dataset.chapter
       removeClasses(
@@ -69,6 +74,34 @@ document.addEventListener('DOMContentLoaded', function () {
       document
         .querySelector(`[data-chapter-desc="${chapterBtnIndex}"]`)
         .classList.add('_active')
+    }
+    if (target.closest('.catalog .select__option')) {
+      removeClasses(
+        document.querySelectorAll('.catalog .select__option'),
+        '_select-selected'
+      )
+      target
+        .closest('.catalog .select__option')
+        .classList.add('_select-selected')
+    }
+    if (
+      target.closest('.filters-products-catalog__expand') &&
+      !document.body.classList.contains('_filters-open')
+    ) {
+      document.body.classList.add('_filters-open')
+      bodyLock()
+    }
+    if (target.closest('.filters-products-catalog__close-btn')) {
+      document.body.classList.remove('_filters-open')
+      bodyUnlock()
+    }
+    if (target.closest('#cleanFormBtn')) {
+      formValidate.formClean(target.closest('form'))
+    }
+    if (target.closest('.page-pagination__item')) {
+      const pagePaginationItems = document.querySelectorAll('.page-pagination__item')
+      removeClasses(pagePaginationItems, '_active')
+      target.closest('.page-pagination__item').classList.add('_active')
     }
   }
 

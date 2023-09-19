@@ -53,7 +53,7 @@ import * as forms from './files/forms/forms.js'
 // forms.formFieldsInit({ viewPass: false });
 
 // submit form
-// forms.formSubmit();
+forms.formSubmit()
 
 // quantity module
 // forms.formQuantity();
@@ -62,7 +62,7 @@ import * as forms from './files/forms/forms.js'
 // forms.formRating();
 
 // select module
-// import './libs/select.js'
+import './libs/select.js'
 
 // masks module
 // connection and setup are in js/files/forms/inputmask.js

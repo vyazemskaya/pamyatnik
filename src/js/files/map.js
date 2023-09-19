@@ -49,7 +49,7 @@ ymaps.ready(['Panel']).then(function () {
     zoom: 12,
     controls: [],
   })
-  class panelContent {
+  class PanelContent {
     constructor(heading, tel, email, adress, hours, img) {
       this.heading = heading
       this.tel = tel
@@ -89,7 +89,7 @@ ymaps.ready(['Panel']).then(function () {
       return content
     }
   }
-  var mainOffice = new panelContent(
+  var mainOffice = new PanelContent(
     'ЦЕНТРАЛЬНЫЙ ОФИС',
     '+7 (495) 155-05-35',
     'info@pamyatnik.ru',
@@ -97,7 +97,7 @@ ymaps.ready(['Panel']).then(function () {
     'ежедневно, с 9:00 до 19:00',
     'https://i.ibb.co/zJgD6bT/main-office.jpg'
   ).content
-  var office = new panelContent(
+  var office = new PanelContent(
     'ОФИС',
     '+7 (495) 155-05-35',
     'info@pamyatnik.ru',

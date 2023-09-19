@@ -179,6 +179,10 @@ class SelectConstructor {
               ).dataset.selectId
             }"]`
           )
+      const selectOptions = this.getSelectElement(
+        selectItem,
+        this.selectClasses.classSelectOptions
+      ).selectElement
       const originalSelect = this.getSelectElement(selectItem).originalSelect
       if (targetType === 'click') {
         if (!originalSelect.disabled) {
@@ -200,6 +204,16 @@ class SelectConstructor {
             )
           ) {
             this.selectAction(selectItem)
+
+            if (
+              selectItem.classList.contains(
+                this.selectClasses.classSelectOpen
+              ) &&
+              !selectOptions.classList.contains('_slide')
+            ) {
+              selectItem.classList.remove(this.selectClasses.classSelectOpen)
+              _slideUp(selectOptions, originalSelect.dataset.speed)
+            }
           } else if (
             targetElement.closest(
               this.getSelectClass(this.selectClasses.classSelectOption)
@@ -263,9 +277,19 @@ class SelectConstructor {
       this.selectsСlose(selectOneGroup)
     }
 
-    if (!selectOptions.classList.contains('_slide')) {
-      selectItem.classList.toggle(this.selectClasses.classSelectOpen)
-      _slideToggle(selectOptions, originalSelect.dataset.speed)
+    if (
+      !selectOptions.classList.contains('_slide') &&
+      !selectItem.classList.contains(this.selectClasses.classSelectOpen)
+    ) {
+      selectItem.classList.add(this.selectClasses.classSelectOpen)
+      _slideDown(selectOptions, originalSelect.dataset.speed)
+    } else if (
+      !selectOptions.classList.contains('_slide') &&
+      selectItem.classList.contains(this.selectClasses.classSelectOpen) &&
+      !document.querySelector('.select-checkbox')
+    ) {
+      selectItem.classList.remove(this.selectClasses.classSelectOpen)
+      _slideUp(selectOptions, originalSelect.dataset.speed)
     }
   }
   setSelectTitleValue(selectItem, originalSelect) {
@@ -427,7 +451,7 @@ class SelectConstructor {
         ? ` ${this.selectClasses.classSelectOptionSelected}`
         : ''
     const selectOptionHide =
-      selectOption.selected &&
+      !selectOption.selected &&
       !originalSelect.hasAttribute('data-show-selected') &&
       !originalSelect.multiple
         ? `hidden`
