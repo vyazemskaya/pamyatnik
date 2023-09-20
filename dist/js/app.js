@@ -5303,7 +5303,7 @@
                     }
                 }
             }); else new core(".hero-catalog__slider", {
-                modules: [ Navigation ],
+                modules: [ Navigation, EffectFade ],
                 speed: 1e3,
                 slidesPerView: 1,
                 spaceBetween: 10,
@@ -5325,6 +5325,48 @@
                     },
                     activeIndexChange: swiper => {
                         initCatalogSliderThumbs(swiper, swiper.realIndex);
+                    }
+                }
+            });
+            if (document.querySelector(".hero-articles__slider")) new core(".hero-articles__slider", {
+                modules: [ Navigation, EffectFade ],
+                observer: true,
+                observeParents: true,
+                slidesPerView: 1,
+                spaceBetween: 16,
+                speed: 800,
+                autoHeight: true,
+                effect: "fade",
+                fadeEffect: {
+                    crossFade: true
+                },
+                navigation: {
+                    prevEl: ".hero-articles .navigation__button_prev",
+                    nextEl: ".hero-articles .navigation__button_next"
+                },
+                breakpoints: {
+                    768: {
+                        autoHeight: false
+                    }
+                }
+            });
+            if (document.querySelector(".chapter-article__slider")) new core(".chapter-article__slider", {
+                modules: [ Navigation ],
+                observer: true,
+                observeParents: true,
+                slidesPerView: 2,
+                spaceBetween: 8,
+                speed: 800,
+                autoHeight: true,
+                navigation: {
+                    prevEl: ".chapter-article .navigation__button_prev",
+                    nextEl: ".chapter-article .navigation__button_next"
+                },
+                breakpoints: {
+                    768: {
+                        slidesPerView: 4,
+                        spaceBetween: 30,
+                        autoHeight: false
                     }
                 }
             });

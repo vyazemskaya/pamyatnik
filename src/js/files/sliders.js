@@ -529,7 +529,7 @@ function initSliders() {
       })
     } else {
       new Swiper('.hero-catalog__slider', {
-        modules: [Navigation],
+        modules: [Navigation, EffectFade],
         speed: 1000,
         slidesPerView: 1,
         spaceBetween: 10,
@@ -568,6 +568,62 @@ function initSliders() {
         },
       })
     }
+  }
+  if (document.querySelector('.hero-articles__slider')) {
+    new Swiper('.hero-articles__slider', {
+      modules: [Navigation, EffectFade],
+      observer: true,
+      observeParents: true,
+      slidesPerView: 1,
+      spaceBetween: 16,
+      speed: 800,
+      autoHeight: true,
+
+      // effects
+      effect: 'fade',
+      fadeEffect: {
+        crossFade: true,
+      },
+
+      // navigation
+      navigation: {
+        prevEl: '.hero-articles .navigation__button_prev',
+        nextEl: '.hero-articles .navigation__button_next',
+      },
+
+      // breakpoints
+      breakpoints: {
+        768: {
+          autoHeight: false,
+        },
+      },
+    })
+  }
+  if (document.querySelector('.chapter-article__slider')) {
+    new Swiper('.chapter-article__slider', {
+      modules: [Navigation],
+      observer: true,
+      observeParents: true,
+      slidesPerView: 2,
+      spaceBetween: 8,
+      speed: 800,
+      autoHeight: true,
+
+      // navigation
+      navigation: {
+        prevEl: '.chapter-article .navigation__button_prev',
+        nextEl: '.chapter-article .navigation__button_next',
+      },
+
+      // breakpoints
+      breakpoints: {
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 30,
+          autoHeight: false,
+        },
+      },
+    })
   }
 }
 

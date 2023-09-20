@@ -1,0 +1,133 @@
+.articles {
+  // .articles__main
+
+  &__main {
+  }
+}
+
+// =============================================================================
+
+.main-articles {
+  // .main-articles__container
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    &::after {
+      @extend %bg;
+      z-index: 1;
+      bottom: 0;
+      width: 195.9rem;
+      height: 98.2rem;
+      background-image: url(@img/bg/03.png);
+      transform: scaley(-1) translate(-5%, -81%);
+      @media (max-width: 48em) {
+        bottom: auto;
+        top: 0;
+        width: 112.8rem;
+        height: 48.4rem;
+        background-image: url(@img/bg/02.png);
+        transform: translate(-51%, -46%);
+      }
+    }
+  }
+
+  // .main-articles__title
+
+  &__title {
+    @extend %relative;
+    margin-bottom: 6rem;
+    align-self: center;
+    text-align: center;
+    @media (max-width: 48em) {
+      margin-bottom: 4.8rem;
+    }
+  }
+
+  // .main-articles__group
+
+  &__group {
+    @extend %relative;
+    margin-bottom: 8rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+    @media (max-width: 48em) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.6rem;
+    }
+  }
+
+  // .main-articles__item
+
+  &__item {
+    box-shadow: 1.2rem 2rem 6rem 0 rgba(74, 75, 99, 0.15);
+  }
+
+  // .main-articles__footer
+
+  &__footer {
+    @extend %relative;
+    display: flex;
+    justify-content: center;
+    @media (min-width: 48em) {
+      display: grid;
+      grid-template-columns: 5fr 2fr 5fr;
+    }
+  }
+
+  // .main-articles__btn
+
+  &__btn {
+    grid-column: 2/3;
+    justify-self: center;
+    width: 100%;
+    height: 5rem;
+    @media (max-width: 48em) {
+      display: none;
+    }
+  }
+
+  // .main-articles__pagination
+
+  &__pagination {
+    @media (min-width: 48em) {
+      grid-column: 3/4;
+      justify-self: end;
+    }
+  }
+}
+
+// =============================================================================
+
+.article-card {
+  // .article-card__image
+
+  &__image {
+  }
+
+  // .article-card__text-wrap
+
+  &__text-wrap {
+  }
+
+  // .article-card__heading-wrap
+
+  &__heading-wrap {
+  }
+
+  // .article-card__heading
+
+  &__heading {
+  }
+
+  // .article-card__btn-wrap
+
+  &__btn-wrap {
+  }
+
+  // .article-card__btn
+
+  &__btn {
+  }
+}
