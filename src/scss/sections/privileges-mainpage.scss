@@ -2,11 +2,11 @@
   // .privileges-mainpage__container
 
   &__container {
-    display: flex;
-    flex-direction: column;
+    @extend %flexColumn;
     &::before,
     &::after {
       @extend %bg;
+      z-index: 1;
     }
     &::before {
       top: 0;
@@ -22,7 +22,7 @@
       width: 43.8rem;
       height: 40rem;
       background-image: url(@img/bg/04.png);
-      transform: translate(-92%, 0);
+      transform: translate(-73%, 66%);
     }
     @media (max-width: 48em) {
       &::before {
@@ -39,6 +39,7 @@
   // .privileges-mainpage__title
 
   &__title {
+    @extend %relative;
     margin-bottom: 4.8rem;
     @media (min-width: 48em) {
       margin-bottom: 1rem;
@@ -50,7 +51,7 @@
   // .privileges-mainpage__items
 
   &__items {
-    position: relative;
+    @extend %relative;
     display: grid;
     grid-template: 42rem / repeat(5, 1fr);
     &::after {
@@ -114,8 +115,8 @@
   // .privileges-mainpage__text-wrap
 
   &__text-wrap {
-    display: flex;
-    flex-direction: column;
+    @extend %relative;
+    @extend %flexColumn;
     align-self: flex-end;
     @media (min-width: 48em) {
       align-self: center;

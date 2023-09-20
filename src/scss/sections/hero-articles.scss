@@ -81,6 +81,12 @@
     min-width: 33.4rem;
     height: 7.6rem;
   }
+
+  // .hero-articles__footer
+
+  &__footer {
+    @extend .chapter-section__footer;
+  }
 }
 
 // =============================================================================

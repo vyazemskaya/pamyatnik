@@ -16,7 +16,7 @@
               </p>
               <div class="materials-hero-mainpage__image-wrap">
                 <img
-                  data-src="@img/mainpage/hero/materials.png"
+                  data-src="@img/catalog/stone/01.png"
                   alt="Шампань"
                   class="materials-hero-mainpage__image" />
               </div>
@@ -113,7 +113,7 @@
             <div class="hero-mainpage__info info-hero-mainpage">
               <div class="info-hero-mainpage__image-wrap">
                 <img
-                  src="@img/mainpage/hero/info.png"
+                  src="@img/mainpage/hero/monument.png"
                   aria-hidden="true"
                   alt=""
                   class="info-hero-mainpage__image" />
@@ -124,11 +124,11 @@
             </div>
           </div>
         </section>
-        <section class="mainpage__catalog catalog-mainpage">
-          <div class="catalog-mainpage__container container">
-            <div class="catalog-mainpage__head head grid">
+        <section class="mainpage__catalog chapter-section">
+          <div class="chapter-section__container container">
+            <div class="chapter-section__head head grid">
               <div
-                data-da=".catalog-mainpage__footer,768,first"
+                data-da=".chapter-section__footer_catalog,768,first"
                 class="head__slider-navigation navigation">
                 <button
                   type="button"
@@ -145,14 +145,14 @@
               </div>
               <h2 class="head__title h2">каталог</h2>
               <a
-                data-da=".catalog-mainpage__footer,768,last"
+                data-da=".chapter-section__footer_catalog,768,last"
                 href="#"
                 title="Смотреть всю продукцию"
                 class="head__btn btn"
                 ><span class="btn__text">вся продукция</span></a
               >
             </div>
-            <div class="catalog-mainpage__tabs catalog-tabs swiper">
+            <div class="chapter-section__tabs catalog-tabs swiper">
               <div class="catalog-tabs__wrapper swiper-wrapper">
                 <button
                   data-catalog-filter="stone"
@@ -162,7 +162,6 @@
                   камень
                 </button>
                 <button
-                  
                   title="Памятники"
                   type="button"
                   class="catalog-tabs__item swiper-slide _active">
@@ -191,11 +190,10 @@
                 </button>
               </div>
             </div>
-            <div class="catalog-mainpage__slider swiper">
-              <div class="catalog-mainpage__wrapper swiper-wrapper">
-                <div
-                  
-                  class="catalog-mainpage__slide item-card swiper-slide">
+            <div
+              class="chapter-section__slider chapter-section__slider_grid swiper">
+              <div class="chapter-section__wrapper swiper-wrapper">
+                <div class="chapter-section__slide item-card swiper-slide">
                   <a href="#" class="item-card__body">
                     <img
                       src="img/mainpage/catalog/01.png"
@@ -205,9 +203,7 @@
                     <span class="item-card__text">материал: классик грин</span>
                   </a>
                 </div>
-                <div
-                  
-                  class="catalog-mainpage__slide item-card swiper-slide">
+                <div class="chapter-section__slide item-card swiper-slide">
                   <a href="#" class="item-card__body">
                     <img
                       src="img/mainpage/catalog/02.png"
@@ -217,9 +213,7 @@
                     <span class="item-card__text">материал: индиан ред</span>
                   </a>
                 </div>
-                <div
-                  
-                  class="catalog-mainpage__slide item-card swiper-slide">
+                <div class="chapter-section__slide item-card swiper-slide">
                   <a href="#" class="item-card__body">
                     <img
                       src="img/mainpage/catalog/03.png"
@@ -229,9 +223,7 @@
                     <span class="item-card__text">материал: шанси</span>
                   </a>
                 </div>
-                <div
-                  
-                  class="catalog-mainpage__slide item-card swiper-slide">
+                <div class="chapter-section__slide item-card swiper-slide">
                   <a href="#" class="item-card__body">
                     <img
                       src="img/mainpage/catalog/04.png"
@@ -241,9 +233,7 @@
                     <span class="item-card__text">материал: шанси</span>
                   </a>
                 </div>
-                <div
-                  
-                  class="catalog-mainpage__slide item-card swiper-slide">
+                <div class="chapter-section__slide item-card swiper-slide">
                   <a href="#" class="item-card__body">
                     <img
                       src="img/mainpage/catalog/03.png"
@@ -253,9 +243,7 @@
                     <span class="item-card__text">материал: шанси</span>
                   </a>
                 </div>
-                <div
-                  
-                  class="catalog-mainpage__slide item-card swiper-slide">
+                <div class="chapter-section__slide item-card swiper-slide">
                   <a href="#" class="item-card__body">
                     <img
                       src="img/mainpage/catalog/02.png"
@@ -267,7 +255,8 @@
                 </div>
               </div>
             </div>
-            <div class="catalog-mainpage__footer section-footer"></div>
+            <div
+              class="chapter-section__footer chapter-section__footer_catalog"></div>
           </div>
         </section>
         <section class="mainpage__privileges privileges-mainpage">
@@ -347,11 +336,11 @@
             </div>
           </div>
         </section>
-        <section class="mainpage__materials materials-mainpage">
-          <div class="materials-mainpage__container container">
-            <div class="materials-mainpage__head head grid">
+        <section class="mainpage__materials chapter-section">
+          <div class="chapter-section__container container">
+            <div class="chapter-section__head head grid">
               <div
-                data-da=".materials-mainpage__footer,768,first"
+                data-da=".chapter-section__footer_materials,768,first"
                 class="head__slider-navigation navigation">
                 <button
                   type="button"
@@ -368,83 +357,79 @@
               </div>
               <h2 class="head__title h2">материалы</h2>
               <a
-                data-da=".materials-mainpage__footer,768,last"
+                data-da=".chapter-section__footer_materials,768,last"
                 href="#"
                 title="Смотреть все материалы"
                 class="head__btn btn"
                 ><span class="btn__text">смотреть все</span></a
               >
             </div>
-            <p class="materials-mainpage__text txt">
+            <p class="chapter-section__text txt">
               Мы работаем с самыми практичными, элегантными и притягательными
               гранитными и мраморными породами с месторождений России, СНГ,
               Индии и Китая.
             </p>
-            <div class="materials-mainpage__slider swiper">
-              <div class="materials-mainpage__wrapper swiper-wrapper">
-                <div
-                  class="materials-mainpage__slide slide-materials-mainpage swiper-slide">
-                  <a href="#" class="slide-materials-mainpage__body">
+            <div
+              class="chapter-section__slider chapter-section__slider_grid swiper">
+              <div class="chapter-section__wrapper swiper-wrapper">
+                <div class="chapter-section__slide item-card swiper-slide">
+                  <a href="#" class="item-card__body">
                     <img
                       data-src="@img/catalog/stone/01.png"
                       alt="Шампань"
-                      class="slide-materials-mainpage__image" />
-                    <h3 class="slide-materials-mainpage__heading">шампань</h3>
+                      class="item-card__image" />
+                    <h3 class="item-card__heading">шампань</h3>
                   </a>
                 </div>
-                <div
-                  class="materials-mainpage__slide slide-materials-mainpage swiper-slide">
-                  <a href="#" class="slide-materials-mainpage__body">
+                <div class="chapter-section__slide item-card swiper-slide">
+                  <a href="#" class="item-card__body">
                     <img
                       data-src="@img/catalog/stone/02.png"
                       alt="Блю перл"
-                      class="slide-materials-mainpage__image" />
-                    <h3 class="slide-materials-mainpage__heading">блю перл</h3>
+                      class="item-card__image" />
+                    <h3 class="item-card__heading">блю перл</h3>
                   </a>
                 </div>
-                <div
-                  class="materials-mainpage__slide slide-materials-mainpage swiper-slide">
-                  <a href="#" class="slide-materials-mainpage__body">
+                <div class="chapter-section__slide item-card swiper-slide">
+                  <a href="#" class="item-card__body">
                     <img
                       data-src="@img/catalog/stone/03.png"
                       alt="Габбро"
-                      class="slide-materials-mainpage__image" />
-                    <h3 class="slide-materials-mainpage__heading">габбро</h3>
+                      class="item-card__image" />
+                    <h3 class="item-card__heading">габбро</h3>
                   </a>
                 </div>
-                <div
-                  class="materials-mainpage__slide slide-materials-mainpage swiper-slide">
-                  <a href="#" class="slide-materials-mainpage__body">
+                <div class="chapter-section__slide item-card swiper-slide">
+                  <a href="#" class="item-card__body">
                     <img
                       data-src="@img/catalog/stone/04.png"
                       alt="Шампань"
-                      class="slide-materials-mainpage__image" />
-                    <h3 class="slide-materials-mainpage__heading">шампань</h3>
+                      class="item-card__image" />
+                    <h3 class="item-card__heading">шампань</h3>
                   </a>
                 </div>
-                <div
-                  class="materials-mainpage__slide slide-materials-mainpage swiper-slide">
-                  <a href="#" class="slide-materials-mainpage__body">
+                <div class="chapter-section__slide item-card swiper-slide">
+                  <a href="#" class="item-card__body">
                     <img
                       data-src="@img/catalog/stone/01.png"
                       alt="Шампань"
-                      class="slide-materials-mainpage__image" />
-                    <h3 class="slide-materials-mainpage__heading">шампань</h3>
+                      class="item-card__image" />
+                    <h3 class="item-card__heading">шампань</h3>
                   </a>
                 </div>
-                <div
-                  class="materials-mainpage__slide slide-materials-mainpage swiper-slide">
-                  <a href="#" class="slide-materials-mainpage__body">
+                <div class="chapter-section__slide item-card swiper-slide">
+                  <a href="#" class="item-card__body">
                     <img
                       data-src="@img/catalog/stone/02.png"
                       alt="Блю перл"
-                      class="slide-materials-mainpage__image" />
-                    <h3 class="slide-materials-mainpage__heading">блю перл</h3>
+                      class="item-card__image" />
+                    <h3 class="item-card__heading">блю перл</h3>
                   </a>
                 </div>
               </div>
             </div>
-            <div class="materials-mainpage__footer section-footer"></div>
+            <div
+              class="chapter-section__footer chapter-section__footer_materials"></div>
           </div>
         </section>
         <section class="mainpage__services services-mainpage">
@@ -460,11 +445,11 @@
                         ><span>01</span></span
                       >
                       <div class="slide-services-mainpage__wrap">
-                        <div class="slide-services-mainpage__image-wrap">
+                        <a href="#" class="slide-services-mainpage__image-wrap">
                           <img
                             data-src="@img/mainpage/services/01.png"
                             alt="Гравировка" />
-                        </div>
+                        </a>
                         <a
                           href="#"
                           class="slide-services-mainpage__btn btn btn_ol"
@@ -492,11 +477,11 @@
                         ><span>02</span></span
                       >
                       <div class="slide-services-mainpage__wrap">
-                        <div class="slide-services-mainpage__image-wrap">
+                        <a href="#" class="slide-services-mainpage__image-wrap">
                           <img
                             data-src="@img/mainpage/services/02.png"
                             alt="Установка" />
-                        </div>
+                        </a>
                         <a
                           href="#"
                           class="slide-services-mainpage__btn btn btn_ol"
@@ -524,11 +509,11 @@
                         ><span>03</span></span
                       >
                       <div class="slide-services-mainpage__wrap">
-                        <div class="slide-services-mainpage__image-wrap">
+                        <a href="#" class="slide-services-mainpage__image-wrap">
                           <img
                             data-src="@img/mainpage/services/03.png"
                             alt="Aксессуары" />
-                        </div>
+                        </a>
                         <a
                           href="#"
                           class="slide-services-mainpage__btn btn btn_ol"
@@ -633,11 +618,11 @@
             </div>
           </div>
         </section>
-        <section class="mainpage__articles articles-mainpage">
-          <div class="articles-mainpage__container container">
-            <div class="articles-mainpage__head head grid">
+        <section class="mainpage__articles chapter-section">
+          <div class="chapter-section__container container">
+            <div class="chapter-section__head head grid">
               <div
-                data-da=".articles-mainpage__footer,768,first"
+                data-da=".chapter-section__footer_articles,768,first"
                 class="head__slider-navigation navigation">
                 <button
                   type="button"
@@ -654,16 +639,16 @@
               </div>
               <h2 class="head__title h2">статьи</h2>
               <a
-                data-da=".articles-mainpage__footer,768,last"
+                data-da=".chapter-section__footer_articles,768,last"
                 href="#"
                 title="Смотреть все статьи"
                 class="head__btn btn"
                 ><span class="btn__text">все статьи</span></a
               >
             </div>
-            <div class="articles-mainpage__slider swiper">
-              <div class="articles-mainpage__wrapper swiper-wrapper">
-                <div class="articles-mainpage__slide article-card swiper-slide">
+            <div class="chapter-section__slider swiper">
+              <div class="chapter-section__wrapper swiper-wrapper">
+                <div class="chapter-section__slide article-card swiper-slide">
                   <div class="article-card__body">
                     <a href="#" class="article-card__image-wrap">
                       <img
@@ -689,7 +674,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="articles-mainpage__slide article-card swiper-slide">
+                <div class="chapter-section__slide article-card swiper-slide">
                   <div class="article-card__body">
                     <a href="#" class="article-card__image-wrap">
                       <img
@@ -714,7 +699,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="articles-mainpage__slide article-card swiper-slide">
+                <div class="chapter-section__slide article-card swiper-slide">
                   <div class="article-card__body">
                     <a href="#" class="article-card__image-wrap">
                       <img
@@ -740,7 +725,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="articles-mainpage__slide article-card swiper-slide">
+                <div class="chapter-section__slide article-card swiper-slide">
                   <div class="article-card__body">
                     <a href="#" class="article-card__image-wrap">
                       <img
@@ -766,7 +751,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="articles-mainpage__slide article-card swiper-slide">
+                <div class="chapter-section__slide article-card swiper-slide">
                   <div class="article-card__body">
                     <a href="#" class="article-card__image-wrap">
                       <img
@@ -794,13 +779,14 @@
                 </div>
               </div>
             </div>
-            <div class="articles-mainpage__footer section-footer"></div>
+            <div
+              class="chapter-section__footer chapter-section__footer_articles"></div>
           </div>
         </section>
-        <section class="mainpage__contacts contacts-mainpage">
-          <div class="contacts-mainpage__container container">
-            <h2 class="contacts-mainpage__title h2">контакты</h2>
-            <div id="map" class="contacts-mainpage__map"></div>
+        <section class="mainpage__contacts chapter-section">
+          <div class="chapter-section__container container">
+            <h2 class="chapter-section__title h2">контакты</h2>
+            <div id="map" class="chapter-section__map"></div>
           </div>
         </section>
       </main>

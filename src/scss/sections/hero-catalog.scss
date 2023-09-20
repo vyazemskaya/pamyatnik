@@ -72,8 +72,7 @@
 
   &__title {
     @extend .h2;
-    position: relative;
-    z-index: 2;
+    @extend %relative;
     margin-bottom: 5.4rem;
     align-self: center;
     @media (max-width: 48em) {
@@ -84,8 +83,7 @@
   // .hero-catalog__content
 
   &__content {
-    position: relative;
-    z-index: 2;
+    @extend %relative;
     display: grid;
     @media (min-width: 48em) {
       grid-template-columns: 1fr 81.5rem 1fr;
@@ -121,6 +119,7 @@
   // .hero-catalog__footer
 
   &__footer {
+    @extend .chapter-section__footer;
     @media (max-width: 48em) {
       height: 12rem;
     }

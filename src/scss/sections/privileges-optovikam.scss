@@ -70,6 +70,12 @@
 
   &__slide {
   }
+
+  // .privileges-optovikam__footer
+
+  &__footer {
+    @extend .chapter-section__footer;
+  }
 }
 
 // =============================================================================
@@ -78,8 +84,7 @@
   // .slide-privileges-optovikam__body
 
   &__body {
-    display: flex;
-    flex-direction: column;
+    @extend %flexColumn;
     @media (max-width: 48em) {
       align-items: center;
       text-align: center;

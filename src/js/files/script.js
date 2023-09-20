@@ -28,41 +28,16 @@ document.addEventListener('DOMContentLoaded', function () {
       .classList.add('_active')
   }
 
-  // catalog tabs
-  const catalogTabs = document.querySelectorAll('.catalog-tabs__item')
-  if (catalogTabs.length) {
-    const xhttp = new XMLHttpRequest()
-    catalogTabs.forEach(catalogTab => {
-      catalogTab.addEventListener('click', function () {
-        removeClasses(catalogTabs, '_active')
-        catalogTab.classList.add('_active')
-        const activeFilterType = catalogTab.dataset.catalogFilter
-        if (activeFilterType === 'monuments') {
-          xhttp.open('GET', 'ajax/mainpage-catalog/monuments.html', false)
-        } else if (activeFilterType === 'fences') {
-          xhttp.open('GET', 'ajax/mainpage-catalog/fences.html', false)
-        } else if (activeFilterType === 'stone') {
-          xhttp.open('GET', 'ajax/mainpage-catalog/stone.html', false)
-        } else if (activeFilterType === 'socles') {
-          xhttp.open('GET', 'ajax/mainpage-catalog/socles.html', false)
-        } else if (activeFilterType === 'complexes') {
-          xhttp.open('GET', 'ajax/mainpage-catalog/complexes.html', false)
-        }
-        xhttp.send()
-        if (document.querySelector('.catalog-mainpage__wrapper')) {
-          document.querySelector('.catalog-mainpage__wrapper').innerHTML =
-            xhttp.responseText
-        }
-      })
-    })
-  }
-
   // ===========================================================================
 
   // handler functions
   const onClickHandler = e => {
     const target = e.target
 
+    if (target.closest('.catalog-tabs__item')) {
+      removeClasses(document.querySelectorAll('.catalog-tabs__item'), '_active')
+      target.closest('.catalog-tabs__item').classList.add('_active')
+    }
     if (target.closest('.cooperation-optovikam__chapter') && !md.matches) {
       const chapterBtn = e.target.closest('.cooperation-optovikam__chapter')
       const chapterBtnIndex = chapterBtn.dataset.chapter

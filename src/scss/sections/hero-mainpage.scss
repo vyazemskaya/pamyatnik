@@ -1,6 +1,6 @@
 .hero-mainpage {
+  @extend %paddingTop;
   position: relative;
-  padding-top: 11.4rem;
   &::before {
     @extend %bg;
     z-index: 1;
@@ -12,25 +12,18 @@
     transform: translate(-1%, -18%);
   }
   &__materials,
-  &__carousel,
   &__info {
-    position: relative;
-    z-index: 2;
-  }
-  @media (min-width: 48em) {
-    &__materials,
-    &__info {
+    @extend %relative;
+    @media (min-width: 48em) {
       align-self: start;
+    }
+    @media (max-width: 48em) {
+      grid-template-rows: 16rem 21rem auto;
     }
   }
   @media (max-width: 48em) {
-    padding-top: 4rem;
     &::before {
       display: none;
-    }
-    &__materials,
-    &__info {
-      grid-template-rows: 16rem 21rem auto;
     }
   }
 
@@ -38,12 +31,9 @@
 
   &__container {
     justify-content: space-between;
-    &::before,
-    &::after {
+    &::before {
       @extend %bg;
       bottom: 0;
-    }
-    &::before {
       right: calc((100vw - 100%) / -2);
       width: 128.5rem;
       height: 55.2rem;
@@ -51,6 +41,8 @@
       transform: translate(-1%, 46%);
     }
     &::after {
+      @extend %bg;
+      bottom: 0;
       left: calc((100vw - 100%) / -2);
       bottom: 0;
       width: 48.7rem;
@@ -86,6 +78,7 @@
   // .hero-mainpage__carousel
 
   &__carousel {
+    @extend %relative;
     min-width: 0;
     @media (max-width: 48em) {
       grid-column: span 2;
@@ -121,7 +114,7 @@
     top: 0;
     left: 50%;
     width: 62.4rem;
-    height: 36.3rem;
+    height: 37.3rem;
     transform: translateX(-50%);
     @media (max-width: 48em) {
       width: 61rem;
@@ -137,7 +130,7 @@
     }
     @media (min-width: 48em) {
       position: absolute;
-      bottom: -21%;
+      bottom: -19%;
       left: 50%;
       transform: translateX(-50%);
     }
@@ -258,8 +251,7 @@
   // .hero-mainpage__body
 
   &__body {
-    display: flex;
-    flex-direction: column;
+    @extend %flexColumn;
     align-items: center;
   }
 

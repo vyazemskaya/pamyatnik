@@ -2,11 +2,8 @@
   // .cooperation-optovikam__container
 
   &__container {
-    &::before,
-    &::after {
-      @extend %bg;
-    }
     &::before {
+      @extend %bg;
       top: 0;
       left: calc((100vw - 100%) / -2);
       width: 56.8rem;
@@ -20,6 +17,7 @@
       }
     }
     &::after {
+      @extend %bg;
       z-index: 1;
       left: 0;
       bottom: 0;
@@ -37,9 +35,8 @@
 
   &__head {
     @extend %relative;
+    @extend %flexColumn;
     margin-bottom: 6rem;
-    display: flex;
-    flex-direction: column;
     align-items: center;
     text-align: center;
     @media (max-width: 48em) {
@@ -114,10 +111,9 @@
 // =============================================================================
 
 .chapter-cooperation-optovikam {
+  @extend %flexColumn;
   position: relative;
   padding: 2.4rem;
-  display: flex;
-  flex-direction: column;
   width: 100%;
   min-height: 71rem;
   border-radius: 3rem;
@@ -165,8 +161,7 @@
   // .chapter-cooperation-optovikam__text-wrap
 
   &__text-wrap {
-    display: flex;
-    flex-direction: column;
+    @extend %flexColumn;
     @media (min-width: 48em) {
       position: relative;
       z-index: 2;

@@ -189,8 +189,8 @@ function initSliders() {
       on: {},
     })
   }
-  if (document.querySelector('.catalog-mainpage__slider')) {
-    new Swiper('.catalog-mainpage__slider', {
+  if (document.querySelector('.mainpage__catalog .chapter-section__slider')) {
+    new Swiper('.mainpage__catalog .chapter-section__slider', {
       modules: [Navigation, Grid],
       observer: true,
       observeParents: true,
@@ -204,8 +204,8 @@ function initSliders() {
 
       // navigation
       navigation: {
-        prevEl: '.catalog-mainpage .navigation__button_prev',
-        nextEl: '.catalog-mainpage .navigation__button_next',
+        prevEl: '.mainpage__catalog .navigation__button_prev',
+        nextEl: '.mainpage__catalog .navigation__button_next',
       },
 
       // breakpoints
@@ -250,8 +250,8 @@ function initSliders() {
     initSwiper()
     window.addEventListener('resize', initSwiper)
   }
-  if (document.querySelector('.materials-mainpage__slider')) {
-    new Swiper('.materials-mainpage__slider', {
+  if (document.querySelector('.mainpage__materials .chapter-section__slider')) {
+    new Swiper('.mainpage__materials .chapter-section__slider', {
       modules: [Navigation, Grid],
       observer: true,
       observeParents: true,
@@ -265,8 +265,8 @@ function initSliders() {
 
       // navigation
       navigation: {
-        prevEl: '.materials-mainpage .navigation__button_prev',
-        nextEl: '.materials-mainpage .navigation__button_next',
+        prevEl: '.mainpage__materials .navigation__button_prev',
+        nextEl: '.mainpage__materials .navigation__button_next',
       },
 
       // breakpoints
@@ -309,8 +309,8 @@ function initSliders() {
     initSwiper()
     window.addEventListener('resize', initSwiper)
   }
-  if (document.querySelector('.articles-mainpage__slider')) {
-    new Swiper('.articles-mainpage__slider', {
+  if (document.querySelector('.mainpage__articles .chapter-section__slider')) {
+    new Swiper('.mainpage__articles .chapter-section__slider', {
       modules: [Navigation],
       observer: true,
       observeParents: true,
@@ -320,8 +320,8 @@ function initSliders() {
 
       // navigation
       navigation: {
-        prevEl: '.articles-mainpage .navigation__button_prev',
-        nextEl: '.articles-mainpage .navigation__button_next',
+        prevEl: '.mainpage__articles .navigation__button_prev',
+        nextEl: '.mainpage__articles .navigation__button_next',
       },
 
       // breakpoints
@@ -445,6 +445,7 @@ function initSliders() {
       speed: 1000,
       slidesPerView: 1,
       spaceBetween: 10,
+      slideToClickedSlide: true,
 
       // navigation
       navigation: {
@@ -599,8 +600,8 @@ function initSliders() {
       },
     })
   }
-  if (document.querySelector('.chapter-article__slider')) {
-    new Swiper('.chapter-article__slider', {
+  if (document.querySelector('.article__chapter .chapter-section__slider')) {
+    new Swiper('.article__chapter .chapter-section__slider', {
       modules: [Navigation],
       observer: true,
       observeParents: true,
@@ -611,8 +612,8 @@ function initSliders() {
 
       // navigation
       navigation: {
-        prevEl: '.chapter-article .navigation__button_prev',
-        nextEl: '.chapter-article .navigation__button_next',
+        prevEl: '.article__chapter .navigation__button_prev',
+        nextEl: '.article__chapter .navigation__button_next',
       },
 
       // breakpoints

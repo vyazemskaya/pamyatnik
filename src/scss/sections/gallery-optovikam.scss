@@ -65,11 +65,10 @@
   }
 }
 .slide-gallery-optovikam {
-  // display: flex;
-  // justify-content: center;
   height: 100%;
   overflow: hidden;
   border-radius: 1rem;
+  cursor: pointer;
   @media (min-width: 48em) {
     width: 40rem;
     transform: scale(0.8, 1);

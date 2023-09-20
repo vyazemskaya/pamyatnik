@@ -41,9 +41,8 @@
   // .products-catalog__head
 
   &__head {
+    @extend .grid;
     margin-bottom: 11rem;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
     .catalog_stone & {
       margin-bottom: 8.7rem;
@@ -63,11 +62,18 @@
   // .products-catalog__filters
 
   &__filters {
+    @media (min-width: 48em) {
+      justify-self: start;
+    }
   }
 
   // .products-catalog__tabs
 
   &__tabs {
+    @media (min-width: 48em) {
+      justify-self: center;
+      grid-column: 2/3;
+    }
     @media (max-width: 48em) {
       margin-bottom: 4.8rem;
       grid-column: span 2;
@@ -82,6 +88,15 @@
       .select__options {
         left: 0;
         right: auto;
+      }
+      @media (min-width: 48em) {
+        justify-self: start;
+      }
+    }
+    &:not(&_left) {
+      @media (min-width: 48em) {
+        justify-self: end;
+        grid-column: 3/4;
       }
     }
   }

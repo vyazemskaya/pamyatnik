@@ -26,7 +26,7 @@ utilities.menuInit()
 
 // spoiler module
 // snippet ( HTML ): spoilers
-utilities.spoilers();
+utilities.spoilers()
 
 // tabs module
 // snippet ( HTML ): tabs
@@ -123,7 +123,7 @@ scroll.headerScroll()
 // ================================================================================================================
 
 // plugin documentation: https://www.lightgalleryjs.com/docs/
-import './files/gallery.js'
+// import './files/gallery.js'
 
 // ================================================================================================================
 // < other plugins > ==============================================================================================

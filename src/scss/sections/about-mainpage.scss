@@ -8,11 +8,8 @@
 
   &__container {
     display: grid;
-    &::before,
-    &::after {
-      @extend %bg;
-    }
     &::before {
+      @extend %bg;
       z-index: 1;
       left: calc((100vw - 100%) / -2);
       width: 195.9rem;
@@ -21,6 +18,7 @@
       transform: translate(0, 30%);
     }
     &::after {
+      @extend %bg;
       right: calc((100vw - 100%) / -2);
       width: 143.9rem;
       height: 143.9rem;

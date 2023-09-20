@@ -2,35 +2,26 @@
   // .services-mainpage__container
 
   &__container {
-    display: flex;
-    flex-direction: column;
-    &::before,
-    &::after {
-      @extend %bg;
-    }
+    @extend %flexColumn;
     &::before {
+      @extend %bg;
       left: calc((100vw - 100%) / -2);
       width: 33.4rem;
       height: 32.5rem;
-      background-image: url(@img/bg/07.png);
+      background-image: url(@img/bg/06.png);
       transform: translateY(-38%);
     }
     &::after {
+      @extend %bg;
       right: 0;
       width: 195.9rem;
       height: 98.2rem;
-      background-image: url(@img/bg/06.png);
+      background-image: url(@img/bg/07.png);
       transform: translate(-11%, 22%);
     }
     @media (max-width: 48em) {
+      &::after,
       &::before {
-        left: auto;
-        right: 3rem;
-        width: 36.2rem;
-        height: 35rem;
-        transform: translateY(-50%);
-      }
-      &::after {
         display: none;
       }
     }
