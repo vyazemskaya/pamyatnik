@@ -1,0 +1,251 @@
+.main .stone-main {
+  margin-bottom: 11rem;
+}
+
+.stone {
+  &-main {
+    padding-top: 5rem;
+  }
+
+  &-main__container {
+    display: flex;
+    column-gap: 8.8rem;
+  }
+
+  &__char {
+    @extend %flexColumn;
+    justify-content: center;
+
+    .h2 {
+      margin-bottom: 4.5rem;
+    }
+
+    .h3 {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__img {
+    width: 80rem;
+  }
+
+  &-char__header {
+    padding-bottom: 1.4rem;
+    border-bottom: 0.1rem solid rgba(71, 70, 71, 0.60);
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    column-gap: 6.5rem;
+
+    div {
+      color: $grey;
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 160%;
+      text-transform: uppercase;
+    }
+  }
+
+  &-char__item {
+    display: flex;
+    column-gap: 6.5rem;
+    padding: 1.2rem 0;
+
+    &:not(:last-child) {
+      border-bottom: 0.1rem solid rgba(71, 70, 71, 0.20);
+    }
+
+    div {
+      color: $black;
+      font-size: 1.8rem;
+      font-weight: 400;
+      line-height: 160%;
+    }
+  }
+
+  &-char__header,
+  &-char__item {
+    div {
+      &:nth-child(1) {
+        width: 22.5rem;
+      }
+      &:nth-child(2) {
+        width: 13rem;
+      }
+      &:nth-child(3) {
+        width: 15.3rem;
+      }
+      &:nth-child(4) {
+        width: 16.4rem;
+      }
+    }
+  }
+
+  &-desc__container {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 3rem;
+  }
+
+  &-desc__left {
+    @extend %flexColumn;
+  }
+
+  &-desc__item {
+    .h3 {
+      margin-bottom: 1.2rem;
+    }
+    p {
+      max-width: 82rem;
+    }
+  }
+
+  &-desc__left,
+  &-desc__right {
+    width: 100%;
+    @extend %flexColumn;
+    row-gap: 3.2rem;
+  }
+
+  &-desc__list {
+    @extend %flexColumn;
+    li {
+      display: flex;
+      column-gap: 1.1rem;
+      font-size: 1.6rem;
+      line-height: 130%;
+      &::before {
+            content: "";
+              top: 0.8rem;
+              position: relative;
+              flex: 0 0 0.4rem;
+              width: 0.4rem;
+              height: 0.4rem;
+              border-radius: 50%;
+              background-color: $black;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 48em) {
+  .main .stone-main {
+      margin-bottom: 6.4rem;
+    }
+  
+    .stone {
+      &-main {
+        padding-top: 10rem;
+      }
+  
+      &-main__container {
+        row-gap: 10rem;
+        flex-direction: column;
+      }
+  
+      &__char {
+        .h2 {
+          margin-bottom: 4.5rem;
+        }
+  
+        .h3 {
+          margin-bottom: 4rem;
+        }
+      }
+  
+      &__img {
+        width: 100%;
+      }
+  
+      &-char__header {
+        padding-bottom: 2.8rem;
+        margin-bottom: 1.6rem;
+        column-gap: 8rem;
+  
+        div {
+          font-size: 2.8rem;
+          line-height: 150%;
+        }
+      }
+
+      &-char__table {
+        overflow-x: scroll;
+        &::-webkit-scrollbar {
+          width: 0;
+          height: 0;
+        }
+      }
+  
+      &-char__item {
+        column-gap: 8rem;
+        padding: 2.4rem 0;
+  
+        div {
+          font-size: 2.8rem;
+          line-height: 150%;
+          flex-shrink: 0;
+        }
+      }
+  
+      &-char__header,
+      &-char__item {
+        width: fit-content;
+        display: flex;
+        div {
+          flex-shrink: 0;
+          &:nth-child(1) {
+            width: 39.4rem;
+          }
+  
+          &:nth-child(2) {
+            width: 22.8rem;
+          }
+  
+          &:nth-child(3) {
+            width: 27rem;
+          }
+  
+          &:nth-child(4) {
+            width: 28.8rem;
+          }
+        }
+      }
+  
+      &-desc__container {
+        row-gap: 7rem;
+        flex-direction: column;
+      }
+
+      &-desc__item {
+        .h3 {
+          margin-bottom: 1.6rem;
+          font-size: 3.2rem;
+        }
+  
+        p {
+          max-width: 100%;
+        }
+      }
+  
+      &-desc__left,
+      &-desc__right {
+        row-gap: 6.4rem;
+      }
+  
+      &-desc__list {
+  
+        li {
+          column-gap: 1.1rem;
+          font-size: 2.8rem;
+          line-height: 150%;
+  
+          &::before {
+            flex: 0 0 0.8rem;
+            width: 0.8rem;
+            height: 0.8rem;
+            top: 1.6rem;
+          }
+        }
+      }
+    }
+}
