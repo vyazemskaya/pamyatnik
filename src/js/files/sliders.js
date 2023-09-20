@@ -35,7 +35,8 @@ const initGallerySlider = swiper => {
   const slides = swiper.slides // array with slides
   const slideWidth =
     CONTAINER_WIDTH / VISIBLE_SLIDES_AMOUNT -
-    (GAP / 2.12) * VISIBLE_SLIDES_AMOUNT // one slide width
+    (GAP / 2.12) * VISIBLE_SLIDES_AMOUNT
+  // one slide width
   const gapPercent = (GAP / slideWidth) * 100 // gap between the slides (in %)
   const activeSlideGap =
     (SCALE_SLIDE / 2) * (SCALE_ACTIVE_SLIDE / 2) * 100 + gapPercent / 2 // gap for next & prev slide
