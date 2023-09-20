@@ -83,6 +83,7 @@
   // .hero-services__title-wrap
 
   &__title-wrap {
+    @extend %flexColumn;
     @media (min-width: 48em) {
       align-self: end;
     }

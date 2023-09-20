@@ -46,12 +46,12 @@
 }
 
 .txt18 {
-	font-size: 1.8rem;
-	line-height: 140%;
+  font-size: 1.8rem;
+  line-height: 140%;
 
-	@media (max-width: 48em) {
-		font-size: 2.8rem;
-	}
+  @media (max-width: 48em) {
+    font-size: 2.8rem;
+  }
 }
 
 .txt20 {
@@ -848,6 +848,73 @@
       drop-shadow(-1px -1px 0px #ffffff);
     @media (max-width: 48em) {
       width: 8.6rem;
+    }
+  }
+}
+
+.table {
+  display: grid;
+  align-content: start;
+  color: $grey;
+  &__head,
+  &__item {
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    @media (max-width: 48em) {
+      grid-template-columns: 2fr repeat(2, 1fr);
+    }
+  }
+
+  // .table__head
+
+  &__head {
+    padding-bottom: 1.4rem;
+    border-bottom: 1px solid rgba(71, 70, 71, 0.6);
+    @media (max-width: 48em) {
+      padding-bottom: 2.8rem;
+    }
+  }
+
+  // .table__heading
+
+  &__heading {
+    @media (max-width: 48em) {
+      font-size: 2.5rem;
+    }
+  }
+
+  // .table__body
+
+  &__body {
+    display: grid;
+    @media (max-width: 48em) {
+      margin-bottom: 6.4rem;
+    }
+  }
+
+  // .table__item
+
+  &__item {
+    padding: 1.9rem 0 1.2rem 0;
+    border-bottom: 1px solid #d2d2d2;
+    @media (max-width: 48em) {
+      padding: 2.4rem 0;
+    }
+  }
+
+  // .table__item-text
+
+  &__item-text {
+  }
+
+  // .table__image
+
+  &__image {
+    margin: 0 auto;
+    width: 52.2rem;
+    border-radius: 4rem;
+    @media (min-width: 48em) {
+      display: none;
     }
   }
 }

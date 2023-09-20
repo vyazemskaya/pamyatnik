@@ -8,7 +8,7 @@
 
   &__head {
     @extend %flexColumn;
-    margin-bottom: 2rem;
+    margin-bottom: 5rem;
     align-items: center;
     text-align: center;
   }
@@ -17,12 +17,18 @@
 
   &__title {
     margin-bottom: 2.4rem;
+    @media (max-width: 48em) {
+      margin-bottom: 0.8rem;
+    }
   }
 
   // .privileges-services__txt
 
   &__txt {
     max-width: 39.4rem;
+    @media (max-width: 48em) {
+      max-width: 44.4rem;
+    }
   }
 
   // .privileges-services__items
@@ -33,15 +39,22 @@
     grid-template: 43rem / repeat(6, 1fr);
     &::after {
       @extend %waves;
+      background-size: contain;
       background-image: url(@img/bg/waves-v2.svg);
+      transform: none;
     }
     @media (max-width: 48em) {
-      margin-bottom: 6.4rem;    margin-left: calc((100vw - 100%) / -2);
+      margin-bottom: 6.4rem;
+      margin-left: calc((100vw - 100%) / -2);
       display: flex;
       flex-direction: column;
+      justify-content: flex-end;
       row-gap: 3.2rem;
       &::after {
+        width: 48.4rem;
+        height: 104.4rem;
         background-image: url(@img/bg/waves-mobile-v2.svg);
+        transform: translate(-11%, 4%);
       }
     }
   }
@@ -53,30 +66,38 @@
       height: 50%;
       object-fit: contain;
     }
+
+    .item-privileges__text {
+      max-width: 25.4rem;
+    }
     @media (min-width: 48em) {
       &:first-child {
-        transform: translate(-7%, 8%);
+        transform: translate(-7%, 2%);
       }
       &:nth-child(2) {
         align-self: end;
-        transform: translate(-15%, 15%);
+        transform: translate(-15%, 6%);
       }
       &:nth-child(3) {
-        transform: translate(-19%, 22%);
+        transform: translate(-16%, 16%);
       }
       &:nth-child(4) {
-        transform: translate(0, 11%);
+        transform: translate(-3%, 3%);
       }
       &:nth-child(5) {
         align-self: end;
-        transform: translate(6%, -14%);
+        transform: translate(8%, -23%);
       }
       &:last-child {
-        transform: translate(8%, 10%);
+        transform: translate(8%, 8%);
       }
     }
     @media (max-width: 48em) {
       justify-content: space-between;
+      .item-privileges__text {
+        margin-right: auto;
+        max-width: 39rem;
+      }
     }
   }
 }

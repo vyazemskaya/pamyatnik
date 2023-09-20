@@ -1,0 +1,58 @@
+.fonts-services {
+  // .fonts-services__container
+
+  &__container {
+    @media (min-width: 48em) {
+      display: grid;
+      grid-template-columns: 7fr 6fr;
+    }
+  }
+
+  // .fonts-services__spoilers
+
+  &__spoilers {
+    .spoilers__title {
+      @extend .h3;
+      padding: 1.5rem 0;
+      width: 100%;
+      border-bottom: 1px solid rgba(150, 150, 150, 0.6);
+      transition: all 0.3s ease;
+      &._spoiler-active {
+        padding: 1.5rem 0 2rem 0;
+        border-bottom: 1px solid transparent;
+        @media (max-width: 48em) {
+          padding: 2.4rem 0 4.8rem 0;
+        }
+      }
+      @media (max-width: 48em) {
+        padding: 2.4rem 0;
+      }
+    }
+    .spoilers__body {
+      padding-bottom: 4.5rem;
+      @media (max-width: 48em) {
+        padding-bottom: 6.4rem;
+      }
+    }
+  }
+
+  // .fonts-services__image-wrap
+
+  &__image-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    @media (max-width: 48em) {
+      display: none;
+    }
+  }
+
+  // .fonts-services__image
+
+  &__image {
+    width: 50.7rem;
+    border-radius: 2rem;
+    object-fit: contain;
+  }
+}
