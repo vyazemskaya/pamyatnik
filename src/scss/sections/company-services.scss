@@ -11,6 +11,11 @@
       height: 41.6rem;
       background-image: url(@img/bg/04.png);
       transform: translate(20%, -108%);
+      .services_monuments & {
+        width: 128.5rem;
+        height: 55.2rem;
+        background-image: url(@img/bg/02.png);
+      }
       @media (max-width: 48em) {
         width: 38rem;
         height: 35.8rem;

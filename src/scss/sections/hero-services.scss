@@ -1,12 +1,3 @@
-.services {
-  // .services__hero
-
-  &__hero {
-  }
-}
-
-// =============================================================================
-
 .hero-services {
   &__head,
   &__body,
@@ -33,13 +24,21 @@
       margin-left: 7rem;
     }
   }
+  &__title-wrap,
+  &__text-wrap {
+    @media (min-width: 48em) {
+      display: grid;
+      grid-template-rows: 4rem auto;
+      row-gap: 6rem;
+    }
+  }
 
   // .hero-services__container
 
   &__container {
     @extend %flexColumn;
     position: relative;
-    padding-top: 2.9rem;
+    padding-top: 3.9rem;
     &::before,
     &::after {
       @extend %bg;
@@ -51,6 +50,9 @@
       height: 57.2rem;
       background-image: url(@img/bg/01.png);
       transform: translateY(28%);
+      .services_monuments & {
+        transform: translateY(40%);
+      }
     }
     &::after {
       right: calc((100vw - 100%) / -2);
@@ -58,6 +60,12 @@
       height: 55.2rem;
       background-image: url(@img/bg/02.png);
       transform: translate(2%, 42%);
+      .services_monuments & {
+        width: 44.4rem;
+        height: 41.6rem;
+        background-image: url(@img/bg/04.png);
+        transform: translate(8%, 80%);
+      }
     }
     @media (max-width: 48em) {
       padding-top: 4rem;
@@ -85,7 +93,7 @@
   &__title-wrap {
     @extend %flexColumn;
     @media (min-width: 48em) {
-      align-self: end;
+      justify-items: start;
     }
     @media (max-width: 48em) {
       margin-bottom: 4rem;
@@ -97,6 +105,21 @@
   &__title {
     @extend .h2;
     margin-bottom: 1.5rem;
+    .services_monuments & {
+      display: flex;
+      align-items: center;
+      column-gap: 4rem;
+      white-space: nowrap;
+      &::after {
+        content: '';
+        flex: 0 0 4rem;
+        width: 4rem;
+        height: 4rem;
+        background-image: url(@img/icons/arrow.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    }
     @media (max-width: 48em) {
       margin-bottom: 0.8rem;
     }
@@ -112,7 +135,7 @@
   &__text-wrap {
     @extend %flexColumn;
     @media (min-width: 48em) {
-      justify-self: end;
+      justify-items: end;
       grid-column: 3/4;
     }
     @media (max-width: 48em) {
@@ -123,7 +146,6 @@
   // .hero-services__btn
 
   &__btn {
-    margin-bottom: 6rem;
     padding: 0 4.9rem;
     display: flex;
     align-items: center;
@@ -132,6 +154,12 @@
     column-gap: 1.6rem;
     min-width: 31rem;
     height: 5rem;
+    &_prev {
+      flex-direction: row-reverse;
+      &::after {
+        transform: rotate(-180deg);
+      }
+    }
     &::after {
       content: '';
       flex: 0 0 2.4rem;
@@ -213,6 +241,9 @@
       width: 1px;
       height: 24rem;
       transform: translateY(-5.2rem);
+      .services_monuments & {
+        height: 7rem;
+      }
       @media (max-width: 48em) {
         display: none;
       }
