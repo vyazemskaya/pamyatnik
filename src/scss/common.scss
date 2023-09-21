@@ -629,6 +629,7 @@
     }
   }
   &.mainpage__articles {
+    @extend %relative;
     .head {
       margin-bottom: 6.5rem;
       @media (max-width: 48em) {
@@ -915,6 +916,112 @@
     border-radius: 4rem;
     @media (min-width: 48em) {
       display: none;
+    }
+  }
+}
+
+.breadcrumbs {
+  // .breadcrumbs__list
+
+  &__list {
+    display: flex;
+    column-gap: 0.5rem;
+  }
+
+  // .breadcrumbs__item
+
+  &__item {
+  }
+
+  // .breadcrumbs__link
+
+  &__link {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    color: rgba(71, 70, 71, 0.6);
+    &::after {
+      content: '/';
+    }
+  }
+
+  // .breadcrumbs__text
+
+  &__text {
+    color: $black;
+  }
+}
+
+.gallery {
+  &.exclusive__gallery {
+    margin-bottom: 18rem;
+    @media (max-width: 48em) {
+      margin-bottom: 16rem;
+    }
+  }
+
+  // .gallery__carousel
+
+  &__carousel {
+    margin-bottom: 8rem;
+    @media (min-width: 48em) {
+      margin-bottom: 6rem;
+      height: 33.9rem;
+    }
+  }
+
+  // .gallery__slider
+
+  &__slider {
+    @media (min-width: 48em) {
+      margin: 0;
+      height: 20.2rem;
+      &.swiper {
+        overflow: visible;
+      }
+    }
+  }
+
+  // .gallery__wrapper
+
+  &__wrapper {
+  }
+
+  // .gallery__slide
+
+  &__slide {
+  }
+
+  // .gallery__navigation
+
+  &__navigation {
+    justify-content: center;
+  }
+}
+
+.slide-gallery {
+  height: 100%;
+  overflow: hidden;
+  border-radius: 1rem;
+  cursor: pointer;
+  @media (min-width: 48em) {
+    width: 40rem;
+    transform: scale(0.8, 1);
+    transition: all 0.4s ease;
+  }
+  @media (max-width: 48em) {
+    height: 51.5rem;
+    border-radius: 3rem;
+  }
+
+  // .slide-gallery__image
+
+  &__image {
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+    @media (max-width: 48em) {
+      border-radius: 3rem;
     }
   }
 }
@@ -1382,6 +1489,18 @@
 
 ._hidden {
   display: none;
+}
+
+._desktop-only {
+  @media (max-width: 48em) {
+    display: none;
+  }
+}
+
+._mobile-only {
+  @media (min-width: 48em) {
+    display: none;
+  }
 }
 
 // =============================================================================

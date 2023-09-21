@@ -159,7 +159,7 @@ function initSliders() {
       spaceBetween: 0,
       autoHeight: true,
       speed: 1000,
-      loop: true,
+      // loop: true,
 
       // effects
       effect: 'fade',
@@ -439,8 +439,8 @@ function initSliders() {
       optovikamChaptersSlider.pagination.destroy()
     }
   }
-  if (document.querySelector('.gallery-optovikam__slider')) {
-    new Swiper('.gallery-optovikam__slider', {
+  if (document.querySelector('.gallery__slider')) {
+    new Swiper('.gallery__slider', {
       modules: [Navigation],
       loop: true,
       speed: 1000,
@@ -450,8 +450,8 @@ function initSliders() {
 
       // navigation
       navigation: {
-        prevEl: '.gallery-optovikam .navigation__button_prev',
-        nextEl: '.gallery-optovikam .navigation__button_next',
+        prevEl: '.gallery .navigation__button_prev',
+        nextEl: '.gallery .navigation__button_next',
       },
 
       // breakpoints

@@ -396,6 +396,13 @@
                 document.documentElement.classList.add(className);
             }));
         }
+        function addLoadedClass() {
+            window.addEventListener("load", (function() {
+                setTimeout((function() {
+                    document.documentElement.classList.add("loaded");
+                }), 0);
+            }));
+        }
         function getHash() {
             if (location.hash) return location.hash.replace("#", "");
         }
@@ -5047,7 +5054,6 @@
                 spaceBetween: 0,
                 autoHeight: true,
                 speed: 1e3,
-                loop: true,
                 effect: "fade",
                 fadeEffect: {
                     crossFade: true
@@ -5239,7 +5245,7 @@
                 optovikamChaptersSlider.destroy();
                 optovikamChaptersSlider.pagination.destroy();
             }
-            if (document.querySelector(".gallery-optovikam__slider")) new core(".gallery-optovikam__slider", {
+            if (document.querySelector(".gallery__slider")) new core(".gallery__slider", {
                 modules: [ Navigation ],
                 loop: true,
                 speed: 1e3,
@@ -5247,8 +5253,8 @@
                 spaceBetween: 10,
                 slideToClickedSlide: true,
                 navigation: {
-                    prevEl: ".gallery-optovikam .navigation__button_prev",
-                    nextEl: ".gallery-optovikam .navigation__button_next"
+                    prevEl: ".gallery .navigation__button_prev",
+                    nextEl: ".gallery .navigation__button_next"
                 },
                 breakpoints: {
                     768: {
@@ -5732,6 +5738,7 @@
         }));
         window["FLS"] = true;
         isWebp();
+        addLoadedClass();
         menuInit();
         spoilers();
         tabs();

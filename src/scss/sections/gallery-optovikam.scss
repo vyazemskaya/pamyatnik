@@ -1,4 +1,10 @@
 .gallery-optovikam {
+  .gallery__slider {
+    @media (max-width: 48em) {
+      margin-bottom: 3rem;
+    }
+  }
+
   // .gallery-optovikam__container
 
   &__container {
@@ -38,55 +44,6 @@
       .head__title {
         margin-bottom: 4.8rem;
       }
-    }
-  }
-
-  // .gallery-optovikam__slider
-
-  &__slider {
-    margin-bottom: 3rem;
-    @media (min-width: 48em) {
-      margin: 0;
-      height: 20.2rem;
-      &.swiper {
-        overflow: visible;
-      }
-    }
-  }
-
-  // .gallery-optovikam__wrapper
-
-  &__wrapper {
-  }
-
-  // .gallery-optovikam__slide
-
-  &__slide {
-  }
-}
-.slide-gallery-optovikam {
-  height: 100%;
-  overflow: hidden;
-  border-radius: 1rem;
-  cursor: pointer;
-  @media (min-width: 48em) {
-    width: 40rem;
-    transform: scale(0.8, 1);
-    transition: all 0.4s ease;
-  }
-  @media (max-width: 48em) {
-    height: 51.5rem;
-    border-radius: 3rem;
-  }
-
-  // .slide-gallery-optovikam__image
-
-  &__image {
-    height: 100%;
-    object-fit: cover;
-    border-radius: 1rem;
-    @media (max-width: 48em) {
-      border-radius: 3rem;
     }
   }
 }

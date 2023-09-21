@@ -26,6 +26,10 @@ body {
   font-size: 1.8rem;
   color: $grey; // цвет по умолчанию текста по сайту
   background-color: #ffffff;
+  opacity: 0;
+  .loaded & {
+    opacity: 1;
+  }
 }
 
 input,

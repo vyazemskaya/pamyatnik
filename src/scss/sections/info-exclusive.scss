@@ -1,0 +1,121 @@
+.info-exclusive {
+  // .info-exclusive__container
+
+  &__container {
+    @extend %relative;
+    @extend %flexColumn;
+    align-items: center;
+    &::before,
+    &::after {
+      @extend %bg;
+      top: 50%;
+      transform: translateY(-50%);
+      @media (max-width: 48em) {
+        display: none;
+      }
+    }
+    &::before {
+      left: calc((100vw - 100%) / -2);
+      width: 53.5rem;
+      height: 62.7rem;
+      background-image: url(@img/bg/01.png);
+    }
+    &::after {
+      right: calc((100vw - 100%) / -2);
+      width: 128.5rem;
+      height: 55.2rem;
+      background-image: url(@img/bg/02.png);
+    }
+  }
+
+  // .info-exclusive__head
+
+  &__head {
+    @extend %flexColumn;
+    margin-bottom: 4.9rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  // .info-exclusive__title
+
+  &__title {
+    margin-bottom: 3.2rem;
+    max-width: 76.4rem;
+    @media (max-width: 48em) {
+      margin-bottom: 4.8rem;
+    }
+  }
+
+  // .info-exclusive__text
+
+  &__text {
+    @media (min-width: 48em) {
+      max-width: 50.5rem;
+    }
+  }
+
+  // .info-exclusive__image
+
+  &__image {
+    margin-bottom: 3.2rem;
+    width: 57.8rem;
+    @media (max-width: 48em) {
+      margin-bottom: 4.8rem;
+      width: 68.6rem;
+    }
+  }
+
+  // .info-exclusive__important
+
+  &__important {
+  }
+}
+
+// =============================================================================
+
+.important-info-exclusive {
+  padding: 4rem;
+  display: flex;
+  column-gap: 3rem;
+  border-radius: 2rem;
+  background-color: #ffffff;
+  box-shadow: 1.2rem 2rem 11rem 0 rgba(74, 75, 99, 0.15);
+  @media (max-width: 48em) {
+    column-gap: 2rem;
+  }
+  @media (min-width: 48em) {
+    align-items: center;
+  }
+
+  // .important-info-exclusive__icon
+
+  &__icon {
+    flex: 0 0 8rem;
+    width: 8rem;
+    object-fit: contain;
+    @media (max-width: 48em) {
+      align-self: flex-start;
+      flex: 0 0 10rem;
+      width: 10rem;
+    }
+  }
+
+  // .important-info-exclusive__text
+
+  &__text {
+    color: $black;
+    @media (min-width: 48em) {
+      max-width: 87.9rem;
+      line-height: 140%;
+    }
+  }
+}
+
+// =============================================================================
+
+.exclusive section.info-exclusive {
+  @media (min-width: 48em) {
+    margin-bottom: 28rem;
+  }
+}

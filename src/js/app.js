@@ -16,7 +16,7 @@ utilities.isWebp()
 // utilities.addTouchClass();
 
 // add loaded for HTML after the page is fully loaded
-// utilities.addLoadedClass();
+utilities.addLoadedClass()
 
 // menu module
 utilities.menuInit()
