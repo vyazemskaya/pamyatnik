@@ -2,7 +2,6 @@
   // .steps-services__container
 
   &__container {
-    overflow: hidden;
   }
 
   // .steps-services__head
@@ -12,6 +11,9 @@
     margin-bottom: 6rem;
     align-items: center;
     text-align: center;
+    @media (max-width: 48em) {
+      margin-bottom: 6.4rem;
+    }
   }
 
   // .steps-services__title
@@ -19,11 +21,19 @@
   &__title {
     margin-bottom: 3.2rem;
     max-width: 68.2rem;
+    @media (max-width: 48em) {
+      margin-bottom: 3.6rem;
+      max-width: 62.2rem;
+    }
   }
 
   // .steps-services__subtext
 
   &__subtext {
+    @media (max-width: 48em) {
+      max-width: 47.6rem;
+      font-size: 3.6rem;
+    }
   }
 
   // .steps-services__body
@@ -31,6 +41,10 @@
   &__body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    overflow: hidden;
+    @media (max-width: 48em) {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   // .steps-services__item
@@ -44,9 +58,6 @@
 .item-steps-services {
   position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 23rem;
   &::after {
     content: '';
     position: absolute;
@@ -56,14 +67,29 @@
     right: -1px;
     background-color: rgba(150, 150, 150, 0.6);
   }
+  @media (max-width: 48em) {
+    padding-left: 2rem;
+    padding-bottom: 6.4rem;
+    flex-direction: column;
+  }
+  @media (min-width: 48em) {
+    justify-content: center;
+    align-items: center;
+    min-height: 23rem;
+  }
 
   // .item-steps-services__number
 
   &__number {
     @extend .h3;
-    position: absolute;
-    top: 0;
-    left: 1.9rem;
+    @media (min-width: 48em) {
+      position: absolute;
+      top: 0;
+      left: 1.9rem;
+    }
+    @media (max-width: 48em) {
+      margin-bottom: 2rem;
+    }
   }
 
   // .item-steps-services__heading

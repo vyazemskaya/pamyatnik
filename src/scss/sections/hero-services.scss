@@ -1,4 +1,17 @@
 .hero-services {
+  position: relative;
+  .services_accessories & {
+    &::after {
+      @extend %bg;
+      z-index: 1;
+      bottom: 0;
+      right: 0;
+      width: 119.7rem;
+      height: 55.4rem;
+      background-image: url(@img/bg/03.png);
+      transform: translate(33%, 0%);
+    }
+  }
   &__head,
   &__body,
   &__footer {
@@ -53,6 +66,10 @@
       .services_monuments & {
         transform: translateY(40%);
       }
+      .services_accessories & {
+        background-image: url(@img/bg/04.png);
+        transform: translateY(40%);
+      }
     }
     &::after {
       right: calc((100vw - 100%) / -2);
@@ -65,6 +82,13 @@
         height: 41.6rem;
         background-image: url(@img/bg/04.png);
         transform: translate(8%, 80%);
+      }
+      .services_accessories & {
+        right: 0;
+        width: 26.8rem;
+        height: 50.2rem;
+        background-image: url(@img/bg/10.png);
+        transform: translate(8%, 44%);
       }
     }
     @media (max-width: 48em) {
@@ -97,6 +121,10 @@
     }
     @media (max-width: 48em) {
       margin-bottom: 4rem;
+      align-items: center;
+      .services_accessories & {
+        margin: 0;
+      }
     }
   }
 
@@ -106,18 +134,25 @@
     @extend .h2;
     margin-bottom: 1.5rem;
     .services_monuments & {
-      display: flex;
-      align-items: center;
-      column-gap: 4rem;
-      white-space: nowrap;
-      &::after {
-        content: '';
-        flex: 0 0 4rem;
-        width: 4rem;
-        height: 4rem;
-        background-image: url(@img/icons/arrow.svg);
-        background-size: contain;
-        background-repeat: no-repeat;
+      @media (max-width: 48em) {
+        max-width: 63rem;
+      }
+    }
+    @media (min-width: 48em) {
+      &_arrow {
+        display: flex;
+        align-items: center;
+        column-gap: 4rem;
+        white-space: nowrap;
+        &::after {
+          content: '';
+          flex: 0 0 4rem;
+          width: 4rem;
+          height: 4rem;
+          background-image: url(@img/icons/arrow.svg);
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
       }
     }
     @media (max-width: 48em) {
@@ -244,6 +279,10 @@
       .services_monuments & {
         height: 7rem;
       }
+      .services_accessories & {
+        height: 16.5rem;
+        transform: translateY(18%);
+      }
       @media (max-width: 48em) {
         display: none;
       }
@@ -274,7 +313,7 @@
     @extend .h3;
     margin-bottom: 2.4rem;
     @media (max-width: 48em) {
-      max-width: 50rem;
+      max-width: 53rem;
     }
   }
 }

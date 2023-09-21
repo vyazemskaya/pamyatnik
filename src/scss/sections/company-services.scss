@@ -15,8 +15,12 @@
         width: 128.5rem;
         height: 55.2rem;
         background-image: url(@img/bg/02.png);
+        @media (max-width: 48em) {
+          transform: translate(9%, -27%);
+        }
       }
       @media (max-width: 48em) {
+        z-index: 1;
         width: 38rem;
         height: 35.8rem;
         transform: translate(-1%, -19%);
