@@ -627,6 +627,31 @@ function initSliders() {
       },
     })
   }
+  if (document.querySelector('.about__activities .chapter-section__slider')) {
+    new Swiper('.about__activities .chapter-section__slider', {
+      modules: [Navigation],
+      observer: true,
+      observeParents: true,
+      speed: 800,
+      slidesPerView: 1,
+      autoHeight: true,
+
+      // navigation
+      navigation: {
+        prevEl: '.about__activities .navigation__button_prev',
+        nextEl: '.about__activities .navigation__button_next',
+      },
+
+      // breakpoints
+      breakpoints: {
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 60,
+          autoHeight: false,
+        },
+      },
+    })
+  }
 }
 
 // slider scroll ===============================================================

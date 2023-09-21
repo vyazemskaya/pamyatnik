@@ -1,10 +1,74 @@
-<!-- <div id="popup" aria-hidden="true" class="popup">
-	<div class="popup__wrapper">
-		<div class="popup__content">
-			<button data-close type="button" class="popup__close">Закрыть</button>
-			<div class="popup__text">
-				Text
-			</div>
-		</div>
-	</div>
-</div> -->
+<div id="application-modal" aria-hidden="true" class="popup popup_application">
+  <div class="popup__wrapper">
+    <div class="popup__content">
+      <button data-close type="button" class="popup__close">
+        <img
+          src="@img/icons/cross.svg"
+          aria-hidden="true"
+          alt=""
+          class="popup__close-icon" />
+      </button>
+      <div class="popup__inner">
+        <span class="popup__title h2">Оставьте заявку</span>
+        <p class="popup__text txt">
+          Если у Вас есть вопросы, наши менеджеры помогу Вам
+        </p>
+        <form
+          data-dev
+          data-popup-message="#application-sent"
+          action="#"
+          class="popup__form form-popup">
+          <div class="form-popup__fields">
+            <input
+              data-required
+              data-validate
+              autocomplete="off"
+              type="text"
+              name="form[]"
+              data-error
+              placeholder="Введите имя"
+              class="form-popup__input input" />
+            <input
+              data-required="tel"
+              data-validate
+              autocomplete="off"
+              type="tel"
+              name="form[]"
+              data-error
+              placeholder="Введите номер"
+              class="form-popup__input input" />
+          </div>
+          <button
+            type="submit"
+            title="Оставить заявку"
+            class="form-popup__btn btn">
+            <span class="btn__text">оставить заявку</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="application-sent" aria-hidden="true" class="popup popup_application">
+  <div class="popup__wrapper">
+    <div class="popup__content">
+      <button data-close type="button" class="popup__close">
+        <img
+          src="@img/icons/cross.svg"
+          aria-hidden="true"
+          alt=""
+          class="popup__close-icon" />
+      </button>
+      <div class="popup__inner">
+        <span class="popup__title h2">Заявка отправлена!</span>
+        <p class="popup__text txt">
+          Спасибо, что оставили заявку. Наши менеджеры свяжутся с Вами в
+          ближайшее время
+        </p>
+        <a href="#" title="На главную" class="popup__btn btn"
+          ><span class="btn__text">На главную</span></a
+        >
+      </div>
+    </div>
+  </div>
+</div>

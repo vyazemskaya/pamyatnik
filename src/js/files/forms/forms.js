@@ -99,6 +99,23 @@ export let formValidate = {
       } else {
         this.removeError(formRequiredItem)
       }
+    } else if (formRequiredItem.dataset.required === 'tel') {
+      const phoneRegex =
+        /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/g
+      formRequiredItem.value = formRequiredItem.value.replace(' ', '')
+      if (!formRequiredItem.value.trim()) {
+        this.addError(formRequiredItem)
+        error++
+      } else if (formRequiredItem.value.trim()) {
+        this.removeError(formRequiredItem)
+        if (!phoneRegex.test(formRequiredItem.value)) {
+          this.addError(formRequiredItem)
+          error++
+        } else {
+          formRequiredItem.dataset.error = ''
+          this.removeError(formRequiredItem)
+        }
+      }
     } else if (
       formRequiredItem.type === 'checkbox' &&
       !formRequiredItem.checked

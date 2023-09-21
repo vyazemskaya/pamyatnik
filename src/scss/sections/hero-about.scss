@@ -1,0 +1,94 @@
+.hero-about {
+  position: relative;
+  &::after {
+    @extend %bg;
+    z-index: 1;
+    top: 0;
+    width: 195.9rem;
+    height: 98.2rem;
+    background-image: url(@img/bg/03.png);
+    transform: scaleX(-1) translate(25%, -20%);
+  }
+  @media (max-width: 48em) {
+    padding-top: 4rem;
+    &::after {
+      display: none;
+    }
+  }
+
+  // .hero-about__container
+
+  &__container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &::before {
+      @extend %bg;
+      z-index: 2;
+      bottom: 0;
+      left: 0;
+      width: 38.4rem;
+      height: 40rem;
+      background-image: url(@img/bg/04.png);
+      transform: translate(34%, -1%);
+    }
+    &::after {
+      @extend %bg;
+      z-index: 2;
+      right: 0;
+      width: 93.3rem;
+      height: 55.2rem;
+      background-image: url(@img/bg/02.png);
+      transform: translate(2%, 10%);
+    }
+    @media (min-width: 48em) {
+      min-height: 60rem;
+    }
+    @media (max-width: 48em) {
+      &::before {
+        display: none;
+      }
+      &::after {
+        bottom: 0;
+        width: 116rem;
+        height: 55rem;
+        transform: translate(74%, 99%) scalex(-1);
+      }
+    }
+  }
+
+  // .hero-about__text-wrap
+
+  &__text-wrap {
+    @extend %flexColumn;
+    position: relative;
+    z-index: 3;
+    align-items: center;
+    text-align: center;
+  }
+
+  // .hero-about__title
+
+  &__title {
+    margin-bottom: 3.2rem;
+  }
+
+  // .hero-about__text
+
+  &__text {
+    color: $grey;
+    @media (min-width: 48em) {
+      max-width: 67.8rem;
+    }
+  }
+}
+
+// =============================================================================
+
+.about section.hero-about {
+  margin-bottom: 7.5rem;
+  @media (max-width: 48em) {
+    margin-bottom: 16rem;
+  }
+}

@@ -12,17 +12,26 @@ input:focus {
 }
 
 .input {
+  @extend .txt;
+  padding: 1.2rem 0;
   display: block;
   width: 100%;
-  padding: 0px 20px;
   border-radius: 0 !important;
-  border: 1px solid #eee;
+  border-bottom: 1px solid $black;
+  transition: border-bottom 0.3s ease;
+  &::placeholder {
+    @extend .txt;
+  }
   &._form-focus {
   }
   &._form-error {
+    border-bottom: 1px solid red;
+  }
+  @media (max-width: 48em){
+     padding: 2.4rem 0; 
   }
 }
 textarea.input {
-  padding: 0px 0px;
+  padding: 0;
   resize: none;
 }

@@ -38,7 +38,7 @@ utilities.tabs()
 
 // popups
 // snippet ( HTML ): pl
-// import './libs/popup.js'
+import './libs/popup.js'
 
 // mouse parallax
 // import './libs/parallax-mouse.js'
@@ -50,7 +50,7 @@ utilities.tabs()
 import * as forms from './files/forms/forms.js'
 
 // form fields
-// forms.formFieldsInit({ viewPass: false });
+forms.formFieldsInit({ viewPass: false })
 
 // submit form
 forms.formSubmit()
