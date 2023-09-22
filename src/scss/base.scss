@@ -1,7 +1,7 @@
 @import 'base/forms/forms';
 
 // popup styles
-@import "base/popup";
+@import 'base/popup';
 
 // spoiler styles
 @import 'base/spoilers';
@@ -33,11 +33,11 @@
     object-fit: cover;
   }
 }
-[class*='-ibg_contain'] {
-  img {
-    object-fit: contain;
-  }
-}
+// [class*='-ibg_contain'] {
+//   img {
+//     object-fit: contain;
+//   }
+// }
 
 // templates ===================================================================
 

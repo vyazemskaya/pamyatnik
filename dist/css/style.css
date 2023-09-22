@@ -748,11 +748,6 @@ body::after {
      object-fit: cover;
 }
 
-[class*=-ibg_contain] img {
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-
 .hero-about__container::after,
 .hero-about__container::before,
 .hero-about::after,
