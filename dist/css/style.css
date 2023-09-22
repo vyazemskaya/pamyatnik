@@ -8979,7 +8979,8 @@ body::after {
             justify-content: center;
   }
 
-  .product-main__slider-thumbs-slide img {
+  .product-main__slider-thumbs-slide img,
+  .product-main__slider-thumbs-slide picture {
     display: none;
   }
 
