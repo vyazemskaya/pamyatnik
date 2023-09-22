@@ -4,6 +4,7 @@ import Swiper, {
   EffectFade,
   Grid,
   Autoplay,
+  Thumbs,
 } from 'swiper'
 
 // styles ======================================================================
@@ -609,7 +610,6 @@ function initSliders() {
       slidesPerView: 2,
       spaceBetween: 8,
       speed: 800,
-      autoHeight: true,
 
       // navigation
       navigation: {
@@ -622,7 +622,6 @@ function initSliders() {
         768: {
           slidesPerView: 4,
           spaceBetween: 30,
-          autoHeight: false,
         },
       },
     })
@@ -651,6 +650,75 @@ function initSliders() {
         },
       },
     })
+  }
+  if (document.querySelector('.product-other .chapter-section__slider')) {
+    new Swiper('.product-other .chapter-section__slider', {
+      modules: [Navigation, Grid],
+      observer: true,
+      observeParents: true,
+      slidesPerView: 2,
+      spaceBetween: 0,
+      speed: 1000,
+      grid: {
+        rows: 2,
+        fill: 'row',
+      },
+
+      // navigation
+      navigation: {
+        prevEl: '.product-other .navigation__button_prev',
+        nextEl: '.product-other .navigation__button_next',
+      },
+
+      // breakpoints
+      breakpoints: {
+        768: {
+          slidesPerView: 4,
+          grid: {
+            rows: 1,
+          },
+        },
+      },
+    })
+  }
+  if (document.querySelector('.product-main__slider-main')) {
+    const slides = document.querySelectorAll('.product-main__slider-main-slide')
+    const slider = document.querySelector('.product-main__slider')
+
+    if (slides.length <= 1) {
+      slider.classList.remove('three-slides')
+      slider.classList.remove('two-slides')
+      slider.classList.add('one-slides')
+    } else {
+      const productThumbs = new Swiper('.product-main__slider-thumbs', {
+        modules: [Thumbs],
+        slidesPerView: 1,
+        freeMode: true,
+        watchSlidesProgress: true,
+      })
+      const productMain = new Swiper('.product-main__slider-main', {
+        modules: [Thumbs, EffectFade],
+        thumbs: {
+          swiper: productThumbs,
+        },
+        effect: 'fade',
+        fadeEffect: {
+          crossFade: true,
+        },
+      })
+
+      if (slides.length === 2) {
+        slider.classList.remove('one-slides')
+        slider.classList.remove('three-slides')
+        slider.classList.add('two-slides')
+      }
+
+      if (slides.length === 3) {
+        slider.classList.remove('one-slides')
+        slider.classList.remove('two-slides')
+        slider.classList.add('three-slides')
+      }
+    }
   }
 }
 
