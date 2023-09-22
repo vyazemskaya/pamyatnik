@@ -39,9 +39,9 @@
     grid-template: 43rem / repeat(6, 1fr);
     &::after {
       @extend %waves;
-      background-size: contain;
-      background-image: url(@img/bg/waves-v2.svg);
-      transform: none;
+      z-index: 1;
+      background-image: url(@img/bg/waves.svg);
+      transform: translate(0, 10%);
     }
     @media (max-width: 48em) {
       margin-bottom: 6.4rem;
@@ -89,7 +89,7 @@
         transform: translate(8%, -23%);
       }
       &:last-child {
-        transform: translate(8%, 8%);
+        transform: translate(8%, 19%);
       }
     }
     @media (max-width: 48em) {

@@ -1,5 +1,6 @@
 .gallery-optovikam {
   .gallery__slider {
+    @extend %relative;
     @media (max-width: 48em) {
       margin-bottom: 3rem;
     }
@@ -8,8 +9,20 @@
   // .gallery-optovikam__container
 
   &__container {
+    &::after {
+      @extend %bg;
+      top: 0;
+      width: 195.9rem;
+      height: 98.2rem;
+      background-image: url(@img/bg/03.png);
+      transform: scalex(-1) translate(26%, -48%);
+      @media (max-width: 48em) {
+        display: none;
+      }
+    }
     &::before {
       @extend %bg;
+      z-index: 1;
       width: 43.8rem;
       height: 40rem;
       background-image: url(@img/bg/04.png);
@@ -32,6 +45,7 @@
   // .gallery-optovikam__head
 
   &__head {
+    @extend %relative;
     margin-bottom: 4.8rem;
     @media (min-width: 48em) {
       margin-bottom: 13rem;

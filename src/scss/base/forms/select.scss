@@ -127,6 +127,7 @@
     background-color: #ffffff;
     border-radius: 2rem;
     overflow: hidden;
+    opacity: 0;
     filter: drop-shadow(1.2rem 2rem 6rem rgba(74, 75, 99, 0.15));
     &::after {
       content: '';
@@ -139,6 +140,9 @@
       background-size: cover;
       background-repeat: no-repeat;
       opacity: 0.4;
+    }
+    ._select-open & {
+      opacity: 1;
     }
     @media (max-width: 48em) {
       width: calc(100vw - 7rem);

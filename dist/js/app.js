@@ -5809,7 +5809,7 @@
         }));
         ymaps.ready([ "Panel" ]).then((function() {
             var map = new ymaps.Map("map", {
-                center: [ 55.58499719293329, 37.439974360841596 ],
+                center: [ 55.61592356912356, 37.44884149999992 ],
                 zoom: 12,
                 controls: []
             });

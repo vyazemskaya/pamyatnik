@@ -6,6 +6,7 @@
     display: grid;
     &::after {
       @extend %bg;
+      z-index: 1;
       right: 0;
       width: 44.4rem;
       height: 41.6rem;
@@ -15,6 +16,7 @@
         width: 128.5rem;
         height: 55.2rem;
         background-image: url(@img/bg/02.png);
+        transform: translate(6%, -37%);
         @media (max-width: 48em) {
           transform: translate(9%, -27%);
         }
@@ -23,7 +25,7 @@
         z-index: 1;
         width: 38rem;
         height: 35.8rem;
-        transform: translate(-1%, -19%);
+        transform: translate(6%, -19%);
       }
     }
     @media (min-width: 48em) {
@@ -35,6 +37,8 @@
   // .company-services__column
 
   &__column {
+    @extend %relative;
+
     // .company-services__column_left
 
     &_left {
@@ -125,7 +129,7 @@
   // .company-services__info-txt
 
   &__info-txt {
-    max-width: 28.7rem;
+    max-width: 26.7rem;
     @media (max-width: 48em) {
       font-size: 2.4rem;
     }

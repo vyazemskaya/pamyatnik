@@ -4,6 +4,12 @@
   &__text-block {
     z-index: 2;
   }
+  .text-block__btn {
+    min-width: 22rem;
+    @media (max-width: 48em) {
+      min-width: 29rem;
+    }
+  }
 
   // .about-mainpage__container
 
@@ -16,7 +22,7 @@
       width: 195.9rem;
       height: 98.2rem;
       background-image: url(@img/bg/03.png);
-      transform: translate(0, 30%);
+      transform: scalex(-1) translate(0, 33%);
     }
     &::after {
       @extend %bg;
@@ -39,7 +45,7 @@
         z-index: 1;
         width: 110.6rem;
         height: 110.6rem;
-        transform: translate(17%, 32%);
+        transform: translate(17%, 31%);
       }
     }
   }
@@ -172,11 +178,11 @@
       top: 50%;
       left: -95%;
       width: 28rem;
-      height: 55.4rem;
+      height: 62.4rem;
       background: linear-gradient(
         90deg,
-        rgb(255, 255, 255) 40%,
-        rgba(255, 255, 255, 0.85) 86%,
+        rgb(255, 255, 255) 42%,
+        rgba(255, 255, 255, 0.75) 90%,
         rgba(255, 255, 255, 0.2) 100%
       );
       transform: translateY(-50%);

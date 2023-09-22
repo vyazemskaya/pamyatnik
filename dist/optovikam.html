@@ -5,7 +5,7 @@
 	<title>Оптовикам</title>
 	<meta charset="UTF-8" />
 	<meta name="format-detection" content="telephone=no" />
-	<link rel="stylesheet" href="css/style.min.css?_v=20230921231541" />
+	<link rel="stylesheet" href="css/style.min.css?_v=20230922041648" />
 	<link rel="shortcut icon" href="favicon.ico" />
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -67,7 +67,7 @@
 				<div class="hero-optovikam__container container">
 					<div class="hero-optovikam__content">
 						<span class="hero-optovikam__subtitle">Найдите в нашем лице своего надежного партнера</span>
-						<h1 class="hero-optovikam__title">Памятники оптом</h1>
+						<span class="hero-optovikam__title">Памятники оптом</span>
 						<div class="hero-optovikam__text-wrap">
 							<a href="#" class="hero-optovikam__logo-wrap"><picture><source srcset="img/logo.webp" type="image/webp"><img src="img/logo.png" aria-hidden="true" alt="" class="hero-optovikam__logo" /></picture></a>
 							<p class="hero-optovikam__text txt">
@@ -358,8 +358,8 @@
 			<section class="optovikam__privileges privileges-optovikam">
 				<div class="privileges-optovikam__container container">
 					<div class="privileges-optovikam__head head">
-						<h2 class="head__title h2">преимущества работы с нами</h2>
-						<a data-da=".privileges-optovikam__footer,768,last" href="#" title="Оставить заявку" class="head__btn btn"><span class="btn__text">Оставить заявку</span></a>
+						<span class="head__title h2">преимущества работы с нами</span>
+						<a data-popup="#application-modal" data-da=".privileges-optovikam__footer,768,last" href="#" title="Оставить заявку" class="head__btn btn"><span class="btn__text">Оставить заявку</span></a>
 					</div>
 					<div class="privileges-optovikam__slider swiper">
 						<div class="privileges-optovikam__wrapper swiper-wrapper">
@@ -506,7 +506,7 @@
 								<img src="img/icons/arrow.svg" aria-hidden="true" alt="" />
 							</button>
 						</div>
-						<h2 class="head__title h2">галерея</h2>
+						<span class="head__title h2">галерея</span>
 						<div class="head__contacts-info contacts-info">
 							<div class="contacts-info__head">
 								<div class="contacts-info__icon-wrap">
@@ -606,11 +606,52 @@
 				</div>
 			</div>
 		</footer>
+		<div id="application-modal" aria-hidden="true" class="popup popup_application">
+			<div class="popup__wrapper">
+				<div class="popup__content">
+					<button data-close type="button" class="popup__close">
+						<img src="img/icons/cross.svg" aria-hidden="true" alt="" class="popup__close-icon" />
+					</button>
+					<div class="popup__inner">
+						<span class="popup__title h2">Оставьте заявку</span>
+						<p class="popup__text txt">
+							Если у Вас есть вопросы, наши менеджеры помогу Вам
+						</p>
+						<form data-dev data-popup-message="#application-sent" action="#" class="popup__form form-popup">
+							<div class="form-popup__fields">
+								<input data-required data-validate autocomplete="off" type="text" name="form[]" data-error placeholder="Введите имя" class="form-popup__input input" />
+								<input data-required="tel" data-validate autocomplete="off" type="tel" name="form[]" data-error placeholder="Введите номер" class="form-popup__input input" />
+							</div>
+							<button type="submit" title="Оставить заявку" class="form-popup__btn btn">
+								<span class="btn__text">оставить заявку</span>
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="application-sent" aria-hidden="true" class="popup popup_application">
+			<div class="popup__wrapper">
+				<div class="popup__content">
+					<button data-close type="button" class="popup__close">
+						<img src="img/icons/cross.svg" aria-hidden="true" alt="" class="popup__close-icon" />
+					</button>
+					<div class="popup__inner">
+						<span class="popup__title h2">Заявка отправлена!</span>
+						<p class="popup__text txt">
+							Спасибо, что оставили заявку. Наши менеджеры свяжутся с Вами в
+							ближайшее время
+						</p>
+						<a href="#" title="На главную" class="popup__btn btn"><span class="btn__text">На главную</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
 
 	</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js?_v=20230921231541"></script>
-	<script src="https://api-maps.yandex.ru/2.1/?apikey=<ваш API-ключ&_v=20230921231541>&lang=ru_RU"></script>
-	<script src="js/app.min.js?_v=20230921231541"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js?_v=20230922041648"></script>
+	<script src="https://api-maps.yandex.ru/2.1/?apikey=<ваш API-ключ&_v=20230922041648>&lang=ru_RU"></script>
+	<script src="js/app.min.js?_v=20230922041648"></script>
 
 </body>
 

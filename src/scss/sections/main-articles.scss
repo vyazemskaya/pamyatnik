@@ -20,14 +20,9 @@
       width: 195.9rem;
       height: 98.2rem;
       background-image: url(@img/bg/03.png);
-      transform: scaley(-1) translate(-5%, -81%);
+      transform: scaley(-1) translate(-5%, -75%);
       @media (max-width: 48em) {
-        bottom: auto;
-        top: 0;
-        width: 112.8rem;
-        height: 48.4rem;
-        background-image: url(@img/bg/02.png);
-        transform: translate(-51%, -46%);
+        display: none;
       }
     }
   }

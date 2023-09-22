@@ -11,7 +11,7 @@
               <span class="hero-optovikam__subtitle"
                 >Найдите в нашем лице своего надежного партнера</span
               >
-              <h1 class="hero-optovikam__title">Памятники оптом</h1>
+              <span class="hero-optovikam__title">Памятники оптом</span>
               <div class="hero-optovikam__text-wrap">
                 <a href="#" class="hero-optovikam__logo-wrap"
                   ><img
@@ -394,8 +394,9 @@
         <section class="optovikam__privileges privileges-optovikam">
           <div class="privileges-optovikam__container container">
             <div class="privileges-optovikam__head head">
-              <h2 class="head__title h2">преимущества работы с нами</h2>
+              <span class="head__title h2">преимущества работы с нами</span>
               <a
+                data-popup="#application-modal"
                 data-da=".privileges-optovikam__footer,768,last"
                 href="#"
                 title="Оставить заявку"
@@ -602,7 +603,7 @@
                   <img src="@img/icons/arrow.svg" aria-hidden="true" alt="" />
                 </button>
               </div>
-              <h2 class="head__title h2">галерея</h2>
+              <span class="head__title h2">галерея</span>
               <div class="head__contacts-info contacts-info">
                 <div class="contacts-info__head">
                   <div class="contacts-info__icon-wrap">
@@ -642,50 +643,43 @@
             </div>
             <div class="gallery__slider swiper">
               <div class="gallery__wrapper swiper-wrapper">
-                <div
-                  class="gallery__slide slide-gallery swiper-slide">
+                <div class="gallery__slide slide-gallery swiper-slide">
                   <img
                     data-src="@img/gallery/optovikam/01.jpg"
                     alt=""
                     class="slide-gallery__image" />
                 </div>
-                <div
-                  class="gallery__slide slide-gallery swiper-slide">
+                <div class="gallery__slide slide-gallery swiper-slide">
                   <img
                     data-src="@img/gallery/optovikam/02.jpg"
                     alt=""
                     class="slide-gallery__image" />
                 </div>
-                <div
-                  class="gallery__slide slide-gallery swiper-slide">
+                <div class="gallery__slide slide-gallery swiper-slide">
                   <img
                     data-src="@img/gallery/optovikam/03.jpg"
                     alt=""
                     class="slide-gallery__image" />
                 </div>
-                <div
-                  class="gallery__slide slide-gallery swiper-slide">
+                <div class="gallery__slide slide-gallery swiper-slide">
                   <img
                     data-src="@img/gallery/optovikam/04.jpg"
                     alt=""
                     class="slide-gallery__image" />
                 </div>
-                <div
-                  class="gallery__slide slide-gallery swiper-slide">
+                <div class="gallery__slide slide-gallery swiper-slide">
                   <img
                     data-src="@img/gallery/optovikam/05.jpg"
                     alt=""
                     class="slide-gallery__image" />
                 </div>
-                <div
-                  class="gallery__slide slide-gallery swiper-slide">
+                <div class="gallery__slide slide-gallery swiper-slide">
                   <img
                     data-src="@img/gallery/optovikam/06.jpg"
                     alt=""
                     class="slide-gallery__image" />
                 </div>
-                <div
-                  class="gallery__slide slide-gallery swiper-slide">
+                <div class="gallery__slide slide-gallery swiper-slide">
                   <img
                     data-src="@img/gallery/optovikam/07.jpg"
                     alt=""
@@ -705,7 +699,7 @@
           </clipPath>
         </svg>
       </main>
-      @@include('html/_footer.htm',{})
+      @@include('html/_footer.htm',{}) @@include('html/_popup.htm',{})
     </div>
     @@include('html/_js.htm',{})
   </body>

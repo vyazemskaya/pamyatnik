@@ -12,6 +12,7 @@
       transform: none;
       @media (max-width: 48em) {
         width: 128rem;
+        background-image: url(@img/bg/waves-v3.svg);
         transform: translate(-18%, 21%);
       }
     }

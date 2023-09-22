@@ -9,7 +9,7 @@
     width: 195.9rem;
     height: 98.2rem;
     background-image: url(@img/bg/03.png);
-    transform: translate(-1%, -18%);
+    transform: scalex(-1) translate(17%, -22%);
   }
   &__materials,
   &__info {
@@ -54,6 +54,7 @@
       grid-template-columns: 1fr auto;
       &::before,
       &::after {
+        z-index: 1;
         left: auto;
         right: 0;
       }
@@ -65,7 +66,7 @@
       &::after {
         width: 39.4rem;
         height: 46.2rem;
-        transform: translate(2%, -61%) scalex(-1);
+        transform: translate(0%, -64%) scalex(-1);
       }
     }
   }
@@ -185,6 +186,9 @@
     @media (min-width: 48em) {
       margin-bottom: 5rem;
       max-width: 31.7rem;
+    }
+    @media (max-width: 48em) {
+      font-size: 2.7rem;
     }
   }
 

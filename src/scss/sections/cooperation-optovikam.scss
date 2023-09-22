@@ -4,12 +4,13 @@
   &__container {
     &::before {
       @extend %bg;
+      z-index: 1;
       top: 0;
       left: calc((100vw - 100%) / -2);
       width: 56.8rem;
       height: 66.5rem;
       background-image: url(@img/bg/01.png);
-      transform: translateY(-52%);
+      transform: translateY(-65%);
       @media (max-width: 48em) {
         width: 36.2rem;
         height: 42.6rem;
@@ -127,7 +128,6 @@
     transition: all 0.3s ease;
     &._active {
       min-height: 32.5rem;
-      border-radius: 0;
       box-shadow: none;
       clip-path: url(#mask1);
       filter: drop-shadow(1.2rem 2rem 11rem rgba(74, 75, 99, 0.15));

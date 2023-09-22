@@ -67,7 +67,11 @@
       }
       .slide-services-mainpage__image-wrap img,
       .slide-services-mainpage__image-wrap picture {
-        height: 80%;
+        height: 57%;
+        @media (max-width: 48em){
+          height: 67%;
+            
+        }
       }
     }
   }
@@ -145,11 +149,11 @@
 
   &__btn {
     min-width: 31rem;
-    min-height: 5rem;
+    height: 5rem;
     border-radius: 3rem;
     @media (max-width: 48em) {
       min-width: 35.2rem;
-      min-height: 7.6rem;
+      height: 7.6rem;
       border-radius: 6rem;
     }
   }

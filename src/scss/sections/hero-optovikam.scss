@@ -25,6 +25,7 @@
       background-image: url(@img/bg/02.png);
       transform: translate(8%, -23%);
       @media (max-width: 48em) {
+        z-index: 1;
         top: auto;
         bottom: 0;
         width: 101rem;
@@ -40,7 +41,7 @@
       width: 195.9rem;
       height: 98.2rem;
       background-image: url(@img/bg/03.png);
-      transform: translate(4%, -22%);
+      transform: scalex(-1) translate(11%, -33%);
       @media (max-width: 48em) {
         display: none;
       }
@@ -308,10 +309,10 @@
 
   &__btn {
     min-width: 21.1rem;
-    min-height: 5rem;
+    height: 5rem;
     @media (max-width: 48em) {
       width: 100%;
-      min-height: 8rem;
+      height: 8rem;
     }
   }
 }
