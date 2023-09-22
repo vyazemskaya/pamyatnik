@@ -9,7 +9,7 @@
       width: 33.4rem;
       height: 32.5rem;
       background-image: url(@img/bg/06.png);
-      transform: translateY(-38%);
+      transform: translateY(-51%);
     }
     &::after {
       @extend %bg;
@@ -67,11 +67,7 @@
       }
       .slide-services-mainpage__image-wrap img,
       .slide-services-mainpage__image-wrap picture {
-        height: 57%;
-        @media (max-width: 48em){
-          height: 67%;
-            
-        }
+        height: 84%;
       }
     }
   }

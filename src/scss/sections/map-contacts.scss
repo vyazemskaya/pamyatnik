@@ -14,6 +14,8 @@
   // .map-contacts__container
 
   &__container {
+    display: flex;
+    flex-direction: column;
     &::before {
       @extend %bg;
       z-index: 1;
