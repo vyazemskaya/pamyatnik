@@ -5695,6 +5695,30 @@
                     }
                 }
             });
+            if (document.querySelector(".product-other .chapter-section__slider")) new core(".product-other .chapter-section__slider", {
+                modules: [ Navigation, Grid ],
+                observer: true,
+                observeParents: true,
+                slidesPerView: 2,
+                spaceBetween: 0,
+                speed: 1e3,
+                grid: {
+                    rows: 2,
+                    fill: "row"
+                },
+                navigation: {
+                    prevEl: ".product-other .navigation__button_prev",
+                    nextEl: ".product-other .navigation__button_next"
+                },
+                breakpoints: {
+                    768: {
+                        slidesPerView: 4,
+                        grid: {
+                            rows: 1
+                        }
+                    }
+                }
+            });
         }
         window.addEventListener("load", (function(e) {
             initSliders();
