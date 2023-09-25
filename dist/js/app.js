@@ -5398,7 +5398,7 @@
             const slideWidth = swiper.el.offsetWidth / params.amount;
             const emptySpace = slideWidth - slideWidth * params.scale;
             const additionalSpace = params.activeScale !== 1 ? Math.abs((slideWidth * params.activeScale - slideWidth * params.scale) / 2 - emptySpace) : Math.abs(slideWidth - slideWidth * params.scale - emptySpace / 2);
-            slides[swiper.activeIndex].style.transform = `scale(${params.activeScale}, 2)`;
+            slides[swiper.activeIndex].style.transform = `scale(${params.activeScale})`;
             slides.forEach((slide => {
                 if (slides.indexOf(slide) < swiper.activeIndex) prevSlides.push(slide); else if (slides.indexOf(slide) > swiper.activeIndex) nextSlides.push(slide);
             }));
@@ -5408,17 +5408,17 @@
                     const x0 = params.activeScale !== 1 ? additionalSpace + params.gap : additionalSpace - params.gap;
                     const x1 = params.activeScale !== 1 ? emptySpace - x0 - params.gap : x0 + emptySpace - params.gap;
                     const x2 = emptySpace + x1 - params.gap;
-                    arr[1].style.transform = `translateX(${isNext ? -x1 : x1}px) scale(${params.scale}, 1)`;
-                    arr[2].style.transform = `translateX(${isNext ? -x2 : x2}px) scale(${params.scale}, 1)`;
-                    if (params.activeScale !== 1) arr[0].style.transform = `translateX(${isNext ? x0 : -x0}px) scale(${params.scale}, 1)`; else arr[0].style.transform = `translateX(${isNext ? -x0 : x0}px) scale(${params.scale}, 1)`;
+                    arr[1].style.transform = `translateX(${isNext ? -x1 : x1}px) scale(${params.scale})`;
+                    arr[2].style.transform = `translateX(${isNext ? -x2 : x2}px) scale(${params.scale})`;
+                    if (params.activeScale !== 1) arr[0].style.transform = `translateX(${isNext ? x0 : -x0}px) scale(${params.scale})`; else arr[0].style.transform = `translateX(${isNext ? -x0 : x0}px) scale(${params.scale})`;
                     if (i > 1) {
                         const prevGap = arr[i - 1].style.transform.split(" ")[0].match(/\d+/g).join(".");
                         if (!isNext) {
                             const x3 = x2 > 0 ? Number(prevGap) : Number(prevGap) * -1;
-                            el.style.transform = `translateX(${x3 + emptySpace - params.gap}px) scale(${params.scale}, 1)`;
+                            el.style.transform = `translateX(${x3 + emptySpace - params.gap}px) scale(${params.scale})`;
                         } else {
                             const x3 = x2 > 0 ? Number(prevGap) * -1 : Number(prevGap);
-                            el.style.transform = `translateX(${x3 - emptySpace + params.gap}px) scale(${params.scale}, 1)`;
+                            el.style.transform = `translateX(${x3 - emptySpace + params.gap}px) scale(${params.scale})`;
                         }
                     }
                 }
@@ -5673,7 +5673,7 @@
                 modules: [ Navigation ],
                 loop: true,
                 speed: 1e3,
-                spaceBetween: 0,
+                spaceBetween: 30,
                 slidesPerView: 1,
                 navigation: {
                     prevEl: ".gallery .navigation__button_prev",
@@ -5681,6 +5681,7 @@
                 },
                 breakpoints: {
                     768: {
+                        spaceBetween: 0,
                         slidesPerView: 5,
                         centeredSlides: true,
                         slideToClickedSlide: true

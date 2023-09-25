@@ -197,6 +197,11 @@
         transform: rotate(-180deg);
       }
     }
+    &_next {
+      &::after {
+        transform: rotate(-360deg);
+      }
+    }
     &::after {
       content: '';
       flex: 0 0 2.4rem;
@@ -355,7 +360,6 @@
     // .hero-services__arrow_next
 
     &_next {
-      transform: rotate(-360deg);
     }
   }
 }

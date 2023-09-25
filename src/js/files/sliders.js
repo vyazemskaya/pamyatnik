@@ -45,7 +45,7 @@ const initGallerySlider = swiper => {
         )
       : Math.abs(slideWidth - slideWidth * params.scale - emptySpace / 2)
 
-  slides[swiper.activeIndex].style.transform = `scale(${params.activeScale}, 2)`
+  slides[swiper.activeIndex].style.transform = `scale(${params.activeScale})`
 
   slides.forEach(slide => {
     if (slides.indexOf(slide) < swiper.activeIndex) {
@@ -70,18 +70,18 @@ const initGallerySlider = swiper => {
         const x2 = emptySpace + x1 - params.gap
         arr[1].style.transform = `translateX(${isNext ? -x1 : x1}px) scale(${
           params.scale
-        }, 1)`
+        })`
         arr[2].style.transform = `translateX(${isNext ? -x2 : x2}px) scale(${
           params.scale
-        }, 1)`
+        })`
         if (params.activeScale !== 1) {
           arr[0].style.transform = `translateX(${isNext ? x0 : -x0}px) scale(${
             params.scale
-          }, 1)`
+          })`
         } else {
           arr[0].style.transform = `translateX(${isNext ? -x0 : x0}px) scale(${
             params.scale
-          }, 1)`
+          })`
         }
         if (i > 1) {
           const prevGap = arr[i - 1].style.transform
@@ -92,12 +92,12 @@ const initGallerySlider = swiper => {
             const x3 = x2 > 0 ? Number(prevGap) : Number(prevGap) * -1
             el.style.transform = `translateX(${
               x3 + emptySpace - params.gap
-            }px) scale(${params.scale}, 1)`
+            }px) scale(${params.scale})`
           } else {
             const x3 = x2 > 0 ? Number(prevGap) * -1 : Number(prevGap)
             el.style.transform = `translateX(${
               x3 - emptySpace + params.gap
-            }px) scale(${params.scale}, 1)`
+            }px) scale(${params.scale})`
           }
         }
       }
@@ -462,7 +462,7 @@ function initSliders() {
       modules: [Navigation],
       loop: true,
       speed: 1000,
-      spaceBetween: 0,
+      spaceBetween: 30,
       slidesPerView: 1,
 
       // navigation
@@ -474,6 +474,7 @@ function initSliders() {
       // breakpoints
       breakpoints: {
         768: {
+          spaceBetween: 0,
           slidesPerView: 5,
           centeredSlides: true,
           slideToClickedSlide: true,
