@@ -355,6 +355,7 @@
     // .hero-services__arrow_next
 
     &_next {
+      transform: rotate(-360deg);
     }
   }
 }

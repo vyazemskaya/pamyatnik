@@ -1,6 +1,60 @@
-
-
 if (document.querySelector('#map')) {
+  class PanelContent {
+    constructor(heading, tel, email, adress, hours, img) {
+      this.heading = heading
+      this.tel = tel
+      this.email = email
+      this.adress = adress
+      this.hours = hours
+      this.img = img
+      this.content = this.init()
+    }
+    init() {
+      const phoneNumber = this.tel.replace(/[()-\s]/g, '')
+      const content = `
+        <div class="map-panel">
+        <span class="map-panel__heading">${this.heading}</span>
+        <ul class="map-panel__list">
+          <li class="map-panel__list-item">
+            <span class="map-panel__list-heading">телефон:</span>
+            <a href="tel:${phoneNumber}" class="map-panel__list-txt">${this.tel}</a>
+          </li>
+          <li class="map-panel__list-item">
+            <span class="map-panel__list-heading">e-mail:</span>
+            <a href="mailto:${this.email}" class="map-panel__list-txt">${this.email}</a>
+          </li>
+          <li class="map-panel__list-item">
+            <span class="map-panel__list-heading">адрес:</span>
+            <span class="map-panel__list-txt">${this.adress}</span>
+          </li>
+          <li class="map-panel__list-item">
+            <span class="map-panel__list-heading">часы работы:</span>
+            <span class="map-panel__list-txt">${this.hours}</span>
+          </li>
+        </ul>
+        <div class="map-panel__image-wrap"><img class="map-panel__image" src="${this.img}" alt="" aria-hidden="true"></div>
+        <div class="map-panel__icon-wrap"><img class="map-panel__icon" src="img/icons/map/main-mark.svg" alt="" aria-hidden="true"></div>
+      </div>
+        `
+      return content
+    }
+  }
+  var mainOffice = new PanelContent(
+    'ЦЕНТРАЛЬНЫЙ ОФИС',
+    '+7 (495) 155-05-35',
+    'info@pamyatnik.ru',
+    'Москва, ул. Адмирала Корнилова, 50, стр. 1',
+    'ежедневно, с 9:00 до 19:00',
+    'https://i.ibb.co/zJgD6bT/main-office.jpg'
+  ).content
+  var office = new PanelContent(
+    'ОФИС',
+    '+7 (495) 155-05-35',
+    'info@pamyatnik.ru',
+    'Москва, ул. Адмирала Корнилова, 50, стр. 1',
+    'ежедневно, с 9:00 до 19:00',
+    'https://i.ibb.co/zJgD6bT/main-office.jpg'
+  ).content
   const md = window.matchMedia('(max-width: 48em)')
   ymaps.modules.define(
     'Panel',
@@ -53,176 +107,120 @@ if (document.querySelector('#map')) {
       zoom: 12,
       controls: [],
     })
-
-    class PanelContent {
-      constructor(heading, tel, email, adress, hours, img) {
-        this.heading = heading
-        this.tel = tel
-        this.email = email
-        this.adress = adress
-        this.hours = hours
-        this.img = img
-        this.content = this.init()
-      }
-      init() {
-        const phoneNumber = this.tel.replace(/[()-\s]/g, '')
-        const content = `
-        <div class="map-panel">
-        <span class="map-panel__heading">${this.heading}</span>
-        <ul class="map-panel__list">
-          <li class="map-panel__list-item">
-            <span class="map-panel__list-heading">телефон:</span>
-            <a href="tel:${phoneNumber}" class="map-panel__list-txt">${this.tel}</a>
-          </li>
-          <li class="map-panel__list-item">
-            <span class="map-panel__list-heading">e-mail:</span>
-            <a href="mailto:${this.email}" class="map-panel__list-txt">${this.email}</a>
-          </li>
-          <li class="map-panel__list-item">
-            <span class="map-panel__list-heading">адрес:</span>
-            <span class="map-panel__list-txt">${this.adress}</span>
-          </li>
-          <li class="map-panel__list-item">
-            <span class="map-panel__list-heading">часы работы:</span>
-            <span class="map-panel__list-txt">${this.hours}</span>
-          </li>
-        </ul>
-        <div class="map-panel__image-wrap"><img class="map-panel__image" src="${this.img}" alt="" aria-hidden="true"></div>
-        <div class="map-panel__icon-wrap"><img class="map-panel__icon" src="img/icons/map/main-mark.svg" alt="" aria-hidden="true"></div>
-      </div>
-        `
-        return content
-      }
-    }
-    var mainOffice = new PanelContent(
-      'ЦЕНТРАЛЬНЫЙ ОФИС',
-      '+7 (495) 155-05-35',
-      'info@pamyatnik.ru',
-      'Москва, ул. Адмирала Корнилова, 50, стр. 1',
-      'ежедневно, с 9:00 до 19:00',
-      'https://i.ibb.co/zJgD6bT/main-office.jpg'
-    ).content
-    var office = new PanelContent(
-      'ОФИС',
-      '+7 (495) 155-05-35',
-      'info@pamyatnik.ru',
-      'Москва, ул. Адмирала Корнилова, 50, стр. 1',
-      'ежедневно, с 9:00 до 19:00',
-      'https://i.ibb.co/zJgD6bT/main-office.jpg'
-    ).content
-
     var panel = new ymaps.Panel()
     map.controls.add(panel, {
       float: md.matches ? 'bottom' : 'right',
     })
 
-    if (!document.querySelector('.main.contacts')) {
-      window.myObjects = ymaps
-        .geoQuery({
-          type: 'FeatureCollection',
-          features: [
-            {
-              type: 'Feature',
-              geometry: {
-                type: 'Point',
-                coordinates: [55.61592356912356, 37.44884149999992],
+    const promise = new Promise((resolve, reject) => {
+      if (document.querySelector('.main.mainpage')) {
+        window.myObjects = ymaps
+          .geoQuery({
+            type: 'FeatureCollection',
+            features: [
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [55.61592356912356, 37.44884149999992],
+                },
+                options: {
+                  iconLayout: 'default#image',
+                  iconImageHref: 'img/icons/map/ellipse-mark.svg',
+                  iconImageSize: [md.matches ? 40 : 50, md.matches ? 40 : 50],
+                  iconImageOffset: [
+                    md.matches ? -20 : -25,
+                    md.matches ? -20 : -25,
+                  ],
+                  balloonContent: mainOffice,
+                  type: 'mainOffice',
+                },
               },
-              options: {
-                iconLayout: 'default#image',
-                iconImageHref: 'img/icons/map/ellipse-mark.svg',
-                iconImageSize: [md.matches ? 40 : 50, md.matches ? 40 : 50],
-                iconImageOffset: [
-                  md.matches ? -20 : -25,
-                  md.matches ? -20 : -25,
-                ],
-                balloonContent: mainOffice,
-                type: 'mainOffice',
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [55.626589040911746, 37.44718413867363],
+                },
+                options: {
+                  iconLayout: 'default#image',
+                  iconImageHref: 'img/icons/map/mark.svg',
+                  iconImageSize: [md.matches ? 14 : 20, md.matches ? 14 : 20],
+                  iconImageOffset: [
+                    md.matches ? -7 : -10,
+                    md.matches ? -7 : -10,
+                  ],
+                  balloonContent: office,
+                  type: 'office',
+                },
               },
-            },
-            {
-              type: 'Feature',
-              geometry: {
-                type: 'Point',
-                coordinates: [55.626589040911746, 37.44718413867363],
-              },
-              options: {
-                iconLayout: 'default#image',
-                iconImageHref: 'img/icons/map/mark.svg',
-                iconImageSize: [md.matches ? 14 : 20, md.matches ? 14 : 20],
-                iconImageOffset: [md.matches ? -7 : -10, md.matches ? -7 : -10],
-                balloonContent: office,
-                type: 'office',
-              },
-            },
-          ],
-        })
-        .addToMap(map)
-    } else if (document.querySelector('.main.contacts')) {
-      window.myObjects = ymaps
-        .geoQuery({
-          type: 'FeatureCollection',
-          features: [
-            {
-              type: 'Feature',
-              geometry: {
-                type: 'Point',
-                coordinates: [55.603482126638916, 37.451518840271184],
-              },
-              options: {
-                iconLayout: 'default#image',
-                iconImageHref: 'img/icons/map/ellipse-mark.svg',
-                iconImageSize: [md.matches ? 40 : 50, md.matches ? 40 : 50],
-                iconImageOffset: [
-                  md.matches ? -20 : -25,
-                  md.matches ? -20 : -25,
-                ],
-                balloonContent: mainOffice,
-                type: 'mainOffice',
-              },
-            },
-            {
-              type: 'Feature',
-              geometry: {
-                type: 'Point',
-                coordinates: [55.61029502521985, 37.44125915138204],
-              },
-              options: {
-                iconLayout: 'default#image',
-                iconImageHref: 'img/icons/map/mark.svg',
-                iconImageSize: [md.matches ? 14 : 20, md.matches ? 14 : 20],
-                iconImageOffset: [md.matches ? -7 : -10, md.matches ? -7 : -10],
-                balloonContent: office,
-                type: 'office',
-              },
-            },
-          ],
-        })
-        .addToMap(map)
-    }
-
-    const setActiveOptions = object => {
-      object.options.set({
-        iconImageHref: 'img/icons/map/ellipse-mark.svg',
-        iconImageSize: [md.matches ? 40 : 50, md.matches ? 40 : 50],
-        iconImageOffset: [md.matches ? -20 : -25, md.matches ? -20 : -25],
-      })
-      panel.setContent(object.options._options.balloonContent)
-      !md.matches
-        ? map.panTo(object.geometry.getCoordinates(), { useMapMargin: true })
-        : null
-    }
-    const removeActiveOptions = object => {
-      if (
-        object.options._options.iconImageHref ===
-        'img/icons/map/ellipse-mark.svg'
-      ) {
-        object.options.set({
-          iconImageHref: 'img/icons/map/mark.svg',
-          iconImageSize: [md.matches ? 14 : 20, md.matches ? 14 : 20],
-          iconImageOffset: [md.matches ? -7 : -10, md.matches ? -7 : -10],
-        })
+            ],
+          })
+          .addToMap(map)
       }
-    }
+      if (document.querySelector('.main.contacts')) {
+        window.myObjects = ymaps
+          .geoQuery({
+            type: 'FeatureCollection',
+            features: [
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [55.603482126638916, 37.451518840271184],
+                },
+                options: {
+                  iconLayout: 'default#image',
+                  iconImageHref: 'img/icons/map/ellipse-mark.svg',
+                  iconImageSize: [md.matches ? 40 : 50, md.matches ? 40 : 50],
+                  iconImageOffset: [
+                    md.matches ? -20 : -25,
+                    md.matches ? -20 : -25,
+                  ],
+                  balloonContent: mainOffice,
+                  type: 'mainOffice',
+                },
+              },
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [55.61029502521985, 37.44125915138204],
+                },
+                options: {
+                  iconLayout: 'default#image',
+                  iconImageHref: 'img/icons/map/mark.svg',
+                  iconImageSize: [md.matches ? 14 : 20, md.matches ? 14 : 20],
+                  iconImageOffset: [
+                    md.matches ? -7 : -10,
+                    md.matches ? -7 : -10,
+                  ],
+                  balloonContent: office,
+                  type: 'office',
+                },
+              },
+            ],
+          })
+          .addToMap(map)
+      }
+      setTimeout(
+        () =>
+          resolve(
+            window.myObjects._objects.forEach(object => {
+              if (object.options._options.type === 'mainOffice') {
+                document.querySelector('.customControl .content').innerHTML =
+                  object.options._options.balloonContent
+                !md.matches
+                  ? map.panTo(object.geometry.getCoordinates(), {
+                      useMapMargin: true,
+                    })
+                  : null
+              }
+            })
+          ),
+        1000
+      )
+    })
 
     map.geoObjects.events.add('click', function (e) {
       var target = e.get('target')
@@ -233,13 +231,28 @@ if (document.querySelector('#map')) {
           iconImageOffset: [md.matches ? -7 : -10, md.matches ? -7 : -10],
         })
       })
-      if (
-        target.options._options.iconImageHref !==
-        'img/icons/map/ellipse-mark.svg'
-      ) {
-        setActiveOptions(target)
-      }
+      setActiveOptions(target)
     })
+
+    var setActiveOptions = object => {
+      object.options.set({
+        iconImageHref: 'img/icons/map/ellipse-mark.svg',
+        iconImageSize: [md.matches ? 40 : 50, md.matches ? 40 : 50],
+        iconImageOffset: [md.matches ? -20 : -25, md.matches ? -20 : -25],
+      })
+      document.querySelector('.customControl .content').innerHTML = ''
+      panel.setContent(object.options._options.balloonContent)
+      !md.matches
+        ? map.panTo(object.geometry.getCoordinates(), { useMapMargin: true })
+        : null
+    }
+    var removeActiveOptions = object => {
+      object.options.set({
+        iconImageHref: 'img/icons/map/mark.svg',
+        iconImageSize: [md.matches ? 14 : 20, md.matches ? 14 : 20],
+        iconImageOffset: [md.matches ? -7 : -10, md.matches ? -7 : -10],
+      })
+    }
 
     const switchers = document.querySelectorAll('.map-contacts__btn')
 
@@ -265,16 +278,6 @@ if (document.querySelector('#map')) {
         }
       })
     }
-
-    window.addEventListener('load', function () {
-      window.myObjects._objects.forEach(object => {
-        if (object.options._options.type === 'mainOffice') {
-          setTimeout(() => {
-            setActiveOptions(object)
-          }, 500)
-        }
-      })
-    })
 
     document.querySelector(
       '.ymaps-2-1-79-controls__control_toolbar'

@@ -1777,10 +1777,8 @@ body::after {
           flex: 0 0 10.7rem;
   border-radius: 50%;
   background-color: #ffffff;
-  -webkit-box-shadow: 0 1.2rem 1.2rem 0 rgba(255, 255, 255, 0.3) inset;
-          box-shadow: 0 1.2rem 1.2rem 0 rgba(255, 255, 255, 0.3) inset;
-  -webkit-filter: drop-shadow(-0.5rem -0.05rem 0 #fff) drop-shadow(0.56rem 0.84rem 1.46rem rgba(74, 75, 99, 0.1));
-          filter: drop-shadow(-0.5rem -0.05rem 0 #fff) drop-shadow(0.56rem 0.84rem 1.46rem rgba(74, 75, 99, 0.1));
+  -webkit-box-shadow: 0.56rem 0.84rem 1.46rem rgba(74, 75, 99, 0.1);
+          box-shadow: 0.56rem 0.84rem 1.46rem rgba(74, 75, 99, 0.1);
 }
 
 .icon__image {
@@ -2953,7 +2951,7 @@ body::after {
           align-items: center;
   width: 55.4rem;
   height: 55.4rem;
-  border: 1px solid #b9b8ba;
+  border: 1px solid rgba(185, 184, 186, 0.662745098);
   border-radius: 50%;
   -webkit-transform: translateX(-12%);
       -ms-transform: translateX(-12%);
@@ -2966,7 +2964,7 @@ body::after {
   position: absolute;
   top: 50%;
   left: 50%;
-  border: 1px solid #b9b8ba;
+  border: 1px solid rgba(185, 184, 186, 0.662745098);
   border-radius: 50%;
   -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
@@ -4443,6 +4441,12 @@ body::after {
   -webkit-transform: rotate(-180deg);
       -ms-transform: rotate(-180deg);
           transform: rotate(-180deg);
+}
+
+.hero-services__arrow_next {
+  -webkit-transform: rotate(-360deg);
+      -ms-transform: rotate(-360deg);
+          transform: rotate(-360deg);
 }
 
 .privileges-services__head {
