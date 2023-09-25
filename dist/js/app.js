@@ -5386,49 +5386,46 @@
         let optovikamPrivilegesSlider = null;
         let optovikamChaptersSlider = null;
         const initGallerySlider = swiper => {
-            const GAP = 30;
-            const SCALE_SLIDE = .8;
-            const SCALE_ACTIVE_SLIDE = 1.7;
-            const VISIBLE_SLIDES_AMOUNT = 5;
-            const CONTAINER_WIDTH = 1760;
+            const params = {
+                gap: 15,
+                scale: .8,
+                activeScale: 1.7,
+                amount: 5
+            };
             const slides = swiper.slides;
-            const slideWidth = CONTAINER_WIDTH / VISIBLE_SLIDES_AMOUNT - GAP / 2.12 * VISIBLE_SLIDES_AMOUNT;
-            const gapPercent = GAP / slideWidth * 100;
-            const activeSlideGap = SCALE_SLIDE / 2 * (SCALE_ACTIVE_SLIDE / 2) * 100 + gapPercent / 2;
-            const slideGap = SCALE_SLIDE / 2 * (SCALE_SLIDE / 2) * 100 + gapPercent / 1.8;
-            if (slides.length) {
-                let arrPrev = [];
-                let arrNext = [];
-                for (let i = 0; i < slides.length; i++) {
-                    const slide = slides[i];
-                    slide.style.transform = `scale(${SCALE_SLIDE}, 1) `;
-                    if (i < swiper.activeIndex) {
-                        arrPrev.push(slide);
-                        slide.style.transform = `scale(${SCALE_SLIDE}, 1) translateX(12%)`;
-                    } else if (i > swiper.activeIndex) {
-                        arrNext.push(slide);
-                        slide.style.transform = `scale(${SCALE_SLIDE}, 1) translateX(-12%)`;
+            const prevSlides = [];
+            const nextSlides = [];
+            const slideWidth = swiper.el.offsetWidth / params.amount;
+            const emptySpace = slideWidth - slideWidth * params.scale;
+            const largerGap = params.activeScale !== 1 ? Math.abs((slideWidth * params.activeScale - slideWidth * params.scale) / 2 - emptySpace) : Math.abs(slideWidth - slideWidth * params.scale - emptySpace / 2);
+            slides[swiper.activeIndex].style.transform = `scale(${params.activeScale}, 2)`;
+            slides.forEach((slide => {
+                if (slides.indexOf(slide) < swiper.activeIndex) prevSlides.push(slide); else if (slides.indexOf(slide) > swiper.activeIndex) nextSlides.push(slide);
+            }));
+            const setTransform = (arr, isNext) => {
+                if (arr.length) for (let i = 0; i < arr.length; i++) {
+                    const el = arr[i];
+                    const x0 = params.activeScale !== 1 ? largerGap + params.gap : largerGap - params.gap;
+                    const x1 = params.activeScale !== 1 ? emptySpace - x0 - params.gap : x0 + emptySpace - params.gap;
+                    const x2 = emptySpace + x1 - params.gap;
+                    arr[1].style.transform = `translateX(${isNext ? -x1 : x1}px) scale(${params.scale}, 1)`;
+                    arr[2].style.transform = `translateX(${isNext ? -x2 : x2}px) scale(${params.scale}, 1)`;
+                    if (params.activeScale !== 1) arr[0].style.transform = `translateX(${isNext ? x0 : -x0}px) scale(${params.scale}, 1)`; else arr[0].style.transform = `translateX(${isNext ? -x0 : x0}px) scale(${params.scale}, 1)`;
+                    if (i > 2) {
+                        const prevGap = arr[i - 1].style.transform.split(" ")[0].match(/\d+/g).join(".");
+                        if (!isNext) {
+                            const x3 = x2 > 0 ? Number(prevGap) : Number(prevGap) * -1;
+                            el.style.transform = `translateX(${x3 + emptySpace - params.gap}px) scale(${params.scale}, 1)`;
+                        } else {
+                            const x3 = x2 > 0 ? Number(prevGap) * -1 : Number(prevGap);
+                            el.style.transform = `translateX(${x3 - emptySpace + params.gap}px) scale(${params.scale}, 1)`;
+                        }
                     }
-                    slides[swiper.activeIndex].style.transform = `scale(${SCALE_ACTIVE_SLIDE}, 2.1)`;
                 }
-                arrPrev.reverse();
-                if (arrPrev.length) {
-                    for (let i = 2; i < arrPrev.length; i += 2) {
-                        const el = arrPrev[i];
-                        el.style.transform = `scale(${SCALE_SLIDE}, 1) translateX(-${SCALE_SLIDE / 2 * 10}%)`;
-                    }
-                    arrPrev[0].style.transform = `scale(${SCALE_SLIDE}, 1) translateX(-${activeSlideGap}%)`;
-                    arrPrev[1].style.transform = `scale(${SCALE_SLIDE}, 1) translateX(-${slideGap}%)`;
-                }
-                if (arrNext.length) {
-                    for (let i = 2; i < arrNext.length; i += 2) {
-                        const el = arrNext[i];
-                        el.style.transform = `scale(${SCALE_SLIDE}, 1) translateX(${SCALE_SLIDE / 2 * 10}%`;
-                    }
-                    arrNext[0].style.transform = `scale(${SCALE_SLIDE}, 1) translateX(${activeSlideGap}%)`;
-                    arrNext[1].style.transform = `scale(${SCALE_SLIDE}, 1) translateX(${slideGap}%)`;
-                }
-            }
+            };
+            prevSlides.reverse();
+            setTransform(prevSlides, 0);
+            setTransform(nextSlides, 1);
         };
         const initCatalogSliderThumbs = swiper => {
             const slides = swiper.slides;
@@ -5480,6 +5477,7 @@
                 spaceBetween: 0,
                 autoHeight: true,
                 speed: 1e3,
+                updateOnWindowResize: true,
                 effect: "fade",
                 fadeEffect: {
                     crossFade: true
@@ -5675,34 +5673,25 @@
                 modules: [ Navigation ],
                 loop: true,
                 speed: 1e3,
+                spaceBetween: 0,
                 slidesPerView: 1,
-                spaceBetween: 10,
-                slideToClickedSlide: true,
                 navigation: {
                     prevEl: ".gallery .navigation__button_prev",
                     nextEl: ".gallery .navigation__button_next"
                 },
                 breakpoints: {
                     768: {
-                        spaceBetween: 0,
                         slidesPerView: 5,
                         centeredSlides: true,
-                        watchSlidesProgress: true,
-                        watchSlidesVisibility: true
+                        slideToClickedSlide: true
                     }
                 },
                 on: {
                     afterInit: swiper => {
-                        if (!window.matchMedia("(max-width: 768px)").matches) {
-                            initGallerySlider(swiper);
-                            swiper.update();
-                        }
+                        initGallerySlider(swiper);
                     },
                     slideChange: swiper => {
-                        if (!window.matchMedia("(max-width: 768px)").matches) {
-                            initGallerySlider(swiper);
-                            swiper.update();
-                        }
+                        initGallerySlider(swiper);
                     }
                 }
             });
@@ -5963,142 +5952,188 @@
                 }));
             }
         }), 0);
-        const md = window.matchMedia("(max-width: 48em)");
-        ymaps.modules.define("Panel", [ "util.augment", "collection.Item" ], (function(provide, augment, item) {
-            var Panel = function(options) {
-                Panel.superclass.constructor.call(this, options);
-            };
-            augment(Panel, item, {
-                onAddToMap: function(map) {
-                    Panel.superclass.onAddToMap.call(this, map);
-                    this.getParent().getChildElement(this).then(this._onGetChildElement, this);
-                },
-                onRemoveFromMap: function(oldMap) {
-                    if (this._$control) this._$control.remove();
-                    Panel.superclass.onRemoveFromMap.call(this, oldMap);
-                },
-                _onGetChildElement: function(parentDomContainer) {
-                    this._$control = $('<div class="customControl"><div class="content"></div><div class="closeButton"></div></div>').appendTo(parentDomContainer);
-                    this._$content = $(".content");
-                    $(".closeButton").on("click", this._onClose);
-                },
-                _onClose: function() {
-                    $(".customControl").css("display", "none");
-                },
-                setContent: function(text) {
-                    this._$control.css("display", "flex");
-                    this._$content.html(text);
-                }
-            });
-            provide(Panel);
-        }));
-        ymaps.ready([ "Panel" ]).then((function() {
-            var map = new ymaps.Map("map", {
-                center: [ 55.61592356912356, 37.44884149999992 ],
-                zoom: 12,
-                controls: []
-            });
-            class PanelContent {
-                constructor(heading, tel, email, adress, hours, img) {
-                    this.heading = heading;
-                    this.tel = tel;
-                    this.email = email;
-                    this.adress = adress;
-                    this.hours = hours;
-                    this.img = img;
-                    this.content = this.init();
-                }
-                init() {
-                    const phoneNumber = this.tel.replace(/[()-\s]/g, "");
-                    const content = `\n      <div class="map-panel">\n      <span class="map-panel__heading">${this.heading}</span>\n      <ul class="map-panel__list">\n        <li class="map-panel__list-item">\n          <span class="map-panel__list-heading">телефон:</span>\n          <a href="tel:${phoneNumber}" class="map-panel__list-txt">${this.tel}</a>\n        </li>\n        <li class="map-panel__list-item">\n          <span class="map-panel__list-heading">e-mail:</span>\n          <a href="mailto:${this.email}" class="map-panel__list-txt">${this.email}</a>\n        </li>\n        <li class="map-panel__list-item">\n          <span class="map-panel__list-heading">адрес:</span>\n          <span class="map-panel__list-txt">${this.adress}</span>\n        </li>\n        <li class="map-panel__list-item">\n          <span class="map-panel__list-heading">часы работы:</span>\n          <span class="map-panel__list-txt">${this.hours}</span>\n        </li>\n      </ul>\n      <div class="map-panel__image-wrap"><img class="map-panel__image" src="${this.img}" alt="" aria-hidden="true"></div>\n      <div class="map-panel__icon-wrap"><img class="map-panel__icon" src="img/icons/map/main-mark.svg" alt="" aria-hidden="true"></div>\n    </div>\n      `;
-                    return content;
-                }
-            }
-            var mainOffice = new PanelContent("ЦЕНТРАЛЬНЫЙ ОФИС", "+7 (495) 155-05-35", "info@pamyatnik.ru", "Москва, ул. Адмирала Корнилова, 50, стр. 1", "ежедневно, с 9:00 до 19:00", "https://i.ibb.co/zJgD6bT/main-office.jpg").content;
-            var office = new PanelContent("ОФИС", "+7 (495) 155-05-35", "info@pamyatnik.ru", "Москва, ул. Адмирала Корнилова, 50, стр. 1", "ежедневно, с 9:00 до 19:00", "https://i.ibb.co/zJgD6bT/main-office.jpg").content;
-            var panel = new ymaps.Panel;
-            map.controls.add(panel, {
-                float: md.matches ? "bottom" : "right"
-            });
-            if (!document.querySelector(".main.contacts")) window.myObjects = ymaps.geoQuery({
-                type: "FeatureCollection",
-                features: [ {
-                    type: "Feature",
-                    geometry: {
-                        type: "Point",
-                        coordinates: [ 55.61592356912356, 37.44884149999992 ]
+        if (document.querySelector("#map")) {
+            const md = window.matchMedia("(max-width: 48em)");
+            ymaps.modules.define("Panel", [ "util.augment", "collection.Item" ], (function(provide, augment, item) {
+                var Panel = function(options) {
+                    Panel.superclass.constructor.call(this, options);
+                };
+                augment(Panel, item, {
+                    onAddToMap: function(map) {
+                        Panel.superclass.onAddToMap.call(this, map);
+                        this.getParent().getChildElement(this).then(this._onGetChildElement, this);
                     },
-                    options: {
-                        iconLayout: "default#image",
-                        iconImageHref: "img/icons/map/ellipse-mark.svg",
-                        iconImageSize: [ md.matches ? 40 : 50, md.matches ? 40 : 50 ],
-                        iconImageOffset: [ md.matches ? -20 : -25, md.matches ? -20 : -25 ],
-                        balloonContent: mainOffice
-                    }
-                }, {
-                    type: "Feature",
-                    geometry: {
-                        type: "Point",
-                        coordinates: [ 55.626589040911746, 37.44718413867363 ]
+                    onRemoveFromMap: function(oldMap) {
+                        if (this._$control) this._$control.remove();
+                        Panel.superclass.onRemoveFromMap.call(this, oldMap);
                     },
-                    options: {
-                        iconLayout: "default#image",
-                        iconImageHref: "img/icons/map/mark.svg",
-                        iconImageSize: [ md.matches ? 14 : 20, md.matches ? 14 : 20 ],
-                        iconImageOffset: [ md.matches ? -7 : -10, md.matches ? -7 : -10 ],
-                        balloonContent: office
-                    }
-                } ]
-            }).addToMap(map); else window.myObjects = ymaps.geoQuery({
-                type: "FeatureCollection",
-                features: [ {
-                    type: "Feature",
-                    geometry: {
-                        type: "Point",
-                        coordinates: [ 55.603482126638916, 37.451518840271184 ]
+                    _onGetChildElement: function(parentDomContainer) {
+                        this._$control = $('<div class="customControl"><div class="content"></div><div class="closeButton"></div></div>').appendTo(parentDomContainer);
+                        this._$content = $(".content");
+                        $(".closeButton").on("click", this._onClose);
                     },
-                    options: {
-                        iconLayout: "default#image",
-                        iconImageHref: "img/icons/map/ellipse-mark.svg",
-                        iconImageSize: [ md.matches ? 40 : 50, md.matches ? 40 : 50 ],
-                        iconImageOffset: [ md.matches ? -20 : -25, md.matches ? -20 : -25 ],
-                        balloonContent: mainOffice
-                    }
-                }, {
-                    type: "Feature",
-                    geometry: {
-                        type: "Point",
-                        coordinates: [ 55.61029502521985, 37.44125915138204 ]
+                    _onClose: function() {
+                        $(".customControl").css("display", "none");
                     },
-                    options: {
-                        iconLayout: "default#image",
-                        iconImageHref: "img/icons/map/mark.svg",
-                        iconImageSize: [ md.matches ? 14 : 20, md.matches ? 14 : 20 ],
-                        iconImageOffset: [ md.matches ? -7 : -10, md.matches ? -7 : -10 ],
-                        balloonContent: office
+                    setContent: function(text) {
+                        this._$control.css("display", "flex");
+                        this._$content.html(text);
                     }
-                } ]
-            }).addToMap(map);
-            map.geoObjects.events.add("click", (function(e) {
-                var target = e.get("target");
-                panel.setContent(target.options._options.balloonContent);
-                !md.matches ? map.panTo(target.geometry.getCoordinates(), {
-                    useMapMargin: true
-                }) : null;
+                });
+                provide(Panel);
             }));
-            document.querySelector(".ymaps-2-1-79-controls__control_toolbar").style.margin = 0;
-            document.querySelector(".ymaps-2-1-79-controls__control_toolbar").style.position = "absolute";
-            document.querySelector(".ymaps-2-1-79-controls__bottom").style.top = "104.8rem";
-            map.behaviors.disable("scrollZoom");
-            map.behaviors.disable("dblClickZoom");
-            map.controls.remove("geolocationControl");
-            map.controls.remove("searchControl");
-            map.controls.remove("trafficControl");
-            map.controls.remove("typeSelector");
-            map.controls.remove("fullscreenControl");
-            map.controls.remove("zoomControl");
-            map.controls.remove("rulerControl");
-        }));
+            ymaps.ready([ "Panel" ]).then((function() {
+                var map = new ymaps.Map("map", {
+                    center: md ? [ 55.594933092829535, 37.44918482275384 ] : [ 55.61592356912356, 37.44884149999992 ],
+                    zoom: 12,
+                    controls: []
+                });
+                class PanelContent {
+                    constructor(heading, tel, email, adress, hours, img) {
+                        this.heading = heading;
+                        this.tel = tel;
+                        this.email = email;
+                        this.adress = adress;
+                        this.hours = hours;
+                        this.img = img;
+                        this.content = this.init();
+                    }
+                    init() {
+                        const phoneNumber = this.tel.replace(/[()-\s]/g, "");
+                        const content = `\n        <div class="map-panel">\n        <span class="map-panel__heading">${this.heading}</span>\n        <ul class="map-panel__list">\n          <li class="map-panel__list-item">\n            <span class="map-panel__list-heading">телефон:</span>\n            <a href="tel:${phoneNumber}" class="map-panel__list-txt">${this.tel}</a>\n          </li>\n          <li class="map-panel__list-item">\n            <span class="map-panel__list-heading">e-mail:</span>\n            <a href="mailto:${this.email}" class="map-panel__list-txt">${this.email}</a>\n          </li>\n          <li class="map-panel__list-item">\n            <span class="map-panel__list-heading">адрес:</span>\n            <span class="map-panel__list-txt">${this.adress}</span>\n          </li>\n          <li class="map-panel__list-item">\n            <span class="map-panel__list-heading">часы работы:</span>\n            <span class="map-panel__list-txt">${this.hours}</span>\n          </li>\n        </ul>\n        <div class="map-panel__image-wrap"><img class="map-panel__image" src="${this.img}" alt="" aria-hidden="true"></div>\n        <div class="map-panel__icon-wrap"><img class="map-panel__icon" src="img/icons/map/main-mark.svg" alt="" aria-hidden="true"></div>\n      </div>\n        `;
+                        return content;
+                    }
+                }
+                var mainOffice = new PanelContent("ЦЕНТРАЛЬНЫЙ ОФИС", "+7 (495) 155-05-35", "info@pamyatnik.ru", "Москва, ул. Адмирала Корнилова, 50, стр. 1", "ежедневно, с 9:00 до 19:00", "https://i.ibb.co/zJgD6bT/main-office.jpg").content;
+                var office = new PanelContent("ОФИС", "+7 (495) 155-05-35", "info@pamyatnik.ru", "Москва, ул. Адмирала Корнилова, 50, стр. 1", "ежедневно, с 9:00 до 19:00", "https://i.ibb.co/zJgD6bT/main-office.jpg").content;
+                var panel = new ymaps.Panel;
+                map.controls.add(panel, {
+                    float: md.matches ? "bottom" : "right"
+                });
+                if (!document.querySelector(".main.contacts")) window.myObjects = ymaps.geoQuery({
+                    type: "FeatureCollection",
+                    features: [ {
+                        type: "Feature",
+                        geometry: {
+                            type: "Point",
+                            coordinates: [ 55.61592356912356, 37.44884149999992 ]
+                        },
+                        options: {
+                            iconLayout: "default#image",
+                            iconImageHref: "img/icons/map/ellipse-mark.svg",
+                            iconImageSize: [ md.matches ? 40 : 50, md.matches ? 40 : 50 ],
+                            iconImageOffset: [ md.matches ? -20 : -25, md.matches ? -20 : -25 ],
+                            balloonContent: mainOffice,
+                            type: "mainOffice"
+                        }
+                    }, {
+                        type: "Feature",
+                        geometry: {
+                            type: "Point",
+                            coordinates: [ 55.626589040911746, 37.44718413867363 ]
+                        },
+                        options: {
+                            iconLayout: "default#image",
+                            iconImageHref: "img/icons/map/mark.svg",
+                            iconImageSize: [ md.matches ? 14 : 20, md.matches ? 14 : 20 ],
+                            iconImageOffset: [ md.matches ? -7 : -10, md.matches ? -7 : -10 ],
+                            balloonContent: office,
+                            type: "office"
+                        }
+                    } ]
+                }).addToMap(map); else if (document.querySelector(".main.contacts")) window.myObjects = ymaps.geoQuery({
+                    type: "FeatureCollection",
+                    features: [ {
+                        type: "Feature",
+                        geometry: {
+                            type: "Point",
+                            coordinates: [ 55.603482126638916, 37.451518840271184 ]
+                        },
+                        options: {
+                            iconLayout: "default#image",
+                            iconImageHref: "img/icons/map/ellipse-mark.svg",
+                            iconImageSize: [ md.matches ? 40 : 50, md.matches ? 40 : 50 ],
+                            iconImageOffset: [ md.matches ? -20 : -25, md.matches ? -20 : -25 ],
+                            balloonContent: mainOffice,
+                            type: "mainOffice"
+                        }
+                    }, {
+                        type: "Feature",
+                        geometry: {
+                            type: "Point",
+                            coordinates: [ 55.61029502521985, 37.44125915138204 ]
+                        },
+                        options: {
+                            iconLayout: "default#image",
+                            iconImageHref: "img/icons/map/mark.svg",
+                            iconImageSize: [ md.matches ? 14 : 20, md.matches ? 14 : 20 ],
+                            iconImageOffset: [ md.matches ? -7 : -10, md.matches ? -7 : -10 ],
+                            balloonContent: office,
+                            type: "office"
+                        }
+                    } ]
+                }).addToMap(map);
+                const setActiveOptions = object => {
+                    object.options.set({
+                        iconImageHref: "img/icons/map/ellipse-mark.svg",
+                        iconImageSize: [ md.matches ? 40 : 50, md.matches ? 40 : 50 ],
+                        iconImageOffset: [ md.matches ? -20 : -25, md.matches ? -20 : -25 ]
+                    });
+                    panel.setContent(object.options._options.balloonContent);
+                    !md.matches ? map.panTo(object.geometry.getCoordinates(), {
+                        useMapMargin: true
+                    }) : null;
+                };
+                const removeActiveOptions = object => {
+                    if (object.options._options.iconImageHref === "img/icons/map/ellipse-mark.svg") object.options.set({
+                        iconImageHref: "img/icons/map/mark.svg",
+                        iconImageSize: [ md.matches ? 14 : 20, md.matches ? 14 : 20 ],
+                        iconImageOffset: [ md.matches ? -7 : -10, md.matches ? -7 : -10 ]
+                    });
+                };
+                map.geoObjects.events.add("click", (function(e) {
+                    var target = e.get("target");
+                    window.myObjects._objects.forEach((object => {
+                        object.options.set({
+                            iconImageHref: "img/icons/map/mark.svg",
+                            iconImageSize: [ md.matches ? 14 : 20, md.matches ? 14 : 20 ],
+                            iconImageOffset: [ md.matches ? -7 : -10, md.matches ? -7 : -10 ]
+                        });
+                    }));
+                    if (target.options._options.iconImageHref !== "img/icons/map/ellipse-mark.svg") setActiveOptions(target);
+                }));
+                const switchers = document.querySelectorAll(".map-contacts__btn");
+                if (switchers.length) document.addEventListener("click", (function(e) {
+                    if (e.target.closest(".map-contacts__btn")) {
+                        const switcherId = e.target.closest(".map-contacts__btn").id;
+                        window.myObjects._objects.forEach((object => {
+                            removeActiveOptions(object);
+                            if (object.options._options.type === "mainOffice" && switcherId === "mainOfficeSwitch") setActiveOptions(object);
+                            if (object.options._options.type === "office" && switcherId === "officeSwitch") setActiveOptions(object);
+                        }));
+                    }
+                }));
+                window.addEventListener("load", (function() {
+                    window.myObjects._objects.forEach((object => {
+                        if (object.options._options.type === "mainOffice") setTimeout((() => {
+                            setActiveOptions(object);
+                        }), 500);
+                    }));
+                }));
+                document.querySelector(".ymaps-2-1-79-controls__control_toolbar").style.margin = 0;
+                document.querySelector(".ymaps-2-1-79-controls__control_toolbar").style.position = "absolute";
+                document.querySelector(".ymaps-2-1-79-controls__bottom").style.top = "104.8rem";
+                map.behaviors.disable("scrollZoom");
+                map.behaviors.disable("dblClickZoom");
+                map.controls.remove("geolocationControl");
+                map.controls.remove("searchControl");
+                map.controls.remove("trafficControl");
+                map.controls.remove("typeSelector");
+                map.controls.remove("fullscreenControl");
+                map.controls.remove("zoomControl");
+                map.controls.remove("rulerControl");
+            }));
+        }
         function DynamicAdapt(type) {
             this.type = type;
         }
@@ -6200,24 +6235,30 @@
             const aboutText = document.querySelector(".about-mainpage__text-block .text-block__text");
             if (aboutText && md.matches) aboutText.innerHTML = `Союз Каменных Мастерских – это объединение предприятий камнеобрабатывающей промышленности. \n    На протяжении 20 лет мы успешно работаем в этой сфере и отлично зарекомендовали себя.`;
             const chapters = document.querySelectorAll(".cooperation-optovikam__chapter");
-            if (chapters.length && !md.matches) {
-                chapters[0].classList.add("_active");
-                document.querySelectorAll(".description-cooperation-optovikam__item")[0].classList.add("_active");
-            }
+            if (chapters.length && !md.matches) chapters[0].classList.add("_active");
+            const initChapters = target => {
+                if (chapters.length && !md.matches) {
+                    const addActiveClass = activeChapter => {
+                        document.querySelector(`[data-chapter-desc="${activeChapter.dataset.chapter}"]`).classList.add("_active");
+                    };
+                    addActiveClass(chapters[0]);
+                    if (target) {
+                        const activeChapter = target.closest(".cooperation-optovikam__chapter");
+                        removeClasses(chapters, "_active");
+                        removeClasses(document.querySelectorAll(".description-cooperation-optovikam__item"), "_active");
+                        activeChapter.classList.add("_active");
+                        addActiveClass(activeChapter);
+                    }
+                }
+            };
+            initChapters();
             const onClickHandler = e => {
                 const target = e.target;
                 if (target.closest(".catalog-tabs__item")) {
                     removeClasses(document.querySelectorAll(".catalog-tabs__item"), "_active");
                     target.closest(".catalog-tabs__item").classList.add("_active");
                 }
-                if (target.closest(".cooperation-optovikam__chapter") && !md.matches) {
-                    const chapterBtn = e.target.closest(".cooperation-optovikam__chapter");
-                    const chapterBtnIndex = chapterBtn.dataset.chapter;
-                    removeClasses(document.querySelectorAll(".cooperation-optovikam__chapter"), "_active");
-                    chapterBtn.classList.add("_active");
-                    removeClasses(document.querySelectorAll(".description-cooperation-optovikam__item"), "_active");
-                    document.querySelector(`[data-chapter-desc="${chapterBtnIndex}"]`).classList.add("_active");
-                }
+                if (target.closest(".cooperation-optovikam__chapter")) initChapters(target);
                 if (target.closest(".catalog .select__option")) {
                     removeClasses(document.querySelectorAll(".catalog .select__option"), "_select-selected");
                     target.closest(".catalog .select__option").classList.add("_select-selected");

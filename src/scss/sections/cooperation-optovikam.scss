@@ -142,20 +142,6 @@
         color: #ffffff;
       }
     }
-    &::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      right: 0;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 0 13.5px 20px 13.5px;
-      border-color: transparent transparent transparent transparent;
-      opacity: 0;
-      transform: opacity 0.3s ease;
-      transform: translate(100%, -50%) rotate(90deg);
-    }
   }
 
   // .chapter-cooperation-optovikam__text-wrap
@@ -237,15 +223,20 @@
   @media (max-width: 48em) {
     display: none;
   }
+  display: grid;
+  grid-auto-rows: 32.5rem;
 
   // .description-cooperation-optovikam__item
 
   &__item {
-    display: none;
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
     flex-direction: column;
     max-width: 73.3rem;
     &._active {
-      display: flex;
+      opacity: 1;
+      visibility: visible;
     }
   }
 

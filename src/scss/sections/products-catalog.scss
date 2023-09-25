@@ -15,25 +15,23 @@
     flex-direction: column;
     &::after {
       @extend %bg;
+      z-index: 1;
       left: 0;
-      top: 0;
-      width: 112.8rem;
-      height: 48.4rem;
-      background-image: url(@img/bg/02.png);
-      transform: translate(-46%, -36%);
+      bottom: 0;
+      width: 195.9rem;
+      height: 98.2rem;
+      background-image: url(@img/bg/03.png);
+      transform: translateY(42%);
       @media (min-width: 48em) {
-        z-index: 1;
-        bottom: 0;
-        width: 195.9rem;
-        height: 98.2rem;
-        background-image: url(@img/bg/03.png);
-        transform: translateY(42%);
         .catalog_fences & {
           transform: translate(-7%, 133%);
         }
         .catalog_stone & {
           transform: translateY(157%);
         }
+      }
+      @media (max-width: 48em) {
+        display: none;
       }
     }
   }

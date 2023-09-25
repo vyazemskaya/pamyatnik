@@ -46,11 +46,16 @@
     }
     @media (max-width: 48em) {
       &::after {
-        right: -4rem;
-        width: 39.4rem;
-        height: 46.2rem;
-        background-image: url(@img/bg/01.png);
-        transform: scaleX(-1) translate(8%, -12%);
+        display: none;
+        .catalog_monuments &,
+        .catalog_stone & {
+          display: block;
+          right: -4rem;
+          width: 39.4rem;
+          height: 46.2rem;
+          background-image: url(@img/bg/01.png);
+          transform: scaleX(-1) translate(8%, -27%);
+        }
       }
     }
   }

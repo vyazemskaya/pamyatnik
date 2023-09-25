@@ -25,72 +25,88 @@ let optovikamPrivilegesSlider = null
 let optovikamChaptersSlider = null
 
 const initGallerySlider = swiper => {
-  // params
-  const GAP = 30 // gap between the slides, multiplied by 2 (15 * 2 = 30)
-  const SCALE_SLIDE = 0.8 // scale for regular slides
-  const SCALE_ACTIVE_SLIDE = 1.7 // scale for active slide
-  const VISIBLE_SLIDES_AMOUNT = 5 // slides per view
-  const CONTAINER_WIDTH = 1760 // swiper container width
+  const params = {
+    gap: 15,
+    scale: 0.8,
+    activeScale: 1.7,
+    amount: 5,
+  }
 
-  // main variables
-  const slides = swiper.slides // array with slides
-  const slideWidth =
-    CONTAINER_WIDTH / VISIBLE_SLIDES_AMOUNT -
-    (GAP / 2.12) * VISIBLE_SLIDES_AMOUNT
-  // one slide width
-  const gapPercent = (GAP / slideWidth) * 100 // gap between the slides (in %)
-  const activeSlideGap =
-    (SCALE_SLIDE / 2) * (SCALE_ACTIVE_SLIDE / 2) * 100 + gapPercent / 2 // gap for next & prev slide
-  const slideGap =
-    (SCALE_SLIDE / 2) * (SCALE_SLIDE / 2) * 100 + gapPercent / 1.8 // gap for regular slides
+  const slides = swiper.slides
+  const prevSlides = []
+  const nextSlides = []
+  const slideWidth = swiper.el.offsetWidth / params.amount
+  const emptySpace = slideWidth - slideWidth * params.scale
+  const largerGap =
+    params.activeScale !== 1
+      ? Math.abs(
+          (slideWidth * params.activeScale - slideWidth * params.scale) / 2 -
+            emptySpace
+        )
+      : Math.abs(slideWidth - slideWidth * params.scale - emptySpace / 2)
 
-  if (slides.length) {
-    let arrPrev = [] // array with slides that before active slide
-    let arrNext = [] // array with slides that after active slide
+  slides[swiper.activeIndex].style.transform = `scale(${params.activeScale}, 2)`
 
-    for (let i = 0; i < slides.length; i++) {
-      const slide = slides[i]
-
-      // set scale to regular slides
-      slide.style.transform = `scale(${SCALE_SLIDE}, 1) `
-
-      // check if slides are previous / next
-      if (i < swiper.activeIndex) {
-        arrPrev.push(slide)
-        slide.style.transform = `scale(${SCALE_SLIDE}, 1) translateX(12%)`
-      } else if (i > swiper.activeIndex) {
-        arrNext.push(slide)
-        slide.style.transform = `scale(${SCALE_SLIDE}, 1) translateX(-12%)`
-      }
-
-      // scale active slide
-      slides[
-        swiper.activeIndex
-      ].style.transform = `scale(${SCALE_ACTIVE_SLIDE}, 2.1)`
+  slides.forEach(slide => {
+    if (slides.indexOf(slide) < swiper.activeIndex) {
+      prevSlides.push(slide)
+    } else if (slides.indexOf(slide) > swiper.activeIndex) {
+      nextSlides.push(slide)
     }
+  })
 
-    arrPrev.reverse()
-    if (arrPrev.length) {
-      for (let i = 2; i < arrPrev.length; i += 2) {
-        const el = arrPrev[i]
-        el.style.transform = `scale(${SCALE_SLIDE}, 1) translateX(-${
-          (SCALE_SLIDE / 2) * 10
-        }%)`
+  const setTransform = (arr, isNext) => {
+    if (arr.length) {
+      for (let i = 0; i < arr.length; i++) {
+        const el = arr[i]
+        const x0 =
+          params.activeScale !== 1
+            ? largerGap + params.gap
+            : largerGap - params.gap
+        const x1 =
+          params.activeScale !== 1
+            ? emptySpace - x0 - params.gap
+            : x0 + emptySpace - params.gap
+        const x2 = emptySpace + x1 - params.gap
+        arr[1].style.transform = `translateX(${isNext ? -x1 : x1}px) scale(${
+          params.scale
+        }, 1)`
+        arr[2].style.transform = `translateX(${isNext ? -x2 : x2}px) scale(${
+          params.scale
+        }, 1)`
+        if (params.activeScale !== 1) {
+          arr[0].style.transform = `translateX(${isNext ? x0 : -x0}px) scale(${
+            params.scale
+          }, 1)`
+        } else {
+          arr[0].style.transform = `translateX(${isNext ? -x0 : x0}px) scale(${
+            params.scale
+          }, 1)`
+        }
+        if (i > 2) {
+          const prevGap = arr[i - 1].style.transform
+            .split(' ')[0]
+            .match(/\d+/g)
+            .join('.')
+          if (!isNext) {
+            const x3 = x2 > 0 ? Number(prevGap) : Number(prevGap) * -1
+            el.style.transform = `translateX(${
+              x3 + emptySpace - params.gap
+            }px) scale(${params.scale}, 1)`
+          } else {
+            const x3 = x2 > 0 ? Number(prevGap) * -1 : Number(prevGap)
+            el.style.transform = `translateX(${
+              x3 - emptySpace + params.gap
+            }px) scale(${params.scale}, 1)`
+          }
+        }
       }
-      arrPrev[0].style.transform = `scale(${SCALE_SLIDE}, 1) translateX(-${activeSlideGap}%)`
-      arrPrev[1].style.transform = `scale(${SCALE_SLIDE}, 1) translateX(-${slideGap}%)`
-    }
-    if (arrNext.length) {
-      for (let i = 2; i < arrNext.length; i += 2) {
-        const el = arrNext[i]
-        el.style.transform = `scale(${SCALE_SLIDE}, 1) translateX(${
-          (SCALE_SLIDE / 2) * 10
-        }%`
-      }
-      arrNext[0].style.transform = `scale(${SCALE_SLIDE}, 1) translateX(${activeSlideGap}%)`
-      arrNext[1].style.transform = `scale(${SCALE_SLIDE}, 1) translateX(${slideGap}%)`
     }
   }
+
+  prevSlides.reverse()
+  setTransform(prevSlides, 0)
+  setTransform(nextSlides, 1)
 }
 const initCatalogSliderThumbs = swiper => {
   const slides = swiper.slides
@@ -160,6 +176,7 @@ function initSliders() {
       spaceBetween: 0,
       autoHeight: true,
       speed: 1000,
+      updateOnWindowResize: true,
       // loop: true,
 
       // effects
@@ -445,9 +462,8 @@ function initSliders() {
       modules: [Navigation],
       loop: true,
       speed: 1000,
+      spaceBetween: 0,
       slidesPerView: 1,
-      spaceBetween: 10,
-      slideToClickedSlide: true,
 
       // navigation
       navigation: {
@@ -458,27 +474,19 @@ function initSliders() {
       // breakpoints
       breakpoints: {
         768: {
-          spaceBetween: 0,
           slidesPerView: 5,
           centeredSlides: true,
-          watchSlidesProgress: true,
-          watchSlidesVisibility: true,
+          slideToClickedSlide: true,
         },
       },
 
       // events
       on: {
         afterInit: swiper => {
-          if (!window.matchMedia('(max-width: 768px)').matches) {
-            initGallerySlider(swiper)
-            swiper.update()
-          }
+          initGallerySlider(swiper)
         },
         slideChange: swiper => {
-          if (!window.matchMedia('(max-width: 768px)').matches) {
-            initGallerySlider(swiper)
-            swiper.update()
-          }
+          initGallerySlider(swiper)
         },
       },
     })

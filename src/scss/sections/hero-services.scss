@@ -120,7 +120,7 @@
       justify-items: start;
     }
     @media (max-width: 48em) {
-      margin-bottom: 4rem;
+      margin-bottom: 3rem;
       align-items: center;
       .services_accessories & {
         margin: 0;
@@ -132,7 +132,6 @@
 
   &__title {
     @extend .h2;
-    margin-bottom: 1.5rem;
     .services_monuments & {
       @media (max-width: 48em) {
         max-width: 63rem;
@@ -141,6 +140,7 @@
     @media (min-width: 48em) {
       grid-row: 2/3;
       &_arrow {
+        margin-bottom: 1.5rem;
         display: flex;
         align-items: center;
         column-gap: 4rem;
@@ -155,9 +155,6 @@
           background-repeat: no-repeat;
         }
       }
-    }
-    @media (max-width: 48em) {
-      margin-bottom: 0.8rem;
     }
   }
 
@@ -211,7 +208,8 @@
       opacity: 1;
     }
     @media (any-hover: hover) {
-      &:hover {
+      &_prev:hover,
+      &_next:hover {
         &::after {
           background-image: url(@img/icons/arrow-white.svg);
           background-color: transparent;
@@ -237,6 +235,12 @@
   &__body {
     @extend %relative;
     margin-bottom: 9.2rem;
+    .services_accessories & {
+      margin-bottom: 5.2rem;
+    }
+    .services_monuments & {
+      margin-bottom: 2rem;
+    }
     &::before,
     &::after {
       width: 31.5rem;
@@ -282,10 +286,11 @@
       height: 24rem;
       transform: translateY(-5.2rem);
       .services_monuments & {
-        height: 7rem;
+        height: 15rem;
+        transform: translateY(2.8rem);
       }
       .services_accessories & {
-        height: 16.5rem;
+        height: 19.5rem;
         transform: translateY(18%);
       }
       @media (max-width: 48em) {
@@ -319,6 +324,37 @@
     margin-bottom: 2.4rem;
     @media (max-width: 48em) {
       max-width: 53rem;
+    }
+  }
+
+  // .hero-services__navigation
+
+  &__navigation {
+    margin-bottom: 6.4rem;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    @media (min-width: 48em) {
+      display: none;
+    }
+  }
+
+  // .hero-services__arrow
+
+  &__arrow {
+    flex: 0 0 5.6rem;
+    width: 5.6rem;
+    height: 5.6rem;
+
+    // .hero-services__arrow_prev
+
+    &_prev {
+      transform: rotate(-180deg);
+    }
+
+    // .hero-services__arrow_next
+
+    &_next {
     }
   }
 }

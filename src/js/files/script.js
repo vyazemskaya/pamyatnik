@@ -23,10 +23,31 @@ document.addEventListener('DOMContentLoaded', function () {
   const chapters = document.querySelectorAll('.cooperation-optovikam__chapter')
   if (chapters.length && !md.matches) {
     chapters[0].classList.add('_active')
-    document
-      .querySelectorAll('.description-cooperation-optovikam__item')[0]
-      .classList.add('_active')
   }
+  const initChapters = target => {
+    if (chapters.length && !md.matches) {
+      const addActiveClass = activeChapter => {
+        document
+          .querySelector(
+            `[data-chapter-desc="${activeChapter.dataset.chapter}"]`
+          )
+          .classList.add('_active')
+      }
+      addActiveClass(chapters[0])
+
+      if (target) {
+        const activeChapter = target.closest('.cooperation-optovikam__chapter')
+        removeClasses(chapters, '_active')
+        removeClasses(
+          document.querySelectorAll('.description-cooperation-optovikam__item'),
+          '_active'
+        )
+        activeChapter.classList.add('_active')
+        addActiveClass(activeChapter)
+      }
+    }
+  }
+  initChapters()
 
   // ===========================================================================
 
@@ -38,21 +59,8 @@ document.addEventListener('DOMContentLoaded', function () {
       removeClasses(document.querySelectorAll('.catalog-tabs__item'), '_active')
       target.closest('.catalog-tabs__item').classList.add('_active')
     }
-    if (target.closest('.cooperation-optovikam__chapter') && !md.matches) {
-      const chapterBtn = e.target.closest('.cooperation-optovikam__chapter')
-      const chapterBtnIndex = chapterBtn.dataset.chapter
-      removeClasses(
-        document.querySelectorAll('.cooperation-optovikam__chapter'),
-        '_active'
-      )
-      chapterBtn.classList.add('_active')
-      removeClasses(
-        document.querySelectorAll('.description-cooperation-optovikam__item'),
-        '_active'
-      )
-      document
-        .querySelector(`[data-chapter-desc="${chapterBtnIndex}"]`)
-        .classList.add('_active')
+    if (target.closest('.cooperation-optovikam__chapter')) {
+      initChapters(target)
     }
     if (target.closest('.catalog .select__option')) {
       removeClasses(

@@ -50,6 +50,12 @@
   // .steps-services__item
 
   &__item {
+    @media (max-width: 48em) {
+      &:last-child,
+      &:nth-last-child(2) {
+        padding-bottom: 0;
+      }
+    }
   }
 }
 

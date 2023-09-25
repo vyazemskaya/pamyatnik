@@ -31,8 +31,13 @@
 
   &__container {
     justify-content: space-between;
-    &::before {
+    &::before,
+    &::after {
       @extend %bg;
+      z-index: 1;
+
+    }
+    &::before {
       bottom: 0;
       right: calc((100vw - 100%) / -2);
       width: 128.5rem;
@@ -41,7 +46,6 @@
       transform: translate(-1%, 46%);
     }
     &::after {
-      @extend %bg;
       bottom: 0;
       left: calc((100vw - 100%) / -2);
       bottom: 0;
@@ -54,7 +58,6 @@
       grid-template-columns: 1fr auto;
       &::before,
       &::after {
-        z-index: 1;
         left: auto;
         right: 0;
       }
