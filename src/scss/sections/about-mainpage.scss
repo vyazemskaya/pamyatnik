@@ -17,7 +17,7 @@
     display: grid;
     &::before {
       @extend %bg;
-      z-index: 1;
+      z-index: 4;
       left: calc((100vw - 100%) / -2);
       width: 195.9rem;
       height: 98.2rem;
@@ -213,6 +213,7 @@
   // .about-mainpage__text-block
 
   &__text-block {
+    z-index: 7;
     @media (max-width: 48em) {
       margin-bottom: 6.4rem;
       order: -1;

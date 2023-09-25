@@ -37,7 +37,7 @@ const initGallerySlider = swiper => {
   const nextSlides = []
   const slideWidth = swiper.el.offsetWidth / params.amount
   const emptySpace = slideWidth - slideWidth * params.scale
-  const largerGap =
+  const additionalSpace =
     params.activeScale !== 1
       ? Math.abs(
           (slideWidth * params.activeScale - slideWidth * params.scale) / 2 -
@@ -61,8 +61,8 @@ const initGallerySlider = swiper => {
         const el = arr[i]
         const x0 =
           params.activeScale !== 1
-            ? largerGap + params.gap
-            : largerGap - params.gap
+            ? additionalSpace + params.gap
+            : additionalSpace - params.gap
         const x1 =
           params.activeScale !== 1
             ? emptySpace - x0 - params.gap
@@ -83,7 +83,7 @@ const initGallerySlider = swiper => {
             params.scale
           }, 1)`
         }
-        if (i > 2) {
+        if (i > 1) {
           const prevGap = arr[i - 1].style.transform
             .split(' ')[0]
             .match(/\d+/g)
@@ -483,10 +483,14 @@ function initSliders() {
       // events
       on: {
         afterInit: swiper => {
-          initGallerySlider(swiper)
+          if (!window.matchMedia('(max-width: 768px)').matches) {
+            initGallerySlider(swiper)
+          }
         },
         slideChange: swiper => {
-          initGallerySlider(swiper)
+          if (!window.matchMedia('(max-width: 768px)').matches) {
+            initGallerySlider(swiper)
+          }
         },
       },
     })

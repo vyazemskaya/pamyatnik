@@ -1690,7 +1690,6 @@ body::after {
 .slide-gallery {
   height: 100%;
   overflow: hidden;
-  border-radius: 1rem;
   cursor: pointer;
 }
 
@@ -1787,9 +1786,6 @@ body::after {
           flex: 0 0 5.2rem;
   width: 5.2rem;
   height: 5.2rem;
-  -webkit-transform: translateX(-0.2rem);
-      -ms-transform: translateX(-0.2rem);
-          transform: translateX(-0.2rem);
 }
 
 .btn {
@@ -2265,6 +2261,10 @@ body::after {
 
 .map-panel__image-wrap {
   height: 15.4rem;
+}
+
+.map-panel__image {
+  border-radius: 1.5rem;
 }
 
 .map-panel__icon-wrap {
@@ -2916,7 +2916,7 @@ body::after {
   background-image: url(../img/bg/03.png); }
 
 .about-mainpage__container::before {
-  z-index: 1;
+  z-index: 4;
   left: calc((100vw - 100%) / -2);
   width: 195.9rem;
   height: 98.2rem;
@@ -3073,6 +3073,10 @@ body::after {
 .about-mainpage__logo {
   -o-object-fit: contain;
      object-fit: contain;
+}
+
+.about-mainpage__text-block {
+  z-index: 7;
 }
 
 .hero-optovikam {
@@ -7124,7 +7128,6 @@ body::after {
 
   .slide-gallery {
     height: 51.5rem;
-    border-radius: 3rem;
   }
 
   .slide-gallery__image {
@@ -7265,15 +7268,8 @@ body::after {
     row-gap: 3.2rem;
   }
 
-  .list__item:hover .menu__link-txt {
-    color: #474647;
-  }
-
-  .list__link-txt {
+  .header .list__link-txt {
     font-size: 3.2rem;
-    color: rgba(71, 70, 71, 0.6);
-    -webkit-transition: color 0.3s ease;
-    transition: color 0.3s ease;
   }
 
   .call {
@@ -7350,6 +7346,10 @@ body::after {
 
   .map-panel__image-wrap {
     height: 22rem;
+  }
+
+  .map-panel__image {
+    border-radius: 4rem;
   }
 
   .map-panel__icon-wrap {
