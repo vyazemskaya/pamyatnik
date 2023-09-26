@@ -5796,6 +5796,7 @@
                 observer: true,
                 observeParents: true,
                 speed: 800,
+                spaceBetween: 30,
                 slidesPerView: 1,
                 autoHeight: true,
                 navigation: {

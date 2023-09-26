@@ -295,6 +295,16 @@
     padding-top: 6rem;
     display: flex;
     flex-direction: column;
+
+    .btn_ol {
+      @media (any-hover: hover) {
+        &:hover {
+          .btn__text {
+            color: #ffffff;
+          }
+        }
+      }
+    }
     &::before,
     &::after {
       @extend %bg;
@@ -515,18 +525,6 @@
 
   &__btn {
     min-width: 22rem;
-    &:not(.filters__actions &) {
-      &.btn_ol {
-        @media (any-hover: hover) {
-          &:hover {
-            background-color: #ffffff;
-            .btn__text {
-              color: $black;
-            }
-          }
-        }
-      }
-    }
     @media (max-width: 48em) {
       &.btn {
         width: 100%;

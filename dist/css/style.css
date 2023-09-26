@@ -9257,12 +9257,8 @@ body::after {
 }
 
 @media (any-hover: hover) {
-  .filters__btn:not(.filters__actions .filters__btn).btn_ol:hover {
-    background-color: #ffffff;
-  }
-
-  .filters__btn:not(.filters__actions .filters__btn).btn_ol:hover .btn__text {
-    color: #474647;
+  .filters__container .btn_ol:hover .btn__text {
+    color: #ffffff;
   }
 
   .btn_ol:hover::before {
