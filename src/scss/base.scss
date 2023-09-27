@@ -6,20 +6,8 @@
 // spoiler styles
 @import 'base/spoilers';
 
-// tab styles
-// @import "base/tabs";
-
-// map styles
-// @import "base/maps";
-
-// showmore styles
-// @import "base/showmore";
-
-// fullscreen styles
-// @import "base/fullscreen";
-
-// sticky block styles
-// @import "base/sticky";
+// maps styles
+@import 'base/maps';
 
 // ibg styles
 [class*='-ibg'] {

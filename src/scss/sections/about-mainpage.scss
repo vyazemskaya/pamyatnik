@@ -17,7 +17,7 @@
     display: grid;
     &::before {
       @extend %bg;
-      z-index: 4;
+      z-index: 2;
       left: calc((100vw - 100%) / -2);
       width: 195.9rem;
       height: 98.2rem;
