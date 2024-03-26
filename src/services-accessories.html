@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+  @@include('html/_head.htm',{ "title":"Аксессуары" })
+  <body>
+    <div class="wrapper">
+      @@include('html/_header.htm',{})
+      <main class="main services services_accessories">
+        <section class="services__hero hero-services">
+          <div class="hero-services__container container">
+            <div class="hero-services__navigation">
+              <a
+                href="#"
+                title="Предыдущая услуга"
+                class="hero-services__arrow hero-services__arrow_prev">
+                <img aria-hidden="true" src="@img/icons/arrow.svg" alt="" />
+              </a>
+              <a
+                href="#"
+                title="Следующая услуга"
+                class="hero-services__arrow hero-services__arrow_next">
+                <img aria-hidden="true" src="@img/icons/arrow.svg" alt="" />
+              </a>
+            </div>
+            <div class="hero-services__head">
+              <div class="hero-services__title-wrap">
+                <a
+                  href="#"
+                  class="hero-services__btn hero-services__btn_prev btn btn_ol"
+                  ><span class="btn__text">Предыдущая услуга</span></a
+                >
+                <span class="hero-services__title hero-services__title_arrow"
+                  >аксессуары</span
+                >
+              </div>
+            </div>
+            <div class="hero-services__body">
+              <img
+                data-src="@img/services/accessories.png"
+                alt=""
+                class="hero-services__image" />
+            </div>
+            <div class="hero-services__footer">
+              <div class="hero-services__text-block">
+                <span class="hero-services__heading"
+                  >При планировании надгробной композиции</span
+                >
+                <p class="hero-services__text txt">
+                  Особое внимание следует уделить ритуальным аксессуарам. Помимо
+                  стандартных элементов вроде памятников, цветников и оград,
+                  существуют такие ритуальные аксессуары, как мемориальные
+                  таблички, вазы, лампады, кресты, которые выполняют
+                  декоративные и утилитарные функции.
+                </p>
+              </div>
+              <div class="hero-services__text-block">
+                <span class="hero-services__heading">Ходовым материалом</span>
+                <p class="hero-services__text txt">
+                  При создании аксессуаров на могилу является гранит. В
+                  частности, он используется в изготовлении, мемориальных ваз и
+                  лампад. Один из вариантов в оформлении - использовать менее
+                  распространенное, но удобное и экономное решение - ритуальную
+                  табличку. Мемориальная табличка выполняется в трех вариациях:
+                  гранитные, керамические, пластиковые пластины.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      @@include('html/_footer.htm',{})
+    </div>
+    @@include('html/_js.htm',{})
+  </body>
+</html>

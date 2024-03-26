@@ -1,0 +1,182 @@
+// sass math
+@use 'sass:math';
+
+// mixins
+@import 'base/mixins';
+
+// fonts =======================================================================
+
+// &display=swap
+
+// local fonts
+@import 'fonts/fonts';
+
+// icons font
+// @import "fonts/icons";
+
+// variables ===================================================================
+
+// main colors
+$grey: #636163; // default font color
+$black: #474647;
+
+// base styles file ============================================================
+@import 'base/set.scss';
+
+// base styles =================================================================
+
+body {
+  // scroll is blocked
+  .lock & {
+    overflow: hidden;
+    touch-action: none;
+  }
+  // site is loaded
+  .loaded & {
+  }
+}
+
+// wrapper
+.wrapper {
+  position: relative;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: url(@img/bg/marble.png);
+  background-size: cover;
+  background-position: top right;
+  background-repeat: no-repeat;
+  @media (max-width: 48em) {
+    background: url(@img/bg/marble-mobile.png);
+  }
+
+  // press footer
+  > main {
+    flex: 1 1 auto;
+  }
+  // fix for sliders
+  > * {
+    min-width: 0;
+  }
+}
+
+// main
+.main {
+  padding-top: 14.6rem;
+  section {
+    margin-bottom: 20rem;
+    @media (max-width: 48em) {
+      margin-bottom: 16rem;
+    }
+  }
+  .container {
+    position: relative;
+    @media (max-width: 48em) {
+      padding-left: 3.2rem;
+      padding-right: 3.2rem;
+    }
+  }
+  @media (max-width: 48em) {
+    padding-top: 13.6rem;
+  }
+}
+
+// base styles, templates (patterns), special classes ==========================
+
+// base styles import
+@import 'base';
+
+// common styles import
+@import 'common';
+
+// individual block styles import
+@import 'header';
+@import 'footer';
+
+// individual sections styles import
+@import 'sections/hero-mainpage.scss';
+@import 'sections/privileges-mainpage.scss';
+@import 'sections/services-mainpage.scss';
+@import 'sections/complexes-mainpage.scss';
+@import 'sections/about-mainpage.scss';
+@import 'sections/hero-optovikam.scss';
+@import 'sections/cooperation-optovikam.scss';
+@import 'sections/privileges-optovikam.scss';
+@import 'sections/gallery-optovikam.scss';
+@import 'sections/map-contacts.scss';
+@import 'sections/hero-catalog.scss';
+@import 'sections/products-catalog.scss';
+@import 'sections/hero-articles.scss';
+@import 'sections/main-articles.scss';
+@import 'sections/hero-article.scss';
+@import 'sections/error-page.scss';
+@import 'sections/hero-services.scss';
+@import 'sections/privileges-services.scss';
+@import 'sections/fonts-services.scss';
+@import 'sections/company-services.scss';
+@import 'sections/steps-services.scss';
+@import 'sections/hero-exclusive.scss';
+@import 'sections/privileges-exclusive.scss';
+@import 'sections/info-exclusive.scss';
+@import 'sections/hero-about.scss';
+@import 'sections/info-about.scss';
+@import 'sections/stone-page.scss';
+@import 'sections/product-page.scss';
+@import 'sections/chapter.scss';
+@import 'sections/gallery.scss';
+
+@media (min-width: 48em) {
+  .additional-info__title {
+    text-align: center;
+  }
+  section.mainpage__additional-info {
+    margin-bottom: 12rem;
+  }
+}
+
+.additional-info .additional-info__container {
+  display: grid;
+  grid-template-columns: 1fr 54.6rem;
+  column-gap: 10rem;
+}
+.additional-info .additional-info__text {
+  display: flex;
+  flex-direction: column;
+}
+.additional-info .additional-info__subtitle {
+  margin-bottom: 1.6rem;
+  display: flex;
+  align-items: center;
+  column-gap: 2.4rem;
+  font-size: 1.6rem;
+  line-height: 160%;
+  text-transform: uppercase;
+}
+.additional-info .additional-info__subtitle::before,
+.additional-info .additional-info__subtitle::after {
+  content: '';
+  width: 11.9rem;
+  height: 1px;
+  background-color: #636163;
+}
+.additional-info .additional-info__subtitle::after {
+  flex: 1 1 auto;
+  width: auto;
+}
+.additional-info .additional-info__title {
+  margin-bottom: 3.2rem;
+}
+.additional-info .additional-info__image-wrap {
+  width: 54.6rem;
+}
+.additional-info .additional-info__image {
+  object-fit: contain;
+}
+@media (max-width: 48em) {
+  .additional-info,
+  .products-list-header,
+  .services-list-header {
+    display: none;
+  }
+}

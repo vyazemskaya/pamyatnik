@@ -1,0 +1,63 @@
+.gallery-optovikam {
+  .gallery__slider {
+    @extend %relative;
+    @media (max-width: 48em) {
+      margin-bottom: 3rem;
+    }
+  }
+
+  // .gallery-optovikam__container
+
+  &__container {
+    &::after {
+      @extend %bg;
+      top: 0;
+      width: 195.9rem;
+      height: 98.2rem;
+      background-image: url(@img/bg/03.png);
+      transform: scalex(-1) translate(26%, -48%);
+      @media (max-width: 48em) {
+        display: none;
+      }
+    }
+    &::before {
+      @extend %bg;
+      z-index: 1;
+      width: 43.8rem;
+      height: 40rem;
+      background-image: url(@img/bg/04.png);
+      transform: translate(31%, -23%);
+      @media (max-width: 48em) {
+        left: auto;
+        right: 0;
+        width: 44rem;
+        height: 40.2rem;
+        transform: translate(27%, -23%);
+      }
+    }
+    @media (max-width: 48em) {
+      .head__navigation {
+        justify-content: center;
+      }
+    }
+  }
+
+  // .gallery-optovikam__head
+
+  &__head {
+    @extend %relative;
+    margin-bottom: 4.8rem;
+    @media (min-width: 48em) {
+      margin-bottom: 13rem;
+      .contacts-info {
+        justify-self: end;
+      }
+    }
+    @media (max-width: 48em) {
+      flex-direction: column;
+      .head__title {
+        margin-bottom: 4.8rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+.info-about {
+  @extend %relative;
+
+  // .info-about__container
+
+  &__container {
+    position: relative;
+    display: grid;
+    &::after {
+      @extend %waves;
+      background-image: url(@img/bg/waves-v3.svg);
+      transform: none;
+      @media (max-width: 48em) {
+        width: 128rem;
+        background-image: url(@img/bg/waves-v3.svg);
+        transform: translate(-18%, 21%);
+      }
+    }
+    @media (min-width: 48em) {
+      grid-template-columns: 1fr 50.8rem 1fr;
+      column-gap: 7.6rem;
+    }
+  }
+
+  // .info-about__text-wrap
+
+  &__text-wrap {
+    @extend %flexColumn;
+    @media (max-width: 48em) {
+      margin-bottom: 3.6rem;
+    }
+    @media (min-width: 48em) {
+      align-self: end;
+    }
+  }
+
+  // .info-about__title
+
+  &__title {
+    margin-bottom: 3.2rem;
+    max-width: 33.9rem;
+  }
+
+  // .info-about__text
+
+  &__text {
+    color: $grey;
+    @media (min-width: 48em) {
+      max-width: 53.7rem;
+    }
+  }
+
+  // .info-about__logo-wrap
+
+  &__logo-wrap {
+    justify-self: center;
+    width: 50.8rem;
+    @media (max-width: 48em) {
+      margin-bottom: 4.8rem;
+    }
+  }
+
+  // .info-about__logo
+
+  &__logo {
+    object-fit: contain;
+  }
+
+  // .info-about__group
+
+  &__group {
+    display: flex;
+    @media (max-width: 48em) {
+      flex-direction: column;
+      row-gap: 4rem;
+    }
+    @media (min-width: 48em) {
+      justify-content: space-between;
+      align-self: end;
+    }
+  }
+
+  // .info-about__item
+
+  &__item {
+  }
+}

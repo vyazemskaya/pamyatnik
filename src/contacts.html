@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ru">
+  @@include('html/_head.htm',{ "title":"Контакты" })
+  <body>
+    <div class="wrapper">
+      @@include('html/_header.htm',{})
+      <main class="main contacts">
+        <section class="contacts__map map-contacts">
+          <div class="map-contacts__container container">
+            <span class="map-contacts__title h2">контакты</span>
+            <div class="map-contacts__wrap">
+              <div class="map-contacts__links">
+                <div class="map-contacts__link-wrap">
+                  <button id="mainOfficeSwitch" type="button"
+                    title="Центральный офис"
+                    class="map-contacts__btn btn"
+                    ><span class="btn__text">Центральный офис</span></button
+                  >
+                </div>
+                <div class="map-contacts__link-wrap">
+                  <button id="officeSwitch" type="button"
+                    title="Выставка СКМ"
+                    class="map-contacts__btn btn btn_ol"
+                    ><span class="btn__text">Выставка СКМ</span></a
+                  >
+                </div>
+              </div>
+              <div id="map" class="map-contacts__inner"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+      @@include('html/_footer.htm',{})
+    </div>
+    @@include('html/_js.htm',{})
+  </body>
+</html>

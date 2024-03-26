@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+	<title>Контакты</title>
+	<meta charset="UTF-8" />
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" href="css/style.min.css?_v=20240326165725" />
+	<link rel="shortcut icon" href="favicon.ico" />
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container container">
+				<a href="#" class="header__logo logo">
+					<picture><source srcset="img/logo.webp" type="image/webp"><img src="img/logo.png" alt="" aria-hidden="true" title="Логотип" class="logo__image" /></picture>
+					<span class="logo__text"><span>Союз каменных мастерских</span>Долговечные технологии</span>
+				</a>
+				<div class="header__menu menu">
+					<button type="button" title="Открыть меню" class="menu__hamburger hamburger">
+						<span></span>
+						<span></span>
+						<span></span>
+					</button>
+					<button type="button" title="Закрыть меню" class="menu__close close-menu">
+						<span></span>
+						<span></span>
+					</button>
+					<nav class="menu__body">
+						<ul class="menu__list list">
+							<li class="list__item">
+								<a href="#" class="list__link"><span class="list__link-txt">О компании</span></a>
+							</li>
+							<li class="list__item">
+								<a href="#" class="list__link"><span class="list__link-txt">продукция</span></a>
+							</li>
+							<li class="list__item">
+								<a href="#" class="list__link"><span class="list__link-txt">услуги</span></a>
+							</li>
+							<li class="list__item">
+								<a href="#" class="list__link"><span class="list__link-txt">эксклюзив</span></a>
+							</li>
+							<li class="list__item">
+								<a href="#" class="list__link"><span class="list__link-txt">оптовикам</span></a>
+							</li>
+							<li class="list__item">
+								<a href="#" class="list__link"><span class="list__link-txt">контакты</span></a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+				<div data-da=".menu__body,768,last" class="header__call call">
+					<a href="tel:74951550535" class="call__link">
+						<div class="call__icon-wrap">
+							<img src="img/icons/phone.svg" alt="" aria-hidden="true" class="call__icon" />
+						</div>
+						<span class="call__link-txt">+7 (495) 155-05-35</span>
+					</a>
+					<span class="call__text">с 9:00 до 19:00</span>
+				</div>
+			</div>
+		</header>
+
+		<main class="main contacts">
+			<section class="contacts__map map-contacts">
+				<div class="map-contacts__container container">
+					<span class="map-contacts__title h2">контакты</span>
+					<div class="map-contacts__wrap">
+						<div class="map-contacts__links">
+							<div class="map-contacts__link-wrap">
+								<button id="mainOfficeSwitch" type="button" title="Центральный офис" class="map-contacts__btn btn"><span class="btn__text">Центральный офис</span></button>
+							</div>
+							<div class="map-contacts__link-wrap">
+								<button id="officeSwitch" type="button" title="Выставка СКМ" class="map-contacts__btn btn btn_ol"><span class="btn__text">Выставка СКМ</span></a>
+							</div>
+						</div>
+						<div id="map" class="map-contacts__inner"></div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer class="footer">
+			<div class="footer__container container">
+				<a href="#" class="footer__logo logo">
+					<picture><source srcset="img/logo.webp" type="image/webp"><img src="img/logo.png" alt="" aria-hidden="true" title="Логотип" class="logo__image" /></picture>
+					<span class="logo__text"><span>Союз каменных мастерских</span>Долговечные технологии</span>
+				</a>
+				<ul class="footer__list list">
+					<li class="list__item">
+						<a href="#" class="list__link"><span class="list__link-txt">О компании</span></a>
+					</li>
+					<li class="list__item">
+						<a href="#" class="list__link"><span class="list__link-txt">продукция</span></a>
+					</li>
+					<li class="list__item">
+						<a href="#" class="list__link"><span class="list__link-txt">услуги</span></a>
+					</li>
+					<li class="list__item">
+						<a href="#" class="list__link"><span class="list__link-txt">эксклюзив</span></a>
+					</li>
+					<li class="list__item">
+						<a href="#" class="list__link"><span class="list__link-txt">оптовикам</span></a>
+					</li>
+					<li class="list__item">
+						<a href="#" class="list__link"><span class="list__link-txt">контакты</span></a>
+					</li>
+				</ul>
+				<div class="footer__call call">
+					<a href="tel:74951550535" class="call__link">
+						<div class="call__icon-wrap">
+							<img src="img/icons/phone.svg" alt="" aria-hidden="true" class="call__icon" />
+						</div>
+						<span class="call__link-txt">+7 (495) 155-05-35</span>
+					</a>
+					<span class="call__text">с 9:00 до 19:00</span>
+				</div>
+			</div>
+		</footer>
+
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js?_v=20240326165725"></script>
+	<script src="https://api-maps.yandex.ru/2.1/?apikey=<ваш API-ключ&_v=20240326165725>&lang=ru_RU"></script>
+	<script src="js/app.min.js?_v=20240326165725"></script>
+
+</body>
+
+</html>

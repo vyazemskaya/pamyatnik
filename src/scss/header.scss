@@ -1,0 +1,225 @@
+.header {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 14.6rem;
+  color: $black;
+  text-transform: uppercase;
+  background-color: transparent;
+  transition: all 0.4s ease;
+  &._header-scroll {
+    background-color: #ffffff;
+  }
+  ._filters-open & {
+    transform: translateY(-100%);
+  }
+  @media (max-width: 48em) {
+    height: 13.6rem;
+  }
+
+  // .header__container
+
+  &__container {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    @media (max-width: 48em) {
+      padding-top: 1.2rem;
+      padding-bottom: 1.2rem;
+    }
+  }
+
+  // .header__logo
+
+  &__logo {
+    position: relative;
+    z-index: 2;
+    @media (min-width: 48em) {
+      margin-right: 7.4rem;
+    }
+  }
+
+  // .header__menu
+
+  &__menu {
+    @media (min-width: 48em) {
+      margin-right: auto;    padding-top: 2rem;
+      align-self: flex-start;
+    }
+  }
+
+  // .header__call
+
+  &__call {
+    @media (min-width: 48em) {
+      padding-top: 2.1rem;
+      align-self: flex-start;
+    }
+    @media (max-width: 48em) {
+      position: relative;
+      z-index: 2;
+    }
+  }
+}
+
+// =============================================================================
+
+.menu {
+  // .menu__hamburger
+
+  &__hamburger {
+  }
+
+  // .menu__body
+
+  &__body {
+    @media (max-width: 48em) {
+      position: fixed;
+      top: -110%;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 18.8rem 9.6rem 6.4rem 9.6rem;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      overflow: auto;
+      transition: top 0.4s ease;
+      &::before,
+      &::after {
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+      &::before {
+        position: absolute;
+        height: 100%;
+        background-image: url(@img/bg/marble-mobile.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        filter: grayscale(100%);
+      }
+      &::after {
+        position: fixed;
+        right: 0;
+        width: 100%;
+        height: 13.6rem;
+        opacity: 0;
+        background-color: #ffffff;
+      }
+      .menu-open & {
+        top: 0;
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  // .menu__list
+
+  &__list {
+    &::after {
+      @extend %bg;
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      width: 52.2rem;
+      height: 53.6rem;
+      background-image: url(@img/bg/04.png);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(-50%);
+      transition: all 0.4s ease;
+    }
+    @media (max-width: 48em) {
+      position: relative;
+      z-index: 2;
+      margin-bottom: auto;
+      row-gap: 6rem;
+      .menu-open & {
+        &::after {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+}
+
+// =============================================================================
+.hamburger,
+.close-menu {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  right: 4rem;
+  width: 4.6rem;
+  height: 4.6rem;
+  transform: translateY(-50%);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  span {
+    position: absolute;
+    border-radius: 1px;
+    background-color: #474647;
+  }
+}
+.close-menu {
+  opacity: 0;
+  visibility: hidden;
+  .menu-open & {
+    opacity: 1;
+    visibility: visible;
+  }
+  span {
+    content: '';
+    top: 0;
+    right: 50%;
+    height: 4.6rem;
+    width: 2px;
+    &:first-child {
+      transform: rotate(45deg);
+    }
+    &:last-child {
+      transform: rotate(-45deg);
+    }
+  }
+}
+.hamburger {
+  display: none;
+  @media (max-width: 48em) {
+    display: block;
+    height: 4rem;
+    opacity: 1;
+    visibility: visible;
+    span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      opacity: 1;
+      left: 0;
+      &:nth-child(1) {
+        top: 0.2rem;
+      }
+      &:nth-child(2) {
+        top: 1.6rem;
+      }
+      &:nth-child(3) {
+        top: 3rem;
+      }
+    }
+    .menu-open & {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}

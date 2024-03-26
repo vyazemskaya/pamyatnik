@@ -1,0 +1,222 @@
+.about-mainpage {
+  position: relative;
+  &__group-wrap,
+  &__text-block {
+    z-index: 2;
+  }
+  .text-block__btn {
+    min-width: 22rem;
+    @media (max-width: 48em) {
+      min-width: 29rem;
+    }
+  }
+
+  // .about-mainpage__container
+
+  &__container {
+    display: grid;
+    &::before {
+      @extend %bg;
+      z-index: 2;
+      left: calc((100vw - 100%) / -2);
+      width: 195.9rem;
+      height: 98.2rem;
+      background-image: url(@img/bg/03.png);
+      transform: scalex(-1) translate(0, 33%);
+    }
+    &::after {
+      @extend %bg;
+      z-index: 1;
+      right: calc((100vw - 100%) / -2);
+      width: 143.9rem;
+      height: 143.9rem;
+      background-image: url(@img/bg/08.png);
+      transform: translate(3%, -7%);
+    }
+    @media (min-width: 48em) {
+      grid-template-columns: 49.4rem 1fr 49.4rem;
+      align-items: center;
+      column-gap: 12.4rem;
+    }
+    @media (max-width: 48em) {
+      &::before {
+        display: none;
+      }
+      &::after {
+        z-index: 1;
+        width: 110.6rem;
+        height: 110.6rem;
+        transform: translate(17%, 31%);
+      }
+    }
+  }
+
+  // .about-mainpage__group-wrap
+
+  &__group-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55.4rem;
+    height: 55.4rem;
+    border: 1px solid #b9b8baa9;
+    border-radius: 50%;
+    transform: translateX(-12%);
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 1px solid #b9b8baa9;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+    &::before {
+      width: 43.4rem;
+      height: 43.4rem;
+    }
+    &::after {
+      width: 31.4rem;
+      height: 31.4rem;
+    }
+    @media (max-width: 48em) {
+      width: 59.4rem;
+      height: 59.4rem;
+      transform: translateX(-30%);
+      &::before {
+        width: 46.6rem;
+        height: 46.6rem;
+      }
+      &::after {
+        width: 33.8rem;
+        height: 33.8rem;
+      }
+    }
+  }
+
+  // .about-mainpage__group
+
+  &__group {
+    position: absolute;
+    z-index: 6;
+    top: 50%;
+    left: 50%;
+    width: 43.4rem;
+    height: 43.4rem;
+    transform: translate(-50%, -50%);
+  }
+
+  // .about-mainpage__group-item
+
+  &__group-item {
+    position: absolute;
+    padding: 1rem 2rem 0.8rem 2rem;
+    background-color: #ffffff;
+    border-radius: 3rem;
+    box-shadow: 1.2rem 2rem 6rem 0 rgba(74, 75, 99, 0.15);
+    &:first-child {
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    &:nth-child(2) {
+      top: 18%;
+      right: 0;
+      transform: translateX(16%);
+    }
+    &:nth-child(3) {
+      bottom: 18%;
+      right: 0;
+      transform: translateX(37%);
+    }
+    &:last-child {
+      left: 50%;
+      top: auto;
+      bottom: 0;
+      transform: translate(-50%, 50%);
+    }
+    span {
+      color: $black;
+      font-size: 1.6rem;
+      line-height: 160%;
+      text-transform: uppercase;
+    }
+    @media (max-width: 48em) {
+      padding: 2rem 3.2rem 1.7rem 3.2rem;
+      border-radius: 6rem;
+      &:nth-child(2),
+      &:nth-child(3) {
+        transform: translateX(58%);
+      }
+      span {
+        font-size: 2.4rem;
+      }
+    }
+  }
+
+  // .about-mainpage__logo-wrap
+
+  &__logo-wrap {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  // .about-mainpage__wrap
+
+  &__wrap {
+    position: relative;
+    width: 19.2rem;
+    height: 19.2rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: 4;
+      top: 50%;
+      left: -95%;
+      width: 28rem;
+      height: 62.4rem;
+      background: linear-gradient(
+        90deg,
+        rgb(255, 255, 255) 42%,
+        rgba(255, 255, 255, 0.75) 90%,
+        rgba(255, 255, 255, 0.2) 100%
+      );
+      transform: translateY(-50%);
+    }
+
+    @media (max-width: 48em) {
+      width: 20.6rem;
+      height: 20.6rem;
+      &::after {
+        width: 40rem;
+        height: 61.4rem;
+        background: linear-gradient(
+          90deg,
+          rgb(255, 255, 255) 40%,
+          rgba(255, 255, 255, 0.85) 63%,
+          rgba(255, 255, 255, 0.2) 100%
+        );
+      }
+    }
+  }
+  // .about-mainpage__logo
+
+  &__logo {
+    object-fit: contain;
+  }
+
+  // .about-mainpage__text-block
+
+  &__text-block {
+    z-index: 7;
+    @media (max-width: 48em) {
+      margin-bottom: 6.4rem;
+      order: -1;
+    }
+  }
+}

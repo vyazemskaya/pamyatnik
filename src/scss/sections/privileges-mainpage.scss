@@ -1,0 +1,128 @@
+.privileges-mainpage {
+  // .privileges-mainpage__container
+
+  &__container {
+    @extend %flexColumn;
+    &::before,
+    &::after {
+      @extend %bg;
+      z-index: 1;
+    }
+    &::before {
+      top: 0;
+      left: calc((100vw - 100%) / -2);
+      width: 195.9rem;
+      height: 98.2rem;
+      background-image: url(@img/bg/05.png);
+      transform: translate(0, 11%);
+    }
+    &::after {
+      bottom: 0;
+      right: 0;
+      width: 43.8rem;
+      height: 40rem;
+      background-image: url(@img/bg/04.png);
+      transform: translate(-73%, 75%);
+    }
+    @media (max-width: 48em) {
+      &::before {
+        display: none;
+      }
+      &::after {
+        transform: translate(23%, 15%);
+      }
+    }
+  }
+
+  // .privileges-mainpage__title
+
+  &__title {
+    @extend %relative;
+    margin-bottom: 4.8rem;
+    @media (min-width: 48em) {
+      margin-bottom: 3rem;
+      align-self: center;
+      text-align: center;
+    }
+  }
+
+  // .privileges-mainpage__items
+
+  &__items {
+    @extend %relative;
+    display: grid;
+    grid-template: 42rem / repeat(5, 1fr);
+    &::after {
+      @extend %waves;
+    }
+    @media (max-width: 48em) {
+      margin-bottom: 6.4rem;
+      margin-left: calc((100vw - 100%) / -2);
+      display: flex;
+      flex-direction: column;
+      row-gap: 3.2rem;
+    }
+  }
+
+  // .privileges-mainpage__item
+
+  &__item {
+    @media (min-width: 48em) {
+      &:first-child,
+      &:last-child {
+        justify-content: flex-end;
+      }
+      &:nth-child(2),
+      &:nth-child(4) {
+        justify-content: center;
+        transform: translateY(-3%);
+      }
+      &:nth-child(3) {
+        justify-content: flex-start;
+        transform: translateY(8%);
+        .item-privileges__icon {
+          width: 24rem;
+          height: 24rem;
+        }
+        .item-privileges__icon-img {
+          width: 12.7rem;
+        }
+      }
+    }
+  }
+
+  // .privileges-mainpage__text-wrap
+
+  &__text-wrap {
+    @extend %relative;
+    @extend %flexColumn;
+    @media (min-width: 48em) {
+      align-self: center;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  // .privileges-mainpage__txt-image
+
+  &__txt-image {
+    margin-bottom: 2rem;
+    width: 22.2rem;
+    @media (max-width: 48em) {
+      margin-bottom: 3.2rem;
+      width: 35.2rem;
+    }
+  }
+
+  // .privileges-mainpage__text
+
+  &__text {
+    color: $black;
+    font-size: 2rem;
+    line-height: 150%;
+    text-transform: uppercase;
+    @media (max-width: 48em) {
+      font-size: 2.8rem;
+    }
+  }
+}

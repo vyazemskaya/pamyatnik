@@ -1,0 +1,64 @@
+.form {
+  &__row {
+  }
+  &__column {
+  }
+  &__line {
+  }
+  &__input {
+  }
+  &__button {
+  }
+  &__error {
+  }
+}
+
+.form-popup {
+  @extend %flexColumn;
+  align-items: center;
+
+  // .form-popup__fields
+
+  &__fields {
+    @extend %flexColumn;
+    margin-bottom: 3.2rem;
+    row-gap: 2rem;
+    align-items: center;
+    width: 100%;
+    @media (max-width: 48em) {
+      margin-bottom: 5.2rem;
+      row-gap: 4.8rem;
+    }
+  }
+
+  // .form-popup__input
+
+  &__input {
+    @media (min-width: 48em) {
+      max-width: 41.3rem;
+    }
+  }
+
+  // .form-popup__btn
+
+  &__btn {
+    min-width: 27.1rem;
+    height: 6rem;
+    @media (max-width: 48em) {
+      min-width: 38rem;
+      height: 8.8rem;
+    }
+  }
+}
+
+// < inputs > =====================================================================================================
+
+@import 'input';
+
+// < check > ======================================================================================================
+
+@import 'checkbox';
+
+// < select > =====================================================================================================
+
+@import 'select';
