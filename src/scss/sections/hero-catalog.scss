@@ -86,9 +86,9 @@
 
   &__thumbs {
     display: flex;
-    align-items: center;
+    // align-items: center;
     align-self: start;
-    column-gap: 3.6rem;
+    // column-gap: 3.6rem;
     @media (max-width: 48em) {
       column-gap: 3rem;
       &_prev {
@@ -257,4 +257,10 @@
       max-width: 57rem;
     }
   }
+}
+.hero-catalog__thumbs-slide.swiper-slide-thumb-active {
+  display: none;
+}
+.hero-catalog__thumbs-slide._hidden {
+  display: none;
 }

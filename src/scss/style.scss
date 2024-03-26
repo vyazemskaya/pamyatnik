@@ -125,3 +125,58 @@ body {
 @import 'sections/product-page.scss';
 @import 'sections/chapter.scss';
 @import 'sections/gallery.scss';
+
+@media (min-width: 48em) {
+  .additional-info__title {
+    text-align: center;
+  }
+  section.mainpage__additional-info {
+    margin-bottom: 12rem;
+  }
+}
+
+.additional-info .additional-info__container {
+  display: grid;
+  grid-template-columns: 1fr 54.6rem;
+  column-gap: 10rem;
+}
+.additional-info .additional-info__text {
+  display: flex;
+  flex-direction: column;
+}
+.additional-info .additional-info__subtitle {
+  margin-bottom: 1.6rem;
+  display: flex;
+  align-items: center;
+  column-gap: 2.4rem;
+  font-size: 1.6rem;
+  line-height: 160%;
+  text-transform: uppercase;
+}
+.additional-info .additional-info__subtitle::before,
+.additional-info .additional-info__subtitle::after {
+  content: '';
+  width: 11.9rem;
+  height: 1px;
+  background-color: #636163;
+}
+.additional-info .additional-info__subtitle::after {
+  flex: 1 1 auto;
+  width: auto;
+}
+.additional-info .additional-info__title {
+  margin-bottom: 3.2rem;
+}
+.additional-info .additional-info__image-wrap {
+  width: 54.6rem;
+}
+.additional-info .additional-info__image {
+  object-fit: contain;
+}
+@media (max-width: 48em) {
+  .additional-info,
+  .products-list-header,
+  .services-list-header {
+    display: none;
+  }
+}
