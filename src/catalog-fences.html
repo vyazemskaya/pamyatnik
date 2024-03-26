@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="ru">
+  @@include('html/_head.htm',{ "title":"Каталог" })
+  <body>
+    <div class="wrapper">
+      @@include('html/_header.htm',{})
+      <main class="main catalog catalog_fences">
+        <section class="catalog__hero hero-catalog">
+          <div class="hero-catalog__container container">
+            <span class="hero-catalog__title">продукция</span>
+            <div class="hero-catalog__content">
+              <div
+                data-da=".hero-catalog__footer,768,first"
+                class="hero-catalog__thumbs hero-catalog__thumbs_prev"></div>
+              <div class="hero-catalog__carousel">
+                <div class="hero-catalog__slider swiper">
+                  <div class="hero-catalog__wrapper swiper-wrapper">
+                    <div
+                      class="hero-catalog__slide slide-hero-catalog swiper-slide">
+                      <div class="slide-hero-catalog__image-wrap">
+                        <img
+                          src="@img/catalog/hero-catalog/01.png"
+                          alt="ПАМЯТНИК ZB-1-8"
+                          class="slide-hero-catalog__image" />
+                      </div>
+                      <div class="slide-hero-catalog__content">
+                        <span class="slide-hero-catalog__heading">
+                          памятники
+                        </span>
+                        <p class="slide-hero-catalog__text txt16 txt16_uc">
+                          изготавливаем уникальные памятники из гранита и
+                          мрамора
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="hero-catalog__slide slide-hero-catalog swiper-slide">
+                      <div class="slide-hero-catalog__image-wrap">
+                        <img
+                          src="@img/catalog/hero-catalog/04.png"
+                          alt="ЦОКОЛЬ ТИП-1 ЛЕЗНЯКОВСКИЙ"
+                          class="slide-hero-catalog__image" />
+                      </div>
+                      <div class="slide-hero-catalog__content">
+                        <span class="slide-hero-catalog__heading">
+                          Цоколя
+                        </span>
+                        <p class="slide-hero-catalog__text txt16 txt16_uc">
+                          изготавливаем уникальные цоколя из гранита и мрамора
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="hero-catalog__slide slide-hero-catalog swiper-slide">
+                      <div class="slide-hero-catalog__image-wrap">
+                        <img
+                          src="@img/catalog/hero-catalog/03.png"
+                          alt="ОГРАДА ПВ-2"
+                          class="slide-hero-catalog__image" />
+                      </div>
+                      <div class="slide-hero-catalog__content">
+                        <span class="slide-hero-catalog__heading">
+                          ограды
+                        </span>
+                        <p class="slide-hero-catalog__text txt16 txt16_uc">
+                          изготавливаем уникальные ограды
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="hero-catalog__slide slide-hero-catalog swiper-slide">
+                      <div class="slide-hero-catalog__image-wrap">
+                        <img
+                          src="@img/catalog/hero-catalog/05.png"
+                          alt="Комплекс"
+                          class="slide-hero-catalog__image" />
+                      </div>
+                      <div class="slide-hero-catalog__content">
+                        <span class="slide-hero-catalog__heading">
+                          Комплексы
+                        </span>
+                        <p class="slide-hero-catalog__text txt16 txt16_uc">
+                          Текст
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="hero-catalog__slide slide-hero-catalog swiper-slide">
+                      <div
+                        class="slide-hero-catalog__image-wrap slide-hero-catalog__image-wrap_shadow">
+                        <img
+                          src="@img/catalog/hero-catalog/02.png"
+                          alt="Шампань"
+                          class="slide-hero-catalog__image" />
+                      </div>
+                      <div class="slide-hero-catalog__content">
+                        <span class="slide-hero-catalog__heading">
+                          Камень
+                        </span>
+                        <p class="slide-hero-catalog__text txt16 txt16_uc">
+                          предлагаем большое разнообразие материалов
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="hero-catalog__navigation navigation">
+                  <button
+                    type="button"
+                    title="Предыдущий слайд"
+                    class="navigation__button navigation__button_prev">
+                    <img src="img/icons/arrow.svg" aria-hidden="true" alt="" />
+                  </button>
+                  <button
+                    type="button"
+                    title="Cледующий слайд"
+                    class="navigation__button navigation__button_next">
+                    <img src="img/icons/arrow.svg" aria-hidden="true" alt="" />
+                  </button>
+                </div>
+              </div>
+              <div
+                data-da=".hero-catalog__footer,768,last"
+                class="hero-catalog__thumbs hero-catalog__thumbs_next"></div>
+              <div class="hero-catalog__footer section-footer"></div>
+            </div>
+          </div>
+        </section>
+        <section class="catalog__products products-catalog">
+          <div class="products-catalog__container container">
+            <div data-one-select class="products-catalog__head">
+              <div
+                class="products-catalog__select products-catalog__select_left select-filters select-checkbox">
+                <select data-pseudo-label="фильтры" name="form[]" class="form">
+                  <option value="1" selected>ВСЕ</option>
+                  <option value="2">КОВАННАЯ</option>
+                  <option value="3">ПРОФИЛЬНАЯ</option>
+                </select>
+              </div>
+              <div class="products-catalog__tabs catalog-tabs swiper">
+                <div class="catalog-tabs__wrapper swiper-wrapper">
+                  <button
+                    data-catalog-filter="stone"
+                    title="Камень"
+                    type="button"
+                    class="catalog-tabs__item swiper-slide">
+                    камень
+                  </button>
+                  <button
+                    data-catalog-filter="monuments"
+                    title="Памятники"
+                    type="button"
+                    class="catalog-tabs__item swiper-slide">
+                    памятники
+                  </button>
+                  <button
+                    data-catalog-filter="complexes"
+                    title="Комплексы"
+                    type="button"
+                    class="catalog-tabs__item swiper-slide">
+                    комплексы
+                  </button>
+                  <button
+                    data-catalog-filter="fences"
+                    title="Ограды"
+                    type="button"
+                    class="catalog-tabs__item swiper-slide _active">
+                    ограды
+                  </button>
+                  <button
+                    data-catalog-filter="socles"
+                    title="Цоколя"
+                    type="button"
+                    class="catalog-tabs__item swiper-slide">
+                    цоколя
+                  </button>
+                </div>
+              </div>
+              <div
+                class="products-catalog__select products-catalog__select_right select-checkbox">
+                <select
+                  data-pseudo-label="сортировка"
+                  name="form[]"
+                  class="form">
+                  <option value="1" selected>ВСЕ</option>
+                  <option value="2">НОВИНКИ</option>
+                  <option value="3">ПОПУЛЯРНЫЕ</option>
+                  <option value="4">В НАЛИЧИИ</option>
+                  <option value="5">ПОД ЗАКАЗ</option>
+                </select>
+              </div>
+            </div>
+            <div class="products-catalog__body">
+              <div class="products-catalog__group">
+                <a
+                  href="#"
+                  title="Ограда ПВ-2"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/fences/01.png"
+                      alt="Ограда ПВ-2"
+                      class="item-card__image" />
+                    <span class="item-card__heading">ОГРАДА ПВ-2</span>
+                    <p class="item-card__text txt16">тип: кованная</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="Ограда Верона"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/fences/02.png"
+                      alt="Ограда Верона"
+                      class="item-card__image" />
+                    <span class="item-card__heading">ОГРАДА верона</span>
+                    <p class="item-card__text txt16">тип: кованная</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="Ограда ПВ-2"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/fences/03.png"
+                      alt="ОГРАДА ПВ-2"
+                      class="item-card__image" />
+                    <span class="item-card__heading">ОГРАДА ПВ-2</span>
+                    <p class="item-card__text txt16">тип: кованная</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="Ограда ПВ-2"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/fences/03.png"
+                      alt="ОГРАДА ПВ-2"
+                      class="item-card__image" />
+                    <span class="item-card__heading">ОГРАДА ПВ-2</span>
+                    <p class="item-card__text txt16">тип: кованная</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="Ограда ПВ-2"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/fences/03.png"
+                      alt="ОГРАДА ПВ-2"
+                      class="item-card__image" />
+                    <span class="item-card__heading">ОГРАДА ПВ-2</span>
+                    <p class="item-card__text txt16">тип: кованная</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="Ограда ПВ-2"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/fences/01.png"
+                      alt="Ограда ПВ-2"
+                      class="item-card__image" />
+                    <span class="item-card__heading">ОГРАДА ПВ-2</span>
+                    <p class="item-card__text txt16">тип: кованная</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="Ограда Верона"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/fences/02.png"
+                      alt="Ограда Верона"
+                      class="item-card__image" />
+                    <span class="item-card__heading">ОГРАДА верона</span>
+                    <p class="item-card__text txt16">тип: кованная</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="Ограда ПВ-2"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/fences/03.png"
+                      alt="ОГРАДА ПВ-2"
+                      class="item-card__image" />
+                    <span class="item-card__heading">ОГРАДА ПВ-2</span>
+                    <p class="item-card__text txt16">тип: кованная</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="Ограда ПВ-2"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/fences/01.png"
+                      alt="Ограда ПВ-2"
+                      class="item-card__image" />
+                    <span class="item-card__heading">ОГРАДА ПВ-2</span>
+                    <p class="item-card__text txt16">тип: кованная</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="Ограда ПВ-2"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/fences/03.png"
+                      alt="ОГРАДА ПВ-2"
+                      class="item-card__image" />
+                    <span class="item-card__heading">ОГРАДА ПВ-2</span>
+                    <p class="item-card__text txt16">тип: кованная</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="Ограда Верона"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/fences/02.png"
+                      alt="Ограда Верона"
+                      class="item-card__image" />
+                    <span class="item-card__heading">ОГРАДА верона</span>
+                    <p class="item-card__text txt16">тип: кованная</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="Ограда ПВ-2"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/fences/03.png"
+                      alt="ОГРАДА ПВ-2"
+                      class="item-card__image" />
+                    <span class="item-card__heading">ОГРАДА ПВ-2</span>
+                    <p class="item-card__text txt16">тип: кованная</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="Ограда ПВ-2"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/fences/03.png"
+                      alt="ОГРАДА ПВ-2"
+                      class="item-card__image" />
+                    <span class="item-card__heading">ОГРАДА ПВ-2</span>
+                    <p class="item-card__text txt16">тип: кованная</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="Ограда ПВ-2"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/fences/01.png"
+                      alt="Ограда ПВ-2"
+                      class="item-card__image" />
+                    <span class="item-card__heading">ОГРАДА ПВ-2</span>
+                    <p class="item-card__text txt16">тип: кованная</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="Ограда Верона"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/fences/02.png"
+                      alt="Ограда Верона"
+                      class="item-card__image" />
+                    <span class="item-card__heading">ОГРАДА верона</span>
+                    <p class="item-card__text txt16">тип: кованная</p>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  title="Ограда ПВ-2"
+                  class="products-catalog__item item-card">
+                  <div class="item-card__body">
+                    <img
+                      data-src="img/catalog/fences/03.png"
+                      alt="ОГРАДА ПВ-2"
+                      class="item-card__image" />
+                    <span class="item-card__heading">ОГРАДА ПВ-2</span>
+                    <p class="item-card__text txt16">тип: кованная</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="products-catalog__footer">
+              <a
+                href="#"
+                title="Показать ещё"
+                class="products-catalog__btn btn btn_ol"
+                ><span class="btn__text">показать ещё</span></a
+              >
+              <div class="products-catalog__pagination page-pagination">
+                <a href="#" class="page-pagination__item _active"
+                  ><span>1</span></a
+                >
+                <a href="#" class="page-pagination__item"><span>2</span></a>
+                <a href="#" class="page-pagination__item"><span>3</span></a>
+                <a href="#" class="page-pagination__item"><span>4</span></a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      @@include('html/_footer.htm',{})
+    </div>
+    @@include('html/_js.htm',{})
+  </body>
+</html>
